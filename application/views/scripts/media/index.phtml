@@ -1,0 +1,83 @@
+<?php
+$identity = Zend_Auth::getInstance()->getStorage()->read();
+?>
+
+<ul class="list">
+
+    <?php foreach ($this->articles as $value): ?>
+        <li>
+            <div class="contentWrapper">
+
+                <div class="contentLeftPart">
+
+                    <a class="superLink" href="/article/id/<?php echo $value['id']; ?>" name="<?php echo $value['id']; ?>">
+
+                        <img  src="/img/miniImg/<?php echo $value['miniImg']; ?>" class="miniImg"  alt="miniImg" />
+                    </a>
+
+                    <div class="author">
+
+                        <p>
+                            <?php echo $value['author']; ?>
+
+                            <br>
+
+                            <?php echo $value['updateDate']; ?>
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="contentRightPart">
+
+                    <div class="contentText">
+
+                        <a id="superLink" href="/article/id/<?php echo $value['id']; ?>" name="<?php echo $value['id']; ?>">
+                            <h2><?php echo $value['title']; ?></h2>
+                            <p><?php echo $value['shortDesc']; ?></p>
+                        </a>
+                    </div>
+
+                    <div class="rating">
+
+                        <?php
+
+                        $a = (int)$value['ratingGood'];
+                        $b = (int)$value['ratingBad'];
+                        $uniqueId = (int)$value['id'];
+
+                        $c = $a + $b;
+
+                        @$proc1 = ($a * 100) / $c;
+                        @$proc2 = ($b *100) / $c;
+
+                        $proc1R = round($proc1);
+                        $proc2R = round($proc2);
+                        $sumR = $proc1 + $proc2;
+
+                        require('css/style.php');
+
+                        ?>
+
+                        <div class="left">
+                            <div class="blade<?php echo $uniqueId; ?>">
+                                <div class="topBlue<?php echo $uniqueId; ?>"></div>
+                                <div class="middleBlue<?php echo $uniqueId; ?>"></div>
+                            </div>
+                            <div class="downBlue<?php echo $uniqueId; ?> "></div>
+                        </div>
+                        <div class="right">
+                            <div class="blade<?php echo $uniqueId; ?>">
+                                <div class="topRed<?php echo $uniqueId; ?>"></div>
+                                <div class="middleRed<?php echo $uniqueId; ?>"></div>
+                            </div>
+                            <div class="downRed<?php echo $uniqueId; ?>"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    <?php endforeach ?>
+</ul>
+
+<?php echo $this->pagination(); ?>

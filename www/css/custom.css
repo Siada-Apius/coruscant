@@ -1,0 +1,532 @@
+body{
+
+    color: #fff;
+    background: url("../img/style/bk.jpg") scroll center top transparent;
+    font-family:  "New York", serif;
+    font-size: 18px;
+    min-width: 1600px;
+    max-width: 1920px;
+
+}
+
+
+
+.wrapper{
+
+
+    width: 99%;
+    min-height: 20px;
+    border: 1px solid #fff;
+
+
+}
+
+
+
+
+/*----------------------------- HEADER - BEGIN ----------------------------------------*/
+.navbar{
+    margin-bottom: 0;
+}
+
+.headerBig{
+
+    border: 3px solid #fff;
+    border-radius: 5px;
+    margin: 5px;
+    background-color: #888888;
+    width: inherit;
+
+}
+
+
+.headerLeft, .headerMiddle, .headerRight{
+    display: inline-block;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid #fff;
+
+}
+
+.headerLeft{
+
+    width: 24%;
+
+}
+
+.headerH1{
+    text-align: right;
+    padding: 5px;
+}
+
+.headerMiddle{
+
+    min-width: 750px;
+    min-height: 100px;
+
+    background-color: #000;
+    background-image: url("../img/style/death-star.jpg");
+    background-repeat: no-repeat;
+    background-size: 120px;
+    float: inherit;
+
+}
+
+
+.headerRight{
+
+    width: 25%;
+    min-height: 90px;
+    background-color: #000;
+    background-image: url("../img/style/stormtrooper.jpg");
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: 125px;
+
+
+}
+/*----------------------------- HEADER - END ----------------------------------------*/
+
+
+
+
+/* ---------------------------- CONTENT - BEGIN -----------------------------------*/
+
+.content{
+    width: inherit;
+    margin: 5px;
+
+
+}
+
+.contentLeft, .contentMiddle, .contentRight{
+    display: inline-block;
+    margin: 5px;
+    border-radius: 5px;
+    border: 3px solid #fff;
+    background-color: #888;
+}
+
+.contentLeft{
+    min-width: 24%;
+}
+
+.contentMiddle{
+    min-width: 750px;
+}
+
+.contentRight{
+    min-width: 25%;
+    max-height: 1000px;
+    overflow: auto;
+}
+
+
+
+
+/* ----------------------------- content inside -----------------------------------*/
+.list{
+    list-style-type: none;
+    margin: 0;
+
+
+}
+
+.contentWrapper{
+    border: 3px solid #fff;
+    border-radius: 5px;
+    margin: 10px 13px 0;
+    background-color: #5B6064;
+    float: left;
+
+}
+
+.contentWrapperArticle{
+    border: 3px solid #fff;
+    border-radius: 5px;
+    margin: 10px;
+    background-color: #5B6064;
+    float: left;
+    padding-bottom: 10px;
+
+
+}
+
+.contentLeftPart{
+    float: left;
+    margin: 10px;
+}
+
+.contentRightPart{
+    margin: 10px 0 5px 150px;
+
+}
+
+.contentText{
+    width: 77%;
+    float: left;
+    background-color: #FEFFE1;
+    border: 3px solid #5B6064;
+    border-radius: 0 0 5px 5px;
+    box-shadow: 0 0 10px #FFFFFF;
+    color: #444444;
+    padding: 5px;
+    margin-bottom: 10px;
+
+}
+
+.rating{
+    width: 14%;
+    margin: 0 0 0 10px;
+    background-color: #000000;
+    border: 3px solid #5B6064;
+    border-radius: 0 5px 5px 0;
+    box-shadow: 0 0 10px #FFFFFF;
+    min-height: 200px;
+
+}
+
+.contentText, .rating{
+    display: inline-block;
+    
+
+
+    -moz-box-shadow: 0 0 20px #fff;
+    -webkit-box-shadow: 0 0 20px #fff;
+    box-shadow: 0 0 10px #fff;
+
+
+}
+
+#superLink{
+    text-decoration: none;
+    color: #444444;
+}
+
+.miniImg{
+    border-radius: 5px 0 0 0;
+    border: 3px solid #fff;
+
+
+}
+.author{
+
+    color:  #FEFFE1;
+    border: 3px solid #444444;
+    background-color: #1C2227;
+    min-width: 70%;
+    height: 35px;
+    margin: 5px 0;
+    padding: 0 0 5px 5px;
+    font-size: 11px;
+    font-style: italic;
+
+    -moz-box-shadow: 0 0 20px #fff;
+    -webkit-box-shadow: 0 0 20px #fff;
+    box-shadow: 0 0 10px #fff;
+
+}
+
+.likeButtons{
+
+    border: 3px solid #444444;
+    background-color: #000000;
+    height: 52px;
+
+    -moz-box-shadow: inset 0 0 5px #fff;
+    -webkit-box-shadow: inset 0 0 5px #fff;
+    box-shadow: inset 0 0 5px #fff;
+}
+
+.showRating{
+    color:  #FEFFE1;
+    border: 3px solid #444444;
+    border-radius: 0 0 0 5px;
+    background-color: #1C2227;
+    min-width: 70%;
+    height: 35px;
+    margin: 5px 0;
+    padding: 0 0 5px 5px;
+    font-size: 11px;
+    font-style: italic;
+
+    -moz-box-shadow: 0 0 20px #fff;
+    -webkit-box-shadow: 0 0 20px #fff;
+    box-shadow: 0 0 10px #fff;
+}
+
+
+.likeBut{
+
+    width: 42px;
+    height: 42px;
+    float: left;
+    margin: 5px 5px 5px 13%;
+    background-image: url("../img/style/like.jpeg");
+    background-repeat: no-repeat;
+    cursor: pointer;
+
+}
+
+
+.dislikeBut{
+
+    background-image: url("../img/style/dislike.jpg");
+    background-repeat: no-repeat;
+    margin: 5px 5px 5px 54%;
+    width: 42px;
+    height: 42px;
+    cursor: pointer;
+
+}
+
+
+.contentComments{
+
+    border: 3px solid #fff;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    background-color: #5B6064;
+    float: left;
+    width: 50%;
+    padding-bottom: 10px;
+
+}
+
+.com_text_add{
+    background-color: #1C2227;
+    color: #FEFFE1;
+    height: 150px;
+}
+
+.com_but{
+    height: 150px;
+    padding: 10px;
+    margin-left: 10px;
+    margin-top: -10px;
+}
+
+
+
+
+
+/* ----------------------------- content inside - END -----------------------------------*/
+
+/* ---------------------------- CONTENT - END -----------------------------------*/
+
+
+
+
+/* ------------------------------------ FOOTER - BEGIN --------------------------*/
+
+.footer{
+    border: 3px solid #fff;
+    border-radius: 5px;
+    background-color: #888;
+    width: inherit;
+    display: inline-block;
+    margin: 10px;
+    height: 180px;
+}
+
+
+/* ------------------------------------ FOOTER - END --------------------------*/
+
+
+
+
+/*---------------------------- LOGIN FORM BEGIN-----------------------------------*/
+
+.error{
+
+    position: relative;
+    border: 3px solid #5B6064;
+    margin: 50px auto;
+    border-radius: 5px;
+    background-color: #FEFFE1;
+    color: #2D3135;
+    width: 400px;
+    text-align: center;
+    -moz-box-shadow: 0 0 20px #fff;
+    -webkit-box-shadow: 0 0 20px #fff;
+    box-shadow: 0 0 10px #fff;
+}
+
+
+.regLink, .regLink  a, .error a{
+
+    color: #C00000;
+    margin: 0 auto;
+    text-shadow: -1px 0 black,
+                0 1px black,
+                1px 0 black,
+                0 -1px black
+    ;
+
+}
+
+
+/*---------------------------- LOGIN FORM END -----------------------------------*/
+
+
+
+
+/*---------------------------- PAGINATION BEGIN -----------------------------------*/
+
+.pagination{
+
+    background-color: #000;
+    border: 3px solid #fff;
+    border-radius: 5px;
+    padding: 2px 0 2px 28%;
+    float: left;
+    width: 510px;
+    margin-top: 30px;
+    margin-left: 10px;
+
+
+
+}
+/*---------------------------- PAGINATION END -----------------------------------*/
+
+
+
+
+/*---------------------------- COMMENTS BEGIN -----------------------------------*/
+
+.comments{
+    border: 2px solid #fff;
+    border-radius: 5px;
+    background-color: #1C2227;
+    margin: 5px;
+    height: 55px;
+
+
+}
+
+.user_name, .com_date, .comDelete{
+    display: inline-block;
+    color:  #FEFFE1;
+    float: inherit;
+    font-style: italic;
+
+}
+
+.comDeleteInput{
+
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+
+.user_name{
+    width: 45%;
+}
+
+.com_date{
+    width: 45%;
+    text-align: right;
+
+}
+
+.com_text{
+    background-color: #252D34;
+    padding: 5px;
+    color:  #FEFFE1;
+
+
+
+}
+
+/*---------------------------- COMMENTS END -------------------------------------*/
+
+
+
+/*------------------------------ ADD ARTICLES BEGIN -------------------------------*/
+
+.uploadAdd{
+    margin: 10px 0 0 40px;
+}
+
+ .titleAdd, .shortDescAdd, .fullAdd{
+     width: 95%;
+
+ }
+
+ .titleAdd{
+     height: 50px;
+ }
+
+ .shortDescAdd{
+     height: 100px;
+ }
+
+ .fullAdd{
+     height: 300px;
+ }
+
+ dd, dt{
+     margin-left: 0;
+ }
+/*------------------------------ ADD ARTICLES END ---------------------------------*/
+
+
+
+/*------------------------------ EDIT ARTICLES BEGIN -------------------------------*/
+.leftPartArticle, .rightPartArticle{
+    display: inline-block;
+    float: left;
+}
+
+.leftPartArticle{
+
+    width: 20%;
+    margin: 10px;
+    padding: 5px;
+}
+
+.rightPartArticle{
+
+    width: 73%;
+}
+
+.titleEdit, .shortDesc, .text{
+    width: 90%;
+
+}
+
+.titleEdit{
+    height: 50px;
+}
+
+.shortDesc{
+    height: 100px;
+}
+
+.text{
+    height: auto;
+}
+
+.inputEdit{
+    width: 140px;
+}
+
+.edit_but{
+    width: 140px !important
+}
+
+/*------------------------------ EDIT ARTICLES END ---------------------------------*/
+
+
+
+/*------------------------------ EDIT COMMENTS BEGIN ------------------------------*/
+
+.workWithComments{
+
+}
+
+/*------------------------------ EDIT COMMENTS END --------------------------------*/
+

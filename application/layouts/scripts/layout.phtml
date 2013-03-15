@@ -1,0 +1,156 @@
+<html>
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>S&M</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <?php $this->headLink()->appendStylesheet('/css/bootstrap.css'); ?>
+    <?php $this->headLink()->appendStylesheet('/css/bootstrap-responsive.css'); ?>
+    <?php $this->headLink()->appendStylesheet('/css/custom.css');?>
+
+    <?php   $this->headScript()->appendFile('/js/bootstrap.js');?>
+    <?php   $this->headScript()->appendFile('/js/jquery/jquery.js');?>
+
+    <?php echo $this->jQuery(); ?>
+    <?php echo $this->headLink();?>
+    <?php echo $this->headScript();?>
+
+</head>
+
+    <body>
+        <div class="wrapper">
+
+            <div class="span12 headerBig">
+
+                    <div class="span3 headerLeft">
+                        <div class="navbar">
+                            <div class="navbar-inner">
+
+                                <?php
+                                $identity = Zend_Auth::getInstance()->getStorage()->read();
+
+                                if (isset($identity->role)  && $identity->role == 'admin'){
+                                    echo $this  ->navigation()
+                                        ->menu()
+                                        ->setMaxDepth(2)
+                                        ->setUlClass('nav')
+                                        ->render(new My_Navigation($this->navigation()->findAllBy('tag','admin',true)))
+                                    ;
+                                }
+
+                                else {
+                                    echo $this  ->navigation()
+                                        ->menu()
+                                        ->setMaxDepth(2)
+                                        ->setUlClass('nav')
+                                        ->render(new My_Navigation($this->navigation()->findAllBy('tag','topMenu',true)))
+                                    ;
+
+                                }
+
+                                ?>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="span7 headerMiddle">
+                        <h1 class="headerH1">The force is strong in you, Skywalker</h1>
+                    </div>
+
+                    <div class="span4 headerRight">
+                        <?php
+                        if (isset($identity)){
+                            echo '
+                                <table>
+                                    <tr>
+                                        <td>Nickname <==> </td>
+                                        <td>'. $identity->nickname .'</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email <==> </td>
+                                        <td>'. $identity->email .'</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Created Time <==> </td>
+                                        <td>'. $identity->created .'</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Status <==> </td>
+                                        <td>'. $identity->role .'</td>
+                                    </tr>
+                                </table>
+                            ';
+
+
+                        }
+                        ?>
+
+
+
+                    </div>
+            </div>
+
+            <div class="content">
+
+                <div class="contentLeft span3">
+                    <?php
+                    $identity = Zend_Auth::getInstance()->getStorage()->read();
+
+                    if (isset($identity->role)  && $identity->role == 'admin'): ?>
+
+                        <div class="adminMenu">
+                            <ul>
+                                <li><a class="regLink" href="/admin/add/">Add new articles (This Menu see only ADMIN)</a></li>
+                                <li><a class="regLink" href="/admin/comments/">Work with comments (This Menu see only ADMIN)</a></li>
+                            </ul>
+                        </div>
+
+                        <?php else :?>
+                        left menu
+                        <?php endif ?>
+                </div>
+
+                <div class="contentMiddle span7">
+                    <?php echo $this->title; ?>
+                    <?php echo $this->layout()->content; ?>
+
+                </div>
+
+                <div class="contentRight span2">
+                    <?php if($this->sukaID) $this->comments($this->sukaID);?>
+                    <?php #$this->comments($this->sukaID);?>
+                </div>
+
+            </div>
+
+            <div class="footer">
+                <a href="/index/mail/">check mail</a>
+
+            </div>
+
+            <script src="http://vkontakte.ru/js/api/openapi.js" type="text/javascript"></script>
+
+            <div id="login_button" onclick="VK.Auth.login(authInfo);"></div>
+
+            <script language="javascript">
+                VK.init({
+                    apiId: ВАШ_API_ID
+                });
+                function authInfo(response) {
+                    if (response.session) {
+                        alert('user: '+response.session.mid);
+                    } else {
+                        alert('not auth');
+                    }
+                }
+                VK.Auth.getLoginStatus(authInfo);
+                VK.UI.button('login_button');
+            </script>
+
+        </div>
+    </body>
+</html>

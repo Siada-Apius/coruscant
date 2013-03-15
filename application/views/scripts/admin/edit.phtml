@@ -1,0 +1,34 @@
+<form method = "POST">
+    <div class="contEdit">
+
+        <div class="leftPartArticle">
+
+            <img  src="/img/miniImg/<?php echo $this->articles['miniImg']; ?>" class="miniImg"  alt="miniImg"/>
+
+
+            <div class="authorEdit">
+
+                <?php echo $this->form->getElement('id'); ?>
+                <?php echo $this->form->getElement('author'); ?>
+                <?php echo $this->form->getElement('updateDate'); ?>
+
+            </div>
+
+            <?php echo $this->form->getElement('submit'); ?> <!-- SUBMIT -->
+
+        </div>
+
+
+        <div class="rightPartArticle">
+
+            <div class="textContentEdit">
+
+                <?php echo $this->form->getElement('title'); ?>
+                <?php echo $this->form->getElement('shortDesc'); ?>
+                <?php echo $this->form->getElement('full'); ?>
+
+            </div>
+
+        </div>
+    </div>
+</form>

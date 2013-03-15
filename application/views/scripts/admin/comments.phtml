@@ -1,0 +1,19 @@
+
+<?php foreach ($this->articles as $value): ?>
+
+    <p class="workWithComments"><?php echo $value['title']; ?></p>
+
+<?php endforeach; ?>
+
+
+<table style="border: 2px solid red;">COMMENTS
+
+<?php foreach ($this->comments as $value): ?>
+    <tr>
+        <td><?php echo $value['user_name']; ?></td>
+        <td><?php echo $value['com_date']; ?></td>
+        <td><?php echo $value['com_text']; ?></td>
+    </tr>
+<?php endforeach; ?>
+
+</table>

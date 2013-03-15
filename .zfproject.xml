@@ -1,0 +1,178 @@
+<?xml version="1.0"?>
+<projectProfile type="default" version="1.12.0">
+  <projectDirectory>
+    <projectProfileFile filesystemName=".zfproject.xml"/>
+    <applicationDirectory classNamePrefix="Application_">
+      <configsDirectory>
+        <applicationConfigFile type="ini"/>
+      </configsDirectory>
+      <controllersDirectory>
+        <controllerFile controllerName="Index">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="logout"/>
+          <actionMethod actionName="user"/>
+          <actionMethod actionName="comment"/>
+          <actionMethod actionName="email"/>
+          <actionMethod actionName="mail"/>
+        </controllerFile>
+        <controllerFile controllerName="Error">
+          <actionMethod actionName="page404"/>
+        </controllerFile>
+        <controllerFile controllerName="Users">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="login"/>
+          <actionMethod actionName="logout"/>
+        </controllerFile>
+        <controllerFile controllerName="Media">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="article"/>
+          <actionMethod actionName="comment"/>
+          <actionMethod actionName="mail"/>
+        </controllerFile>
+        <controllerFile controllerName="User">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="confirm"/>
+          <actionMethod actionName="add"/>
+        </controllerFile>
+        <controllerFile controllerName="Admin">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="media"/>
+          <actionMethod actionName="users"/>
+          <actionMethod actionName="add"/>
+          <actionMethod actionName="edit"/>
+          <actionMethod actionName="comments"/>
+        </controllerFile>
+      </controllersDirectory>
+      <formsDirectory>
+        <formFile formName="Simple"/>
+        <formFile formName="Login"/>
+        <formFile formName="Registration"/>
+        <formFile formName="Add"/>
+        <formFile formName="Articles"/>
+        <formFile formName="Comment"/>
+        <formFile formName="Mail"/>
+      </formsDirectory>
+      <layoutsDirectory enabled="false"/>
+      <modelsDirectory>
+        <dbTableDirectory>
+          <dbTableFile dbTableName="User"/>
+          <dbTableFile dbTableName="Comments"/>
+        </dbTableDirectory>
+      </modelsDirectory>
+      <modulesDirectory enabled="false"/>
+      <servicesDirectory enabled="false"/>
+      <viewsDirectory>
+        <viewScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Index">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Error">
+            <viewScriptFile forActionName="error"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Error">
+            <viewScriptFile forActionName="page404"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Users">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Users">
+            <viewScriptFile forActionName="login"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Users">
+            <viewScriptFile forActionName="logout"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Media">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Index">
+            <viewScriptFile forActionName="logout"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Index">
+            <viewScriptFile forActionName="user"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="User">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="User">
+            <viewScriptFile forActionName="confirm"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Admin">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Admin">
+            <viewScriptFile forActionName="media"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Admin">
+            <viewScriptFile forActionName="users"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Admin">
+            <viewScriptFile forActionName="add"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="User">
+            <viewScriptFile forActionName="add"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Media">
+            <viewScriptFile forActionName="article"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Admin">
+            <viewScriptFile forActionName="edit"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Index">
+            <viewScriptFile forActionName="comment"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Media">
+            <viewScriptFile forActionName="comment"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Admin">
+            <viewScriptFile forActionName="comments"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Index">
+            <viewScriptFile forActionName="email"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Media">
+            <viewScriptFile forActionName="mail"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Index">
+            <viewScriptFile forActionName="mail"/>
+          </viewControllerScriptsDirectory>
+        </viewScriptsDirectory>
+        <viewHelpersDirectory/>
+        <viewFiltersDirectory enabled="false"/>
+      </viewsDirectory>
+      <bootstrapFile filesystemName="Bootstrap.php"/>
+    </applicationDirectory>
+    <dataDirectory enabled="false">
+      <cacheDirectory enabled="false"/>
+      <searchIndexesDirectory enabled="false"/>
+      <localesDirectory enabled="false"/>
+      <logsDirectory enabled="false"/>
+      <sessionsDirectory enabled="false"/>
+      <uploadsDirectory enabled="false"/>
+    </dataDirectory>
+    <docsDirectory>
+      <file filesystemName="README.txt"/>
+    </docsDirectory>
+    <libraryDirectory>
+      <zfStandardLibraryDirectory enabled="false"/>
+    </libraryDirectory>
+    <publicDirectory>
+      <publicStylesheetsDirectory enabled="false"/>
+      <publicScriptsDirectory enabled="false"/>
+      <publicImagesDirectory enabled="false"/>
+      <publicIndexFile filesystemName="index.php"/>
+      <htaccessFile filesystemName=".htaccess"/>
+    </publicDirectory>
+    <projectProvidersDirectory enabled="false"/>
+    <temporaryDirectory enabled="false"/>
+    <testsDirectory>
+      <testPHPUnitConfigFile filesystemName="phpunit.xml"/>
+      <testPHPUnitBootstrapFile filesystemName="bootstrap.php"/>
+      <testApplicationDirectory>
+        <testApplicationControllerDirectory>
+          <testApplicationControllerFile forControllerName="Index"/>
+        </testApplicationControllerDirectory>
+      </testApplicationDirectory>
+      <testLibraryDirectory/>
+    </testsDirectory>
+  </projectDirectory>
+</projectProfile>

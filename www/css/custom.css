@@ -1,89 +1,73 @@
-body{
-
+body {
     color: #fff;
     background: url("../img/style/bk.jpg") scroll center top transparent;
     font-family:  "New York", serif;
     font-size: 18px;
-    min-width: 1600px;
-    max-width: 1920px;
-
 }
 
 
 
-.wrapper{
-
-
-    width: 99%;
-    min-height: 20px;
+.wrapper {
+    width: 1000px;
     border: 1px solid #fff;
-
-
+    margin: 0 auto;
 }
 
 
 
 
 /*----------------------------- HEADER - BEGIN ----------------------------------------*/
-.navbar{
+.navbar {
     margin-bottom: 0;
 }
 
-.headerBig{
 
-    border: 3px solid #fff;
-    border-radius: 5px;
-    margin: 5px;
+div.headerBig {
+    float: left;
     background-color: #888888;
-    width: inherit;
-
+    width: 100%;
 }
 
 
-.headerLeft, .headerMiddle, .headerRight{
-    display: inline-block;
+div.headerLeft,
+div.headerRight {
+    background-color: #000;
     margin: 5px;
     border-radius: 5px;
     border: 1px solid #fff;
-
+    height: 178px;
 }
 
-.headerLeft{
 
+div.headerLeft {
+    background-image: url("../img/style/logo.jpg");
+    background-position: 37px 3px;
+    background-repeat: no-repeat;
+    background-size: 165px auto;
     width: 24%;
-
+    float: left;
 }
 
-.headerH1{
+
+div.headerRight {
+    background-image: url("../img/style/header_bg.jpg");
+    background-position: -80px center;
+    background-repeat: no-repeat;
+    background-size: 684px auto;
+    float: right;
     text-align: right;
-    padding: 5px;
-}
-
-.headerMiddle{
-
-    min-width: 750px;
-    min-height: 100px;
-
-    background-color: #000;
-    background-image: url("../img/style/death-star.jpg");
-    background-repeat: no-repeat;
-    background-size: 120px;
-    float: inherit;
-
+    width: 73%;
 }
 
 
-.headerRight{
-
-    width: 25%;
-    min-height: 90px;
-    background-color: #000;
-    background-image: url("../img/style/stormtrooper.jpg");
-    background-position: right;
-    background-repeat: no-repeat;
-    background-size: 125px;
+div.headerInfo {
+    clear: both;
+    height: 126px;
+}
 
 
+div.headerNav {
+    clear: both;
 }
 /*----------------------------- HEADER - END ----------------------------------------*/
 
@@ -99,8 +83,9 @@ body{
 
 }
 
-.contentLeft, .contentMiddle, .contentRight{
-    display: inline-block;
+.contentLeft,
+.contentMiddle,
+.contentRight{
     margin: 5px;
     border-radius: 5px;
     border: 3px solid #fff;
@@ -108,17 +93,17 @@ body{
 }
 
 .contentLeft{
-    min-width: 24%;
+    min-width: 23%;
+    float: left;
 }
 
 .contentMiddle{
-    min-width: 750px;
+    width: 73%;
+    float: right;
 }
 
 .contentRight{
-    min-width: 25%;
-    max-height: 1000px;
-    overflow: auto;
+
 }
 
 

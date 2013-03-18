@@ -34,8 +34,8 @@
                      </div>
 
                     <div class="headerNav">
-                        <div class="navbar">
-                            <div class="navbar-inner">
+                        <div class="navbar-inner">
+                            <div class="navbar navbarLink">
                                 <?php
                                 $identity = Zend_Auth::getInstance()->getStorage()->read();
 
@@ -59,8 +59,18 @@
 
                                 ?>
                             </div>
+                            <div class="navbarSearch">
+                                <form id="searchForm" class="navbar-search pull-left" method="POST" action="/search">
+                                    <input class="search-query span2" type="text" placeholder="Search" name="query">
+                                    <a>
+                                        <i class="icon-search"></i>
+                                    </a>
+                                </form>
+                            </div>
                         </div>
-                    </div>
+                        </div>
+
+
 
                 </div>
 

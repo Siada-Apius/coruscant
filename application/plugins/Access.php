@@ -33,6 +33,10 @@ class Application_Plugin_Access extends Zend_Controller_Plugin_Abstract
         $acl->addResource('account');
         $acl->addResource('user');
         $acl->addResource('media');
+        $acl->addResource('news');
+        $acl->addResource('games');
+        $acl->addResource('archive');
+        $acl->addResource('about');
 
 
         #admin allow
@@ -56,6 +60,10 @@ class Application_Plugin_Access extends Zend_Controller_Plugin_Abstract
         $acl->allow('guest', 'index', array('index', 'mail'));
         $acl->allow('guest', 'user', array('index', 'login', 'registration'));
         $acl->allow('guest', 'media', array('index', 'article', 'page'));
+        $acl->allow('guest', 'news', array('index'));
+        $acl->allow('guest', 'games', array('index'));
+        $acl->allow('guest', 'archive', array('index'));
+        $acl->allow('guest', 'about', array('index'));
 
         $acl->deny('guest', 'user', array('logout'));
         $acl->allow('guest', 'error', array('error404','error'));

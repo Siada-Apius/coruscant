@@ -25,6 +25,17 @@ return array(
             ),
             array (
 
+                'label' => 'News',
+                'tag' => 'topMenu',
+                'route' => 'default',
+                'module' => 'default',
+                'controller' => 'news',
+                'action' => 'index',
+                'resource' => 'news',
+                'privilege' => 'index',
+            ),
+            /*array (
+
                 'label' => 'Wanna cookie',
                 'tag' => 'topMenu',
                 'route' => 'default',
@@ -33,16 +44,49 @@ return array(
                 'action' => 'login',
                 'resource' => 'user',
                 'privilege' => 'login',
-            ),
+            ),*/
             array (
 
-                'label' => 'Media',
+                'label' => 'Movie',
                 'tag' => 'topMenu',
                 'route' => 'default',
                 'module' => 'default',
                 'controller' => 'media',
                 'action' => 'index',
                 'resource' => 'media',
+                'privilege' => 'index',
+            ),
+            array (
+
+                'label' => 'Games',
+                'tag' => 'topMenu',
+                'route' => 'default',
+                'module' => 'default',
+                'controller' => 'games',
+                'action' => 'index',
+                'resource' => 'games',
+                'privilege' => 'index',
+            ),
+            array (
+
+                'label' => 'Archive',
+                'tag' => 'topMenu',
+                'route' => 'default',
+                'module' => 'default',
+                'controller' => 'archive',
+                'action' => 'index',
+                'resource' => 'archive',
+                'privilege' => 'index',
+            ),
+            array (
+
+                'label' => 'About',
+                'tag' => 'topMenu',
+                'route' => 'default',
+                'module' => 'default',
+                'controller' => 'about',
+                'action' => 'index',
+                'resource' => 'about',
                 'privilege' => 'index',
             ),
             array (

@@ -1,6 +1,7 @@
 body {
     color: #fff;
     background: url("../img/style/bk.jpg") scroll center top transparent;
+    background-attachment: fixed;
     font-family:  "New York", serif;
     font-size: 18px;
 }
@@ -76,16 +77,14 @@ div.headerNav {
 
 /* ---------------------------- CONTENT - BEGIN -----------------------------------*/
 
-.content{
+.content {
     width: inherit;
     margin: 5px;
-
-
 }
 
 .contentLeft,
 .contentMiddle,
-.contentRight{
+.contentRight {
     margin: 5px;
     border-radius: 5px;
     border: 3px solid #fff;

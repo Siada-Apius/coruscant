@@ -35,6 +35,7 @@
                         <div class="navbar-inner">
                             <div class="navbar navbarLink">
                                 <?php
+
                                 $identity = Zend_Auth::getInstance()->getStorage()->read();
 
                                 if (isset($identity->role)  && $identity->role == 'admin'){

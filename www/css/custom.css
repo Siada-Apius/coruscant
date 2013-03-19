@@ -37,6 +37,17 @@ div.headerNav {
 }
 
 
+ul.nav li {
+    margin: 0 1px;
+}
+
+
+ul.nav li:hover {
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2) inset;
+    background-color: #FAFAFA;
+}
+
+
 div.navbarLink {
     float: left;
 }
@@ -109,10 +120,10 @@ div.headerNav {
 
 .contentMiddle,
 .contentRight {
+
     float: left;
     margin: 5px;
-    border: 3px solid #fff;
-    background-color: #979797;
+    border: 3px groove #FAFAFA;
 }
 
 .contentLeft{
@@ -122,6 +133,8 @@ div.headerNav {
 
 .contentMiddle{
     width: 50%;
+    box-shadow: 1px 1px 10px #D9DFF3 inset;
+    background-color: #5B6064;
 }
 
 .contentRight{
@@ -145,17 +158,18 @@ div.headerNav {
     border: 3px solid #fff;
     border-radius: 5px;
     margin: 10px;
-    background-color: #5B6064;
+    background-color: #EEEEEE;
     float: left;
     padding-bottom: 10px;
 }
 
 
 div.contentWrapper {
-    border-bottom: 3px solid #fff;
-    padding: 10px;
-    background-color: #5B6064;
+    background-color: #00001D;
+    border: 2px groove #FFFFFF;
     float: left;
+    margin: 5px;
+    padding: 10px;
 }
 
 
@@ -171,17 +185,19 @@ div.contentRightPart {
 }
 
 .contentRightPart{
-    width: 68%;
+    width: 78%;
 }
 
 .contentText{
     float: left;
-    background-color: #FEFFE1;
-    border: 3px solid #5B6064;
-    border-radius: 0 0 5px 5px;
-    box-shadow: 0 0 10px #FFFFFF;
+    background-image: -moz-linear-gradient(top, #ffffff, #f2f2f2);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f2f2f2));
+    background-image: -webkit-linear-gradient(top, #ffffff, #f2f2f2);
+    background-image: -o-linear-gradient(top, #ffffff, #f2f2f2);
+    background-image: linear-gradient(to bottom, #ffffff, #f2f2f2);
+    border: 2px groove  #000;
     color: #444444;
-    padding: 5px;
+    padding: 10px;
     margin-bottom: 10px;
 
 }
@@ -197,14 +213,12 @@ div.contentRightPart {
 
 }
 
-.contentText, .rating{
+.contentText,
+.rating{
     display: inline-block;
-    
-
-
-    -moz-box-shadow: 0 0 20px #fff;
-    -webkit-box-shadow: 0 0 20px #fff;
-    box-shadow: 0 0 10px #fff;
+    -moz-box-shadow: 0px 0px 5px #5B6064 inset;
+    -webkit-box-shadow: 0px 0px 5px #5B6064 inset;
+    box-shadow: 0px 0px 5px #5B6064 inset;
 
 
 }
@@ -216,14 +230,13 @@ div.contentRightPart {
 
 .miniImg{
     border-radius: 5px 0 0 0;
-    border: 3px solid #fff;
-
-
+    border: 3px groove #fff;
 }
-.author{
 
+
+.author{
     color:  #FEFFE1;
-    border: 3px solid #444444;
+    border: 3px groove #444444;
     background-color: #1C2227;
     min-width: 70%;
     height: 35px;
@@ -232,9 +245,9 @@ div.contentRightPart {
     font-size: 11px;
     font-style: italic;
 
-    -moz-box-shadow: 0 0 20px #fff;
-    -webkit-box-shadow: 0 0 20px #fff;
-    box-shadow: 0 0 10px #fff;
+    -moz-box-shadow: 0px 0px 4px #FEFFE1 inset;
+    -webkit-box-shadow: 0px 0px 4px #FEFFE1 inset;
+    box-shadow: 0px 0px 4px #FEFFE1 inset;
 
 }
 

@@ -9,9 +9,10 @@ body {
 
 
 .wrapper {
-    width: 1000px;
-    border: 1px solid #fff;
+    clear: both;
     margin: 0 auto;
+    max-width: 100%;
+    min-width: 920px;
 }
 
 
@@ -71,24 +72,14 @@ div.headerRight {
 }
 
 
-div.headerLeft {
-    background-image: url("../img/style/logo.jpg");
-    background-position: 37px 3px;
-    background-repeat: no-repeat;
-    background-size: 165px auto;
-    width: 24%;
-    float: left;
-}
-
-
 div.headerRight {
     background-image: url("../img/style/header_bg.jpg");
     background-position: -80px center;
     background-repeat: no-repeat;
     background-size: 684px auto;
-    float: right;
+    float: left;
     text-align: right;
-    width: 73%;
+    width: 99%
 }
 
 
@@ -109,31 +100,32 @@ div.headerNav {
 /* ---------------------------- CONTENT - BEGIN -----------------------------------*/
 
 .content {
-    width: inherit;
-    margin: 5px;
+    clear: both;
+    float: left;
+    min-width: 1000px;
 }
 
-.contentLeft,
+
 .contentMiddle,
 .contentRight {
+    float: left;
     margin: 5px;
-    border-radius: 5px;
     border: 3px solid #fff;
-    background-color: #888;
+    background-color: #979797;
 }
 
 .contentLeft{
-    min-width: 23%;
     float: left;
+    width: 22%;
 }
 
 .contentMiddle{
-    width: 73%;
-    float: right;
+    width: 50%;
 }
 
 .contentRight{
-
+    max-width: 22%;
+    min-width: 17%;
 }
 
 
@@ -147,38 +139,41 @@ div.headerNav {
 
 }
 
-.contentWrapper{
-    border: 3px solid #fff;
-    border-radius: 5px;
-    margin: 10px 13px 0;
-    background-color: #5B6064;
-    float: left;
 
-}
-
-.contentWrapperArticle{
+.contentWrapperArticle {
     border: 3px solid #fff;
     border-radius: 5px;
     margin: 10px;
     background-color: #5B6064;
     float: left;
     padding-bottom: 10px;
-
-
 }
 
-.contentLeftPart{
+
+div.contentWrapper {
+    border-bottom: 3px solid #fff;
+    padding: 10px;
+    background-color: #5B6064;
     float: left;
-    margin: 10px;
+}
+
+
+div.contentLeftPart,
+div.contentRightPart {
+    float: left;
+}
+
+
+.contentLeftPart{
+    min-width: 18%;
+    margin-right: 10px;
 }
 
 .contentRightPart{
-    margin: 10px 0 5px 150px;
-
+    width: 68%;
 }
 
 .contentText{
-    width: 77%;
     float: left;
     background-color: #FEFFE1;
     border: 3px solid #5B6064;
@@ -340,7 +335,7 @@ div.headerNav {
     border-radius: 5px;
     background-color: #888;
     width: inherit;
-    display: inline-block;
+    clear: both;
     margin: 10px;
     height: 180px;
 }

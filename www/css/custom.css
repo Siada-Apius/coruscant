@@ -2,13 +2,17 @@ body {
     color: #fff;
     background: url("../img/style/bk.jpg") scroll center top transparent;
     background-attachment: fixed;
-    font-family:  "New York", serif;
+    /*font-family:  "New York", serif;*/
+    font-family: 'Comfortaa', serif;
     font-size: 18px;
 }
 
+@font-face {
+    
+    src: url('../starwars/TheMatrix.ttf');
+}
 
-
-.wrapper {
+div.wrapper {
     clear: both;
     margin: 0 auto;
     max-width: 100%;

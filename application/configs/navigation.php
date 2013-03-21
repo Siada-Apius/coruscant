@@ -23,17 +23,6 @@ return array(
                 'resource' => 'index',
                 'privilege' => 'index',
             ),
-            array (
-
-                'label' => 'News',
-                'tag' => 'topMenu',
-                'route' => 'default',
-                'module' => 'default',
-                'controller' => 'news',
-                'action' => 'index',
-                'resource' => 'news',
-                'privilege' => 'index',
-            ),
             /*array (
 
                 'label' => 'Wanna cookie',

@@ -15,6 +15,12 @@ class IndexController extends Zend_Controller_Action
 
         $articles = new Application_Model_DbTable_Articles();
         $this->view->articles = $articles->getArticles();
+
+        $page = (Zend_Controller_Front::getInstance()->getRequest()->getParam('page')) ? Zend_Controller_Front::getInstance()->getRequest()->getParam('page') : '1';
+        $from = ($page - 1) * 5;
+
+        $articles = new Application_Model_DbTable_Articles();
+        $this->view->articles = $articles->getArticles($from);
     }
 
     public function mailAction()

@@ -166,7 +166,7 @@ div.content {
 
 
 div.contentWrapper {
-    background-color: #00001D;
+    background-color: #060606;
     border: 2px groove #FFFFFF;
     float: left;
     margin: 5px;
@@ -190,13 +190,9 @@ div.contentRightPart{
 }
 
 .contentText{
+    background-color: #0F0F35;
     float: left;
-    background-image: -moz-linear-gradient(top, #ffffff, #f2f2f2);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f2f2f2));
-    background-image: -webkit-linear-gradient(top, #ffffff, #f2f2f2);
-    background-image: -o-linear-gradient(top, #ffffff, #f2f2f2);
-    background-image: linear-gradient(to bottom, #ffffff, #f2f2f2);
-    border: 2px groove  #000;
+    border: 2px groove #000;
     color: #444444;
     padding: 10px;
     margin-bottom: 10px;
@@ -224,9 +220,17 @@ div.contentRightPart{
 
 }
 
+
+a.superLink {
+    display: block;
+    height: 206px;
+    width: 140px;
+}
+
+
 #superLink{
     text-decoration: none;
-    color: #444444;
+    color: #dbdbdb;
 }
 
 .miniImg{

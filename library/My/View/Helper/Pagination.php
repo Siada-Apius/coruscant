@@ -41,14 +41,14 @@ class My_View_Helper_Pagination extends Zend_View_Helper_Abstract{
 
         <?php if (isset($pages->previous)): ?>
 
-        <a class="active" href="<?php echo $self;?>/media/page/<?php echo $pages->first; ?>"><?php echo $begin;?></a> |
+        <a class="active" href="<?php echo $self;?>/page/<?php echo $pages->first; ?>"><?php echo $begin;?></a> |
 
         <?php endif; ?>
         <!-- посилання на попередню -->
 
         <?php if (isset($pages->previous)): ?>
 
-        <a class="active" href="<?php echo $self;?>/media/page/<?php echo $pages->previous; ?>"><img class="arrow" src="/img/style/left60.jpeg"></a> |
+        <a class="active" href="<?php echo $self;?>/page/<?php echo $pages->previous; ?>"><img class="arrow" src="/img/style/left60.jpeg"></a> |
 
         <?php endif; ?>
 
@@ -58,7 +58,7 @@ class My_View_Helper_Pagination extends Zend_View_Helper_Abstract{
 
         <?php if ($page != $pages->current): ?>
 
-            <a class="active" href="<?php echo $self;?>/media/page/<?php echo $page; ?>"><?php echo $page; ?></a>
+            <a class="active" href="<?php echo $self;?>/page/<?php echo $page; ?>"><?php echo $page; ?></a>
 
             <?php else: ?>
 
@@ -72,7 +72,7 @@ class My_View_Helper_Pagination extends Zend_View_Helper_Abstract{
 
         <?php if (isset($pages->next)): ?>
 
-        | <a class="active" href="<?php echo $self;?>/media/page/<?php echo $pages->next; ?>"><img class="arrow" src="/img/style/right60.jpeg"></a> |
+        | <a class="active" href="<?php echo $self;?>/page/<?php echo $pages->next; ?>"><img class="arrow" src="/img/style/right60.jpeg"></a> |
 
         <?php endif; ?>
 
@@ -80,7 +80,7 @@ class My_View_Helper_Pagination extends Zend_View_Helper_Abstract{
 
         <?php if (isset($pages->next)): ?>
 
-        <a class="active" href="<?php echo $self;?>/media/page/<?php echo $pages->last; ?>"><?php echo $end;?></a>
+        <a class="active" href="<?php echo $self;?>/page/<?php echo $pages->last; ?>"><?php echo $end;?></a>
 
         <?php endif; ?>
 

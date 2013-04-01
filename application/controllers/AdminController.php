@@ -15,13 +15,13 @@ class AdminController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        // action body
+        $articles = new Application_Model_DbTable_Articles();
+        $this->view->articles = $articles->getArticles();
     }
 
     public function mediaAction()
     {
-        $articles = new Application_Model_DbTable_Articles();
-        $this->view->articles = $articles->getArticles();
+
     }
 
     public function userAction()
@@ -31,32 +31,30 @@ class AdminController extends Zend_Controller_Action
 
     public function addAction()
     {
-        $addForm = new Application_Form_Add();
-        $this->view->form = $addForm;
+        $addArticle = new Application_Form_Add();
+        $addMovie = new Application_Form_Movies();
+
+        $this->view->form = $addArticle;
+        $this->view->movieForm = $addMovie;
+
 
         if ($this->getRequest()->isPost()) {
 
             $newData = $this->getRequest()->getPost();
 
-            if ($addForm->isValid($newData)){
-
-
+            if ($addArticle->isValid($newData)){
 
                 $user = new Application_Model_DbTable_Articles();
-                $user   ->addArticles($newData); //$newData це масив, в який підставляється з Users.php дані форми
+                $user       ->addArticles($newData); //$newData це масив, в який підставляється з Users.php дані форми
 
-                if ($addForm->isValid($newData)){
+                if ($addArticle->isValid($newData)){
 
                     if(is_uploaded_file($_FILES["photo"]["tmp_name"])){
 
                         move_uploaded_file($_FILES["photo"]["tmp_name"], "img/miniImg/".$_FILES["photo"]["name"]);
                     }
                 }
-
-
             }
-
-
         }
     }
 

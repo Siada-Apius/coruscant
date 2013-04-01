@@ -76,8 +76,6 @@ class UserController extends Zend_Controller_Action
                     #$this->_helper->redirector('login', 'user');
                     echo 'You are weak!';
 
-
-
                 }
 
             }
@@ -109,29 +107,22 @@ class UserController extends Zend_Controller_Action
                 #ІФ ІСНУЄ МЕЙЛ!!!!!!!!!!!!!!!!!!!!!!!
                 $this->view->mail = 0;
 
-            }else{
+            } else {
                 #ІФ НЕ ІСНУЄ РУЄСТРУЄШ!!!!!!!!!!!!!!!!!!!!!!!
 
                 $request = $this->getRequest()->getPost();
                 if ($form->isValid($request)){
 
-
                     $user->createUser($request); //$date це масив, в який підставляється з Users.php дані форми
                     $this->view->status = 1;
 
-                }else{
+                } else {
 
                     $this->view->errors = $form->getErrors();
 
                 }
 
-
-
             }
-
-
-
-
 
         }else{
             #ФІ НЕ АКЯКАССССССССССССССССССССССССССССССССССССССССССССССССС!!!!!!!!!!!!!!!!!!!!!!!!

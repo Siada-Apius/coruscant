@@ -165,9 +165,9 @@ return array(
                 'route' => 'default',
                 'module' => 'default',
                 'controller' => 'admin',
-                'action' => 'add',
+                'action' => 'media',
                 'resource' => 'admin',
-                'privilege' => 'add',
+                'privilege' => 'media',
             ),
         )
     )

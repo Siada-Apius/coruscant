@@ -15,13 +15,16 @@ class AdminController extends Zend_Controller_Action
 
     public function indexAction()
     {
+
         $articles = new Application_Model_DbTable_Articles();
         $this->view->articles = $articles->getArticles();
+
     }
 
     public function mediaAction()
     {
-
+        $movie = new Application_Form_Movies();
+        $this->view->movie = $movie;
     }
 
     public function userAction()
@@ -32,11 +35,8 @@ class AdminController extends Zend_Controller_Action
     public function addAction()
     {
         $addArticle = new Application_Form_Add();
-        $addMovie = new Application_Form_Movies();
 
         $this->view->form = $addArticle;
-        $this->view->movieForm = $addMovie;
-
 
         if ($this->getRequest()->isPost()) {
 

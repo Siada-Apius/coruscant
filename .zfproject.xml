@@ -41,6 +41,7 @@
           <actionMethod actionName="add"/>
           <actionMethod actionName="edit"/>
           <actionMethod actionName="comments"/>
+          <actionMethod actionName="addArticle"/>
         </controllerFile>
         <controllerFile controllerName="News">
           <actionMethod actionName="index"/>
@@ -63,6 +64,7 @@
         <formFile formName="Articles"/>
         <formFile formName="Comment"/>
         <formFile formName="Mail"/>
+        <formFile formName="Movies"/>
       </formsDirectory>
       <layoutsDirectory enabled="false"/>
       <modelsDirectory>
@@ -158,6 +160,9 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="About">
             <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Admin">
+            <viewScriptFile forActionName="addArticle"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>

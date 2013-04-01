@@ -102,7 +102,7 @@ return array(
             ),
             array (
 
-                'label' => 'Almighty',
+                'label' => 'Movies',
                 'tag' => 'admin',
                 'route' => 'default',
                 'module' => 'default',
@@ -131,7 +131,44 @@ return array(
                 'action' => 'logout',
                 'resource' => 'user',
                 'privilege' => 'logout',
-            )
+            ),
+
+            //second admin menu INDEX
+            array (
+
+                'label' => 'Add new articles',
+                'tag' => 'subAdminMenuIndex',
+                'route' => 'default',
+                'module' => 'default',
+                'controller' => 'admin',
+                'action' => 'add',
+                'resource' => 'admin',
+                'privilege' => 'add',
+            ),
+            array (
+
+                'label' => 'Work with comments',
+                'tag' => 'subAdminMenuIndex',
+                'route' => 'default',
+                'module' => 'default',
+                'controller' => 'admin',
+                'action' => 'comments',
+                'resource' => 'admin',
+                'privilege' => 'comments',
+            ),
+
+            //second admin menu Movie
+            array (
+
+                'label' => 'Add new movie',
+                'tag' => 'subAdminMenuMovie',
+                'route' => 'default',
+                'module' => 'default',
+                'controller' => 'admin',
+                'action' => 'add',
+                'resource' => 'admin',
+                'privilege' => 'add',
+            ),
         )
     )
 );

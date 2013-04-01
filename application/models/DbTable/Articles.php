@@ -78,4 +78,38 @@ class Application_Model_DbTable_Articles extends Application_Model_DbTable_Abstr
         return $wwc->query()->fetchAll();
 
     }
+
+
+    /*
+    public function createBusiness ($array = array(), $userId) {
+
+        $data = array(
+
+            'user_id' => $userId,
+            'yelp_id' => $array['yelp_id'],
+            'name' => $array['name'],
+            'zip' => $array['zip'],
+            'address' => $array['address'],
+            'city' => $array['city'],
+            'state' => $array['state'],
+            'phone' => $array['phone'],
+            'email' => $array['email'],
+            'img_url' => $array['img'],
+            'created' => date("Y-m-d H:i:s"),
+            'updated' => date("Y-m-d H:i:s")
+
+        );
+
+        //Аналог!
+
+        $array['user_id'] = $userId;
+        $array['created'] = date("Y-m-d H:i:s");
+        $array['updated'] = date("Y-m-d H:i:s");
+
+        $this->insert($data);
+
+        return $this->getAdapter()->lastInsertId();
+    }
+
+     */
 }

@@ -3,24 +3,27 @@
 
     <div class="addForm">
 
+        <div class="fileupload fileupload-new uploadAdd" data-provides="fileupload">
 
+            <div>
+                <span class="btn btn-file">
+                    <span class="fileupload-new">Select image</span>
+                    <span class="fileupload-exists">Change</span>
+                    <input id = "photo" name = "photo" type="file" /></span>
 
-                <div class="fileupload fileupload-new uploadAdd" data-provides="fileupload">
-
-                    <div>
-                        <span class="btn btn-file">
-                            <span class="fileupload-new">Select image</span>
-                            <span class="fileupload-exists">Change</span>
-                            <input id = "photo" name = "photo" type="file" /></span>
-
-                    </div>
-                </div>
-
-
+            </div>
+        </div>
 
         <?php
 
-                echo $this->form;
+
+        if ( $_SERVER['REQUEST_URI'] == '/admin/add' ) {
+
+            echo $this->movieForm;
+        } else {
+            echo $this->form;
+        }
+
 
         ?>
     </div>

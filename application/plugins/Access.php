@@ -41,11 +41,17 @@ class Application_Plugin_Access extends Zend_Controller_Plugin_Abstract
 
         #admin allow
         $acl->allow('admin', 'error', array('index'));
-        $acl->allow('admin', 'index', array('index'));
+
+        $acl->allow('admin', 'index', array('index', 'mail'));
         $acl->allow('admin', 'user', array('index','logout'));
         $acl->allow('admin', 'media', array('index', 'article'));
         $acl->allow('admin', 'admin', array('index', 'media', 'user', 'add', 'edit', 'comments'));
         $acl->allow('admin', 'account', array('index'));
+        $acl->allow('admin', 'news', array('index'));
+        $acl->allow('admin', 'games', array('index'));
+        $acl->allow('admin', 'archive', array('index'));
+        $acl->allow('admin', 'about', array('index'));
+
         $acl->allow('admin', 'error', array('error404','error'));
 
 

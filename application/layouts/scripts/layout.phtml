@@ -111,20 +111,29 @@
 
                 <div class="contentLeft">
                     <?php
-                    $identity = Zend_Auth::getInstance()->getStorage()->read();
 
-                    if (isset($identity->role)  && $identity->role == 'admin'): ?>
+                    if ( $_SERVER['REQUEST_URI'] == '/admin' ) {
 
-                        <div class="adminMenu">
-                            <ul>
-                                <li><a class="regLink" href="/admin/add/">Add new articles (This Menu see only ADMIN)</a></li>
-                                <li><a class="regLink" href="/admin/comments/">Work with comments (This Menu see only ADMIN)</a></li>
-                            </ul>
-                        </div>
+                        echo $this  ->navigation()
+                                    ->menu()
+                                    ->setMaxDepth(2)
+                                    ->setUlClass('nav')
+                                    ->render(new My_Navigation($this->navigation()->findAllBy('tag','subAdminMenuIndex',true)))
+                        ;
 
-                        <?php else :?>
-                        left menu
-                        <?php endif ?>
+                    }
+                    else if ( $_SERVER['REQUEST_URI'] == '/admin/media' ) {
+
+                        echo $this  ->navigation()
+                                    ->menu()
+                                    ->setMaxDepth(2)
+                                    ->setUlClass('nav')
+                                    ->render(new My_Navigation($this->navigation()->findAllBy('tag','subAdminMenuMovie',true)))
+                        ;
+
+                    }
+
+                    ?>
                 </div>
 
                 <div class="contentMiddle">

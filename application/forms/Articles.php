@@ -47,7 +47,7 @@ class Application_Form_Articles extends Zend_Form
 
         $submit = new Zend_Form_Element_Submit('submit');
         $submit     ->setAttrib('id', 'edit')
-                    ->setLabel('Edit')
+                    ->setLabel('Save change')
                     ->setAttrib('class','btn btn-success edit_but')
         ;
 

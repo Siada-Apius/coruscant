@@ -17,14 +17,14 @@ class AdminController extends Zend_Controller_Action
     {
 
         $addArticle = new Application_Form_Add();
+        $articles = new Application_Model_DbTable_Articles();
 
         if ($this->getRequest()->getParam('articleAdd')) {
 
             $this->view->form = $addArticle;
-
+            
         } else {
 
-            $articles = new Application_Model_DbTable_Articles();
             $this->view->articles = $articles->getArticles();
 
         }
@@ -42,7 +42,7 @@ class AdminController extends Zend_Controller_Action
 
         } else {
 
-    
+
         }
     }
 
@@ -53,19 +53,8 @@ class AdminController extends Zend_Controller_Action
 
     public function addAction()
     {
-
-
         $addArticle = new Application_Form_Add();
 
-        if ($this->getRequest()->getParam('articleAdd')) {
-
-            $this->view->form = $addArticle;
-
-        } else {
-
-
-
-        }
 
         if ($this->getRequest()->isPost()) {
 

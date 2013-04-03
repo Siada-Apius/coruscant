@@ -16,15 +16,34 @@ class AdminController extends Zend_Controller_Action
     public function indexAction()
     {
 
-        $articles = new Application_Model_DbTable_Articles();
-        $this->view->articles = $articles->getArticles();
+        $addArticle = new Application_Form_Add();
+
+        if ($this->getRequest()->getParam('articleAdd')) {
+
+            $this->view->form = $addArticle;
+
+        } else {
+
+            $articles = new Application_Model_DbTable_Articles();
+            $this->view->articles = $articles->getArticles();
+
+        }
+
 
     }
 
-    public function mediaAction()
-    {
-        $movie = new Application_Form_Movies();
-        $this->view->movie = $movie;
+    public function mediaAction(){
+
+        $addMovie = new Application_Form_Movies();
+
+        if ($this->getRequest()->getParam('movieAdd')) {
+
+            $this->view->movie = $addMovie;
+
+        } else {
+
+    
+        }
     }
 
     public function userAction()
@@ -34,9 +53,19 @@ class AdminController extends Zend_Controller_Action
 
     public function addAction()
     {
+
+
         $addArticle = new Application_Form_Add();
 
-        $this->view->form = $addArticle;
+        if ($this->getRequest()->getParam('articleAdd')) {
+
+            $this->view->form = $addArticle;
+
+        } else {
+
+
+
+        }
 
         if ($this->getRequest()->isPost()) {
 

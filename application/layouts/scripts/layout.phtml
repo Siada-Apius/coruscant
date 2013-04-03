@@ -114,26 +114,22 @@
 
                     if ( $_SERVER['REQUEST_URI'] == '/admin' ) {
 
-                        echo $this  ->navigation()
-                                    ->menu()
-                                    ->setMaxDepth(2)
-                                    ->setUlClass('nav')
-                                    ->render(new My_Navigation($this->navigation()->findAllBy('tag','subAdminMenuIndex',true)))
-                        ;
+                        echo '<form method="POST">
+                                <input type="submit" name="articleAdd" id="articleAdd" value="Add new Article" class="btn">
+                            </form>';
 
                     }
                     else if ( $_SERVER['REQUEST_URI'] == '/admin/media' ) {
 
-                        echo $this  ->navigation()
-                                    ->menu()
-                                    ->setMaxDepth(2)
-                                    ->setUlClass('nav')
-                                    ->render(new My_Navigation($this->navigation()->findAllBy('tag','subAdminMenuMovie',true)))
-                        ;
+                        echo '<form method="POST">
+                                <input type="submit" name="movieAdd" id="movieAdd" value="Add new Movie" class="btn">
+                            </form>';
 
                     }
 
                     ?>
+
+
                 </div>
 
                 <div class="contentMiddle">

@@ -114,16 +114,36 @@
 
                     if ( $_SERVER['REQUEST_URI'] == '/admin' ) {
 
-                        echo '<form method="POST">
-                                <input type="submit" name="articleAdd" id="articleAdd" value="Add new Article" class="btn">
-                            </form>';
+                        echo $this  ->navigation()
+                            ->menu()
+                            ->setMaxDepth(2)
+                            ->setUlClass('nav')
+                            ->render(new My_Navigation($this->navigation()->findAllBy('tag','subAdminMenuIndex',true)))
+                        ;
 
                     }
                     else if ( $_SERVER['REQUEST_URI'] == '/admin/media' ) {
 
-                        echo '<form method="POST">
-                                <input type="submit" name="movieAdd" id="movieAdd" value="Add new Movie" class="btn">
-                            </form>';
+                        echo $this  ->navigation()
+                            ->menu()
+                            ->setMaxDepth(2)
+                            ->setUlClass('nav')
+                            ->render(new My_Navigation($this->navigation()->findAllBy('tag','subAdminMenuMovie',true)))
+                        ;
+
+                    }
+
+
+                    if ( $_SERVER['REQUEST_URI'] == '/admin' ) {
+
+                        echo '<ul class="nav"><li>
+                                <a href="/admin/add/article">article add</a>
+                               </li></ul>';
+
+                    }
+                    else if ( $_SERVER['REQUEST_URI'] == '/admin/media' ) {
+
+                        echo '<a href="/admin/add/movie">movie add</a>';
 
                     }
 

@@ -3,7 +3,7 @@
 
     <div class="addForm">
 
-        <div class="fileupload fileupload-new uploadAdd" data-provides="fileupload">
+        <!--<div class="fileupload fileupload-new uploadAdd" data-provides="fileupload">
 
             <div>
                 <span class="btn btn-file">
@@ -12,16 +12,23 @@
                     <input id = "photo" name = "photo" type="file" /></span>
 
             </div>
-        </div>
+        </div>-->
 
         <?php
 
-         echo $this->form;
+        if ($this->form) {
+            echo 'article';
+            echo $this->form;
+        }
+        else if ($this->movie) {
+            echo 'movie';
+            echo $this->movie;
+        }
 
         ?>
     </div>
 </form>
 
 <?php
-echo $this->movie;
+
 ?>

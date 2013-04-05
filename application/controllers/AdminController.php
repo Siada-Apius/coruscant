@@ -16,19 +16,8 @@ class AdminController extends Zend_Controller_Action
     public function indexAction()
     {
 
-        $addArticle = new Application_Form_Add();
         $articles = new Application_Model_DbTable_Articles();
-
-        if ($this->getRequest()->getParam('articleAdd')) {
-
-            $this->view->form = $addArticle;
-            
-        } else {
-
-            $this->view->articles = $articles->getArticles();
-
-        }
-
+        $this->view->articles = $articles->getArticles();
 
     }
 
@@ -36,14 +25,6 @@ class AdminController extends Zend_Controller_Action
 
         $addMovie = new Application_Form_Movies();
 
-        if ($this->getRequest()->getParam('movieAdd')) {
-
-            $this->view->movie = $addMovie;
-
-        } else {
-
-
-        }
     }
 
     public function userAction()
@@ -54,13 +35,20 @@ class AdminController extends Zend_Controller_Action
     public function addAction()
     {
         $addArticle = new Application_Form_Add();
+        $addMovie = new Application_Form_Movies();
 
+            $response = $this->getRequest()->getParam('name');
 
-        if ($this->getRequest()->isPost()) {
+            if ($response == 'article') {
 
-            $newData = $this->getRequest()->getPost();
+                $this->view->form = $addArticle;
 
-            if ($addArticle->isValid($newData)){
+            } else if ($response == 'movie') {
+
+                $this->view->movie = $addMovie;
+            }
+
+            /*if ($addArticle->isValid($newData)){
 
                 $user = new Application_Model_DbTable_Articles();
                 $user       ->addArticles($newData); //$newData це масив, в який підставляється з Users.php дані форми
@@ -72,8 +60,8 @@ class AdminController extends Zend_Controller_Action
                         move_uploaded_file($_FILES["photo"]["tmp_name"], "img/miniImg/".$_FILES["photo"]["name"]);
                     }
                 }
-            }
-        }
+            }*/
+
     }
 
     public function editAction()

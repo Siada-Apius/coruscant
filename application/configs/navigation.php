@@ -171,6 +171,7 @@ return array(
                 'action' => 'add',
                 'resource' => 'admin',
                 'privilege' => 'add',
+                'params'     => array('movie' => ''),
             ),
         )
     )

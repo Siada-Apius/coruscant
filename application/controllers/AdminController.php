@@ -5,12 +5,12 @@ class AdminController extends Zend_Controller_Action
 
     public function init()
     {
-       /* $user = new Application_Model_DbTable_Magazine();
-        $this->view->magazine = $user->getUsers();*/
+        /* $user = new Application_Model_DbTable_Magazine();
+         $this->view->magazine = $user->getUsers();*/
 
         $this   ->_helper->AjaxContext()
-                ->addActionContext('edit','json')
-                ->initContext('json');
+            ->addActionContext('edit','json')
+            ->initContext('json');
     }
 
     public function indexAction()
@@ -34,33 +34,66 @@ class AdminController extends Zend_Controller_Action
 
     public function addAction()
     {
-        $addArticle = new Application_Form_Add();
-        $addMovie = new Application_Form_Movies();
+        $addArticleForm = new Application_Form_Add();
+        $addMovieForm = new Application_Form_Movies();
+        $folderModel = new Application_Model_Folder();
 
-            $response = $this->getRequest()->getParam('name');
+        $articleDb = new Application_Model_DbTable_Articles();
 
-            if ($response == 'article') {
+        $response = $this->getRequest()->getParam('name');
 
-                $this->view->form = $addArticle;
+        if ($response == 'article') {
 
-            } else if ($response == 'movie') {
+            if( $this->getRequest()->isPost() ) {
 
-                $this->view->movie = $addMovie;
+                $params = $this->getRequest()->getPost();
+
+                if ( $addArticleForm->isValid($params) ) {
+
+                    $elem = $addArticleForm->getElement('miniImg');
+                    $fileInfo = $elem->getFileInfo();
+
+                    $params['miniImg'] = $fileInfo['miniImg']['name'];
+
+
+                    #$articleDb->addArticles($params);
+
+
+                    $basePath = '/img/miniImg/';
+                    $folderModel->createFolderChain($basePath, '/');
+                    $imageDir = realpath(APPLICATION_PATH . '/../www/') . DIRECTORY_SEPARATOR . 'img' . DIRECTORY_SEPARATOR . 'miniImg' . DIRECTORY_SEPARATOR;
+
+                    $elem->setDestination($imageDir);
+                    $elem->receive();
+
+                    Zend_Debug::dump($params);die;
+
+                    $this->redirect('/admin');
+                }
+
+
+
+
+                # $user = new Application_Model_DbTable_Articles();
+                # $user       ->addArticles($params); //$newData це масив, в який підставляється з Users.php дані форми
+
+                #if ($addArticleForm->isValid($response)){
+
+                if(is_uploaded_file($_FILES["photo"]["tmp_name"])){
+
+                    move_uploaded_file($_FILES["photo"]["tmp_name"], "img/miniImg/".$_FILES["photo"]["name"]);
+                }
+                #}
+
             }
 
-            /*if ($addArticle->isValid($newData)){
+            $this->view->form = $addArticleForm;
 
-                $user = new Application_Model_DbTable_Articles();
-                $user       ->addArticles($newData); //$newData це масив, в який підставляється з Users.php дані форми
 
-                if ($addArticle->isValid($newData)){
+        } else if ($response == 'movie') {
 
-                    if(is_uploaded_file($_FILES["photo"]["tmp_name"])){
-
-                        move_uploaded_file($_FILES["photo"]["tmp_name"], "img/miniImg/".$_FILES["photo"]["name"]);
-                    }
-                }
-            }*/
+            $this->view->movie = $addMovieForm;
+        }
 
     }
 
@@ -117,7 +150,7 @@ class AdminController extends Zend_Controller_Action
 
     }
 
-        /////////////////// КОМЕНТАРІ!!!!! КІНЕЦЬ
+    /////////////////// КОМЕНТАРІ!!!!! КІНЕЦЬ
 
     public function commentsAction()
     {

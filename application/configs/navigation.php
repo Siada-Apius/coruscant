@@ -144,6 +144,9 @@ return array(
                 'action' => 'add',
                 'resource' => 'admin',
                 'privilege' => 'add',
+                'params'     => array('article' => ''),
+
+
             ),
             array (
 
@@ -165,9 +168,9 @@ return array(
                 'route' => 'default',
                 'module' => 'default',
                 'controller' => 'admin',
-                'action' => 'media',
+                'action' => 'add',
                 'resource' => 'admin',
-                'privilege' => 'media',
+                'privilege' => 'add',
             ),
         )
     )

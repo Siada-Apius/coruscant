@@ -47,8 +47,8 @@ class AdminController extends Zend_Controller_Action
     {
         $addArticleForm = new Application_Form_Articles();
         $addMovieForm = new Application_Form_Movies();
-        $folderModel = new Application_Model_Folder();
         $articleDb = new Application_Model_DbTable_Articles();
+        $movieDb = new Application_Model_DbTable_Movies();
 
         $response = $this->getRequest()->getParam('name');
 
@@ -82,10 +82,40 @@ class AdminController extends Zend_Controller_Action
 
         } else if ($response == 'movie') {
 
+//            $basePath = '/images/uploads/offer/' . $offerId . '/';
+//            $folderModel->createFolderChain($basePath, '/');
+//            $imageDir = realpath(APPLICATION_PATH . '/../www/') . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'uploads' .  DIRECTORY_SEPARATOR . 'offer' . DIRECTORY_SEPARATOR . $offerId . DIRECTORY_SEPARATOR;
+//
+//            $elem->setDestination($imageDir);
+//            $elem->receive();
+
+//                    $fileInfo = $elem->getFileInfo();
+//
+//                    $params['miniImg'] = $fileInfo['miniImg']['name'];
+//
+//                    $basePath = '/img/miniImg/';
+//                    $folderModel->createFolderChain($basePath, '/');
+//                    $imageDir = realpath(APPLICATION_PATH . '/../www/') . DIRECTORY_SEPARATOR . 'img' . DIRECTORY_SEPARATOR . 'miniImg' . DIRECTORY_SEPARATOR;
+//
+//                    $elem->setDestination($imageDir);
+
+            if( $this->getRequest()->isPost() ) {
+
+                $data = $this->getRequest()->getPost();
+
+                if ( $addMovieForm->isValid($data) ) {
+
+                    unset($data['submit']);
+                    $movieDb->addMovie($data);
+
+                }
+
+            }
+
             $this->view->movie = $addMovieForm;
         }
-
     }
+
 
     public function editAction()
     {

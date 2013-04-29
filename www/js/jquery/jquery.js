@@ -169,7 +169,7 @@ $(document).ready(function () {
                 },function(response){
 
                     var id = response.id;
-                    $('#contentWrapper' + id).fadeOut(300);
+                    $('#contentWrapper' + id).fadeOut(50);
 
                 }
 

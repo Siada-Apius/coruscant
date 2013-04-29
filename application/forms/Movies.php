@@ -18,7 +18,7 @@ class Application_Form_Movies extends Zend_Form
         $full  = new Zend_Form_Element_Textarea('full');
         $full   ->setRequired(true)
                 ->setLabel('Text')
-                ->setAttrib('class', 'text')
+                  ->setAttrib('class', 'text')
 
         ;
 

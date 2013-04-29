@@ -34,8 +34,9 @@ class AdminController extends Zend_Controller_Action
 
     public function addAction()
     {
-        $addArticleForm = new Application_Form_Add();
+        $addArticleForm = new Application_Form_Articles();
         $addMovieForm = new Application_Form_Movies();
+
         $folderModel = new Application_Model_Folder();
 
         $articleDb = new Application_Model_DbTable_Articles();
@@ -63,29 +64,18 @@ class AdminController extends Zend_Controller_Action
                     $elem->receive();
 
                     $articleDb->addArticles($params);
-                    #Zend_Debug::dump($params);die;
 
                     $this->redirect('/admin');
                 }
-
-
-
-
-                # $user = new Application_Model_DbTable_Articles();
-                # $user       ->addArticles($params); //$newData це масив, в який підставляється з Users.php дані форми
-
-                #if ($addArticleForm->isValid($response)){
 
                 #if(is_uploaded_file($_FILES["photo"]["tmp_name"])){
 
                     #move_uploaded_file($_FILES["photo"]["tmp_name"], "img/miniImg/".$_FILES["photo"]["name"]);
                 #}
-                #}
 
             }
 
             $this->view->form = $addArticleForm;
-
 
         } else if ($response == 'movie') {
 
@@ -99,8 +89,7 @@ class AdminController extends Zend_Controller_Action
 
         $article = new Application_Model_DbTable_Articles();
         $editComments = new Application_Model_DbTable_Comments();
-
-
+        $form = new Application_Form_Articles();
 
         if ($this->getRequest()->isXmlHttpRequest()){  // ЧИ ЦЕ Є AJAX
 
@@ -116,15 +105,15 @@ class AdminController extends Zend_Controller_Action
             #$article->getItem($id); ті методи доступні для всіх класів які його наслідуют, як бачиш
             #ше один з величезних плюсыв ооп
 
-            $form = new Application_Form_Articles();
+
 
             if ($this->getRequest()->isPost()) {
 
                 $editDate = $this->getRequest()->getPost(); #submit це значення лишне в масиві і не вийде з ним все зразу записати в бд тому його ансетим
                 unset($editDate['submit']);
 
-                $art = new Application_Model_DbTable_Articles();
-                $art ->editArticles($editDate);
+                #die('i kill u');
+                $article ->editArticles($editDate);
 
             }
 
@@ -134,11 +123,11 @@ class AdminController extends Zend_Controller_Action
 
             /////////////////// КОМЕНТАРІ!!!!!
 
-            $id = $this->getRequest()->getParam('id');
+            #$id = $this->getRequest()->getParam('id');
 
-            $this->view->sukaID = $id; //Вивід коментраів по ід
+            #$this->view->sukaID = $id; //Вивід коментраів по ід
 
-            $this->view->articles = $article->getArticlesById($this->getRequest()->getParam('id'));
+            #$this->view->articles = $article->getArticlesById($this->getRequest()->getParam('id'));
 
 
             //////////////////////////////////////

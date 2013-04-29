@@ -210,6 +210,7 @@ div.contentRightPart {
     margin-right: 10px;
 }
 
+
 div.contentRightPart{
     width: 68%;
 }
@@ -264,6 +265,12 @@ a.superLink {
     display: block;
     height: 206px;
     width: 140px;
+}
+
+a.superLink img,
+img.articleMini {
+    height: 201px;
+    width: 135px;
 }
 
 
@@ -501,7 +508,9 @@ div.pagination {
     margin: 10px 0 0 40px;
 }
 
- .titleAdd, .shortDescAdd, .fullAdd{
+ .titleAdd,
+ .shortDescAdd,
+ .fullAdd{
      width: 95%;
 
  }

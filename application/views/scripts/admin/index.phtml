@@ -2,7 +2,7 @@
 <ul class="list">
 
     <?php foreach ($this->articles as $value): ?>
-        <li>
+        <li id="contentWrapper<?php echo $value['id']; ?>">
             <div class="contentWrapper">
 
                 <div class="contentLeftPart">
@@ -23,7 +23,6 @@
                         </p>
                     </div>
                 </div>
-
 
                 <div class="contentRightPart">
 
@@ -71,7 +70,14 @@
                     </div>-->
 
                 </div>
+
+
+                <div class="delete_cross">
+                    <input class='artDeleteInput' type='image' src='/img/forceIcone/f_icon_pull1.png' value='<?php echo $value['id'] ?>' title='<?php echo $value['id'] ?>'>
+                </div>
+
             </div>
+
         </li>
     <?php endforeach ?>
 </ul>

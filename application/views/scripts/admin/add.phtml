@@ -1,34 +1,15 @@
 
-<form enctype="multipart/form-data" method = "POST">
+<div class="addForm">
+    <?php
 
-    <div class="addForm">
+    if ($this->form) {
+        echo 'article';
+        echo $this->form;
+    }
+    else if ($this->movie) {
+        echo 'movie';
+        echo $this->movie;
+    }
 
-        <!--<div class="fileupload fileupload-new uploadAdd" data-provides="fileupload">
-
-            <div>
-                <span class="btn btn-file">
-                    <span class="fileupload-new">Select image</span>
-                    <span class="fileupload-exists">Change</span>
-                    <input id = "photo" name = "photo" type="file" /></span>
-
-            </div>
-        </div>-->
-
-        <?php
-
-        if ($this->form) {
-            echo 'article';
-            echo $this->form;
-        }
-        else if ($this->movie) {
-            echo 'movie';
-            echo $this->movie;
-        }
-
-        ?>
-    </div>
-</form>
-
-<?php
-
-?>
+    ?>
+</div>

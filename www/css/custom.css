@@ -285,16 +285,16 @@ img.articleMini {
 }
 
 
-.author{
+div.author{
     color:  #FEFFE1;
     border: 3px groove #444444;
     background-color: #1C2227;
-    min-width: 70%;
     height: 35px;
     margin: 5px 0;
     padding: 0 0 5px 5px;
     font-size: 11px;
     font-style: italic;
+    max-width: 130px;
 
     -moz-box-shadow: 0px 0px 4px #FEFFE1 inset;
     -webkit-box-shadow: 0px 0px 4px #FEFFE1 inset;
@@ -501,6 +501,12 @@ div.pagination {
 /*---------------------------- COMMENTS END -------------------------------------*/
 
 
+div.delete_cross input{
+    float: right;
+    width: 45px;
+    height: 45px;
+    z-index: 2;
+}
 
 /*------------------------------ ADD ARTICLES BEGIN -------------------------------*/
 

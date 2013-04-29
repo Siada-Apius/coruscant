@@ -1,10 +1,10 @@
-<form method = "POST">
+<form enctype="multipart/form-data" method = "POST">
     <div class="contEdit">
 
         <div class="leftPartArticle">
 
             <img class="articleMini" src="/img/miniImg/<?php echo $this->articles['miniImg']; ?>" class="miniImg"  alt="miniImg"/>
-
+            <?php echo $this->form->getElement('miniImg'); ?>
 
             <div class="authorEdit">
 

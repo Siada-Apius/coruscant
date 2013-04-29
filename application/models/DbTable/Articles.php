@@ -36,7 +36,6 @@ class Application_Model_DbTable_Articles extends Application_Model_DbTable_Abstr
     public function addArticles($newData){
 
         #ці файли тільки для запитів до бд, не забувай про мвс
-
         $array = array(
             "title" => $newData['title'],
             "shortDesc" => $newData['shortDesc'],
@@ -68,6 +67,12 @@ class Application_Model_DbTable_Articles extends Application_Model_DbTable_Abstr
 
     }
 
+
+    public function deleteArticle ($id) {
+
+        $this->delete('id=' . (int)$id);
+
+    }
 
     public function workWithComments (){
 

@@ -154,4 +154,27 @@ $(document).ready(function () {
 
     });
 
+    $('.artDeleteInput').click(function(e){
+
+        //ти обробляєш клік по класу в якого міліон елементів тому шоб дістати той по якому клікнули передавай e  в фунцію і діставай через this
+        var question = confirm("Sure?");
+
+        if ( question == true ) {
+            $.post(
+
+                '/admin/index/0/controller%3D%3Eadmin/1/action%3D%3Eindex',{
+
+                    'delId' :  $(this).val()
+
+                },function(response){
+
+                    var id = response.id;
+                    $('#contentWrapper' + id).fadeOut(300);
+
+                }
+
+            );
+        }
+    });
+
 });

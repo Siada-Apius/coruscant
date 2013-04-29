@@ -9,15 +9,26 @@ class AdminController extends Zend_Controller_Action
          $this->view->magazine = $user->getUsers();*/
 
         $this   ->_helper->AjaxContext()
-            ->addActionContext('edit','json')
-            ->initContext('json');
+                ->addActionContext('index','json')
+                ->addActionContext('edit','json')
+                ->initContext('json');
     }
 
     public function indexAction()
     {
 
-        $articles = new Application_Model_DbTable_Articles();
-        $this->view->articles = $articles->getArticles();
+        $article = new Application_Model_DbTable_Articles();
+
+        if ($this->getRequest()->isXmlHttpRequest()){  // ЧИ ЦЕ Є AJAX
+
+            if ($this->getRequest()->getParam('delId')) {
+
+                $article -> deleteArticle($this->getRequest()->getParam('delId')); // виклик метода DELETE
+                $this->view->id = $this->getRequest()->getParam('delId'); //вивід респонза з jquery, тобто в даному видадку це ксс
+            }
+        }
+
+        $this->view->articles = $article->getArticles();
 
     }
 
@@ -36,9 +47,7 @@ class AdminController extends Zend_Controller_Action
     {
         $addArticleForm = new Application_Form_Articles();
         $addMovieForm = new Application_Form_Movies();
-
         $folderModel = new Application_Model_Folder();
-
         $articleDb = new Application_Model_DbTable_Articles();
 
         $response = $this->getRequest()->getParam('name');
@@ -49,18 +58,12 @@ class AdminController extends Zend_Controller_Action
 
                 $params = $this->getRequest()->getPost();
 
+
                 if ( $addArticleForm->isValid($params) ) {
 
                     $elem = $addArticleForm->getElement('miniImg');
                     $fileInfo = $elem->getFileInfo();
-
                     $params['miniImg'] = $fileInfo['miniImg']['name'];
-
-                    $basePath = '/img/miniImg/';
-                    $folderModel->createFolderChain($basePath, '/');
-                    $imageDir = realpath(APPLICATION_PATH . '/../www/') . DIRECTORY_SEPARATOR . 'img' . DIRECTORY_SEPARATOR . 'miniImg' . DIRECTORY_SEPARATOR;
-
-                    $elem->setDestination($imageDir);
                     $elem->receive();
 
                     $articleDb->addArticles($params);
@@ -89,13 +92,15 @@ class AdminController extends Zend_Controller_Action
 
         $article = new Application_Model_DbTable_Articles();
         $editComments = new Application_Model_DbTable_Comments();
-        $form = new Application_Form_Articles();
+        $commentDel = new Application_Model_DbTable_Comments(); //виклик об'єкта класа
+
+        $addArticleForm = new Application_Form_Articles();
+        $folderModel = new Application_Model_Folder();
 
         if ($this->getRequest()->isXmlHttpRequest()){  // ЧИ ЦЕ Є AJAX
 
             if ($this->getRequest()->getParam('delId')) {
 
-                $commentDel = new Application_Model_DbTable_Comments(); //виклик об'єкта класа
                 $commentDel -> deleteComment($this->getRequest()->getParam('delId')); // виклик метода DELETE
                 $this->view->id = $this->getRequest()->getParam('delId'); //вивід респонза з jquery, тобто в даному видадку це ксс
             }
@@ -110,16 +115,22 @@ class AdminController extends Zend_Controller_Action
             if ($this->getRequest()->isPost()) {
 
                 $editDate = $this->getRequest()->getPost(); #submit це значення лишне в масиві і не вийде з ним все зразу записати в бд тому його ансетим
-                unset($editDate['submit']);
 
-                #die('i kill u');
+                $elem = $addArticleForm->getElement('miniImg');
+                $fileInfo = $elem->getFileInfo();
+                $editDate['miniImg'] = $fileInfo['miniImg']['name'];
+                $elem->receive();
+
+                unset($editDate['submit']);
+                unset($editDate['MAX_FILE_SIZE']);
+
                 $article ->editArticles($editDate);
 
             }
 
             #то шо я казав, не видно змін бо вивід форми до того як ти вставив значення
             $this->view->articles = $article->getArticlesById($this->getRequest()->getParam('id')); //бере параметр ІД з метода getArticlesById
-            $this->view->form = $form->populate($article->getArticlesById($this->getRequest()->getParam('id'))); //заповняє форму тими значеннями по ІД з getArticlesById
+            $this->view->form = $addArticleForm->populate($article->getArticlesById($this->getRequest()->getParam('id'))); //заповняє форму тими значеннями по ІД з getArticlesById
 
             /////////////////// КОМЕНТАРІ!!!!!
 

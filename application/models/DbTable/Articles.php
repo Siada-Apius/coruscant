@@ -44,7 +44,7 @@ class Application_Model_DbTable_Articles extends Application_Model_DbTable_Abstr
             "author" => $newData['author'],
             "addDate" => date('Y-m-d H:i:s'),
             "updateDate" => date('Y-m-d H:i:s'),
-            "miniImg" => $_FILES["photo"]["name"]
+            "miniImg" => $newData['miniImg']
 
         );
 

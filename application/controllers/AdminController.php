@@ -55,10 +55,6 @@ class AdminController extends Zend_Controller_Action
 
                     $params['miniImg'] = $fileInfo['miniImg']['name'];
 
-
-                    #$articleDb->addArticles($params);
-
-
                     $basePath = '/img/miniImg/';
                     $folderModel->createFolderChain($basePath, '/');
                     $imageDir = realpath(APPLICATION_PATH . '/../www/') . DIRECTORY_SEPARATOR . 'img' . DIRECTORY_SEPARATOR . 'miniImg' . DIRECTORY_SEPARATOR;
@@ -66,7 +62,8 @@ class AdminController extends Zend_Controller_Action
                     $elem->setDestination($imageDir);
                     $elem->receive();
 
-                    Zend_Debug::dump($params);die;
+                    $articleDb->addArticles($params);
+                    #Zend_Debug::dump($params);die;
 
                     $this->redirect('/admin');
                 }
@@ -79,10 +76,10 @@ class AdminController extends Zend_Controller_Action
 
                 #if ($addArticleForm->isValid($response)){
 
-                if(is_uploaded_file($_FILES["photo"]["tmp_name"])){
+                #if(is_uploaded_file($_FILES["photo"]["tmp_name"])){
 
-                    move_uploaded_file($_FILES["photo"]["tmp_name"], "img/miniImg/".$_FILES["photo"]["name"]);
-                }
+                    #move_uploaded_file($_FILES["photo"]["tmp_name"], "img/miniImg/".$_FILES["photo"]["name"]);
+                #}
                 #}
 
             }

@@ -49,6 +49,7 @@ class AdminController extends Zend_Controller_Action
         $addMovieForm = new Application_Form_Movies();
         $articleDb = new Application_Model_DbTable_Articles();
         $movieDb = new Application_Model_DbTable_Movies();
+        $folderModel = new Application_Model_Folder();
 
         $response = $this->getRequest()->getParam('name');
 
@@ -82,23 +83,6 @@ class AdminController extends Zend_Controller_Action
 
         } else if ($response == 'movie') {
 
-//            $basePath = '/images/uploads/offer/' . $offerId . '/';
-//            $folderModel->createFolderChain($basePath, '/');
-//            $imageDir = realpath(APPLICATION_PATH . '/../www/') . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'uploads' .  DIRECTORY_SEPARATOR . 'offer' . DIRECTORY_SEPARATOR . $offerId . DIRECTORY_SEPARATOR;
-//
-//            $elem->setDestination($imageDir);
-//            $elem->receive();
-
-//                    $fileInfo = $elem->getFileInfo();
-//
-//                    $params['miniImg'] = $fileInfo['miniImg']['name'];
-//
-//                    $basePath = '/img/miniImg/';
-//                    $folderModel->createFolderChain($basePath, '/');
-//                    $imageDir = realpath(APPLICATION_PATH . '/../www/') . DIRECTORY_SEPARATOR . 'img' . DIRECTORY_SEPARATOR . 'miniImg' . DIRECTORY_SEPARATOR;
-//
-//                    $elem->setDestination($imageDir);
-
             if( $this->getRequest()->isPost() ) {
 
                 $data = $this->getRequest()->getPost();
@@ -106,8 +90,20 @@ class AdminController extends Zend_Controller_Action
                 if ( $addMovieForm->isValid($data) ) {
 
                     unset($data['submit']);
-                    $movieDb->addMovie($data);
+                    unset($data['MAX_FILE_SIZE']);
 
+                    $last_id = $movieDb->addMovie($data);
+
+                    $elem = $addArticleForm->getElement('miniImg');
+                    #$fileInfo = $elem->getFileInfo();
+                    $basePath = '/img/movie/' . $last_id . '/miniImg/';
+                    $folderModel->createFolderChain($basePath, '/');
+                    $imageDir = realpath(APPLICATION_PATH . '/../www/') . DIRECTORY_SEPARATOR . 'img' . DIRECTORY_SEPARATOR . 'movie' . DIRECTORY_SEPARATOR . $last_id . DIRECTORY_SEPARATOR . 'miniImg/';
+
+                    $elem->setDestination($imageDir);
+                    $elem->receive();
+
+                    $this->redirect('/admin/media');
                 }
 
             }
@@ -123,7 +119,7 @@ class AdminController extends Zend_Controller_Action
         $article = new Application_Model_DbTable_Articles();
         $editComments = new Application_Model_DbTable_Comments();
         $commentDel = new Application_Model_DbTable_Comments(); //виклик об'єкта класа
-
+        $addMovieForm = new Application_Form_Movies();
         $addArticleForm = new Application_Form_Articles();
         $folderModel = new Application_Model_Folder();
 
@@ -146,7 +142,7 @@ class AdminController extends Zend_Controller_Action
 
                 $editDate = $this->getRequest()->getPost(); #submit це значення лишне в масиві і не вийде з ним все зразу записати в бд тому його ансетим
 
-                $elem = $addArticleForm->getElement('miniImg');
+                $elem = $addMovieForm->getElement('miniImg');
                 $fileInfo = $elem->getFileInfo();
                 $editDate['miniImg'] = $fileInfo['miniImg']['name'];
                 $elem->receive();

@@ -7,7 +7,8 @@ class Application_Model_DbTable_Magazine extends Application_Model_DbTable_Abstr
     public function getUsers(){
 
         $data = $this   ->select()
-                        ->from('users',array('nickname','password'));
+                        ->from('users',array('nickname','password'))
+        ;
 
 
         return $data->query()->fetchAll();

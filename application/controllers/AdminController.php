@@ -34,7 +34,10 @@ class AdminController extends Zend_Controller_Action
 
     public function mediaAction(){
 
-        $addMovie = new Application_Form_Movies();
+        $movieDb = new Application_Model_DbTable_Movies();
+
+        $response = $movieDb->getAllMovie();
+        $this->view->receive = $response;
 
     }
 

@@ -145,7 +145,7 @@ div.content {
 
 .contentRight {
     max-width: 22%;
-    min-width: 17%;
+    min-width: 15%;
 }
 
 
@@ -602,37 +602,36 @@ div.mediaWrap {
 
 
 div.episodeWrap {
-    display: inline-block;
-    height: 250px;
-    margin: 8px;
-    width: 47%;
+    float: left;
+    height: 382px;
+    min-height: 300px;
+    width: 33%;
 }
 
 
 div.poster {
-    background-image: url("../img/style/media/episode_2.jpg");
+
     background-position: -15px center;
     background-repeat: no-repeat;
-    background-size: 106% auto;
+    background-size: 102% auto;
     border: 3px groove #FFFFFF;
     border-radius: 8px 8px 8px 8px;
-    height: 215px;
-    margin: 14px auto;
-    width: 88%;
+    height: 80%;
+    margin: 30px auto 0;
+    width: 85%;
 }
 
 
 div.poster a {
     display: block;
-    height: 250px;
-    width: 100%;
+
 }
 
 
 div.poster:hover {
-    margin: 0 0 0 3px;
-    width: 98%;
-    height: inherit;
+    -moz-box-shadow: 0 0 15px #87CEEB; /* Для Firefox */
+    -webkit-box-shadow: 0 0 15px #87CEEB; /* Для Safari и Chrome */
+    box-shadow: 0 0 15px #87CEEB; /* Параметры тени */
 }
 
 /* ------------------------- MOVIE END --------------------------------------------*/

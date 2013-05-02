@@ -610,7 +610,7 @@ div.episodeWrap {
 
 
 div.poster {
-
+    position: relative;
     background-position: -15px center;
     background-repeat: no-repeat;
     background-size: 102% auto;
@@ -624,7 +624,11 @@ div.poster {
 
 div.poster a {
     display: block;
-
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
 }
 
 

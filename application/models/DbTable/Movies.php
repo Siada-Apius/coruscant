@@ -30,4 +30,15 @@ class Application_Model_DbTable_Movies extends Application_Model_DbTable_Abstrac
         return $data->query()->fetchAll();
     }
 
+    public function getMovieById ($id) {
+
+        $data = $this   ->select()
+                        ->from($this->_name, array('id', 'miniImg', 'title', 'full'))
+                        ->where('id = ?', $id)
+        ;
+
+        return $data->query()->fetch();
+
+    }
+
 }

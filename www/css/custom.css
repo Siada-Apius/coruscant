@@ -603,20 +603,17 @@ div.mediaWrap {
 
 div.episodeWrap {
     float: left;
-    height: 382px;
-    min-height: 300px;
+    min-height: 340px;
     width: 33%;
 }
 
 
 div.poster {
     position: relative;
-    background-position: -15px center;
+    background-color: #000;
     background-repeat: no-repeat;
-    background-size: 102% auto;
     border: 3px groove #FFFFFF;
     border-radius: 8px 8px 8px 8px;
-    height: 80%;
     margin: 30px auto 0;
     width: 85%;
 }
@@ -629,7 +626,6 @@ div.poster a {
     position: absolute;
     top: 0;
     width: 100%;
-    /* sdfsdfsdf*/
 }
 
 

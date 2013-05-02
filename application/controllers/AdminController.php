@@ -118,12 +118,12 @@ class AdminController extends Zend_Controller_Action
 
     public function editAction()
     {
-
-        $article = new Application_Model_DbTable_Articles();
         $editComments = new Application_Model_DbTable_Comments();
         $commentDel = new Application_Model_DbTable_Comments(); //виклик об'єкта класа
-        $addMovieForm = new Application_Form_Movies();
-        $addArticleForm = new Application_Form_Articles();
+        $articleDb = new Application_Model_DbTable_Articles();
+        $movieDb = new Application_Model_DbTable_Movies();
+        $movieForm = new Application_Form_Movies();
+        $articleForm = new Application_Form_Articles();
         $folderModel = new Application_Model_Folder();
 
         if ($this->getRequest()->isXmlHttpRequest()){  // ЧИ ЦЕ Є AJAX
@@ -138,39 +138,50 @@ class AdminController extends Zend_Controller_Action
 
             #$article->getItem($id); ті методи доступні для всіх класів які його наслідуют, як бачиш
             #ше один з величезних плюсыв ооп
+            $response = $this->getRequest()->getParam('name');
+#Zend_Debug::dump($this->getRequest()->getParam('name'));die;
+            if ($response == 'article') {
+
+                if ($this->getRequest()->isPost()) {
+
+                    $editDate = $this->getRequest()->getPost(); #submit це значення лишне в масиві і не вийде з ним все зразу записати в бд тому його ансетим
+
+                    $elem = $movieForm->getElement('miniImg');
+                    $fileInfo = $elem->getFileInfo();
+                    $editDate['miniImg'] = $fileInfo['miniImg']['name'];
+                    $elem->receive();
+
+                    unset($editDate['submit']);
+                    unset($editDate['MAX_FILE_SIZE']);
+
+                    $articleDb ->editArticles($editDate);
+
+                }
+
+                #то шо я казав, не видно змін бо вивід форми до того як ти вставив значення
+                $res = $articleDb->getArticlesById($this->getRequest()->getParam('id'));
+                $this->view->articles = $res; //бере параметр ІД з метода getArticlesById
+                $this->view->form = $articleForm->populate($res); //заповняє форму тими значеннями по ІД з getArticlesById
+
+                /////////////////// КОМЕНТАРІ!!!!!
+
+                #$id = $this->getRequest()->getParam('id');
+
+                #$this->view->sukaID = $id; //Вивід коментраів по ід
+
+                #$this->view->articles = $article->getArticlesById($this->getRequest()->getParam('id'));
 
 
+                //////////////////////////////////////
+            } else if ($response == 'media') {
 
-            if ($this->getRequest()->isPost()) {
+                $receive = $movieDb->getMovieById($this->getRequest()->getParam('id'));
 
-                $editDate = $this->getRequest()->getPost(); #submit це значення лишне в масиві і не вийде з ним все зразу записати в бд тому його ансетим
-
-                $elem = $addMovieForm->getElement('miniImg');
-                $fileInfo = $elem->getFileInfo();
-                $editDate['miniImg'] = $fileInfo['miniImg']['name'];
-                $elem->receive();
-
-                unset($editDate['submit']);
-                unset($editDate['MAX_FILE_SIZE']);
-
-                $article ->editArticles($editDate);
+                $this->view->movie = $receive;
+                $this->view->formMovie = $movieForm->populate($receive);
 
             }
 
-            #то шо я казав, не видно змін бо вивід форми до того як ти вставив значення
-            $this->view->articles = $article->getArticlesById($this->getRequest()->getParam('id')); //бере параметр ІД з метода getArticlesById
-            $this->view->form = $addArticleForm->populate($article->getArticlesById($this->getRequest()->getParam('id'))); //заповняє форму тими значеннями по ІД з getArticlesById
-
-            /////////////////// КОМЕНТАРІ!!!!!
-
-            #$id = $this->getRequest()->getParam('id');
-
-            #$this->view->sukaID = $id; //Вивід коментраів по ід
-
-            #$this->view->articles = $article->getArticlesById($this->getRequest()->getParam('id'));
-
-
-            //////////////////////////////////////
 
         }
 

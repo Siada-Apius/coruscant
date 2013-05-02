@@ -1,34 +1,72 @@
-<form enctype="multipart/form-data" method = "POST">
-    <div class="contEdit">
+<?php if ($this->form): ?>
 
-        <div class="leftPartArticle">
+    <form enctype="multipart/form-data" method = "POST">
+        <div class="contEdit">
 
-            <img class="articleMini" src="/img/miniImg/<?php echo $this->articles['miniImg']; ?>" class="miniImg"  alt="miniImg"/>
-            <?php echo $this->form->getElement('miniImg'); ?>
+            <div class="leftPartArticle">
 
-            <div class="authorEdit">
+                <img class="articleMini" src="/img/miniImg/<?php echo $this->articles['miniImg']; ?>" alt="miniImg"/>
+                <?php echo $this->form->getElement('miniImg'); ?>
 
-                <?php echo $this->form->getElement('id'); ?>
-                <?php echo $this->form->getElement('author'); ?>
-                <?php echo $this->form->getElement('updateDate'); ?>
+                <div class="authorEdit">
 
-            </div>
+                    <?php echo $this->form->getElement('id'); ?>
+                    <?php echo $this->form->getElement('author'); ?>
+                    <?php echo $this->form->getElement('updateDate'); ?>
 
-            <?php echo $this->form->getElement('submit'); ?> <!-- SUBMIT -->
+                </div>
 
-        </div>
-
-
-        <div class="rightPartArticle">
-
-            <div class="textContentEdit">
-
-                <?php echo $this->form->getElement('title'); ?>
-                <?php echo $this->form->getElement('shortDesc'); ?>
-                <?php echo $this->form->getElement('full'); ?>
+                <?php echo $this->form->getElement('submit'); ?> <!-- SUBMIT -->
 
             </div>
 
+
+            <div class="rightPartArticle">
+
+                <div class="textContentEdit">
+
+                    <?php echo $this->form->getElement('title'); ?>
+                    <?php echo $this->form->getElement('shortDesc'); ?>
+                    <?php echo $this->form->getElement('full'); ?>
+
+                </div>
+
+            </div>
         </div>
-    </div>
-</form>
+    </form>
+
+<?php elseif ($this->formMovie): ?>
+
+    <form enctype="multipart/form-data" method="POST">
+        <div class="contEdit">
+
+            <div class="leftPartArticle">
+
+                <img class="articleMini" src="/img/movie/<?php echo $this->movie['id']; ?>/miniImg/<?php echo $this->movie['miniImg']; ?>" alt="miniImg"/>
+                <?php echo $this->formMovie->getElement('miniImg'); ?>
+
+                <div class="authorEdit">
+
+                    <?php echo $this->formMovie->getElement('id'); ?>
+
+                </div>
+
+                <?php echo $this->formMovie->getElement('submit'); ?> <!-- SUBMIT -->
+
+            </div>
+
+
+            <div class="rightPartArticle">
+
+                <div class="textContentEdit">
+
+                    <?php echo $this->formMovie->getElement('title'); ?>
+                    <?php echo $this->formMovie->getElement('full'); ?>
+
+                </div>
+
+            </div>
+        </div>
+    </form>
+
+<?php endif; ?>

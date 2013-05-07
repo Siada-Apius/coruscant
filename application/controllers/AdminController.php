@@ -105,7 +105,7 @@ class AdminController extends Zend_Controller_Action
 
                     $elem->setDestination($imageDir);
                     $elem->receive();
-
+                    Zend_Debug::dump($data);die;
                     $this->redirect('/admin/media');
                 }
 
@@ -174,6 +174,25 @@ class AdminController extends Zend_Controller_Action
 
                 //////////////////////////////////////
             } else if ($response == 'media') {
+
+                if ($this->getRequest()->isPost()) {
+
+                    $editDate = $this->getRequest()->getPost(); #submit це значення лишне в масиві і не вийде з ним все зразу записати в бд тому його ансетим
+
+                    $last_id = $movieDb->editMovie($editDate);
+
+                    $elem =$movieForm->getElement('miniImg');
+                    #$fileInfo = $elem->getFileInfo();
+                    $basePath = '/img/movie/' . $last_id . '/miniImg/';
+                    $folderModel->createFolderChain($basePath, '/');
+                    $imageDir = realpath(APPLICATION_PATH . '/../www/') . DIRECTORY_SEPARATOR . 'img' . DIRECTORY_SEPARATOR . 'movie' . DIRECTORY_SEPARATOR . $last_id . DIRECTORY_SEPARATOR . 'miniImg/';
+
+                    $elem->setDestination($imageDir);
+                    $elem->receive();
+                    unset($editDate['submit']);
+                    unset($editDate['MAX_FILE_SIZE']);
+
+                }
 
                 $receive = $movieDb->getMovieById($this->getRequest()->getParam('id'));
 

@@ -32,6 +32,8 @@ class Application_Model_DbTable_Movies extends Application_Model_DbTable_Abstrac
 
     public function getMovieById ($id) {
 
+        #get movies article by id
+
         $data = $this   ->select()
                         ->from($this->_name, array('id', 'miniImg', 'title', 'full'))
                         ->where('id = ?', $id)
@@ -39,6 +41,37 @@ class Application_Model_DbTable_Movies extends Application_Model_DbTable_Abstrac
 
         return $data->query()->fetch();
 
+    }
+
+    public function editMovie ($request) {
+
+        #Zend_Debug::dump($request);die;
+        if ($request['miniImg'] == '') {
+
+            $array = array(
+
+                'title' => $request['title'],
+                'full' => $request['full']
+
+            );
+
+            $where = $this->getAdapter()->quoteInto('id = ?', $request['id']);
+
+            $this->update($array, $where);
+
+        } else {
+
+            $where   = array(
+
+                $this->getAdapter()->quoteInto('id = ?', $request['id'])
+
+            );
+
+            $this->update($request, $where);
+
+        }
+
+        return $this->getAdapter()->lastInsertId();
     }
 
 }

@@ -603,7 +603,6 @@ div.mediaWrap {
 
 div.episodeWrap {
     float: left;
-    min-height: 340px;
     width: 33%;
 }
 

@@ -16,6 +16,7 @@ class Application_Model_DbTable_Movies extends Application_Model_DbTable_Abstrac
         #Insert new movie article
 
         $this->insert($param);
+
         return $this->getAdapter()->lastInsertId();
     }
 

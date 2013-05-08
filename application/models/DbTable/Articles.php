@@ -49,6 +49,7 @@ class Application_Model_DbTable_Articles extends Application_Model_DbTable_Abstr
 
         $this->insert($array);
 
+        return $this->getAdapter()->lastInsertId();
     }
 
 
@@ -56,14 +57,33 @@ class Application_Model_DbTable_Articles extends Application_Model_DbTable_Abstr
 
         #$request так як в тебе назви полыв в бд  ынпутыв однаковы то тобы не треба формавати масив
         #ін вже такий як треба ахуєл да?
+        if ($request['miniImg'] == '') {
 
-        $where   = array(
+            $array = array(
 
-            $this->getAdapter()->quoteInto('id = ?', $request['id'])
+                'title' => $request['title'],
+                'shortDesc' => $request['shortDesc'],
+                'full' => $request['full'],
+                'author' => $request['author'],
+                'updateDate' => date('Y-m-d H:i:s'),
 
-        );
+            );
 
-        $this->update($request, $where);
+            $where = $this->getAdapter()->quoteInto('id = ?', $request['id']);
+
+            $this->update($array, $where);
+
+        } else {
+
+            $where   = array(
+
+                $this->getAdapter()->quoteInto('id = ?', $request['id'])
+
+            );
+
+            $this->update($request, $where);
+
+        }
 
     }
 

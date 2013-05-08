@@ -5,7 +5,7 @@
 
             <div class="leftPartArticle">
 
-                <img class="articleMini" src="/img/miniImg/<?php echo $this->articles['miniImg']; ?>" alt="miniImg"/>
+                <img class="articleMini" src="/img/article/<?php echo $this->articles['id']; ?>/<?php echo $this->articles['miniImg']; ?>" alt="miniImg"/>
                 <?php echo $this->form->getElement('miniImg'); ?>
 
                 <div class="authorEdit">
@@ -42,7 +42,7 @@
 
             <div class="leftPartArticle">
 
-                <img class="articleMini" src="/img/movie/<?php echo $this->movie['id']; ?>/miniImg/<?php echo $this->movie['miniImg']; ?>" alt="miniImg"/>
+                <img class="articleMini" src="/img/movie/<?php echo $this->movie['id']; ?>/<?php echo $this->movie['miniImg']; ?>" alt="miniImg"/>
                 <?php echo $this->formMovie->getElement('miniImg'); ?>
 
                 <div class="authorEdit">

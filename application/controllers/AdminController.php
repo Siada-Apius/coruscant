@@ -53,6 +53,7 @@ class AdminController extends Zend_Controller_Action
         $articleDb = new Application_Model_DbTable_Articles();
         $movieDb = new Application_Model_DbTable_Movies();
         $folderModel = new Application_Model_Folder();
+        $maxId = new Application_Model_DbTable_Articles();
 
         $response = $this->getRequest()->getParam('name');
 
@@ -104,6 +105,12 @@ class AdminController extends Zend_Controller_Action
                     $fileInfo = $elem->getFileInfo();
                     $data['miniImg'] = $fileInfo['miniImg']['name'];
 
+                    $db = 'articles';
+
+                    #Zend_Debug::dump($maxId->maxId($db));die;
+
+                    $a = rename($data['miniImg'], $maxId->maxId($db));
+                    Zend_Debug::dump($a);die;
                     $last_id = $movieDb->addMovie($data);
 
                     $basePath = '/img/movie/' . $last_id . '/';
@@ -146,7 +153,7 @@ class AdminController extends Zend_Controller_Action
             #$article->getItem($id); ті методи доступні для всіх класів які його наслідуют, як бачиш
             #ше один з величезних плюсыв ооп
             $response = $this->getRequest()->getParam('name');
-#Zend_Debug::dump($this->getRequest()->getParam('name'));die;
+
             if ($response == 'article') {
 
                 if ($this->getRequest()->isPost()) {
@@ -160,7 +167,7 @@ class AdminController extends Zend_Controller_Action
 
                     unset($editData['submit']);
                     unset($editData['MAX_FILE_SIZE']);
-#Zend_Debug::dump($editDate);die;
+
                     $articleDb ->editArticles($editData);
 
                     $basePath = '/img/article/' . $editData['id'] . '/';

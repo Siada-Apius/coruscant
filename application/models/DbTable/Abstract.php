@@ -48,6 +48,16 @@ abstract class Application_Model_DbTable_Abstract extends Zend_Db_Table_Abstract
 
     }
 
+    public function maxId($db) {
+
+
+        $data = $this   ->select()
+                        ->from($db, array(new Zend_Db_Expr('max(id) as maxId')));
+
+        return $data->query()->fetch();
+
+    }
+
 
 }
 

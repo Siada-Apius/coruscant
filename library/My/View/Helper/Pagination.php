@@ -35,7 +35,7 @@ class My_View_Helper_Pagination extends Zend_View_Helper_Abstract{
 
         ?>
 
-    <div class = "pagination contentWrapper">
+    <div class = "pagination_foot">
 
         <!-- Посилання на першу -->
 

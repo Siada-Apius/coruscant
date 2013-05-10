@@ -1,6 +1,7 @@
 body {
-    color: #fff;
-    background: url("../img/style/bk.jpg") scroll center top transparent;
+    color: #000;
+    /*background: url("../img/style/bk.jpg") scroll center top transparent;*/
+    background-color: #000;
     background-attachment: fixed;
     /*font-family:  "New York", serif;*/
     font-family: 'Comfortaa', serif;
@@ -85,10 +86,7 @@ div.headerRight {
 
 
 div.headerRight {
-    background-image: url("../img/style/header_bg.jpg");
-    background-position: -80px center;
-    background-repeat: no-repeat;
-    background-size: 684px auto;
+    background-color: #fff;
     float: left;
     text-align: right;
     width: 99%
@@ -96,6 +94,10 @@ div.headerRight {
 
 
 div.headerInfo {
+    background-image: url("../img/style/Star_Wars_Black_line_logo.jpg");
+    background-position: 0 -24px;
+    background-repeat: no-repeat;
+    background-size: 285px auto;
     clear: both;
     height: 126px;
 }
@@ -118,9 +120,9 @@ div.content {
     width: 100%;
 }
 
-.contentLeft,
-.contentMiddle,
-.contentRight {
+div.contentLeft,
+div.contentMiddle,
+div.contentRight {
     float: left;
     margin: 5px;
     border: 3px groove #FAFAFA;
@@ -130,9 +132,8 @@ div.content {
     width: 22%;
 }
 
-.contentMiddle {
+div.contentMiddle {
     width: 50%;
-    box-shadow: 1px 1px 10px #D9DFF3 inset;
     background-color: #fff;
     /*background: -moz-linear-gradient(top,  rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 100%);  FF3.6+*/
     /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.65)), color-stop(100%,rgba(0,0,0,0)));  Chrome,Safari4+*/
@@ -159,12 +160,27 @@ div.content {
 
 
 .contentWrapperArticle {
-    border: 3px solid #fff;
-    border-radius: 5px;
-    margin: 10px;
+    border: 1px solid #0088CC;
+    color: #000;
+    margin: 5px;
     background-color: #EEEEEE;
     float: left;
-    padding-bottom: 10px;
+    padding: 10px;
+}
+
+span.comment {
+    font-style: italic;
+    color: #0e0e0e;
+}
+
+div.cor_text {
+    float: left;
+    margin: 10px 20px 10px 0;
+}
+
+
+div.cor_text img {
+    border: 1px groove #000;
 }
 
 
@@ -225,11 +241,12 @@ div.contentRightPart {
 
 .contentLeftPart{
     margin-right: 10px;
+    width: 136px;
 }
 
 
 div.contentRightPart{
-    width: 68%;
+    width: 70%;
 }
 
 div.contentText {
@@ -245,9 +262,14 @@ div.contentText {
 
 
     float: left;
-    padding: 10px;
-    margin-bottom: 10px;
+    padding: 0 10px;
 }
+
+div.contentText h2 {
+    border-bottom: 1px dotted #000;
+    padding-bottom: 5px;
+}
+
 
 .rating{
     width: 14%;
@@ -284,25 +306,25 @@ img.articleMini {
 }
 
 .miniImg{
-    border-radius: 5px 0 0 0;
-    border: 3px groove #fff;
+    border: 1px solid #000;
 }
 
 
 div.author{
     color:  #FEFFE1;
-    border: 3px groove #444444;
-    background-color: #1C2227;
-    height: 35px;
+    border: 1px solid #b0281a;
+    background-color: #D54937;
+    height: 20px;
     margin: 5px 0;
-    padding: 0 0 5px 5px;
-    font-size: 11px;
+    padding: 5px 5px;
+    font-size: 12px;
     font-style: italic;
     max-width: 130px;
 
-    -moz-box-shadow: 0px 0px 4px #FEFFE1 inset;
-    -webkit-box-shadow: 0px 0px 4px #FEFFE1 inset;
-    box-shadow: 0px 0px 4px #FEFFE1 inset;
+
+    /*-moz-box-shadow: 0px 0px 4px #FEFFE1 inset;*/
+    /*-webkit-box-shadow: 0px 0px 4px #FEFFE1 inset;*/
+    /*box-shadow: 0px 0px 4px #FEFFE1 inset;*/
 
 }
 
@@ -444,10 +466,27 @@ div.author{
 
 
 /*---------------------------- PAGINATION BEGIN -----------------------------------*/
-div.pagination {
+div.pagination_foot {
     background-color: #000000;
     text-align: center;
-    width: 93%;
+    width: 100%;
+    line-height: 50px;
+    float: left;
+    margin: 10px 0;
+    border-top: 2px solid #C6C6C6;
+    border-bottom: 2px solid #C6C6C6;
+}
+
+div.pagination_foot a {
+    color: #C6C6C6;
+}
+
+div.pagination_foot a:hover {
+    color: #fff;
+}
+
+div.pagination_foot a:active {
+    color: #0088CC
 }
 /*---------------------------- PAGINATION END -----------------------------------*/
 
@@ -510,6 +549,11 @@ div.delete_cross input{
     width: 45px;
     height: 45px;
     z-index: 2;
+    opacity: 0.3;
+}
+
+div.delete_cross input:hover {
+    opacity: 1;
 }
 
 /*------------------------------ ADD ARTICLES BEGIN -------------------------------*/

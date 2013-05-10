@@ -63,7 +63,7 @@ class Application_Plugin_Access extends Zend_Controller_Plugin_Abstract
 
 
         #guest allow
-        $acl->allow('guest', 'index', array('index', 'mail'));
+        $acl->allow('guest', 'index', array('index', 'article', 'mail'));
         $acl->allow('guest', 'user', array('index', 'login', 'registration'));
         $acl->allow('guest', 'media', array('index', 'article', 'page'));
         $acl->allow('guest', 'news', array('index'));

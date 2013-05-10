@@ -70,9 +70,9 @@ class MediaController extends Zend_Controller_Action
                 $this->view->bad =  $data['ratingBad'];
             }
 
-                ///////// AJAX FOR COMMENTS
+            ///////// AJAX FOR COMMENTS
 
-                $request = $this->getRequest()->getPost();
+            $request = $this->getRequest()->getPost();
 
         }
         /* -------------------------- AJAX -------------------- */

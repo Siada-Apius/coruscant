@@ -4,26 +4,16 @@
     <?php foreach ($this->articles as $value): ?>
         <li id="contentWrapper<?php echo $value['id']; ?>">
 
-
-
             <div class="contentWrapper">
+
                 <a class="superLink" href="/admin/article/edit/id/<?php echo $value['id']; ?>" name="<?php echo $value['id']; ?>"></a>
+
                 <div class="contentLeftPart">
 
-
-
-                        <img  src="/img/article/<?php echo $value['id']; ?>/<?php echo $value['miniImg']; ?>" class="miniImg"  alt="miniImg"/>
-
+                    <img  src="/img/article/<?php echo $value['id']; ?>/<?php echo $value['miniImg']; ?>" class="miniImg"  alt="miniImg"/>
 
                     <div class="author">
-
-                        <p>
-                            <?php echo $value['author']; ?>
-
-                            <br>
-
-                            <?php echo $value['updateDate']; ?>
-                        </p>
+                        <p><?php echo $value['updateDate']; ?></p>
                     </div>
                 </div>
 
@@ -32,7 +22,6 @@
                     <div class="contentText">
                         <h2><?php echo $value['title']; ?></h2>
                         <p><?php echo $value['shortDesc']; ?></p>
-<!--                        <a id="superLink" href="/admin/article/edit/id/--><?php //echo $value['id']; ?><!--" name="--><?php //echo $value['id']; ?><!--"></a>-->
                     </div>
 
                     <!--<div class="rating">

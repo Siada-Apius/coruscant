@@ -1,40 +1,40 @@
-
+<!--
     <div class="contentWrapperArticle">
 
         <div class="contentLeftPart">
 
-                <img  src="/img/miniImg/<?php echo $this->articles['miniImg']; ?>" class="miniImg"  alt="miniImg"/>
+                <img  src="/img/miniImg/<?php /*echo $this->articles['miniImg']; */?>" class="miniImg"  alt="miniImg"/>
 
 
             <div class="author">
 
                 <p>
-                    <?php echo $this->articles['author']; ?>
+                    <?php /*echo $this->articles['author']; */?>
 
                     <br>
 
-                    <?php echo $this->articles['updateDate']; ?>
+                    <?php /*echo $this->articles['updateDate']; */?>
                 </p>
             </div>
 
             <?php
-            $identity = Zend_Auth::getInstance()->getStorage()->read();
+/*            $identity = Zend_Auth::getInstance()->getStorage()->read();
             $role = (isset($identity->role)) ? $identity->role : '';
 
-            if ($role  && $role == 'admin' || $role == 'user'): ?>
+            if ($role  && $role == 'admin' || $role == 'user'): */?>
 
                 <div class="likeButtons">
                     <div class="likeBut" title="like"></div>
                     <div class="dislikeBut" title="dislike"></div>
                 </div>
 
-            <?php endif; ?>
+            <?php /*endif; */?>
 
             <div class="showRating">
 
-                Like: <span id = "like"><?php echo $this->articles['ratingGood']; ?></span>
+                Like: <span id = "like"><?php /*echo $this->articles['ratingGood']; */?></span>
                 <br>
-                Dislike:  <span id = "dislike"><?php echo $this->articles['ratingBad']; ?></span>
+                Dislike:  <span id = "dislike"><?php /*echo $this->articles['ratingBad']; */?></span>
 
             </div>
 
@@ -44,14 +44,14 @@
         <div class="contentRightPart">
 
             <div class="contentText">
-                <h2><?php echo $this->articles['title']; ?></h2>
-                <p><?php echo $this->articles['full']; ?></p>
+                <h2><?php /*echo $this->articles['title']; */?></h2>
+                <p><?php /*echo $this->articles['full']; */?></p>
             </div>
 
             <div class="rating">
 
                 <?php
-
+/*
                 $a = (int)$this->articles['ratingGood'];
                 $b = (int)$this->articles['ratingBad'];
                 $uniqueId = (int)$this->articles['id'];
@@ -67,21 +67,21 @@
 
                 require('css/style.php');
 
-                ?>
+                */?>
 
                 <div class="left">
-                    <div class="blade<?php echo $uniqueId; ?>">
-                        <div class="topBlue<?php echo $uniqueId; ?>"></div>
-                        <div class="middleBlue<?php echo $uniqueId; ?>"></div>
+                    <div class="blade<?php /*echo $uniqueId; */?>">
+                        <div class="topBlue<?php /*echo $uniqueId; */?>"></div>
+                        <div class="middleBlue<?php /*echo $uniqueId; */?>"></div>
                     </div>
-                    <div class="downBlue<?php echo $uniqueId; ?> "></div>
+                    <div class="downBlue<?php /*echo $uniqueId; */?> "></div>
                 </div>
                 <div class="right">
-                    <div class="blade<?php echo $uniqueId; ?>">
-                        <div class="topRed<?php echo $uniqueId; ?>"></div>
-                        <div class="middleRed<?php echo $uniqueId; ?>"></div>
+                    <div class="blade<?php /*echo $uniqueId; */?>">
+                        <div class="topRed<?php /*echo $uniqueId; */?>"></div>
+                        <div class="middleRed<?php /*echo $uniqueId; */?>"></div>
                     </div>
-                    <div class="downRed<?php echo $uniqueId; ?>"></div>
+                    <div class="downRed<?php /*echo $uniqueId; */?>"></div>
                 </div>
             </div>
 
@@ -91,8 +91,9 @@
 
     <div class="contentComments">
 
-        <?php echo $this->form; ?>
+        <?php /*echo $this->form; */?>
 
         <input type = "hidden" value = <?php echo $this->articles['id']; ?> id = "artId">
 
     </div>
+-->

@@ -1,35 +1,26 @@
 <ul class="list">
 
     <?php foreach ($this->articles as $value): ?>
-        <li>
+        <li id="contentWrapper<?php echo $value['id']; ?>">
+
             <div class="contentWrapper">
+
+                <a class="superLink" href="/article/id/<?php echo $value['id']; ?>" name="<?php echo $value['id']; ?>"></a>
 
                 <div class="contentLeftPart">
 
-                    <a class="superLink" href="/article/id/<?php echo $value['id']; ?>" name="<?php echo $value['id']; ?>">
-
-                        <img  src="/img/article/<?php echo $value['id']; ?>/<?php echo $value['miniImg']; ?>" class="miniImg"  alt="miniImg"/>
-                    </a>
+                    <img  src="/img/article/<?php echo $value['id']; ?>/<?php echo $value['miniImg']; ?>" class="miniImg"  alt="miniImg"/>
 
                     <div class="author">
-
-                        <p>
-                            <?php echo $value['author']; ?>
-
-                            <br>
-
-                            <?php echo $value['updateDate']; ?>
-                        </p>
+                        <p><?php echo $value['updateDate']; ?></p>
                     </div>
                 </div>
-
 
                 <div class="contentRightPart">
 
                     <div class="contentText">
                         <h2><?php echo $value['title']; ?></h2>
                         <p><?php echo $value['shortDesc']; ?></p>
-                        <a id="superLink" href="/article/id/<?php echo $value['id']; ?>" name="<?php echo $value['id']; ?>"></a>
                     </div>
 
                     <!--<div class="rating">
@@ -70,13 +61,22 @@
                     </div>-->
 
                 </div>
+
             </div>
+
         </li>
     <?php endforeach ?>
 </ul>
 
 <?php echo $this->pagination(); ?>
 
+
+
+
+
+
 <!--
+echo $this->form;
+
 div#test>ul.some>li*5>lorem
 -->

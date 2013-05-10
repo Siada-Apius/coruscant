@@ -14,6 +14,7 @@
           <actionMethod actionName="comment"/>
           <actionMethod actionName="email"/>
           <actionMethod actionName="mail"/>
+          <actionMethod actionName="article"/>
         </controllerFile>
         <controllerFile controllerName="Error">
           <actionMethod actionName="page404"/>
@@ -163,6 +164,9 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Admin">
             <viewScriptFile forActionName="addArticle"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Index">
+            <viewScriptFile forActionName="article"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>

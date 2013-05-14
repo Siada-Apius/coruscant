@@ -37,6 +37,7 @@ class Application_Plugin_Access extends Zend_Controller_Plugin_Abstract
         $acl->addResource('games');
         $acl->addResource('archive');
         $acl->addResource('about');
+        $acl->addResource('search');
 
 
         #admin allow
@@ -70,6 +71,7 @@ class Application_Plugin_Access extends Zend_Controller_Plugin_Abstract
         $acl->allow('guest', 'games', array('index'));
         $acl->allow('guest', 'archive', array('index'));
         $acl->allow('guest', 'about', array('index'));
+        $acl->allow('guest', 'search', array('index', 'reindex'));
 
         $acl->deny('guest', 'user', array('logout'));
         $acl->allow('guest', 'error', array('error404','error'));

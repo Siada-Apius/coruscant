@@ -10,7 +10,7 @@ class Application_Model_DbTable_Articles extends Application_Model_DbTable_Abstr
     public function getArticles($from = ''){
         #from , to не обовязкові змінні як бачиш
         $data = $this   ->select()
-                        ->from('articles',array('id', 'miniImg', 'title', 'shortDesc', 'author', 'updateDate', 'ratingGood', 'ratingBad'))
+                        ->from('articles',array('id', 'miniImg', 'title', 'shortDesc', 'full', 'author', 'updateDate', 'ratingGood', 'ratingBad'))
                         ->order('id DESC')
 
         ;
@@ -101,6 +101,17 @@ class Application_Model_DbTable_Articles extends Application_Model_DbTable_Abstr
         ;
 
         return $wwc->query()->fetchAll();
+
+    }
+
+    public function getArticlesIn($in){
+
+        $data = $this   ->select()
+                        ->from('articles')
+                        ->where('id IN (?)', $in);
+
+        $id = $data->query();
+        return $id->fetchAll();
 
     }
 

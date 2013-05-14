@@ -15,6 +15,7 @@
           <actionMethod actionName="email"/>
           <actionMethod actionName="mail"/>
           <actionMethod actionName="article"/>
+          <actionMethod actionName="reindex"/>
         </controllerFile>
         <controllerFile controllerName="Error">
           <actionMethod actionName="page404"/>
@@ -55,6 +56,10 @@
         </controllerFile>
         <controllerFile controllerName="About">
           <actionMethod actionName="index"/>
+        </controllerFile>
+        <controllerFile controllerName="Search">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="reindex"/>
         </controllerFile>
       </controllersDirectory>
       <formsDirectory>
@@ -167,6 +172,15 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Index">
             <viewScriptFile forActionName="article"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Search">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Index">
+            <viewScriptFile forActionName="reindex"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Search">
+            <viewScriptFile forActionName="reindex"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>

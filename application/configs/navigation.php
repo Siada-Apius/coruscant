@@ -40,9 +40,9 @@ return array(
                 'tag' => 'topMenu',
                 'route' => 'default',
                 'module' => 'default',
-                'controller' => 'media',
+                'controller' => 'movie',
                 'action' => 'index',
-                'resource' => 'media',
+                'resource' => 'movie',
                 'privilege' => 'index',
             ),
             array (
@@ -107,9 +107,20 @@ return array(
                 'route' => 'default',
                 'module' => 'default',
                 'controller' => 'admin',
-                'action' => 'media',
+                'action' => 'movie',
                 'resource' => 'admin',
-                'privilege' => 'media',
+                'privilege' => 'movie',
+            ),
+            array (
+
+                'label' => 'Games',
+                'tag' => 'admin',
+                'route' => 'default',
+                'module' => 'default',
+                'controller' => 'admin',
+                'action' => 'games',
+                'resource' => 'admin',
+                'privilege' => 'games',
             ),
             array (
 
@@ -146,7 +157,6 @@ return array(
                 'privilege' => 'add',
                 'params'     => array('article' => ''),
 
-
             ),
             array (
 
@@ -172,6 +182,20 @@ return array(
                 'resource' => 'admin',
                 'privilege' => 'add',
                 'params'     => array('movie' => ''),
+            ),
+
+            //second admin menu Games
+            array (
+
+                'label' => 'Add new games',
+                'tag' => 'subAdminMenuGames',
+                'route' => 'default',
+                'module' => 'default',
+                'controller' => 'admin',
+                'action' => 'add',
+                'resource' => 'admin',
+                'privilege' => 'add',
+                'params'     => array('games' => ''),
             ),
         )
     )

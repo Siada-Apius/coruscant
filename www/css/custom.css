@@ -1,7 +1,8 @@
 body {
     color: #000;
-    /*background: url("../img/style/bk.jpg") scroll center top transparent;*/
-    background-color: #000;
+    background: url("../img/style/Star-Wars-star-wars-24718031-1920-1200.jpg") scroll center top transparent;
+    background-size: 100%;
+    /*background-color: #000;*/
     background-attachment: fixed;
     /*font-family:  "New York", serif;*/
     font-family: 'Comfortaa', serif;
@@ -70,18 +71,16 @@ div.navbarSearch {
 
 div.headerBig {
     float: left;
-    background-color: #888888;
     width: 100%;
 }
 
 
 div.headerLeft,
 div.headerRight {
-    background-color: #000;
     margin: 5px;
     border-radius: 5px;
     border: 1px solid #fff;
-    height: 178px;
+    height: 78px;
 }
 
 
@@ -89,17 +88,18 @@ div.headerRight {
     background-color: #fff;
     float: left;
     text-align: right;
-    width: 99%
+    width: 99%;
+    height: 102px;
 }
 
 
 div.headerInfo {
-    background-image: url("../img/style/Star_Wars_Black_line_logo.jpg");
-    background-position: 0 -24px;
+    background-image: url("../img/style/Star_Wars_Black_line_logo1.jpg");
     background-repeat: no-repeat;
-    background-size: 285px auto;
+    background-size: 353px auto;
+    background-position: 50% 100%;
     clear: both;
-    height: 126px;
+    padding: 0 20px;
 }
 
 
@@ -113,19 +113,13 @@ div.headerNav {
 
 /* ---------------------------- CONTENT - BEGIN -----------------------------------*/
 
-div.content {
-    clear: both;
-    float: left;
-    min-width: 1000px;
-    width: 100%;
-}
 
 div.contentLeft,
 div.contentMiddle,
 div.contentRight {
     float: left;
     margin: 5px;
-    border: 3px groove #FAFAFA;
+    border: 2px solid #888;
 }
 
 .contentLeft {
@@ -645,13 +639,15 @@ div.delete_cross input:hover {
 
 /* ------------------------- MOVIE START ------------------------------------------*/
 div.mediaWrap {
-
+    background-color: #222222;
+    height: 1000px;
+    width: 100%;
 }
 
 
 div.episodeWrap {
     float: left;
-    width: 33%;
+    width: 33.33%;
 }
 
 
@@ -659,8 +655,7 @@ div.poster {
     position: relative;
     background-color: #000;
     background-repeat: no-repeat;
-    border: 3px groove #FFFFFF;
-    border-radius: 8px 8px 8px 8px;
+    border: 1px solid #fff;
     margin: 30px auto 0;
     width: 85%;
 }
@@ -683,3 +678,57 @@ div.poster:hover {
 }
 
 /* ------------------------- MOVIE END --------------------------------------------*/
+
+/* ------------------------- GAMES START -------------------------------- */
+
+div.oneWrap {
+    float: left;
+    width: 33.33%;
+
+}
+
+
+div.gamesWrap {
+    background-color: #000;
+    float: left;
+    width: 100%;
+}
+
+div.gameBlock {
+
+    background-color: #6C6C6C;
+    border: 1px solid #DCDCDC;
+    float: left;
+    margin: 10px 30px;
+    padding: 10px;
+}
+
+div.gameBlock:hover {
+    -moz-box-shadow: 0 0 10px #fff; /* Для Firefox */
+    -webkit-box-shadow: 0 0 10px #fff; /* Для Safari и Chrome */
+    box-shadow: 0 0 10px #fff; /* Параметры тени */
+    border: 1px solid #fff;
+}
+
+div.gameBlock img{
+    width: 160px;
+    height: 215px;
+    float: left;
+}
+
+div.gameBlock a {
+    color: #fff;
+}
+
+div.gameBlock a:hover {
+    color: #00A2F3;
+}
+
+div.descBlock {
+    font-size: 12px;
+    text-align: center;
+    margin-top: 4px;
+    float: left;
+    width: 100%;
+}
+/*----------------------- GAMES END ---------------------------------- */

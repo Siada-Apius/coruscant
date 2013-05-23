@@ -1,4 +1,14 @@
-<br /><br />
-<div id="view-content">
-	<p>View script for controller <b>Games</b> and script/action name <b>index</b></p>
+
+<div class="gamesWrap">
+    <?php foreach($this->games as $value): ?>
+
+        <div class="oneWrap">
+            <div class="gameBlock" title="<?php echo $value['title']; ?>">
+                <img src="/img/games/<?php echo $value['id']; ?>/<?php echo $value['mini_img']; ?>" alt="pic" />
+                <div class="descBlock"><a href="#"><?php echo $value['title']; ?></a></div>
+            </div>
+
+        </div>
+
+    <?php endforeach; ?>
 </div>

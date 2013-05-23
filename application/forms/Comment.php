@@ -35,7 +35,12 @@ class Application_Form_Comment extends Zend_Form
                     -> setAttrib('class', 'btn btn-success')
         ;
 
-        $this->addElements(array($user_name_add, $com_text_add, $com_but));
+        $editorArea = new My_Form_Element_WysibbEditor('content', 'Example
+        Text Value' , array('label' => 'Feedback', 'class'=>'custom-texteditor' ));
+
+        $this->addElements(array($user_name_add, $com_text_add, $com_but, $editorArea));
+
+
 
     }
 

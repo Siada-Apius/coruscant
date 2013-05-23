@@ -10,7 +10,10 @@ class GamesController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        // action body
+        $gamesDb = new Application_Model_DbTable_Games();
+
+        $games = $gamesDb->getItemsList();
+        $this->view->games = $games;
     }
 
 

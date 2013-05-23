@@ -3,7 +3,7 @@
 
     <div class="contentLeftPart">
 
-        <img  src="/img/article/<?php echo $this->articles['id']; ?>/<?php echo $this->articles['miniImg']; ?>" class="miniImg"  alt="miniImg"/>
+        <img src="/img/article/<?php echo $this->articles['id']; ?>/<?php echo $this->articles['miniImg']; ?>" class="miniImg"  alt="miniImg" />
 
         <div class="author">
 
@@ -82,7 +82,7 @@
 
 </div>
 
-<!--<div class="contentComments">
-    <?php /*echo $this->form; */?>
-    <input type = "hidden" value = <?php /*echo $this->articles['id']; */?> id = "artId">
-</div>-->
+<div class="contentComments">
+    <?php echo $this->form; ?>
+    <input type = "hidden" value = <?php echo $this->articles['id']; ?> id = "artId">
+</div>

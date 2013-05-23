@@ -44,6 +44,7 @@
           <actionMethod actionName="edit"/>
           <actionMethod actionName="comments"/>
           <actionMethod actionName="addArticle"/>
+          <actionMethod actionName="games"/>
         </controllerFile>
         <controllerFile controllerName="News">
           <actionMethod actionName="index"/>
@@ -61,6 +62,9 @@
           <actionMethod actionName="index"/>
           <actionMethod actionName="reindex"/>
         </controllerFile>
+        <controllerFile controllerName="Asd">
+          <actionMethod actionName="index"/>
+        </controllerFile>
       </controllersDirectory>
       <formsDirectory>
         <formFile formName="Simple"/>
@@ -77,6 +81,7 @@
         <dbTableDirectory>
           <dbTableFile dbTableName="User"/>
           <dbTableFile dbTableName="Comments"/>
+          <dbTableFile dbTableName="Games"/>
         </dbTableDirectory>
       </modelsDirectory>
       <modulesDirectory enabled="false"/>
@@ -181,6 +186,12 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Search">
             <viewScriptFile forActionName="reindex"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Asd">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Admin">
+            <viewScriptFile forActionName="games"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>

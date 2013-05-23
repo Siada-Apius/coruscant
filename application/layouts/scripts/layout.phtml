@@ -121,14 +121,22 @@
                             ->render(new My_Navigation($this->navigation()->findAllBy('tag','subAdminMenuIndex',true)))
                         ;
 
-                    }
-                    else if ( $_SERVER['REQUEST_URI'] == '/admin/media' ) {
+                    } else if ( $_SERVER['REQUEST_URI'] == '/admin/movie' ) {
 
                         echo $this  ->navigation()
                             ->menu()
                             ->setMaxDepth(2)
                             ->setUlClass('nav')
                             ->render(new My_Navigation($this->navigation()->findAllBy('tag','subAdminMenuMovie',true)))
+                        ;
+
+                    } else if ( $_SERVER['REQUEST_URI'] == '/admin/games' ) {
+
+                        echo $this  ->navigation()
+                            ->menu()
+                            ->setMaxDepth(2)
+                            ->setUlClass('nav')
+                            ->render(new My_Navigation($this->navigation()->findAllBy('tag','subAdminMenuGames',true)))
                         ;
 
                     }

@@ -32,12 +32,13 @@ class AdminController extends Zend_Controller_Action
 
     }
 
-    public function mediaAction(){
+    public function movieAction()
+    {
 
         $movieDb = new Application_Model_DbTable_Movies();
 
-        $response = $movieDb->getAllMovie();
-        $this->view->receive = $response;
+        $movie = $movieDb->getAllMovie();
+        $this->view->receive = $movie;
 
     }
 
@@ -126,9 +127,14 @@ class AdminController extends Zend_Controller_Action
             }
 
             $this->view->movie = $movieForm;
-        }
-    }
 
+        } else if ($response == 'games') {
+
+            echo 'games add';
+
+        }
+
+    }
 
     public function editAction()
     {
@@ -194,7 +200,7 @@ class AdminController extends Zend_Controller_Action
 
 
                 //////////////////////////////////////
-            } else if ($response == 'media') {
+            } else if ($response == 'movie') {
 
                 if ($this->getRequest()->isPost()) {
 
@@ -223,14 +229,15 @@ class AdminController extends Zend_Controller_Action
                 $this->view->movie = $receive;
                 $this->view->formMovie = $movieForm->populate($receive);
 
-            }
+            } else if ($response = 'games') {
 
+                echo 'games edit';
+
+            }
 
         }
 
     }
-
-    /////////////////// КОМЕНТАРІ!!!!! КІНЕЦЬ
 
     public function commentsAction()
     {
@@ -241,8 +248,20 @@ class AdminController extends Zend_Controller_Action
         $this->view->comments = $com->getAllComments();
     }
 
+    public function gamesAction()
+    {
+        $gamesDb = new Application_Model_DbTable_Games();
+
+        $this->view->games = $gamesDb->getItemsList();
+
+        #$wys = new Appli
+
+    }
+
 
 }
+
+
 
 
 

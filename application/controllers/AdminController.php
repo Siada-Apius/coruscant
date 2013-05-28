@@ -252,9 +252,14 @@ class AdminController extends Zend_Controller_Action
     {
         $gamesDb = new Application_Model_DbTable_Games();
 
-        $this->view->games = $gamesDb->getItemsList();
+        $games = $gamesDb->getItemsList();
+        $this->view->games = $games;
 
-        #$wys = new Appli
+/*
+        if (($this->getRequest()->getParam('delete'))) {
+            die($this->getRequest()->getParam('delete'));
+        }*/
+
 
     }
 

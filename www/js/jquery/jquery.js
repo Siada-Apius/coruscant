@@ -177,4 +177,12 @@ $(document).ready(function () {
         }
     });
 
+    $('.deleteGame').click(function() {
+
+        var va = $(this).children().val();
+        alert(va);
+
+    });
+
+
 });

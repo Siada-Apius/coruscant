@@ -4,9 +4,13 @@
 
     <div class="oneWrap">
         <div class="gameBlock" title="<?php echo $value['title']; ?>">
-            <a href="/admin/games/edit/id/<?php echo $value['id']; ?>">link</a>
+
             <img src="/img/games/<?php echo $value['id']; ?>/<?php echo $value['mini_img']; ?>" alt="pic" />
-            <div class="descBlock"><a href="#"><?php echo $value['title']; ?></a></div>
+            <div class="descBlock">
+                <a href="/admin/games/edit/id/<?php echo $value['id']; ?>">Edit</a>
+                |
+                <a href="" class="deleteGame"><input type="hidden" value="<?php echo $value['id']; ?>">Delete</a>
+            </div>
         </div>
 
     </div>

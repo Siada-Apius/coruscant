@@ -75,6 +75,7 @@
         <formFile formName="Comment"/>
         <formFile formName="Mail"/>
         <formFile formName="Movies"/>
+        <formFile formName="Games"/>
       </formsDirectory>
       <layoutsDirectory enabled="false"/>
       <modelsDirectory>

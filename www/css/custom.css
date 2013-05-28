@@ -77,9 +77,8 @@ div.headerBig {
 
 div.headerLeft,
 div.headerRight {
-    margin: 5px;
-    border-radius: 5px;
     border: 1px solid #fff;
+    margin-bottom: 5px;
     height: 78px;
 }
 
@@ -88,7 +87,7 @@ div.headerRight {
     background-color: #fff;
     float: left;
     text-align: right;
-    width: 99%;
+    width: 99.9%;
     height: 102px;
 }
 
@@ -583,45 +582,52 @@ div.delete_cross input:hover {
 
 
 /*------------------------------ EDIT ARTICLES BEGIN -------------------------------*/
-.leftPartArticle, .rightPartArticle{
+.leftPartArticle,
+.rightPartArticle {
     display: inline-block;
     float: left;
 }
 
-.leftPartArticle{
 
+.leftPartArticle {
     width: 20%;
     margin: 10px;
     padding: 5px;
 }
 
-.rightPartArticle{
-
+.rightPartArticle {
     width: 73%;
 }
 
-.titleEdit, .shortDesc, .text{
-    width: 90%;
 
+.titleEdit,
+.shortDesc,
+.text {
+    width: 90%;
 }
 
-.titleEdit{
+
+.titleEdit {
     height: 50px;
 }
 
-.shortDesc{
+
+.shortDesc {
     height: 100px;
 }
 
-.text{
+
+.text {
     height: auto;
 }
 
-.inputEdit{
+
+.inputEdit {
     width: 140px;
 }
 
-.edit_but{
+
+.edit_but {
     width: 140px !important
 }
 
@@ -677,6 +683,10 @@ div.poster:hover {
     box-shadow: 0 0 15px #87CEEB; /* Параметры тени */
 }
 
+
+div.movieWrap {
+    border: 1px solid red;
+}
 /* ------------------------- MOVIE END --------------------------------------------*/
 
 /* ------------------------- GAMES START -------------------------------- */
@@ -684,7 +694,6 @@ div.poster:hover {
 div.oneWrap {
     float: left;
     width: 33.33%;
-
 }
 
 
@@ -694,14 +703,15 @@ div.gamesWrap {
     width: 100%;
 }
 
-div.gameBlock {
 
+div.gameBlock {
     background-color: #6C6C6C;
     border: 1px solid #DCDCDC;
     float: left;
     margin: 10px 30px;
-    padding: 10px;
+    padding: 15px;
 }
+
 
 div.gameBlock:hover {
     -moz-box-shadow: 0 0 10px #fff; /* Для Firefox */
@@ -710,19 +720,23 @@ div.gameBlock:hover {
     border: 1px solid #fff;
 }
 
-div.gameBlock img{
+
+div.gameBlock img {
     width: 160px;
     height: 215px;
     float: left;
 }
 
+
 div.gameBlock a {
     color: #fff;
 }
 
+
 div.gameBlock a:hover {
     color: #00A2F3;
 }
+
 
 div.descBlock {
     font-size: 12px;

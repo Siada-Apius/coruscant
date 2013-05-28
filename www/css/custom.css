@@ -77,8 +77,6 @@ div.headerBig {
 
 div.headerLeft,
 div.headerRight {
-    margin: 5px;
-    border-radius: 5px;
     border: 1px solid #fff;
     height: 78px;
 }
@@ -88,7 +86,7 @@ div.headerRight {
     background-color: #fff;
     float: left;
     text-align: right;
-    width: 99%;
+    width: 99.9%;
     height: 102px;
 }
 

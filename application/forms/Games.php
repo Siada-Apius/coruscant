@@ -11,7 +11,6 @@ class Application_Form_Games extends Zend_Form
         $title  ->setRequired(true)
                 ->setLabel('Title')
                 ->setAttrib('class', 'titleEdit')
-                ->addFilter('StripTags')
                 ->addFilter('StringTrim')
         ;
 

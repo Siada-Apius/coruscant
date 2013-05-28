@@ -12,7 +12,6 @@ class Application_Form_Movies extends Zend_Form
         $title  = new Zend_Form_Element_Textarea('title');
         $title  ->setRequired(true)
                 ->setLabel('Title')
-                ->addFilter('StripTags')
                 ->addFilter('StringTrim')
                 ->addValidator('NotEmpty')
                 ->setAttrib('class','titleEdit')
@@ -20,15 +19,13 @@ class Application_Form_Movies extends Zend_Form
 
         $full  = new Zend_Form_Element_Textarea('full');
         $full   ->setRequired(true)
-                ->addFilter('StripTags')
                 ->addFilter('StringTrim')
                 ->setLabel('Text')
                 ->setAttrib('class', 'text')
         ;
 
         $miniImg = new Zend_Form_Element_File('miniImg');
-        $miniImg    ->addFilter('StripTags')
-                    ->addFilter('StringTrim')
+        $miniImg    ->addFilter('StringTrim')
                     ->setLabel('Upload image')
                     ->setAttrib('multiple','false')
                     ->addValidator('Extension', false, 'jpg, png, gif, jpeg')

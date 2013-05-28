@@ -1,8 +1,32 @@
 <div class="movieWrap">
-
+    <h2><?php echo $this->movie['title']; ?></h2>
     <div class="movieBlock">
-        <h2><?php echo $this->movie['title']; ?></h2>
-        <p>More info coming soon</p>
+        <div class="part1">
+            <div class="movieShort">movieShort</div>
+            <div class="movieActor">movieActor</div>
+        </div>
+        <div class="part2">
+            <div class="moviePic">
+                <img src="/img/movie/<?php echo $this->movie['id']; ?>/<?php echo $this->movie['miniImg']; ?>" />
+            </div>
+            <div class="movieSlider">movieSlider</div>
+        </div>
     </div>
 
+    <div class="movieBlock">
+        <div class="part3">
+            <div class="movieDesc">movieDesc</div>
+            <div class="movieFunny">movieFunny</div>
+        </div>
+    </div>
+    <div class="movieBlock">
+        <div class="part4">
+            <div class="movieOst">movieOst</div>
+        </div>
+        <div class="part5">
+            <div class="movieOstPic">movieOstPic</div>
+        </div>
+
+    </div>
+    <p>More info coming soon</p>
 </div>

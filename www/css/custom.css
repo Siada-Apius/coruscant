@@ -685,8 +685,73 @@ div.poster:hover {
 
 
 div.movieWrap {
-    border: 1px solid red;
+    width: 100%;
 }
+
+    div.movieBlock {
+        margin: 0 0 5px 0;
+        clear: both;
+        float: left;
+        width: inherit;
+        background-color: #808080;
+    }
+
+        div.part1 {
+            float: left;
+            width: 65%;
+        }
+
+            div.movieShort {
+                background-color: red;
+                padding: 10px;
+            }
+
+            div.movieActor {
+                background-color: orange;
+                padding: 10px;
+
+            }
+
+        div.part2 {
+            float: right;
+            width: 35%;
+        }
+
+            div.moviePic {
+                background-color: yellow;
+            }
+
+            div.movieSlider {
+                background-color: green;
+            }
+
+        div.part3 {
+            width: 100%;
+        }
+            div.movieDesc {
+                background-color: #00bfff;
+            }
+
+            div.movieFunny {
+                background-color: blue;
+            }
+
+        div.part4 {
+            width: 65%;
+            float: left;
+        }
+            div.movieOst {
+                background-color: purple;
+            }
+
+        div.part5 {
+            width: 35%;
+            float: right;
+        }
+            div.movieOstPic {
+                background-color: #fff;
+            }
+
 /* ------------------------- MOVIE END --------------------------------------------*/
 
 /* ------------------------- GAMES START -------------------------------- */

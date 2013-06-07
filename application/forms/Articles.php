@@ -5,10 +5,7 @@ class Application_Form_Articles extends Zend_Form
 
     public function init()
     {
-        #тут вже собі виставиш типи полів і атрибути
-
         $this->setEnctype(Zend_Form::ENCTYPE_MULTIPART);
-
         $this->setName('addForm');
 
         $id  = new Zend_Form_Element_Hidden('id');
@@ -58,23 +55,15 @@ class Application_Form_Articles extends Zend_Form
                     ->setDestination('./img/miniImg/')
         ;
 
-
-
-
-
         $submit = new Zend_Form_Element_Submit('submit');
         $submit     ->setAttrib('id', 'edit')
                     ->setLabel('Save change')
                     ->setAttrib('class','btn btn-success edit_but')
         ;
 
-
         $this->addElements(array($id, $title, $short, $full, $author, $update, $miniImg, $submit));
 
-
-
     }
-
 
 }
 

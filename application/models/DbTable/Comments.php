@@ -1,6 +1,6 @@
 <?php
 
-class Application_Model_DbTable_Comments extends Zend_Db_Table_Abstract
+class Application_Model_DbTable_Comments extends Application_Model_DbTable_Abstract
 {
 
     protected $_name = 'comments';
@@ -28,22 +28,6 @@ class Application_Model_DbTable_Comments extends Zend_Db_Table_Abstract
         );
 
         $this->insert($addCom);
-
-    }
-
-    public function getAllComments (){
-
-        $data = $this   -> select()
-                        ->from('comments', array('user_name', 'owner', 'com_date', 'com_text'))
-        ;
-
-        return $data->query()->fetchAll();
-    }
-
-
-    public function deleteComment($id){
-
-        $this->delete('id=' . (int)$id);
 
     }
 

@@ -18,6 +18,5 @@ class Application_Form_Games extends Zend_Form
 
     }
 
-
 }
 

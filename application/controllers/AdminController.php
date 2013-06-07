@@ -5,26 +5,24 @@ class AdminController extends Zend_Controller_Action
 
     public function init()
     {
-        /* $user = new Application_Model_DbTable_Magazine();
-         $this->view->magazine = $user->getUsers();*/
-
         $this   ->_helper->AjaxContext()
                 ->addActionContext('index','json')
                 ->addActionContext('edit','json')
-                ->initContext('json');
+                ->initContext('json')
+        ;
     }
 
     public function indexAction()
     {
-
         $article = new Application_Model_DbTable_Articles();
 
-        if ($this->getRequest()->isXmlHttpRequest()){  // ЧИ ЦЕ Є AJAX
+        if ($this->getRequest()->isXmlHttpRequest()){
 
             if ($this->getRequest()->getParam('delId')) {
 
-                $article -> deleteArticle($this->getRequest()->getParam('delId')); // виклик метода DELETE
-                $this->view->id = $this->getRequest()->getParam('delId'); //вивід респонза з jquery, тобто в даному видадку це ксс
+                $article->deleteItem($this->getRequest()->getParam('delId'));
+                $this->view->id = $this->getRequest()->getParam('delId');
+
             }
         }
 
@@ -34,13 +32,21 @@ class AdminController extends Zend_Controller_Action
 
     public function movieAction()
     {
-
         $movieDb = new Application_Model_DbTable_Movies();
 
-        $movie = $movieDb->getAllMovie();
-        $this->view->receive = $movie;
+        $this->view->movie = $movieDb->getItemsList();
 
     }
+
+
+    public function gamesAction()
+    {
+        $gamesDb = new Application_Model_DbTable_Games();
+
+        $this->view->games = $gamesDb->getItemsList();
+
+    }
+
 
     public function userAction()
     {
@@ -49,22 +55,22 @@ class AdminController extends Zend_Controller_Action
 
     public function addAction()
     {
-        $articleForm = new Application_Form_Articles();
-        $movieForm = new Application_Form_Movies();
-        $articleDb = new Application_Model_DbTable_Articles();
-        $movieDb = new Application_Model_DbTable_Movies();
-        $folderModel = new Application_Model_Folder();
-        $maxId = new Application_Model_DbTable_Articles();
+        $articleForm    = new Application_Form_Articles();
+        $movieForm      = new Application_Form_Movies();
+        $articleDb      = new Application_Model_DbTable_Articles();
+        $movieDb        = new Application_Model_DbTable_Movies();
+        $folderModel    = new Application_Model_Folder();
+        $maxId          = new Application_Model_DbTable_Articles();
 
         $response = $this->getRequest()->getParam('name');
 
         if ($response == 'article') {
 
-            if( $this->getRequest()->isPost() ) {
+            if ($this->getRequest()->isPost()){
 
                 $data = $this->getRequest()->getPost();
 
-                if ( $articleForm->isValid($data) ) {
+                if ($articleForm->isValid($data)){
 
                     $elem = $articleForm->getElement('miniImg');
                     $fileInfo = $elem->getFileInfo();
@@ -80,6 +86,7 @@ class AdminController extends Zend_Controller_Action
                     $elem->receive();
 
                     $this->redirect('/admin');
+
                 }
 
                 #if(is_uploaded_file($_FILES["photo"]["tmp_name"])){
@@ -91,13 +98,13 @@ class AdminController extends Zend_Controller_Action
 
             $this->view->form = $articleForm;
 
-        } else if ($response == 'movie') {
+        } else if ($response == 'movie'){
 
-            if( $this->getRequest()->isPost() ) {
+            if($this->getRequest()->isPost()){
 
                 $data = $this->getRequest()->getPost();
 
-                if ( $movieForm->isValid($data) ) {
+                if ($movieForm->isValid($data)){
 
                     unset($data['submit']);
                     unset($data['MAX_FILE_SIZE']);
@@ -107,8 +114,6 @@ class AdminController extends Zend_Controller_Action
                     $data['miniImg'] = $fileInfo['miniImg']['name'];
 
                     $db = 'articles';
-
-                    #Zend_Debug::dump($maxId->maxId($db));die;
 
                     $a = rename($data['miniImg'], $maxId->maxId($db));
                     Zend_Debug::dump($a);die;
@@ -122,13 +127,14 @@ class AdminController extends Zend_Controller_Action
                     $elem->receive();
 
                     $this->redirect('/admin/media');
+
                 }
 
             }
 
             $this->view->movie = $movieForm;
 
-        } else if ($response == 'games') {
+        } else if ($response == 'games'){
 
             echo 'games add';
 
@@ -138,38 +144,40 @@ class AdminController extends Zend_Controller_Action
 
     public function editAction()
     {
-        $editComments = new Application_Model_DbTable_Comments();
-        $commentDel = new Application_Model_DbTable_Comments(); //виклик об'єкта класа
-        $articleDb = new Application_Model_DbTable_Articles();
-        $movieDb = new Application_Model_DbTable_Movies();
-        $movieForm = new Application_Form_Movies();
-        $articleForm = new Application_Form_Articles();
-        $folderModel = new Application_Model_Folder();
+        $commentDel     = new Application_Model_DbTable_Comments();
+        $articleDb      = new Application_Model_DbTable_Articles();
+        $movieDb        = new Application_Model_DbTable_Movies();
+        $movieImgDb     = new Application_Model_DbTable_MovieImg();
+        $movieImgOstDb  = new Application_Model_DbTable_MovieImgOst();
 
-        if ($this->getRequest()->isXmlHttpRequest()){  // ЧИ ЦЕ Є AJAX
+        $movieForm      = new Application_Form_Movies();
+        $articleForm    = new Application_Form_Articles();
 
-            if ($this->getRequest()->getParam('delId')) {
+        $folderModel    = new Application_Model_Folder();
 
-                $commentDel -> deleteComment($this->getRequest()->getParam('delId')); // виклик метода DELETE
-                $this->view->id = $this->getRequest()->getParam('delId'); //вивід респонза з jquery, тобто в даному видадку це ксс
+        if ($this->getRequest()->isXmlHttpRequest()){
+
+            if ($this->getRequest()->getParam('delId')){
+
+                $commentDel -> deleteItem($this->getRequest()->getParam('delId'));
+                $this->view->id = $this->getRequest()->getParam('delId');
+
             }
 
-        }else{
+        } else {
 
-            #$article->getItem($id); ті методи доступні для всіх класів які його наслідуют, як бачиш
-            #ше один з величезних плюсыв ооп
             $response = $this->getRequest()->getParam('name');
 
             if ($response == 'article') {
 
                 if ($this->getRequest()->isPost()) {
 
-                    $editData = $this->getRequest()->getPost(); #submit це значення лишне в масиві і не вийде з ним все зразу записати в бд тому його ансетим
+                    $editData = $this->getRequest()->getPost();
 
-                    $elem = $movieForm->getElement('miniImg');
+                    $elem = $articleForm->getElement('miniImg');
                     $fileInfo = $elem->getFileInfo();
-                    $editData['miniImg'] = $fileInfo['miniImg']['name'];
 
+                    $editData['miniImg'] = $fileInfo['miniImg']['name'];
 
                     unset($editData['submit']);
                     unset($editData['MAX_FILE_SIZE']);
@@ -185,10 +193,9 @@ class AdminController extends Zend_Controller_Action
 
                 }
 
-                #то шо я казав, не видно змін бо вивід форми до того як ти вставив значення
-                $res = $articleDb->getArticlesById($this->getRequest()->getParam('id'));
-                $this->view->articles = $res; //бере параметр ІД з метода getArticlesById
-                $this->view->form = $articleForm->populate($res); //заповняє форму тими значеннями по ІД з getArticlesById
+                $res = $articleDb->getItem($this->getRequest()->getParam('id'));
+                $this->view->articles = $res;
+                $this->view->form = $articleForm->populate($res);
 
                 /////////////////// КОМЕНТАРІ!!!!!
 
@@ -198,22 +205,40 @@ class AdminController extends Zend_Controller_Action
 
                 #$this->view->articles = $article->getArticlesById($this->getRequest()->getParam('id'));
 
+            } else if ($response == 'movie'){
 
-                //////////////////////////////////////
-            } else if ($response == 'movie') {
+                if ($this->getRequest()->isPost()){
 
-                if ($this->getRequest()->isPost()) {
-
-                    $editData = $this->getRequest()->getPost(); #submit це значення лишне в масиві і не вийде з ним все зразу записати в бд тому його ансетим
+                    $editData = $this->getRequest()->getPost();
 
                     unset($editData['submit']);
                     unset($editData['MAX_FILE_SIZE']);
 
                     $elem = $movieForm->getElement('miniImg');
+
                     $fileInfo = $elem->getFileInfo();
+
                     $editData['miniImg'] = $fileInfo['miniImg']['name'];
+                    $editData['addImg'] = $_FILES['addImg']['name'];
 
                     $movieDb->editMovie($editData);
+                    $movieImgDb->addNewPic($editData);
+
+                    $fname = array();
+                    $ftmp = array();
+
+                    foreach ($_FILES['addImg'] as $k => $v){
+
+                        if ($k == 'name')$fname = $v;
+                        if ($k == 'tmp_name')$ftmp = $v;
+
+                    }
+
+                    for ($i = 0;$i <= count($fname);$i++){
+
+                        move_uploaded_file($ftmp[$i], 'img/movie/' . $editData['id'] . '/' . $fname[$i]);
+
+                    }
 
                     $basePath = '/img/movie/' . $editData['id'] . '/';
                     $folderModel->createFolderChain($basePath, '/');
@@ -224,12 +249,22 @@ class AdminController extends Zend_Controller_Action
 
                 }
 
-                $receive = $movieDb->getMovieById($this->getRequest()->getParam('id'));
+                $id = $this->getRequest()->getParam('id');
 
-                $this->view->movie = $receive;
-                $this->view->formMovie = $movieForm->populate($receive);
+                //populate form
+                $movie = $movieDb->getItem($id);
+                $this->view->formMovie = $movieForm->populate($movie);
+                $this->view->movie = $movie;
 
-            } else if ($response = 'games') {
+                //view poster img
+                $movieImg = $movieImgDb->getItemsWhere($id);
+                $this->view->movieImg = $movieImg;
+
+                //view OST img
+                $movieImgOst = $movieImgOstDb->getItemsWhere($id);
+                $this->view->movieImgOst = $movieImgOst;
+
+            } else if ($response = 'games'){
 
                 echo 'games edit';
 
@@ -239,30 +274,16 @@ class AdminController extends Zend_Controller_Action
 
     }
 
+
     public function commentsAction()
     {
         $wwc = new Application_Model_DbTable_Articles();
         $com = new Application_Model_DbTable_Comments();
 
         $this->view->articles = $wwc->workWithComments();
-        $this->view->comments = $com->getAllComments();
-    }
-
-    public function gamesAction()
-    {
-        $gamesDb = new Application_Model_DbTable_Games();
-
-        $games = $gamesDb->getItemsList();
-        $this->view->games = $games;
-
-/*
-        if (($this->getRequest()->getParam('delete'))) {
-            die($this->getRequest()->getParam('delete'));
-        }*/
-
+        $this->view->comments = $com->getItemsList();
 
     }
-
 
 }
 

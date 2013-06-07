@@ -2,40 +2,36 @@
 
 class Application_Model_DbTable_Articles extends Application_Model_DbTable_Abstract
 {
-
-
     protected $_name = 'articles';
 
-
     public function getArticles($from = ''){
-        #from , to не обовязкові змінні як бачиш
-        $data = $this   ->select()
-                        ->from('articles',array('id', 'miniImg', 'title', 'shortDesc', 'full', 'author', 'updateDate', 'ratingGood', 'ratingBad'))
-                        ->order('id DESC')
 
+        /**
+         * method getArticles
+         *
+         * return all fields but limited by 5
+         */
+
+        $data = $this   ->select()
+                        ->from($this->_name, array('id', 'miniImg', 'title', 'shortDesc', 'full', 'author', 'updateDate', 'ratingGood', 'ratingBad'))
+                        ->order('id DESC')
         ;
 
         if(isset($from))$data->limit(5,$from);
 
         return $data->query()->fetchAll();
-    }
-
-
-    public function getArticlesById ($id){
-
-        $art = $this    ->select()
-                        ->from('articles', array('id', 'miniImg', 'title', 'shortDesc', 'full', 'author', 'ratingGood', 'ratingBad', 'updateDate'))
-                        ->where('id = ?', $id)
-        ;
-
-        return $art->query()->fetch();
 
     }
 
 
     public function addArticles($newData){
 
-        #ці файли тільки для запитів до бд, не забувай про мвс
+        /**
+         * method addArticles
+         *
+         * method add new article and return last ID
+         */
+
         $array = array(
             "title" => $newData['title'],
             "shortDesc" => $newData['shortDesc'],
@@ -55,8 +51,13 @@ class Application_Model_DbTable_Articles extends Application_Model_DbTable_Abstr
 
     public function editArticles($request){
 
-        #$request так як в тебе назви полыв в бд  ынпутыв однаковы то тобы не треба формавати масив
-        #ін вже такий як треба ахуєл да?
+        /**
+         * method editArticles
+         *
+         * if input miniImg is empty, update without miniImg
+         * else update all record
+         */
+
         if ($request['miniImg'] == '') {
 
             $array = array(
@@ -70,7 +71,6 @@ class Application_Model_DbTable_Articles extends Application_Model_DbTable_Abstr
             );
 
             $where = $this->getAdapter()->quoteInto('id = ?', $request['id']);
-
             $this->update($array, $where);
 
         } else {
@@ -88,12 +88,6 @@ class Application_Model_DbTable_Articles extends Application_Model_DbTable_Abstr
     }
 
 
-    public function deleteArticle ($id) {
-
-        $this->delete('id=' . (int)$id);
-
-    }
-
     public function workWithComments (){
 
         $wwc = $this   ->select()
@@ -104,19 +98,26 @@ class Application_Model_DbTable_Articles extends Application_Model_DbTable_Abstr
 
     }
 
+
     public function getArticlesIn($in){
 
-        $data = $this   ->select()
-                        ->from('articles')
-                        ->where('id IN (?)', $in);
+        /**
+         * method getArticlesIn
+         *
+         * return all fields where id == $in
+         */
 
-        $id = $data->query();
-        return $id->fetchAll();
+        $data = $this   ->select()
+                        ->from($this->_name)
+                        ->where('id IN (?)', $in)
+        ;
+
+        return $data->query()->fetchAll();
 
     }
 
 
-    /*
+    /**
     public function createBusiness ($array = array(), $userId) {
 
         $data = array(

@@ -5,15 +5,11 @@ class UserController extends Zend_Controller_Action
 
     public function init()
     {
-        #i kill you
-        #$user = new Application_Model_DbTable_Magazine();
-        #$this->view->magazine = $user->getUsers();
-
-        //ZEND AJAX
 
         $this   ->_helper->AjaxContext()
                 ->addActionContext('registration','json')
-                ->initContext('json');
+                ->initContext('json')
+        ;
     }
 
     public function indexAction()
@@ -23,37 +19,30 @@ class UserController extends Zend_Controller_Action
 
     public function loginAction()
     {
-        #створємо і виводимо в view нашу форму авторизації
-        $login = new Application_Form_Login();
-        $this->view->form = $login;
+        $login          = new Application_Form_Login();
+        $authAdapter    = new Zend_Auth_Adapter_DbTable(Zend_Db_Table::getDefaultAdapter());
 
-
-        #якщо пройшов пост запит
         if ($this->getRequest()->isPost()) {
 
             $data = $this->getRequest()->getPost();
-            #якщо дані пройшли умови вказані в формі
+
             if ($login->isValid($data)) {
 
-                #отримуємо дані
                 $username = $this->getRequest()->getPost('username');
                 $password =  md5($this->getRequest()->getPost('password'));
 
-                #ініціалізуємо адаптор
-                $authAdapter = new Zend_Auth_Adapter_DbTable(Zend_Db_Table::getDefaultAdapter());
-
-                #робимо порівняння отриманих через пост даних і значень таблиці
                 $authAdapter    ->setTableName('users')
                                 ->setIdentityColumn('nickname')
                                 ->setCredentialColumn('password')
                                 ->setIdentity($username)
-                                ->setCredential($password);
+                                ->setCredential($password)
+                ;
 
                 $auth = Zend_Auth::getInstance();
                 $result = $auth->authenticate($authAdapter);
 
                 #якщо логін і пароль співпадають робимо запис даних користувача в сесію
-                if ($result->isValid()) {
+                if ($result->isValid()){
 
                     $identity = $authAdapter->getResultRowObject();
 
@@ -61,28 +50,21 @@ class UserController extends Zend_Controller_Action
                     $authStorage->write($identity);
 
                     #редірект на головну
-                    if($identity->role == 'admin'){
+                    if ($identity->role == 'admin'){
                         $this->_helper->redirector('index', 'admin');
-                    }
-                    else{
+                    } else{
                         $this->_helper->redirector('index', 'media');
-
                     }
 
+                } else{
 
-                }
-                else{
-                    #редірект на сторінку з помилкою про невдалу авторизацію
-                    #$this->_helper->redirector('login', 'user');
                     echo 'You are weak!';
 
                 }
-
             }
-
         }
 
-
+        $this->view->form = $login;
     }
 
     public function logoutAction()
@@ -93,27 +75,24 @@ class UserController extends Zend_Controller_Action
 
     public function registrationAction()
     {
-
         $form = new Application_Form_Registration();
         $user = new Application_Model_DbTable_Users();
 
         if ($this->getRequest()->isXmlHttpRequest()){
-            #ІФ АЯКС !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
             $check = $user->checkByMail($this->getRequest()->getParam('email'));
 
-
-            if($check['email']){
+            if ($check['email']){
                 #ІФ ІСНУЄ МЕЙЛ!!!!!!!!!!!!!!!!!!!!!!!
                 $this->view->mail = 0;
 
             } else {
                 #ІФ НЕ ІСНУЄ РУЄСТРУЄШ!!!!!!!!!!!!!!!!!!!!!!!
-
                 $request = $this->getRequest()->getPost();
+
                 if ($form->isValid($request)){
 
-                    $user->createUser($request); //$date це масив, в який підставляється з Users.php дані форми
+                    $user->createUser($request);
                     $this->view->status = 1;
 
                 } else {
@@ -121,33 +100,25 @@ class UserController extends Zend_Controller_Action
                     $this->view->errors = $form->getErrors();
 
                 }
-
             }
 
-        }else{
-            #ФІ НЕ АКЯКАССССССССССССССССССССССССССССССССССССССССССССССССС!!!!!!!!!!!!!!!!!!!!!!!!
-            $form = new Application_Form_Registration();
+        } else {
 
             if ($this->getRequest()->isPost()) {
-
-
 
                 $data = $this->getRequest()->getPost();
 
                 if ($form->isValid($data)){
 
-
-                    $user->createUser($data); //$date це масив, в який підставляється з Users.php дані форми
-
+                    $user->createUser($data);
 
                 }
 
-
             }
+
             $this->view->form = $form;
 
         }
-
 
     }
 

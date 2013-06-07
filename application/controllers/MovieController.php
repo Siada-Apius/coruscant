@@ -8,7 +8,8 @@ class MovieController extends Zend_Controller_Action
 
         $this   ->_helper->AjaxContext()
                 ->addActionContext('article','json')
-                ->initContext('json');
+                ->initContext('json')
+        ;
 
     }
 
@@ -16,18 +17,24 @@ class MovieController extends Zend_Controller_Action
     {
         $movieDb = new Application_Model_DbTable_Movies();
 
-        $response = $movieDb->getAllMovie();
-        $this->view->receive = $response;
+        $this->view->receive = $movieDb->getItemsList();
     }
 
     public function articleAction()
     {
-        $movieDb = new Application_Model_DbTable_Movies();
-
         $id = $this->getRequest()->getParam('id');
 
-        $movie = $movieDb->getItem($id);
+        $movieDb        = new Application_Model_DbTable_Movies();
+        $movieImgDb     = new Application_Model_DbTable_MovieImg();
+        $movieImgOstDb  = new Application_Model_DbTable_MovieImgOst();
+
+        $movie          = $movieDb->getItem($id);
+        $movieImg       = $movieImgDb->getItemsWhere($id);
+        $movieImgOst    = $movieImgOstDb->getItemsList($id);
+
         $this->view->movie = $movie;
+        $this->view->movieImg = $movieImg;
+        $this->view->movieImgOst = $movieImgOst;
 
     }
 

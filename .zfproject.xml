@@ -83,6 +83,9 @@
           <dbTableFile dbTableName="User"/>
           <dbTableFile dbTableName="Comments"/>
           <dbTableFile dbTableName="Games"/>
+          <dbTableFile dbTableName="Moviesimg"/>
+          <dbTableFile dbTableName="MovieImg"/>
+          <dbTableFile dbTableName="MovieImgOst"/>
         </dbTableDirectory>
       </modelsDirectory>
       <modulesDirectory enabled="false"/>

@@ -685,15 +685,19 @@ div.poster:hover {
 
 
 div.movieWrap {
+    font-size: 12px;
     width: 100%;
 }
 
+    div.movieWrap h2 {
+        text-align: center;
+    }
+
     div.movieBlock {
-        margin: 0 0 5px 0;
+        border-bottom: 1px dashed #000;
         clear: both;
         float: left;
         width: inherit;
-        background-color: #808080;
     }
 
         div.part1 {
@@ -701,60 +705,67 @@ div.movieWrap {
             width: 65%;
         }
 
-            div.movieShort {
-                background-color: red;
-                padding: 10px;
-            }
-
-            div.movieActor {
-                background-color: orange;
-                padding: 10px;
-
-            }
-
         div.part2 {
             float: right;
             width: 35%;
         }
 
-            div.moviePic {
-                background-color: yellow;
-            }
-
-            div.movieSlider {
-                background-color: green;
+            div.moviePic img {
+                border: 1px solid #000;
+                margin-bottom: 20px;
             }
 
         div.part3 {
             width: 100%;
         }
 
-            div.movieDesc {
-                background-color: #00bfff;
-            }
-
-            div.movieFunny {
-                background-color: blue;
-            }
-
         div.part4 {
             width: 65%;
             float: left;
         }
-            div.movieOst {
-                background-color: purple;
-            }
 
         div.part5 {
             width: 35%;
             float: right;
         }
+
+            div.movieShort,
+            div.movieActor,
+            div.moviePic,
+            div.movieSlider,
+            div.movieSlider,
+            div.movieDesc,
+            div.movieDesc,
+            div.movieFunny,
+            div.movieOst,
             div.movieOstPic {
+                padding: 20px;
                 background-color: #fff;
             }
+            div.movieOstPic img {
+                height: 254px;
+                width: 300px;
+                margin-bottom: 20px;
+            }
+
+    div.movieShort textarea,
+    div.movieActor textarea,
+    div.movieDesc textarea,
+    div.movieFunny textarea,
+    div.movieOst textarea {
+        width: 100%;
+    }
 
 /* ------------------------- MOVIE END --------------------------------------------*/
+div.container {
+    width: 0;
+    margin: 0;
+}
 
+div#responsive img {
+    width: inherit;
+    height: 310px;
+}
 /* ------------------------- GAMES START -------------------------------- */
 
 div.oneWrap {
@@ -812,3 +823,11 @@ div.descBlock {
     width: 100%;
 }
 /*----------------------- GAMES END ---------------------------------- */
+
+div.save_button {
+    width: 80px;
+    height: 40px;
+    position: fixed;
+    right: 300px;
+    top: 400px;
+}

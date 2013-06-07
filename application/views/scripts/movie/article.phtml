@@ -2,31 +2,50 @@
     <h2><?php echo $this->movie['title']; ?></h2>
     <div class="movieBlock">
         <div class="part1">
-            <div class="movieShort">movieShort</div>
-            <div class="movieActor">movieActor</div>
+            <div class="movieShort"><?php echo $this->movie['short']; ?></div>
+            <div class="movieActor"><?php echo $this->movie['actors']; ?></div>
         </div>
         <div class="part2">
             <div class="moviePic">
-                <img src="/img/movie/<?php echo $this->movie['id']; ?>/<?php echo $this->movie['miniImg']; ?>" />
+
+                <div class="container">
+                    <div class="row">
+                        <div class="ten columns">
+                            <div id="responsive">
+
+                                <?php foreach ($this->movieImg as $value): ?>
+                                <img src="/img/movie/<?=$value['movie_id']?>/<?=$value['addImg']?>" />
+                                <?php endforeach; ?>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <div class="movieSlider">movieSlider</div>
+
+            <div class="movieSlider"></div>
         </div>
     </div>
 
     <div class="movieBlock">
         <div class="part3">
-            <div class="movieDesc">movieDesc</div>
-            <div class="movieFunny">movieFunny</div>
+            <div class="movieDesc"><?php echo $this->movie['full']; ?></div>
+            <div class="movieFunny"><?php echo $this->movie['funny']; ?></div>
         </div>
     </div>
     <div class="movieBlock">
         <div class="part4">
-            <div class="movieOst">movieOst</div>
+            <div class="movieOst"><?php echo $this->movie['ostList']; ?></div>
         </div>
+
         <div class="part5">
-            <div class="movieOstPic">movieOstPic</div>
+            <div class="movieOstPic">
+                <?php foreach($this->movieImgOst as $valueOst): ?>
+                <img src="/img/movie/<?=$valueOst['movie_id']?>/<?=$valueOst['ostImg']?>" />
+                <?php endforeach; ?>
+            </div>
         </div>
 
     </div>
-    <p>More info coming soon</p>
 </div>

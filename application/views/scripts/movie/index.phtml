@@ -1,6 +1,7 @@
 <div class="mediaWrap">
 
 <?php
+
 $identity = Zend_Auth::getInstance()->getStorage()->read();
 
 foreach ($this->receive as $value):
@@ -15,6 +16,7 @@ foreach ($this->receive as $value):
     </div>
 
 <?php endforeach; ?>
+
 </div>
 
 

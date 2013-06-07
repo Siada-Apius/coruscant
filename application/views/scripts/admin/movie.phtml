@@ -3,10 +3,7 @@
 <?php
 $identity = Zend_Auth::getInstance()->getStorage()->read();
 
-foreach ($this->receive as $value):
-
-?>
-
+foreach ($this->movie as $value): ?>
 
     <div class="episodeWrap">
         <div class="poster" title="<?php echo $value['title']; ?>">

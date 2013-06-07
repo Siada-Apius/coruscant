@@ -8,10 +8,8 @@ class Application_Form_Registration extends Zend_Form
         $this->setName('regForm');
 
         //ИНИЦИАЛИЗИРУЕМ ФОРМУ
-        #$this->setAction('/index/index');
         //$this->setMethod('post');
 
-        //СОЗДАЕМ ТЕКСТОВОЕ ПОЛЕ ДЛЯ ВВОДА ДАННЫХ
         $name  = new Zend_Form_Element_Text('nickname');
         $name   ->setRequired(true)                                             // Поле обязательное
                 ->addValidator('NotEmpty', true)                                //Поле не должно быть пустым
@@ -24,7 +22,6 @@ class Application_Form_Registration extends Zend_Form
                 ->setAttrib('placeholder', 'nickname')                          //Устанавливает атребут
         ;
 
-
         $email = new Zend_Form_Element_Text('email');
         $email  ->setRequired(true)
                 ->addValidator('NotEmpty', true)
@@ -36,8 +33,6 @@ class Application_Form_Registration extends Zend_Form
                 ->setAttrib('placeholder', 'e-mail')
         ;
 
-
-        //СОЗДАЕМ ТЕКСТОВОЕ ПОЛЕ ДЛЯ ВВОДА ПАРОЛЯ
         $password = new Zend_Form_Element_Password('password');
         $password   ->setRequired(true)
                     ->addValidator('NotEmpty', true)
@@ -48,43 +43,21 @@ class Application_Form_Registration extends Zend_Form
                     ->setAttrib('placeholder', 'password')
         ;
 
-        #flpha це тілкьи буква це бред для пооля пароля
-
-/*
-        //ПОДТВЕРЖДЕНИЕ ПАРОЛЯ
-        $confirm = new Zend_Form_Element_Password('confirm');
-        $confirm   ->setRequired(true)
-                    ->addValidator('NotEmpty', true)
-                    ->addValidator('Alpha', true)
-                    ->addFilter('StripTags')
-                    ->addFilter('StringTrim')
-                    ->setErrorMessages(array('Fool'))
-                    ->setAttrib('id','password')
-                    ->setAttrib('placeholder', 'confirm your password')
-        ;
-*/
-
-        //СОЗДАЕМ КНОПКУ ДЛЯ ОТПРАВКИ
         $submit = new Zend_Form_Element_Submit('Submit');
         $submit     ->setLabel('Submit')
                     ->setAttrib('id','reg')
                     ->setOptions(array('class' => 'btn btn-success'))
         ;
 
-        //СОЗДАЕМ ТЕКСТОВОЕ ПОЛЕ ДЛЯ ВВОДА ЭМЕЙЛА
-
-
-
         //ДОБАВЛЯЕМ К ФОРМЕ ЭЛЕМЕНТЫ
-        #$this   ->addElement($name)
-        #        ->addElement($email)
-        #       ->addElement($password)
-        #        ->addElement($confirm)
-        #       ->addElement($submit)
-        #;
+        /*$this   ->addElement($name)
+                ->addElement($email)
+               ->addElement($password)
+              ->addElement($submit)
+        ;*/
 
-        $this->addElements(array($name, $email, $password, /*$confirm,*/ $submit));
-        #$this->addElements(array($name, $submit));
+        $this->addElements(array($name, $email, $password, $submit));
+
     }
 
 }

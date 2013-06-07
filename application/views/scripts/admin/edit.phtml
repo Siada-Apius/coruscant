@@ -35,37 +35,83 @@
         </div>
     </form>
 
+
 <?php elseif ($this->formMovie): ?>
 
+
     <form enctype="multipart/form-data" method="POST">
-        <div class="contEdit">
 
-            <div class="leftPartArticle">
+        <div class="movieWrap">
 
-                <img class="articleMini" src="/img/movie/<?php echo $this->movie['id']; ?>/<?php echo $this->movie['miniImg']; ?>" alt="miniImg"/>
-                <?php echo $this->formMovie->getElement('miniImg'); ?>
+            <h2><?php echo $this->formMovie->getElement('title'); ?></h2>
 
-                <div class="authorEdit">
+            <div class="movieBlock">
 
-                    <?php echo $this->formMovie->getElement('id'); ?>
-
+                <div class="part1">
+                    <div class="movieShort"><?php echo $this->formMovie->getElement('short'); ?></div>
+                    <div class="movieActor"><?php echo $this->formMovie->getElement('actors'); ?></div>
                 </div>
 
-                <?php echo $this->formMovie->getElement('submit'); ?> <!-- SUBMIT -->
+                <div class="part2">
+                    <div class="moviePic">
+
+                        <img src="/img/movie/<?php echo $this->movie['id']; ?>/<?php echo $this->movie['miniImg']; ?>" />
+
+
+
+                        <?php echo $this->formMovie->getElement('miniImg'); ?>
+                    </div>
+                    <div class="movieSlider">movieSlider</div>
+                </div>
+            </div>
+
+            <div class="movieBlock">
+
+                <div class="part3">
+                    <div class="movieDesc"><?php echo $this->formMovie->getElement('full'); ?></div>
+                    <div class="movieFunny"><?php echo $this->formMovie->getElement('funny'); ?></div>
+                </div>
+            </div>
+
+            <div class="movieBlock">
+
+                <div class="part4">
+                    <div class="movieOst"><?php echo $this->formMovie->getElement('ostList'); ?></div>
+                </div>
+
+                <div class="part5">
+                    <div class="movieOstPic">
+
+                        <?php foreach ($this->movieImgOst as $valueOst): ?>
+                            <img src="/img/movie/<?=$valueOst['movie_id']?>/<?=$valueOst['ostImg']?>" />
+                        <?php endforeach; ?>
+
+                    </div>
+                </div>
+
+                <input type="file" multiple="true" name="addImg[]">
 
             </div>
 
+            <?php echo $this->formMovie->getElement('id'); ?>
 
-            <div class="rightPartArticle">
+            <div class="movieBlock">
 
-                <div class="textContentEdit">
 
-                    <?php echo $this->formMovie->getElement('title'); ?>
-                    <?php echo $this->formMovie->getElement('full'); ?>
 
-                </div>
+                <?php foreach ($this->movieImg as $value): ?>
 
+                    <div class="episodeWrap">
+                        <div class="poster">
+                            <img src="/img/movie/<?=$value['movie_id']?>/<?=$value['addImg']?>" />
+                        </div>
+                    </div>
+
+                <?php endforeach; ?>
             </div>
+
+            <div class="save_button"><?php echo $this->formMovie->getElement('submit'); ?></div>
+
         </div>
     </form>
 

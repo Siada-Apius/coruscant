@@ -1,7 +1,28 @@
-<?php
+<div class="searchWrap">
 
-foreach ( $this->articles as $value ) {
+    <?php foreach ( $this->total as $key => $value ): ?>
 
-    echo $value['title'].'<br>';
+        <?php
 
-}
+            switch($key){
+
+                case 'movies':      $link = "/movie/id/";       break;
+                case 'articles':    $link = "/article/id/";     break;
+                case 'games':       $link = "/games/id";        break;
+
+            }
+
+        ?>
+
+        <?php foreach ($value as $subVal):?>
+
+            <div class="well">
+                <a href="<?=$link . $subVal['id']; ?>"><?=$subVal['title']; ?></a>
+            </div>
+
+        <?php endforeach;?>
+
+    <?php endforeach; ?>
+
+</div>
+

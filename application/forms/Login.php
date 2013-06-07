@@ -17,23 +17,23 @@ class Application_Form_Login extends Zend_Form
                 ->setAttrib('placeholder', 'login')
         ;
 
-
         $password = new Zend_Form_Element_Password('password');
         $password   ->setRequired(true)
                     ->addFilter('StripTags')
                     ->addFilter('StringTrim')
                     ->addValidator('NotEmpty')
                     ->setAttrib('id', 'password')
-                    ->setAttrib('placeholder', 'password');
+                    ->setAttrib('placeholder', 'password')
+        ;
 
         $submit = new Zend_Form_Element_Submit('submit');
         $submit     ->setAttrib('id', 'sign')
-                    ->setAttrib('class','btn btn-success');
+                    ->setAttrib('class','btn btn-success')
+        ;
 
         $this->addElements(array($login, $password, $submit));
 
     }
-
 
 }
 

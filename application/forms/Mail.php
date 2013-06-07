@@ -15,11 +15,12 @@ class Application_Form_Mail extends Zend_Form
 
         $send = new Zend_Form_Element_Submit('send');
         $send   ->setAttrib('id', 'send')
-                ->setAttrib('class','btn btn-success');
+                ->setAttrib('class','btn btn-success')
+        ;
 
         $this->addElements(array($mail_input, $send));
-    }
 
+    }
 
 }
 

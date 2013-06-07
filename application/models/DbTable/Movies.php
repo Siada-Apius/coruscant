@@ -13,46 +13,36 @@ class Application_Model_DbTable_Movies extends Application_Model_DbTable_Abstrac
 
     public function addMovie($param) {
 
-        #Insert new movie article
+        /**
+         * method addMovie
+         *
+         * Insert new movie article and return last insert ID
+         */
 
         $this->insert($param);
 
         return $this->getAdapter()->lastInsertId();
     }
 
-    public function getAllMovie() {
-
-        #get all movies article
-
-        $data = $this   ->select()
-                        ->from($this->_name, array('id', 'miniImg', 'title', 'full'))
-        ;
-
-        return $data->query()->fetchAll();
-    }
-
-    public function getMovieById ($id) {
-
-        #get movies article by id
-
-        $data = $this   ->select()
-                        ->from($this->_name, array('id', 'miniImg', 'title', 'full'))
-                        ->where('id = ?', $id)
-        ;
-
-        return $data->query()->fetch();
-
-    }
 
     public function editMovie ($request) {
 
-        #Zend_Debug::dump($request);die;
+        /**
+         * method editMovie
+         *
+         * if field miniImg is empty, update without him
+         * else update all
+         */
+
         if ($request['miniImg'] == '') {
 
             $array = array(
 
+                'short' => $request['short'],
                 'title' => $request['title'],
-                'full' => $request['full']
+                'full' => $request['full'],
+                'actors' => $request['actors'],
+                'funny' => $request['funny'],
 
             );
 
@@ -73,6 +63,22 @@ class Application_Model_DbTable_Movies extends Application_Model_DbTable_Abstrac
         }
 
         return $this->getAdapter()->lastInsertId();
+    }
+
+    public function getMoviesIn($in){
+
+        /**
+         * method getMoviesIn
+         *
+         * return all fields where id == $in
+         */
+
+        $data = $this   ->select()
+                        ->from($this->_name)
+                        ->where('id IN (?)', $in)
+        ;
+
+        return  $data->query()->fetchAll();
     }
 
 }

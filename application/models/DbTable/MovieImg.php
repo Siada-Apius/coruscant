@@ -17,7 +17,6 @@ class Application_Model_DbTable_MovieImg extends Application_Model_DbTable_Abstr
         $data = $this   ->select()
                         ->from($this->_name)
                         ->where('movie_id = ?', $id)
-                        ->order('id DESC')
         ;
 
         return $data->query()->fetchAll();

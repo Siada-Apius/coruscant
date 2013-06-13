@@ -1,5 +1,18 @@
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#slider").easySlider({
+            auto: true,
+            continuous: true
+        });
+    });
+</script>
+
 <div class="movieWrap">
-    <h2><?php echo $this->movie['title']; ?></h2>
+
+    <div class="movieBlock">
+        <h2><?php echo $this->movie['title']; ?></h2>
+    </div>
+
     <div class="movieBlock">
         <div class="part1">
             <div class="movieShort"><?php echo $this->movie['short']; ?></div>
@@ -7,38 +20,34 @@
         </div>
         <div class="part2">
             <div class="moviePic">
+                <div id="content">
+                    <div id="slider">
+                        <ul>
+                            <?php foreach ($this->movieImg as $value): ?>
 
-                <div class="container">
-                    <div class="row">
-                        <div class="ten columns">
-                            <div id="responsive">
+                                <li><img src="/img/movie/<?=$value['movie_id']?>/<?=$value['addImg']?>" /></li>
 
-                                <?php foreach ($this->movieImg as $value): ?>
-                                <img src="/img/movie/<?=$value['movie_id']?>/<?=$value['addImg']?>" />
-                                <?php endforeach; ?>
-
-                            </div>
-                        </div>
+                            <?php endforeach; ?>
+                        </ul>
                     </div>
                 </div>
-
             </div>
-
-            <div class="movieSlider"></div>
         </div>
     </div>
 
     <div class="movieBlock">
         <div class="part3">
-            <div class="movieDesc"><?php echo $this->movie['full']; ?></div>
+            <div class="movieDesc">
+                <?php echo $this->movie['full']; ?>
+            </div>
             <div class="movieFunny"><?php echo $this->movie['funny']; ?></div>
         </div>
     </div>
+
     <div class="movieBlock">
         <div class="part4">
             <div class="movieOst"><?php echo $this->movie['ostList']; ?></div>
         </div>
-
         <div class="part5">
             <div class="movieOstPic">
                 <?php foreach($this->movieImgOst as $valueOst): ?>
@@ -46,6 +55,5 @@
                 <?php endforeach; ?>
             </div>
         </div>
-
     </div>
 </div>

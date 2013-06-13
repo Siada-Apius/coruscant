@@ -9,7 +9,7 @@ body {
     font-size: 18px;
 }
 
-
+/*/ ============== LAYOUT ============== /*/
 div.wrapper {
     clear: both;
     margin: 0 auto;
@@ -18,107 +18,100 @@ div.wrapper {
 }
 
 
-
-
-/*----------------------------- HEADER - BEGIN ----------------------------------------*/
-.navbar {
-    margin-bottom: 0;
-}
-
-
-.navbar .nav > .active > a,
-.navbar .nav > .active > a:hover,
-.navbar .nav > .active > a:focus {
-    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2) inset;
-    background-color: #EEEEEE;
-}
-
-
-div.headerNav {
-    background-color: #dbdbdb;
-}
-
-
-ul.nav li {
-    margin: 0 1px;
-}
-
-
-ul.nav li:hover {
-    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2) inset;
-    background-color: #FAFAFA;
-}
-
-
-div.navbarLink {
-    float: left;
-}
-
-
-    div.navbarLink ul.nav {
-        opacity: 1;
-    }
-
-    .navbar .nav > li > a {
-        color: #3A3A3A;
-        text-shadow: 0 1px 0 #FFFFFF;
-    }
-
-
-div.navbarSearch {
-    float: right;
-}
-
+/*/ ============== HEADER ============== /*/
 div.headerBig {
     float: left;
     width: 100%;
 }
 
-
-div.headerLeft,
-div.headerRight {
-    border: 1px solid #fff;
-    margin-bottom: 5px;
-    height: 78px;
-}
-
-
-div.headerRight {
-    background-color: #fff;
-    float: left;
-    text-align: right;
-    width: 99.9%;
-    height: 102px;
-}
+    div.headerLeft,
+    div.headerRight {
+        border: 1px solid #fff;
+        margin-bottom: 5px;
+        height: 78px;
+    }
 
 
-div.headerInfo {
-    background-image: url("../img/style/Star_Wars_Black_line_logo1.jpg");
-    background-repeat: no-repeat;
-    background-size: 353px auto;
-    background-position: 50% 100%;
-    clear: both;
-    padding: 0 20px;
-}
+    div.headerRight {
+        background-color: #fff;
+        float: left;
+        text-align: right;
+        width: 99.9%;
+        height: 102px;
+    }
+
+        div.headerInfo {
+            background-image: url("../img/style/Star_Wars_Black_line_logo1.jpg");
+            background-repeat: no-repeat;
+            background-size: 353px auto;
+            background-position: 50% 100%;
+            clear: both;
+            padding: 0 20px;
+        }
+
+        div.headerNav {
+            background-color: #dbdbdb;
+            clear: both;
+        }
+
+            div.navbar {
+                margin-bottom: 0;
+            }
+
+            div.navbarLink {
+                float: left;
+            }
+
+                div.navbarLink ul.nav {
+                    opacity: 1;
+                }
+
+                .navbar .nav > li > a {
+                    color: #3A3A3A;
+                    text-shadow: 0 1px 0 #FFFFFF;
+                }
+
+                .navbar .nav > .active > a,
+                .navbar .nav > .active > a:hover,
+                .navbar .nav > .active > a:focus {
+                    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2) inset;
+                    background-color: #EEEEEE;
+                }
+
+                ul.nav li {
+                    margin: 0 1px;
+                }
+
+                ul.nav li:hover {
+                    background-color: #FAFAFA;
+                    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2) inset;
+                    -moz-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2) inset;
+                    -webkit-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2) inset;
+                    -o-box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2) inset;
+
+                    /*filter:
+                        progid:DXImageTransform.Microsoft.Shadow(color='#C00000', Direction=45, Strength=6)
+                        progid:DXImageTransform.Microsoft.Shadow(color='#C00000', Direction=135, Strength=6)
+                        progid:DXImageTransform.Microsoft.Shadow(color='#C00000', Direction=225, Strength=6)
+                        progid:DXImageTransform.Microsoft.Shadow(color='#C00000', Direction=315, Strength=6);
+                    position: relative;
+                    ~top: -12px;
+                    ~left: -12px;
+                    zoom: 1;*/
+                }
+
+            div.navbarSearch {
+                float: right;
+            }
 
 
-div.headerNav {
-    clear: both;
-}
-/*----------------------------- HEADER - END ----------------------------------------*/
-
-
-
-
-/* ---------------------------- CONTENT - BEGIN -----------------------------------*/
-
-
+/*/ =============== CONTENT =========== /*/
 div.contentLeft,
 div.contentMiddle,
 div.contentRight {
     float: left;
     margin: 5px;
-    border: 2px solid #888;
+    border-radius: 2px;
 }
 
 .contentLeft {
@@ -128,6 +121,7 @@ div.contentRight {
 div.contentMiddle {
     width: 50%;
     background-color: #fff;
+    border: 2px solid #888;
     /*background: -moz-linear-gradient(top,  rgba(0,0,0,0.65) 0%, rgba(0,0,0,0) 100%);  FF3.6+*/
     /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.65)), color-stop(100%,rgba(0,0,0,0)));  Chrome,Safari4+*/
     /*background: -webkit-linear-gradient(top,  rgba(0,0,0,0.65) 0%,rgba(0,0,0,0) 100%);  Chrome10+,Safari5.1+*/
@@ -143,288 +137,153 @@ div.contentMiddle {
 }
 
 
-/* ----------------------------- content inside -----------------------------------*/
-
-
-.list{
+/*/ ================= content - INDEX/INDEX ================= /*/
+ul.list {
     list-style-type: none;
     margin: 0;
 }
 
+    div.contentWrapper {
+        border: 2px solid #DCDCDC;
+        float: left;
+        margin: 5px;
+        padding: 10px;
+        background-color: #F2F2F2;
+        position: relative;
+        color: #6E6E6E;
+    }
 
-.contentWrapperArticle {
+    div.contentWrapper:hover {
+        color: #000;
+        text-shadow: 0 1px 0 #FFFFFF;
+        border: 2px solid #c6c6c6;
+        background-color: #fafafa;
+
+        background-image: -moz-linear-gradient(top, #ffffff, #f2f2f2);
+        background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f2f2f2));
+        background-image: -webkit-linear-gradient(top, #ffffff, #f2f2f2);
+        background-image: -o-linear-gradient(top, #ffffff, #f2f2f2);
+        background-image: linear-gradient(to bottom, #ffffff, #f2f2f2);
+
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+        -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+        -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    }
+
+        div.contentWrapper a.superLink{
+            position: absolute;
+            display: block;
+            height: 100%;
+            width: 100%;
+            left: 0;
+            top: 0;
+        }
+
+        div.contentLeftPart,
+        div.contentRightPart {
+            float: left;
+        }
+
+
+        .contentLeftPart{
+            margin-right: 10px;
+            width: 136px;
+        }
+
+
+        div.contentRightPart{
+            width: 70%;
+        }
+
+            img.miniImg{
+                border: 1px solid #000;
+            }
+
+            div.author{
+                color:  #FEFFE1;
+                border: 1px solid #b0281a;
+                background-color: #D54937;
+                height: 20px;
+                margin: 5px 0;
+                padding: 5px 5px;
+                font-size: 12px;
+                font-style: italic;
+                max-width: 130px;
+            }
+
+            div.contentText {
+                float: left;
+                padding: 0 10px;
+            }
+
+                div.contentText h2 {
+                    border-bottom: 1px dotted #000;
+                    padding-bottom: 5px;
+                }
+
+.contentWrapperArticle { /*/ ================= INDEX/ARTICLE ================ /*/
     border: 1px solid #0088CC;
     color: #000;
     margin: 5px;
-    background-color: #EEEEEE;
     float: left;
     padding: 10px;
-}
-
-span.comment {
-    font-style: italic;
-    color: #0e0e0e;
-}
-
-div.cor_text {
-    float: left;
-    margin: 10px 20px 10px 0;
-}
-
-
-div.cor_text img {
-    border: 1px groove #000;
-}
-
-
-div.contentWrapper {
-    border: 2px solid #DCDCDC;
-    float: left;
-    margin: 5px;
-    padding: 10px;
-    background-color: #F2F2F2;
-    position: relative;
-    color: #6E6E6E;
-}
-
-
-
-div.contentWrapper:hover {
-    color: #000;
-    text-shadow: 0 1px 0 #FFFFFF;
-
-    border: 2px solid #c6c6c6;
     background-color: #fafafa;
+
     background-image: -moz-linear-gradient(top, #ffffff, #f2f2f2);
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#f2f2f2));
     background-image: -webkit-linear-gradient(top, #ffffff, #f2f2f2);
     background-image: -o-linear-gradient(top, #ffffff, #f2f2f2);
     background-image: linear-gradient(to bottom, #ffffff, #f2f2f2);
+
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
     -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
     -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
-div.contentWrapper a.superLink{
-    position: absolute;
-    display: block;
-    height: 100%;
-    width: 100%;
-    left: 0;
-    top: 0;
-}
+                span.comment {
+                    font-style: italic;
+                    color: #0e0e0e;
+                }
+
+                span.strong {
+                    font-weight: bold;
+                }
+
+                div.cor_text {
+                    float: left;
+                    margin: 10px 20px 10px 0;
+                }
+
+                div.cor_text img {
+                    border: 1px groove #000;
+                }
+
+        div.delete_cross input{
+            float: right;
+            width: 45px;
+            height: 45px;
+            z-index: 2;
+            opacity: 0.3;
+        }
+
+        div.delete_cross input:hover {
+            opacity: 1;
+        }
 
 
-  /*  background: rgb(215,222,227); *//* Old browsers *//*
-    background: -moz-linear-gradient(top,  rgba(215,222,227,1) 0%, rgba(246,248,249,1) 100%); *//* FF3.6+ *//*
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(215,222,227,1)), color-stop(100%,rgba(246,248,249,1))); *//* Chrome,Safari4+ *//*
-    background: -webkit-linear-gradient(top,  rgba(215,222,227,1) 0%,rgba(246,248,249,1) 100%); *//* Chrome10+,Safari5.1+ *//*
-    background: -o-linear-gradient(top,  rgba(215,222,227,1) 0%,rgba(246,248,249,1) 100%); *//* Opera 11.10+ *//*
-    background: -ms-linear-gradient(top,  rgba(215,222,227,1) 0%,rgba(246,248,249,1) 100%); *//* IE10+ *//*
-    background: linear-gradient(to bottom,  rgba(215,222,227,1) 0%,rgba(246,248,249,1) 100%); *//* W3C *//*
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d7dee3', endColorstr='#f6f8f9',GradientType=0 ); *//* IE6-9 */
-
-
-
-div.contentLeftPart,
-div.contentRightPart {
-    float: left;
-}
-
-
-.contentLeftPart{
-    margin-right: 10px;
-    width: 136px;
-}
-
-
-div.contentRightPart{
-    width: 70%;
-}
-
-div.contentText {
-    /*background-color: #FAFAFA;*/
-    /*box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);*/
-    /*background-color: #0A0A22;*/
-    /*float: left;*/
-    /*border: 2px groove #000;*/
-    /*color: #0088CC;*/
-    /*padding: 10px;*/
-    /*position: relative;*/
-    /*margin-bottom: 10px;*/
-
-
-    float: left;
-    padding: 0 10px;
-}
-
-div.contentText h2 {
-    border-bottom: 1px dotted #000;
-    padding-bottom: 5px;
-}
-
-
-.rating{
-    width: 14%;
-    margin: 0 0 0 10px;
-    background-color: #000000;
-    border: 3px solid #5B6064;
-    border-radius: 0 5px 5px 0;
-    box-shadow: 0 0 10px #FFFFFF;
-    min-height: 200px;
-
-}
-
-.contentText,
-.rating{
-    display: inline-block;
-    /*-moz-box-shadow: 0px 0px 5px #5B6064 inset;*/
-    /*-webkit-box-shadow: 0px 0px 5px #5B6064 inset;*/
-    /*box-shadow: 0px 0px 5px #5B6064 inset;*/
-
-
-}
-
-
-a.superLink img,
-img.articleMini {
-    height: 201px;
-    width: 135px;
-}
-
-
-#superLink{
-    text-decoration: none;
-
-}
-
-.miniImg{
-    border: 1px solid #000;
-}
-
-
-div.author{
-    color:  #FEFFE1;
-    border: 1px solid #b0281a;
-    background-color: #D54937;
-    height: 20px;
-    margin: 5px 0;
-    padding: 5px 5px;
-    font-size: 12px;
-    font-style: italic;
-    max-width: 130px;
-
-
-    /*-moz-box-shadow: 0px 0px 4px #FEFFE1 inset;*/
-    /*-webkit-box-shadow: 0px 0px 4px #FEFFE1 inset;*/
-    /*box-shadow: 0px 0px 4px #FEFFE1 inset;*/
-
-}
-
-.likeButtons{
-
-    border: 3px solid #444444;
-    background-color: #000000;
-    height: 52px;
-
-    -moz-box-shadow: inset 0 0 5px #fff;
-    -webkit-box-shadow: inset 0 0 5px #fff;
-    box-shadow: inset 0 0 5px #fff;
-}
-
-.showRating{
-    color:  #FEFFE1;
-    border: 3px solid #444444;
-    border-radius: 0 0 0 5px;
-    background-color: #1C2227;
-    min-width: 70%;
-    height: 35px;
-    margin: 5px 0;
-    padding: 0 0 5px 5px;
-    font-size: 11px;
-    font-style: italic;
-
-    -moz-box-shadow: 0 0 20px #fff;
-    -webkit-box-shadow: 0 0 20px #fff;
-    box-shadow: 0 0 10px #fff;
-}
-
-
-.likeBut{
-
-    width: 42px;
-    height: 42px;
-    float: left;
-    margin: 5px 5px 5px 13%;
-    background-image: url("../img/style/like.jpeg");
-    background-repeat: no-repeat;
-    cursor: pointer;
-
-}
-
-
-.dislikeBut{
-    background-image: url("../img/style/dislike.jpg");
-    background-repeat: no-repeat;
-    margin: 5px 5px 5px 54%;
-    width: 42px;
-    height: 42px;
-    cursor: pointer;
-}
-
-
-.contentComments{
-    border: 3px solid #fff;
-    border-radius: 5px;
-    margin: 10px;
-    padding: 10px;
-    background-color: #5B6064;
-    float: left;
-    width: 50%;
-    padding-bottom: 10px;
-}
-
-.com_text_add{
-    background-color: #1C2227;
-    color: #FEFFE1;
-    height: 150px;
-}
-
-.com_but{
-    height: 150px;
-    padding: 10px;
-    margin-left: 10px;
-    margin-top: -10px;
-}
-
-
-
-
-
-/* ----------------------------- content inside - END -----------------------------------*/
-
-/* ---------------------------- CONTENT - END -----------------------------------*/
-
-
-
-
-/* ------------------------------------ FOOTER - BEGIN --------------------------*/
-.footer{
-    border: 3px solid #fff;
-    border-radius: 5px;
-    background-color: #888;
+/*/ ===================== FOOTER =================== /*/
+div.footer {
+    border: 2px solid #D4D4D4;
+    border-radius: 2px;
+    background-color: #fff;
     width: inherit;
     clear: both;
-    margin: 10px;
-    height: 180px;
+    line-height: 50px;
+    text-align: center;
 }
-/* ------------------------------------ FOOTER - END --------------------------*/
 
 
-
-
-/*---------------------------- LOGIN FORM BEGIN-----------------------------------*/
-
+/*/ =============== LOGIN FORM ================ /*/
 .error {
     position: relative;
     border: 3px solid #5B6064;
@@ -439,7 +298,6 @@ div.author{
     box-shadow: 0 0 10px #fff;
 }
 
-
 .regLink,
 .regLink a,
 .error a {
@@ -453,12 +311,8 @@ div.author{
     ;
 }
 
-/*---------------------------- LOGIN FORM END -----------------------------------*/
 
-
-
-
-/*---------------------------- PAGINATION BEGIN -----------------------------------*/
+/*/ =================== PAGINATION ==================== /*/
 div.pagination_foot {
     background-color: #000000;
     text-align: center;
@@ -470,124 +324,95 @@ div.pagination_foot {
     border-bottom: 2px solid #C6C6C6;
 }
 
-div.pagination_foot a {
-    color: #C6C6C6;
-}
+    div.pagination_foot a {
+        color: #C6C6C6;
+    }
 
-div.pagination_foot a:hover {
-    color: #fff;
-}
+    div.pagination_foot a:hover {
+        color: #fff;
+    }
 
-div.pagination_foot a:active {
-    color: #0088CC
-}
-/*---------------------------- PAGINATION END -----------------------------------*/
-
+    div.pagination_foot a:active {
+        color: #0088CC
+    }
 
 
-
-/*---------------------------- COMMENTS BEGIN -----------------------------------*/
-
-.comments{
+/*/ ================== COMMENTS =================== /*/
+.comments {
     border: 2px solid #fff;
     border-radius: 5px;
     background-color: #1C2227;
     margin: 5px;
     height: 55px;
-
-
 }
 
-.user_name, .com_date, .comDelete{
+.user_name,
+.com_date,
+.comDelete {
     display: inline-block;
     color:  #FEFFE1;
     float: inherit;
     font-style: italic;
-
 }
 
-.comDeleteInput{
-
+.comDeleteInput {
     width: 20px;
     height: 20px;
     margin-left: 10px;
     cursor: pointer;
 }
 
-
-.user_name{
+.user_name {
     width: 45%;
 }
 
-.com_date{
+.com_date {
     width: 45%;
     text-align: right;
-
 }
 
 .com_text{
     background-color: #252D34;
     padding: 5px;
     color:  #FEFFE1;
-
-
-
 }
 
-/*---------------------------- COMMENTS END -------------------------------------*/
 
-
-div.delete_cross input{
-    float: right;
-    width: 45px;
-    height: 45px;
-    z-index: 2;
-    opacity: 0.3;
-}
-
-div.delete_cross input:hover {
-    opacity: 1;
-}
-
-/*------------------------------ ADD ARTICLES BEGIN -------------------------------*/
-
+/*/ =============== ADD ARTICLES =========== /*/
 .uploadAdd{
     margin: 10px 0 0 40px;
 }
 
- .titleAdd,
- .shortDescAdd,
- .fullAdd{
-     width: 95%;
+    .titleAdd,
+    .shortDescAdd,
+    .fullAdd{
+        width: 95%;
+    }
 
- }
+    .titleAdd{
+        height: 50px;
+    }
 
- .titleAdd{
-     height: 50px;
- }
+    .shortDescAdd{
+        height: 100px;
+    }
 
- .shortDescAdd{
-     height: 100px;
- }
+    .fullAdd{
+        height: 300px;
+    }
 
- .fullAdd{
-     height: 300px;
- }
-
- dd, dt{
-     margin-left: 0;
- }
-/*------------------------------ ADD ARTICLES END ---------------------------------*/
-
+    dd,
+    dt{
+        margin-left: 0;
+    }
 
 
-/*------------------------------ EDIT ARTICLES BEGIN -------------------------------*/
+/*/ ================ EDIT ARTICLES =============== /*/
 .leftPartArticle,
 .rightPartArticle {
     display: inline-block;
     float: left;
 }
-
 
 .leftPartArticle {
     width: 20%;
@@ -599,106 +424,86 @@ div.delete_cross input:hover {
     width: 73%;
 }
 
-
 .titleEdit,
 .shortDesc,
 .text {
     width: 90%;
 }
 
-
 .titleEdit {
     height: 50px;
 }
-
 
 .shortDesc {
     height: 100px;
 }
 
-
 .text {
     height: auto;
 }
-
 
 .inputEdit {
     width: 140px;
 }
 
-
 .edit_but {
     width: 140px !important
 }
 
-/*------------------------------ EDIT ARTICLES END ---------------------------------*/
 
-
-
-/*------------------------------ EDIT COMMENTS BEGIN ----------- Yelp -------------------*/
-
-.workWithComments{
-
-}
-
-/*------------------------------ EDIT COMMENTS END --------------------------------*/
-
-/* ------------------------- MOVIE START ------------------------------------------*/
-div.mediaWrap {
+/*/ ================ MOVIE INDEX/INDEX ================== /*/
+div.movieWrap {
     background-color: #222222;
     height: 1000px;
     width: 100%;
+    font-size: 13px;
 }
 
-
-div.episodeWrap {
-    float: left;
-    width: 33.33%;
-}
-
-
-div.poster {
-    position: relative;
-    background-color: #000;
-    background-repeat: no-repeat;
-    border: 1px solid #fff;
-    margin: 30px auto 0;
-    width: 85%;
-}
-
-
-div.poster a {
-    display: block;
-    height: 100%;
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 100%;
-}
-
-
-div.poster:hover {
-    -moz-box-shadow: 0 0 15px #87CEEB; /* Для Firefox */
-    -webkit-box-shadow: 0 0 15px #87CEEB; /* Для Safari и Chrome */
-    box-shadow: 0 0 15px #87CEEB; /* Параметры тени */
-}
-
-
-div.movieWrap {
-    font-size: 12px;
-    width: 100%;
-}
-
-    div.movieWrap h2 {
-        text-align: center;
+    div.episodeWrap {
+        float: left;
+        width: 33.33%;
     }
 
+        div.poster {
+            position: relative;
+            background-color: #000;
+            background-repeat: no-repeat;
+            border: 1px solid #DCDCDC;
+            border-radius: 2px;
+            margin: 30px auto 0;
+            width: 85%;
+        }
+
+        div.poster:hover {
+            -moz-box-shadow: 0 0 15px #87CEEB; /* Для Firefox */
+            -webkit-box-shadow: 0 0 15px #87CEEB; /* Для Safari и Chrome */
+            box-shadow: 0 0 15px #87CEEB; /* Параметры тени */
+
+            border: 1px solid #fff;
+        }
+
+            div.poster a {
+                display: block;
+                height: 100%;
+                left: 0;
+                position: absolute;
+                top: 0;
+                width: 100%;
+            }
+
+/*/ ================ MOVIE INDEX/ARTICLE ================== /*/
+
+
     div.movieBlock {
-        border-bottom: 1px dashed #000;
+        background-color: #F5F5F5;
         clear: both;
         float: left;
         width: inherit;
     }
+
+        div.movieBlock h2 {
+            text-align: center;
+        }
 
         div.part1 {
             float: left;
@@ -713,6 +518,8 @@ div.movieWrap {
             div.moviePic img {
                 border: 1px solid #000;
                 margin-bottom: 20px;
+                height: 300px;
+                width: 200px;
             }
 
         div.part3 {
@@ -733,46 +540,49 @@ div.movieWrap {
             div.movieActor,
             div.moviePic,
             div.movieSlider,
-            div.movieSlider,
-            div.movieDesc,
             div.movieDesc,
             div.movieFunny,
             div.movieOst,
             div.movieOstPic {
-                padding: 20px;
+                padding: 10px;
+            }
+
+                div.movieOstPic img {
+                    height: 254px;
+                    width: 300px;
+                    margin-bottom: 20px;
+                }
+
+            div.movieOstPic {
+                margin: 0 10px 0 0;
+            }
+
+            div.movieShort,
+            div.movieActor,
+            div.movieDesc,
+            div.movieFunny,
+            div.movieOst {
                 background-color: #fff;
+                margin: 10px 20px;
+                padding: 20px;
+                border: 1px solid #DCDCDC;
+                border-radius: 2px;
             }
-            div.movieOstPic img {
-                height: 254px;
-                width: 300px;
-                margin-bottom: 20px;
-            }
 
-    div.movieShort textarea,
-    div.movieActor textarea,
-    div.movieDesc textarea,
-    div.movieFunny textarea,
-    div.movieOst textarea {
-        width: 100%;
-    }
+                div.movieShort textarea,
+                div.movieActor textarea,
+                div.movieDesc textarea,
+                div.movieFunny textarea,
+                div.movieOst textarea {
+                    width: 100%;
+                }
 
-/* ------------------------- MOVIE END --------------------------------------------*/
-div.container {
-    width: 0;
-    margin: 0;
-}
 
-div#responsive img {
-    width: inherit;
-    height: 310px;
-}
-/* ------------------------- GAMES START -------------------------------- */
-
+/*/ =============== GAMES ============== /*/
 div.oneWrap {
     float: left;
     width: 33.33%;
 }
-
 
 div.gamesWrap {
     background-color: #000;
@@ -780,50 +590,51 @@ div.gamesWrap {
     width: 100%;
 }
 
-
 div.gameBlock {
-    background-color: #6C6C6C;
-    border: 1px solid #DCDCDC;
+    background-color: #D14836;
+    border: 1px solid #888888;
+    border-radius: 2px;
     float: left;
     margin: 10px 30px;
-    padding: 15px;
+    width: 183px;
 }
-
 
 div.gameBlock:hover {
     -moz-box-shadow: 0 0 10px #fff; /* Для Firefox */
     -webkit-box-shadow: 0 0 10px #fff; /* Для Safari и Chrome */
     box-shadow: 0 0 10px #fff; /* Параметры тени */
     border: 1px solid #fff;
+    background-color: #C00000;
 }
 
-
-div.gameBlock img {
-    width: 160px;
-    height: 215px;
-    float: left;
-}
-
-
-div.gameBlock a {
+div.gameBlock:hover a{
     color: #fff;
 }
 
+div.gameBlock img {
+    width: 100%;
+    height: 236px;
+    float: left;
+}
+
+div.gameBlock a {
+    color: #f2f2f2;
+}
 
 div.gameBlock a:hover {
     color: #00A2F3;
+    font-size: 12px;
 }
-
 
 div.descBlock {
-    font-size: 12px;
-    text-align: center;
-    margin-top: 4px;
     float: left;
+    font-size: 12px;
+    padding: 8px 0;
+    text-align: center;
     width: 100%;
 }
-/*----------------------- GAMES END ---------------------------------- */
 
+/*/ =============== SAVE BUTTON ========== /*/
 div.save_button {
     width: 80px;
     height: 40px;

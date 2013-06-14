@@ -240,18 +240,8 @@ ul.list {
     -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
-                span.comment {
-                    font-style: italic;
-                    color: #0e0e0e;
-                }
-
-                span.strong {
-                    font-weight: bold;
-                }
-
                 div.cor_text {
-                    float: left;
-                    margin: 10px 20px 10px 0;
+                    margin: 10px 20px;
                 }
 
                 div.cor_text img {
@@ -379,26 +369,23 @@ div.pagination_foot {
 
 
 /*/ =============== ADD ARTICLES =========== /*/
-.uploadAdd{
-    margin: 10px 0 0 40px;
+div.addForm {
+    background-color: #c6c6c6;
+    padding: 0 20px;
 }
+
+    div.addForm p {
+        text-align: center;
+    }
 
     .titleAdd,
     .shortDescAdd,
-    .fullAdd{
-        width: 95%;
-    }
-
-    .titleAdd{
-        height: 50px;
-    }
-
-    .shortDescAdd{
-        height: 100px;
-    }
-
-    .fullAdd{
-        height: 300px;
+    .actorsAdd,
+    .fullAdd,
+    .funnyAdd,
+    .ostListAdd {
+        width: 100%;
+        height: 125px;
     }
 
     dd,
@@ -454,7 +441,7 @@ div.pagination_foot {
 /*/ ================ MOVIE INDEX/INDEX ================== /*/
 div.movieWrap {
     background-color: #222222;
-    height: 1000px;
+    float: left;
     width: 100%;
     font-size: 13px;
 }
@@ -470,7 +457,7 @@ div.movieWrap {
             background-repeat: no-repeat;
             border: 1px solid #DCDCDC;
             border-radius: 2px;
-            margin: 30px auto 0;
+            margin: 20px auto;
             width: 85%;
         }
 

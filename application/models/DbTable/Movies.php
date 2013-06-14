@@ -16,14 +16,18 @@ class Application_Model_DbTable_Movies extends Application_Model_DbTable_Abstrac
         /**
          * method addMovie
          *
+         * @$param['addImg'] and @$param['ostImg'] - there are not in this DB Table
+         *
          * Insert new movie article and return last insert ID
          */
+
+        unset($param['addImg']);
+        unset($param['ostImg']);
 
         $this->insert($param);
 
         return $this->getAdapter()->lastInsertId();
     }
-
 
     public function editMovie ($request) {
 

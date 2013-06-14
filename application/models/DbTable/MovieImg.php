@@ -46,5 +46,18 @@ class Application_Model_DbTable_MovieImg extends Application_Model_DbTable_Abstr
 
     }
 
+    public function addMore ($data, $movie_id) {
+
+        $array = array(
+
+            'movie_id' => $movie_id,
+            'addImg' => $data,
+
+        );
+
+        $this->insert($array);
+
+    }
+
 }
 

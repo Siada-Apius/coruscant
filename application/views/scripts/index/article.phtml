@@ -32,50 +32,11 @@
 
     </div>
 
-
     <div class="contentRightPart">
-
         <div class="contentText">
             <h2><?php echo $this->articles['title']; ?></h2>
-            <div><?php echo $this->articles['full']; ?></div>
+            <?php echo $this->articles['full']; ?>
         </div>
-        <!--<div class="rating">
-
-            <?php
-/*
-            $a = (int)$this->articles['ratingGood'];
-            $b = (int)$this->articles['ratingBad'];
-            $uniqueId = (int)$this->articles['id'];
-
-            $c = $a + $b;
-
-            @$proc1 = ($a * 100) / $c;
-            @$proc2 = ($b *100) / $c;
-
-            $proc1R = round($proc1);
-            $proc2R = round($proc2);
-            $sumR = $proc1 + $proc2;
-
-            require('css/style.php');
-
-            */?>
-
-            <div class="left">
-                <div class="blade<?php /*echo $uniqueId; */?>">
-                    <div class="topBlue<?php /*echo $uniqueId; */?>"></div>
-                    <div class="middleBlue<?php /*echo $uniqueId; */?>"></div>
-                </div>
-                <div class="downBlue<?php /*echo $uniqueId; */?> "></div>
-            </div>
-            <div class="right">
-                <div class="blade<?php /*echo $uniqueId; */?>">
-                    <div class="topRed<?php /*echo $uniqueId; */?>"></div>
-                    <div class="middleRed<?php /*echo $uniqueId; */?>"></div>
-                </div>
-                <div class="downRed<?php /*echo $uniqueId; */?>"></div>
-            </div>
-        </div>-->
-
     </div>
 
 </div>

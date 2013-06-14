@@ -21,5 +21,18 @@ class Application_Model_DbTable_MovieImgOst extends Application_Model_DbTable_Ab
         return $data->query()->fetchAll();
     }
 
+    public function addOstPic($data, $movie_id) {
+
+        $array = array(
+
+            'movie_id' => $movie_id,
+            'ostImg' => $data,
+
+        );
+
+        $this->insert($array);
+
+    }
+
 }
 

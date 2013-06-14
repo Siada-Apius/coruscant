@@ -57,10 +57,13 @@ class AdminController extends Zend_Controller_Action
     {
         $articleForm    = new Application_Form_Articles();
         $movieForm      = new Application_Form_Movies();
+
         $articleDb      = new Application_Model_DbTable_Articles();
         $movieDb        = new Application_Model_DbTable_Movies();
+        $movieImgDb     = new Application_Model_DbTable_MovieImg();
+        $movieImgOstDb  = new Application_Model_DbTable_MovieImgOst();
+
         $folderModel    = new Application_Model_Folder();
-        $maxId          = new Application_Model_DbTable_Articles();
 
         $response = $this->getRequest()->getParam('name');
 
@@ -74,6 +77,7 @@ class AdminController extends Zend_Controller_Action
 
                     $elem = $articleForm->getElement('miniImg');
                     $fileInfo = $elem->getFileInfo();
+
                     $data['miniImg'] = $fileInfo['miniImg']['name'];
 
                     $last_id = $articleDb->addArticles($data);
@@ -102,6 +106,7 @@ class AdminController extends Zend_Controller_Action
 
             if($this->getRequest()->isPost()){
 
+                $db = 'articles';
                 $data = $this->getRequest()->getPost();
 
                 if ($movieForm->isValid($data)){
@@ -109,15 +114,14 @@ class AdminController extends Zend_Controller_Action
                     unset($data['submit']);
                     unset($data['MAX_FILE_SIZE']);
 
-                    $elem = $movieForm->getElement('miniImg');
+
+
+
+                    if ($elem = $movieForm->getElement('miniImg'))
+
                     $fileInfo = $elem->getFileInfo();
                     $data['miniImg'] = $fileInfo['miniImg']['name'];
-
-                    $db = 'articles';
-
-                    $a = rename($data['miniImg'], $maxId->maxId($db));
-                    Zend_Debug::dump($a);die;
-                    $last_id = $movieDb->addMovie($data);
+                    $last_id =  $movieDb->addMovie($data);
 
                     $basePath = '/img/movie/' . $last_id . '/';
                     $folderModel->createFolderChain($basePath, '/');
@@ -126,7 +130,36 @@ class AdminController extends Zend_Controller_Action
                     $elem->setDestination($imageDir);
                     $elem->receive();
 
-                    $this->redirect('/admin/media');
+                    if ($elem1 = $movieForm->getElement('addImg')){
+
+                        $fileInfo1 = $elem1->getFileInfo();
+
+                        foreach ($fileInfo1 as $key => $value){
+
+                            $movieImgDb->addMore($value['name'], $last_id);
+
+                            $elem1->setDestination($imageDir);
+                            $elem1->receive();
+
+                        }
+
+                    }
+
+                    if ($elem2 = $movieForm->getElement('ostImg')) {
+
+                        $fileInfo2 = $elem2->getFileInfo();
+
+                        foreach ($fileInfo2  as $key => $value){
+
+                            $movieImgOstDb->addOstPic($value['name'], $last_id);
+
+                            $elem2->setDestination($imageDir);
+                            $elem2->receive();
+
+                        }
+                    }
+
+                    $this->redirect('/admin/movie');
 
                 }
 
@@ -220,7 +253,7 @@ class AdminController extends Zend_Controller_Action
 
                     $editData['miniImg'] = $fileInfo['miniImg']['name'];
                     $editData['addImg'] = $_FILES['addImg']['name'];
-
+                    Zend_Debug::dump($editData);die;
                     $movieDb->editMovie($editData);
                     $movieImgDb->addNewPic($editData);
 

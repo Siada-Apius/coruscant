@@ -156,10 +156,14 @@ $(document).ready(function () {
 
     $('.artDeleteInput').click(function(e){
 
-        //ти обробляєш клік по класу в якого міліон елементів тому шоб дістати той по якому клікнули передавай e  в фунцію і діставай через this
+        /**
+         * delete article ADMIN/INDEX
+         */
+
         var question = confirm("Sure?");
 
-        if ( question == true ) {
+        if (question == true) {
+
             $.post(
 
                 '/admin/index/0/controller%3D%3Eadmin/1/action%3D%3Eindex',{
@@ -169,18 +173,110 @@ $(document).ready(function () {
                 },function(response){
 
                     var id = response.id;
-                    $('#contentWrapper' + id).fadeOut(50);
+                    $('#contentWrapper'+id).fadeOut(50);
 
                 }
 
             );
         }
+
     });
 
     $('.deleteGame').click(function() {
 
         var va = $(this).children().val();
         alert(va);
+
+    });
+
+    $('.artImgDeleteInput').click(function(e){
+
+        /**
+         * delete picture /admin/edit/article/
+         */
+
+        $(this).addClass('clicked');
+
+        var question = confirm("Sure?");
+
+        if (question == true) {
+
+            $.post(
+
+                '/admin/edit/0/controller%3D%3Eadmin/1/action%3D%3Eedit',{
+
+                    'articlePicName' :  $(this).val(),
+                    'articleId' : $('.articleId').val()
+
+                },function(response){
+
+                    $('.clicked').parent('.delete_cross').parent('.delImg').fadeOut(50);
+
+                }
+
+            );
+
+        }
+
+    });
+
+    $('.movieDeleteInput').click(function(e){
+
+        /**
+         * delete picture /admin/edit/movie/ - slider
+         */
+
+        $(this).addClass('clicked');
+
+        var question = confirm("Sure?");
+
+        if (question == true) {
+
+            $.post(
+
+                '/admin/edit/0/controller%3D%3Eadmin/1/action%3D%3Eedit',{
+
+                    'moviePicValue' :  $(this).val()
+
+                },function(response){
+
+                    $('.clicked').parent('.delete_cross').parent('.episodeWrapEdit').fadeOut(50);
+
+                }
+
+            );
+
+        }
+
+    });
+
+    $('.movieOstPicDeleteInput').click(function(e){
+
+        /**
+         * delete picture /admin/edit/movie/ - OST
+         */
+
+        $(this).addClass('clicked');
+
+        var question = confirm("Sure?");
+
+        if (question == true) {
+
+            $.post(
+
+                '/admin/edit/0/controller%3D%3Eadmin/1/action%3D%3Eedit',{
+
+                    'movieOstPicDeleteInput' :  $(this).val()
+
+                },function(response){
+
+                    $('.clicked').parent('.delete_cross').parent('.movieOstPicAdmin').fadeOut(50);
+
+                }
+
+            );
+
+        }
 
     });
 

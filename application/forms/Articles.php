@@ -34,8 +34,7 @@ class Application_Form_Articles extends Zend_Form
         ;
 
         $author = new Zend_Form_Element_Text('author');
-        $author     ->setRequired(true)
-                    ->setLabel('Author')
+        $author     ->setLabel('Author')
                     ->addFilter('StringTrim')
                     ->setAttrib('id','authorAdd')
                     ->setAttrib('class', 'authorAdd inputEdit')
@@ -52,7 +51,14 @@ class Application_Form_Articles extends Zend_Form
         $miniImg    ->setLabel('Upload image')
                     ->setAttrib('multiple','false')
                     ->addValidator('Extension', false, 'jpg, png, gif, jpeg')
-                    ->setDestination('./img/miniImg/')
+        ;
+
+        $imgInText = new Zend_Form_Element_File('imgInText');
+        $imgInText  ->setLabel('Upload image for text')
+                    ->setAttrib('multiple','true')
+                    ->addValidator('Extension', false, 'jpg, png, gif, jpeg')
+                    ->setIsArray(true)
+
         ;
 
         $submit = new Zend_Form_Element_Submit('submit');
@@ -61,7 +67,7 @@ class Application_Form_Articles extends Zend_Form
                     ->setAttrib('class','btn btn-success edit_but')
         ;
 
-        $this->addElements(array($id, $title, $short, $full, $author, $update, $miniImg, $submit));
+        $this->addElements(array($id, $title, $short, $full, $author, $update, $miniImg, $imgInText, $submit));
 
     }
 

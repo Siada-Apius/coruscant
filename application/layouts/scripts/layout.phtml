@@ -12,6 +12,7 @@
     <?php $this->headLink()->appendStylesheet('/css/custom.css');?>
 
     <?php $this->headScript()->appendFile('/js/bootstrap.js');?>
+    <?php $this->headScript()->appendFile('/js/jquery/jquery.js');?>
 
     <!--SLIDER - START-->
     <?php $this->headLink()->appendStylesheet('/slider/css/screen.css');?>
@@ -110,6 +111,52 @@
                     }
 
                     ?>
+
+                    <?php
+
+                    $identity = Zend_Auth::getInstance()->getStorage()->read();
+
+                    if (isset($identity->role)  && $identity->role == 'admin'){
+
+                        if (@$this->articles['id']){
+
+                            $dir = '../www/img/article/' . $this->articles['id'] . '/';
+
+                            if(is_dir($dir)) {
+                                $files = scandir($dir);
+                                array_shift($files); // delete from array '.'
+                                array_shift($files); // delete from array '..'
+
+                                echo '<div class="well">';
+                                echo '<h5>Available Images For This Article</h5>';
+
+                                for($i=0; $i<sizeof($files); $i++){
+
+                                    echo '<div class="delImg">
+                                            <div class="delete_cross">
+                                                <input value="' . $files[$i] . '" class="artImgDeleteInput" type="image" src="/img/style/remove_close_button_x_delete.png">
+                                                <input class="articleId" type="hidden" value="' . $this->articles['id'] . '">
+                                            </div>
+
+                                            <img src="/img/article/' . $this->articles['id'] . '/' . $files[$i] . '"/>
+                                            <span>' . $dir . '</span><br/>
+                                            <span>' . $files[$i] . '</span><br/>
+
+                                        </div>'
+                                    ;
+
+                                }
+
+                                echo '</div>';
+                            }
+
+                            else echo $dir.' - not exist;<br>';
+
+                        }
+                    }
+
+                    ?>
+
                 </div>
 
                 <div class="contentMiddle">
@@ -118,11 +165,32 @@
                 </div>
 
                 <div class="contentRight">
-                    <?php #if($this->sukaID) $this->comments($this->sukaID);?>
-                    <?php #$this->comments($this->sukaID);?>
+
+                    <?php
+
+                    $identity = Zend_Auth::getInstance()->getStorage()->read();
+
+                    if (isset($identity->role)  && $identity->role == 'admin'): ?>
+
+                        <div class="note well">
+
+                            <code>
+                                <h5>Note</h5>
+                                <p>	&lt;article>wrapper&lt;/article></p>
+                                <p>	&lt;p>paragraph&lt;/p></p>
+                                <p>	&lt;strong>only in 1 paragraph&lt;/strong></p>
+                                <p>	&lt;em>only in 1 paragraph&lt;/em></p>
+                                <p>	&lt;b>in text&lt;/b></p>
+                                <p>	&lt;i>in text&lt;/i></p>
+                                <p>	&lt;cite>citation&lt;/cite></p>
+                                <p>	&lt;div class="cor_text">&lt;img />&lt;/div></p>
+                                <p>	* image in article add after adding new</p>
+                            </code>
+                        </div>
+                    <?php endif; ?>
+
                 </div>
             </div>
-
 
             <div class="footer">
                 <p>Developed for distribution STAR WARS</p>

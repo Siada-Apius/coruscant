@@ -2,19 +2,19 @@
 
 class My_View_Helper_Pagination extends Zend_View_Helper_Abstract{
 
-    function pagination(){
+    function pagination($self = ''){
 
 
-        $self = 'http://' . $_SERVER['SERVER_NAME'];
+        $self = ($self == '') ? 'http://' . $_SERVER['SERVER_NAME'] : $self;
 
-        #отримуємо з роутера або параметра page поточну сторінку, якщо значення не отримується, то встановлюється - 1
+        //отримуємо з роутера або параметра page поточну сторінку, якщо значення не отримується, то встановлюється - 1
         $page = (Zend_Controller_Front::getInstance()->getRequest()->getParam('page')) ? Zend_Controller_Front::getInstance()->getRequest()->getParam('page') : '1';
 
-        #обираємо потрібну таблицю
+        //обираємо потрібну таблицю
         $db = new Application_Model_DbTable_Articles();
-        #передаємо кількість елементів в пагінатор
+        //передаємо кількість елементів в пагінатор
         $paginator = Zend_Paginator::factory($db->getItemsList());
-        #скільки на сторінку
+        //скільки на сторінку
         $paginator ->setItemCountPerPage(5);
         $paginator ->setCurrentPageNumber($page);
 

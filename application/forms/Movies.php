@@ -8,6 +8,7 @@ class Application_Form_Movies extends Zend_Form
         $this->setEnctype(Zend_Form::ENCTYPE_MULTIPART);
 
         $id  = new Zend_Form_Element_Hidden('id');
+        $id     ->setAttrib('class', 'movieId');
 
         $title  = new Zend_Form_Element_Textarea('title');
         $title  ->setLabel('Title')

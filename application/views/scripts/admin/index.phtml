@@ -4,7 +4,7 @@
     <?php foreach ($this->articles as $value): ?>
         <li id="contentWrapper<?php echo $value['id']; ?>">
 
-            <div class="contentWrapper">
+            <div class="contentWrapper contentWrapper<?php echo $value['id']; ?>">
 
                 <a class="superLink" href="/admin/article/edit/id/<?php echo $value['id']; ?>" name="<?php echo $value['id']; ?>"></a>
 
@@ -64,8 +64,10 @@
                 </div>
 
 
+
+
                 <div class="delete_cross">
-                    <input class='artDeleteInput' type='image' src='/img/forceIcone/f_icon_pull1.png' value='<?php echo $value['id'] ?>' title='<?php echo $value['id'] ?>'>
+                    <input class='artDeleteInput' type='image' src='/img/style/remove_close_button_x_delete.png' value='<?php echo $value['id'] ?>' title='<?php echo $value['id'] ?>'>
                 </div>
 
             </div>
@@ -74,7 +76,7 @@
     <?php endforeach ?>
 </ul>
 
-<?php echo $this->pagination(); ?>
+<?php echo $this->pagination($this->path); ?>
 
 
 

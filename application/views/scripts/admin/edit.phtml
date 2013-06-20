@@ -6,20 +6,20 @@
             <div class="leftPartArticle">
 
                 <img class="articleMini" src="/img/article/<?php echo $this->articles['id']; ?>/<?php echo $this->articles['miniImg']; ?>" alt="miniImg" />
+
                 <?php echo $this->form->getElement('miniImg'); ?>
+                <?php echo $this->form->getElement('imgInText'); ?>
 
                 <div class="authorEdit">
-
                     <?php echo $this->form->getElement('id'); ?>
                     <?php echo $this->form->getElement('author'); ?>
                     <?php echo $this->form->getElement('updateDate'); ?>
-
                 </div>
 
                 <?php echo $this->form->getElement('submit'); ?> <!-- SUBMIT -->
 
             </div>
-
+            <?php #echo $this->wysiwyg; ?>
 
             <div class="rightPartArticle">
 
@@ -38,12 +38,13 @@
 
 <?php elseif ($this->formMovie): ?>
 
+    <div class="movieWrap">
 
-    <form enctype="multipart/form-data" method="POST">
+        <form enctype="multipart/form-data" method="POST">
 
-        <div class="movieWrap">
-
-            <h2><?php echo $this->formMovie->getElement('title'); ?></h2>
+            <div class="movieBlock">
+                <h2><?php echo $this->formMovie->getElement('title'); ?></h2>
+            </div>
 
             <div class="movieBlock">
 
@@ -57,11 +58,12 @@
 
                         <img src="/img/movie/<?php echo $this->movie['id']; ?>/<?php echo $this->movie['miniImg']; ?>" />
 
-
-
                         <?php echo $this->formMovie->getElement('miniImg'); ?>
                     </div>
-                    <div class="movieSlider">movieSlider</div>
+                    <div class="movieSlider">
+                        <?php echo $this->formMovie->getElement('addImg'); ?>
+                        <?php echo $this->formMovie->getElement('ostImg'); ?>
+                    </div>
                 </div>
             </div>
 
@@ -79,40 +81,49 @@
                     <div class="movieOst"><?php echo $this->formMovie->getElement('ostList'); ?></div>
                 </div>
 
-                <div class="part5">
-                    <div class="movieOstPic">
-
-                        <?php foreach ($this->movieImgOst as $valueOst): ?>
-                            <img src="/img/movie/<?=$valueOst['movie_id']?>/<?=$valueOst['ostImg']?>" />
-                        <?php endforeach; ?>
-
-                    </div>
-                </div>
-
-                <input type="file" multiple="true" name="addImg[]">
-
             </div>
 
             <?php echo $this->formMovie->getElement('id'); ?>
 
-            <div class="movieBlock">
+            <div class="save_button"><?php echo $this->formMovie->getElement('submit'); ?></div>
+        </form>
 
+        <div class="movieBlock">
 
+            <?php foreach ($this->movieImg as $value): ?>
 
-                <?php foreach ($this->movieImg as $value): ?>
+                <div class="episodeWrapEdit">
 
-                    <div class="episodeWrap">
-                        <div class="poster">
-                            <img src="/img/movie/<?=$value['movie_id']?>/<?=$value['addImg']?>" />
-                        </div>
+                    <div class="delete_cross">
+                        <input class='movieDeleteInput' type='image' src='/img/style/remove_close_button_x_delete.png' value='<?php echo $value['id'] ?>' title='<?php echo $value['id'] ?>'>
                     </div>
 
-                <?php endforeach; ?>
-            </div>
+                    <div class="poster">
+                        <img src="/img/movie/<?=$value['movie_id']?>/<?=$value['addImg']?>" />
+                    </div>
+                </div>
 
-            <div class="save_button"><?php echo $this->formMovie->getElement('submit'); ?></div>
+            <?php endforeach; ?>
+        </div>
+<!--TODO: photo content for admin -->
+        <div class="movieBlock">
+
+            <?php foreach ($this->movieImgOst as $valueOst): ?>
+
+                <div class="movieOstPicAdmin">
+
+                    <div class="delete_cross">
+                        <input class='movieOstPicDeleteInput' type='image' src='/img/style/remove_close_button_x_delete.png' value='<?php echo $valueOst['id'] ?>' title='<?php echo $valueOst['id'] ?>'>
+                    </div>
+
+                    <img src="/img/movie/<?=$valueOst['movie_id'];?>/<?=$valueOst['ostImg'];?>" />
+                </div>
+
+            <?php endforeach; ?>
 
         </div>
-    </form>
 
+    </div>
 <?php endif; ?>
+
+

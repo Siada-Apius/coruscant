@@ -46,7 +46,7 @@ class Application_Model_DbTable_MovieImg extends Application_Model_DbTable_Abstr
 
     }
 
-    public function addMore ($data, $movie_id) {
+    public function addMoviePic ($data, $movie_id) {
 
         $array = array(
 

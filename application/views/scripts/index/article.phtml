@@ -10,6 +10,11 @@
         </div>
 
         <?php
+
+        /*
+         * TODO remove all from /img/miniImg to /img/article/<?php ?>/
+         */
+
         $identity = Zend_Auth::getInstance()->getStorage()->read();
         $role = (isset($identity->role)) ? $identity->role : '';
 

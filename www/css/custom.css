@@ -208,7 +208,7 @@ ul.list {
                 padding: 5px 5px;
                 font-size: 12px;
                 font-style: italic;
-                max-width: 130px;
+                min-width: 126px;
             }
 
             div.contentText {
@@ -248,12 +248,19 @@ ul.list {
                     border: 1px groove #000;
                 }
 
-        div.delete_cross input{
+        div.delete_cross {
             float: right;
-            width: 45px;
-            height: 45px;
+            height: 25px;
+            margin: 5px;
+            width: 25px;
+        }
+
+        div.delete_cross input{
+            width: 25px;
+            height: 25px;
             z-index: 2;
             opacity: 0.3;
+            position: relative;
         }
 
         div.delete_cross input:hover {
@@ -370,7 +377,7 @@ div.pagination_foot {
 
 /*/ =============== ADD ARTICLES =========== /*/
 div.addForm {
-    background-color: #c6c6c6;
+    background-color: #F2F2F2;
     padding: 0 20px;
 }
 
@@ -388,6 +395,10 @@ div.addForm {
         height: 125px;
     }
 
+    .fullAdd {
+        height: 100%;
+    }
+
     dd,
     dt{
         margin-left: 0;
@@ -395,47 +406,38 @@ div.addForm {
 
 
 /*/ ================ EDIT ARTICLES =============== /*/
-.leftPartArticle,
-.rightPartArticle {
-    display: inline-block;
+div.contEdit {
+    background-color: #f2f2f2;
     float: left;
 }
 
-.leftPartArticle {
-    width: 20%;
-    margin: 10px;
-    padding: 5px;
-}
+    div.leftPartArticle,
+    div.rightPartArticle {
+        display: inline-block;
+        float: left;
+    }
 
-.rightPartArticle {
-    width: 73%;
-}
+    div.leftPartArticle {
+        width: 20%;
+        margin: 10px;
+        padding: 5px;
+    }
 
-.titleEdit,
-.shortDesc,
-.text {
-    width: 90%;
-}
+        div.note {
 
-.titleEdit {
-    height: 50px;
-}
+        }
 
-.shortDesc {
-    height: 100px;
-}
+    div.rightPartArticle {
+        width: 73%;
+    }
 
-.text {
-    height: auto;
-}
+        .inputEdit {
+            width: 140px;
+        }
 
-.inputEdit {
-    width: 140px;
-}
-
-.edit_but {
-    width: 140px !important
-}
+        .edit_but {
+            width: 140px !important
+        }
 
 
 /*/ ================ MOVIE INDEX/INDEX ================== /*/
@@ -449,6 +451,30 @@ div.movieWrap {
     div.episodeWrap {
         float: left;
         width: 33.33%;
+    }
+
+div.episodeWrapEdit {
+    float: left;
+    width: 33.33%;
+}
+
+div.delImg {
+    border: 1px solid #888888;
+    margin: 10px 0;
+    border-radius: 2px;
+}
+
+div.delImg:hover {
+    -moz-box-shadow: 0 0 20px #FF5959;
+    -webkit-box-shadow: 0 0 20px #FF5959;
+    box-shadow: 0 0 10px #FF5959;
+}
+
+    div.delImg span{
+        font-size: 10px;
+        line-height: 35px;
+        padding-left: 5px;
+        word-wrap: break-word;
     }
 
         div.poster {
@@ -485,11 +511,12 @@ div.movieWrap {
         background-color: #F5F5F5;
         clear: both;
         float: left;
-        width: inherit;
+        width: 100%;
     }
 
         div.movieBlock h2 {
             text-align: center;
+            margin: 0 20px;
         }
 
         div.part1 {
@@ -536,7 +563,7 @@ div.movieWrap {
 
                 div.movieOstPic img {
                     height: 254px;
-                    width: 300px;
+                    width: 100%;
                     margin-bottom: 20px;
                 }
 
@@ -544,6 +571,30 @@ div.movieWrap {
                 margin: 0 10px 0 0;
             }
 
+            div.movieOstPicAdmin {
+                border: 1px solid #000000;
+                border-radius: 2px 2px 2px 2px;
+                float: left;
+                height: 272px;
+                margin: 10px;
+                width: 30%;
+            }
+
+            div.movieOstPicAdmin:hover {
+                -moz-box-shadow: 0 0 15px darkred; /* Для Firefox */
+                -webkit-box-shadow: 0 0 15px darkred; /* Для Safari и Chrome */
+                box-shadow: 0 0 15px darkred; /* Параметры тени */
+            }
+
+                div.movieOstPicAdmin img {
+                    height: 240px;
+                    width: 100%;
+                }
+/*
+
+TODO style for admin pic
+
+*/
             div.movieShort,
             div.movieActor,
             div.movieDesc,

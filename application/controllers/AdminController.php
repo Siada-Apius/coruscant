@@ -215,6 +215,7 @@ class AdminController extends Zend_Controller_Action
         $movieDb        = new Application_Model_DbTable_Movies();
         $movieImgDb     = new Application_Model_DbTable_MovieImg();
         $movieImgOstDb  = new Application_Model_DbTable_MovieImgOst();
+        $movieTextImg   = new Application_Model_DbTable_MovieImgText();
 
         $movieForm      = new Application_Form_Movies();
         $articleForm    = new Application_Form_Articles();
@@ -275,6 +276,17 @@ class AdminController extends Zend_Controller_Action
 
                 deleteFile($needDir, $movieOstPicName['ostImg']);
                 $movieImgOstDb->deleteItem($movieOstPicValue);
+
+            }
+
+            if ($this->getRequest()->getParam('movieImgDeleteInput')){
+
+                $movieTextPicValue = $this->getRequest()->getParam('movieImgDeleteInput');
+                $movieTextPicName = $movieTextImg->getItem($movieTextPicValue);
+                $needDir = '../www/img/movie/' . $movieTextPicName['movie_id'] . '/';
+
+                deleteFile($needDir, $movieTextPicName['textImg']);
+                $movieTextImg->deleteItem($movieTextPicName['id']);
 
             }
 
@@ -380,6 +392,24 @@ class AdminController extends Zend_Controller_Action
                             $elem2->receive();
 
                         }
+                    }
+
+                    if ($movieForm->getElement('textImg')){
+
+                        $elem1 = $movieForm->getElement('textImg');
+                        $fileInfo1 = $elem1->getFileInfo();
+
+                        foreach ($fileInfo1 as $key => $value){
+
+                            if ($value['name']){
+                                $movieTextImg->addMovieTextPic($value['name'], $editData['id']);
+                            }
+
+                            $elem1->setDestination($imageDir);
+                            $elem1->receive();
+
+                        }
+
                     }
 
                 }

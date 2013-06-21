@@ -42,11 +42,11 @@
 
         <form enctype="multipart/form-data" method="POST">
 
-            <div class="movieBlock">
+            <div class="movieBlock admin">
                 <h2><?php echo $this->formMovie->getElement('title'); ?></h2>
             </div>
 
-            <div class="movieBlock">
+            <div class="movieBlock admin">
 
                 <div class="part1">
                     <div class="movieShort"><?php echo $this->formMovie->getElement('short'); ?></div>
@@ -63,11 +63,12 @@
                     <div class="movieSlider">
                         <?php echo $this->formMovie->getElement('addImg'); ?>
                         <?php echo $this->formMovie->getElement('ostImg'); ?>
+                        <?php echo $this->formMovie->getElement('textImg'); ?>
                     </div>
                 </div>
             </div>
 
-            <div class="movieBlock">
+            <div class="movieBlock admin">
 
                 <div class="part3">
                     <div class="movieDesc"><?php echo $this->formMovie->getElement('full'); ?></div>
@@ -75,7 +76,7 @@
                 </div>
             </div>
 
-            <div class="movieBlock">
+            <div class="movieBlock admin">
 
                 <div class="part4">
                     <div class="movieOst"><?php echo $this->formMovie->getElement('ostList'); ?></div>
@@ -88,7 +89,7 @@
             <div class="save_button"><?php echo $this->formMovie->getElement('submit'); ?></div>
         </form>
 
-        <div class="movieBlock">
+        <div class="movieBlock admin">
 
             <?php foreach ($this->movieImg as $value): ?>
 
@@ -99,14 +100,14 @@
                     </div>
 
                     <div class="poster">
-                        <img src="/img/movie/<?=$value['movie_id']?>/<?=$value['addImg']?>" />
+                        <img src="/img/movie/<?=$value['movie_id']?>/<?=$value['addImg']?>" class="posterImg"/>
                     </div>
                 </div>
 
             <?php endforeach; ?>
         </div>
-<!--TODO: photo content for admin -->
-        <div class="movieBlock">
+
+        <div class="movieBlock admin">
 
             <?php foreach ($this->movieImgOst as $valueOst): ?>
 

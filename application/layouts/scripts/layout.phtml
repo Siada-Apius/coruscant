@@ -153,6 +153,38 @@
                             else echo $dir.' - not exist;<br>';
 
                         }
+
+                        if (@$this->movie['id']){
+
+                            $movieTextImg   = new Application_Model_DbTable_MovieImgText();
+                            $array = $movieTextImg->getItemsWhere($this->movie['id']);
+
+                            $dir = '../www/img/movie/' . $this->movie['id'] . '/';
+
+                            echo '<h5>Available Images For This Article</h5>';
+                            echo '<div class="well">';
+
+                            foreach ($array as $value){
+
+                                echo '<div class="delImg">
+                                        <div class="delete_cross">
+                                            <input value="' . $value['id'] . '" class="movieImgDeleteInput" type="image" src="/img/style/remove_close_button_x_delete.png">
+                                            <input class="articleId" type="hidden" value="' . $value['id'] . '">
+                                        </div>
+
+                                        <img src="/img/movie/' . $value['movie_id'] . '/' . $value['textImg'] . '"/>
+                                        <span>' . $dir . '</span><br/>
+                                        <span>' . $value['textImg'] . '</span><br/>
+
+                                    </div>'
+                                ;
+
+                            }
+
+                            echo '</div>';
+
+                        }
+
                     }
 
                     ?>

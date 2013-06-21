@@ -30,7 +30,7 @@ class MovieController extends Zend_Controller_Action
 
         $movie          = $movieDb->getItem($id);
         $movieImg       = $movieImgDb->getItemsWhere($id);
-        $movieImgOst    = $movieImgOstDb->getItemsList($id);
+        $movieImgOst    = $movieImgOstDb->getItemsWhere($id);
 
         $this->view->movie = $movie;
         $this->view->movieImg = $movieImg;

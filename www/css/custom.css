@@ -455,7 +455,7 @@ div.movieWrap {
 
 div.episodeWrapEdit {
     float: left;
-    width: 33.33%;
+    width: 16.5%;
 }
 
 div.delImg {
@@ -504,6 +504,11 @@ div.delImg:hover {
                 width: 100%;
             }
 
+            img.posterImg {
+                width: 100%;
+                height: 145px;
+            }
+
 /*/ ================ MOVIE INDEX/ARTICLE ================== /*/
 
 
@@ -512,6 +517,10 @@ div.delImg:hover {
         clear: both;
         float: left;
         width: 100%;
+    }
+
+    div.admin {
+        border-bottom: 1px dashed #000;
     }
 
         div.movieBlock h2 {
@@ -575,9 +584,8 @@ div.delImg:hover {
                 border: 1px solid #000000;
                 border-radius: 2px 2px 2px 2px;
                 float: left;
-                height: 272px;
                 margin: 10px;
-                width: 30%;
+                width: 21%;
             }
 
             div.movieOstPicAdmin:hover {
@@ -587,7 +595,7 @@ div.delImg:hover {
             }
 
                 div.movieOstPicAdmin img {
-                    height: 240px;
+                    height: 145px;
                     width: 100%;
                 }
 /*

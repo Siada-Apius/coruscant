@@ -280,4 +280,34 @@ $(document).ready(function () {
 
     });
 
+    $('.movieImgDeleteInput').click(function(e){
+
+        /**
+         * delete picture /admin/edit/movie/ - TEXT PIC
+         */
+
+        $(this).addClass('clicked');
+
+        var question = confirm("Sure?");
+
+        if (question == true) {
+
+            $.post(
+
+                '/admin/edit/0/controller%3D%3Eadmin/1/action%3D%3Eedit',{
+
+                    'movieImgDeleteInput' :  $(this).val()
+
+                },function(response){
+
+                    $('.clicked').parent('.delete_cross').parent('.delImg').fadeOut(50);
+
+                }
+
+            );
+
+        }
+
+    })
+
 });

@@ -54,6 +54,14 @@ class Application_Form_Movies extends Zend_Form
                     ->addValidator('Extension', false, 'jpg, png, gif, jpeg')
         ;
 
+        $textImg = new Zend_Form_Element_File('textImg');
+        $textImg    ->addFilter('StringTrim')
+                    ->setLabel('Upload Text Image')
+                    ->setAttrib('multiple','true')
+                    ->addValidator('Extension', false, 'jpg, png, gif, jpeg')
+                    ->setIsArray(true)
+        ;
+
         $addImg = new Zend_Form_Element_File('addImg');
         $addImg     ->addFilter('StringTrim')
                     ->setLabel('Upload Slide Image')
@@ -76,7 +84,7 @@ class Application_Form_Movies extends Zend_Form
                     ->setAttrib('class','btn btn-success edit_but')
         ;
 
-        $this->addElements(array($id, $title, $short, $actors, $full, $funny, $ost, $miniImg, $addImg, $ostImg, $submit));
+        $this->addElements(array($id, $title, $short, $actors, $full, $funny, $ost, $miniImg, $textImg, $addImg, $ostImg, $submit));
 
     }
 

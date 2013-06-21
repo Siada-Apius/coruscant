@@ -86,6 +86,7 @@
           <dbTableFile dbTableName="Moviesimg"/>
           <dbTableFile dbTableName="MovieImg"/>
           <dbTableFile dbTableName="MovieImgOst"/>
+          <dbTableFile dbTableName="MovieImgText"/>
         </dbTableDirectory>
       </modelsDirectory>
       <modulesDirectory enabled="false"/>

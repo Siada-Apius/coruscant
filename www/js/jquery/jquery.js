@@ -223,7 +223,7 @@ $(document).ready(function () {
     $('.movieDeleteInput').click(function(e){
 
         /**
-         * delete picture /admin/edit/movie/ - slider
+         * delete picture /admin/edit/movie/
          */
 
         $(this).addClass('clicked');
@@ -240,7 +240,7 @@ $(document).ready(function () {
 
                 },function(response){
 
-                    $('.clicked').parent('.delete_cross').parent('.episodeWrapEdit').fadeOut(50);
+                    $('.clicked').parent('.delete_cross').parent('.deletePic').fadeOut(50);
 
                 }
 
@@ -250,10 +250,10 @@ $(document).ready(function () {
 
     });
 
-    $('.movieOstPicDeleteInput').click(function(e){
+    $('.movDeleteInput').click(function(e){
 
         /**
-         * delete picture /admin/edit/movie/ - OST
+         * delete movie article - ADMIN/MOVIE
          */
 
         $(this).addClass('clicked');
@@ -264,13 +264,13 @@ $(document).ready(function () {
 
             $.post(
 
-                '/admin/edit/0/controller%3D%3Eadmin/1/action%3D%3Eedit',{
+                '/admin/movie/0/controller%3D%3Eadmin/1/action%3D%3Emovie',{
 
-                    'movieOstPicDeleteInput' :  $(this).val()
+                    'movieId' :  $(this).val()
 
                 },function(response){
 
-                    $('.clicked').parent('.delete_cross').parent('.movieOstPicAdmin').fadeOut(50);
+                    $('.clicked').parent('.delete_cross').parent('.episodeWrap').fadeOut(50);
 
                 }
 
@@ -280,34 +280,14 @@ $(document).ready(function () {
 
     });
 
-    $('.movieImgDeleteInput').click(function(e){
-
+    $(function() {
         /**
-         * delete picture /admin/edit/movie/ - TEXT PIC
+         * wysiwyg
          */
 
-        $(this).addClass('clicked');
-
-        var question = confirm("Sure?");
-
-        if (question == true) {
-
-            $.post(
-
-                '/admin/edit/0/controller%3D%3Eadmin/1/action%3D%3Eedit',{
-
-                    'movieImgDeleteInput' :  $(this).val()
-
-                },function(response){
-
-                    $('.clicked').parent('.delete_cross').parent('.delImg').fadeOut(50);
-
-                }
-
-            );
-
-        }
-
-    })
+        // Add markItUp! to your textarea in one line
+        // $('textarea').markItUp( { Settings }, { OptionalExtraSettings } );
+        $('.wysiwyg').markItUp(mySettings);
+    });
 
 });

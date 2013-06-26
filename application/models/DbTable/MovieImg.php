@@ -6,52 +6,44 @@ class Application_Model_DbTable_MovieImg extends Application_Model_DbTable_Abstr
     protected $_name = 'movieimg';
 
 
-    public function getItemsWhere($id) {
+    public function getItemsWhere($id, $type) {
 
         /**
          * method getItemsWhere
          *
-         * return all field where movie_id == $id
+         * @return all fields where movie_id == $id
+         * @return and type == $type
          */
 
-        $data = $this   ->select()
-                        ->from($this->_name)
-                        ->where('movie_id = ?', $id)
-        ;
+        foreach ($type as $val){
 
-        return $data->query()->fetchAll();
-    }
+            $data = $this   ->select()
+                            ->from($this->_name)
+                            ->where('movie_id = ?', $id)
+                            ->where('type = ?', $val)
+            ;
 
+            $fatArray[$val] = $data->query()->fetchAll();
 
-    public function addNewPic($data) {
-
-        /**
-         * method addNewPic
-         *
-         * method only add new pictures
-         */
-
-        foreach ($data['addImg'] as $value) {
-
-            $array = array(
-
-                'movie_id' => $data['id'],
-                'addImg' => $value,
-
-            );
-
-            $this->insert($array);
 
         }
-
+        #Zend_Debug::dump($fatArray);die;
+        return $fatArray;
     }
 
-    public function addMoviePic ($data, $movie_id) {
+    public function addMoviePic ($data, $movie_id, $type) {
+
+        /**
+         * method addMoviePic
+         *
+         * insert new pic where type is
+         */
 
         $array = array(
 
             'movie_id' => $movie_id,
             'addImg' => $data,
+            'type' => $type
 
         );
 

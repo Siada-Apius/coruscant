@@ -13,38 +13,38 @@ class Application_Form_Movies extends Zend_Form
         $title  = new Zend_Form_Element_Textarea('title');
         $title  ->setLabel('Title')
                 ->addFilter('StringTrim')
-                ->setAttrib('class','titleAdd')
+                ->setAttrib('class','titleAdd wysiwyg')
         ;
 
         $short = new Zend_Form_Element_Textarea('short');
         $short  ->setLabel('Short Description')
                 ->addFilter('StringTrim')
-                ->setAttrib('class', 'shortDescAdd')
+                ->setAttrib('class', 'shortDescAdd wysiwyg')
         ;
 
         $actors = new Zend_Form_Element_Textarea('actors');
         $actors ->setLabel('Actors')
                 ->addFilter('StringTrim')
-                ->setAttrib('class', 'actorsAdd')
+                ->setAttrib('class', 'actorsAdd wysiwyg')
         ;
 
         $full  = new Zend_Form_Element_Textarea('full');
         $full   ->addFilter('StringTrim')
                 ->setLabel('Text')
                 ->setAttrib('class', 'text')
-                ->setAttrib('class', 'fullAdd')
+                ->setAttrib('class', 'fullAdd wysiwyg')
         ;
 
         $funny = new Zend_Form_Element_Textarea('funny');
         $funny  ->setLabel('Funny')
                 ->addFilter('StringTrim')
-                ->setAttrib('class', 'funnyAdd')
+                ->setAttrib('class', 'funnyAdd wysiwyg')
         ;
 
         $ost = new Zend_Form_Element_Textarea('ostList');
         $ost    ->setLabel('OST List')
                 ->addFilter('StringTrim')
-                ->setAttrib('class', 'ostListAdd')
+                ->setAttrib('class', 'ostListAdd wysiwyg')
         ;
 
         $miniImg = new Zend_Form_Element_File('miniImg');

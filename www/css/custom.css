@@ -214,6 +214,7 @@ ul.list {
             div.contentText {
                 float: left;
                 padding: 0 10px;
+                width: 100%;
             }
 
                 div.contentText h2 {
@@ -598,11 +599,7 @@ div.delImg:hover {
                     height: 145px;
                     width: 100%;
                 }
-/*
 
-TODO style for admin pic
-
-*/
             div.movieShort,
             div.movieActor,
             div.movieDesc,

@@ -12,12 +12,27 @@
     <?php $this->headLink()->appendStylesheet('/css/custom.css');?>
 
     <?php $this->headScript()->appendFile('/js/bootstrap.js');?>
+    <?php $this->headScript()->appendFile('/js/jquery/jquery-1.8.1.js');?>
     <?php $this->headScript()->appendFile('/js/jquery/jquery.js');?>
 
     <!--SLIDER - START-->
     <?php $this->headLink()->appendStylesheet('/slider/css/screen.css');?>
     <?php $this->headScript()->appendFile('/slider/js/easySlider1.7.js');?>
     <!--SLIDER - END --->
+
+    <!-- WYSIWYG - START -->
+    <?php #$this->headLink()->appendStylesheet('/wysiwyg/images/style.css');?>
+    <!-- markItUp! skin -->
+    <?php $this->headLink()->appendStylesheet('/wysiwyg/markitup/skins/simple/style.css');?>
+    <!--  markItUp! toolbar skin -->
+    <?php $this->headLink()->appendStylesheet('/wysiwyg/markitup/sets/default/style.css');?>
+    <!-- jQuery -->
+        <!--<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.0.min.js"></script>-->
+    <!-- markItUp! -->
+    <?php $this->headScript()->appendFile('/wysiwyg/markitup/jquery.markitup.js');?>
+    <!-- markItUp! toolbar settings -->
+    <?php $this->headScript()->appendFile('/wysiwyg/markitup/sets/default/set.js');?>
+    <!-- WYSIWYG - END ---->
 
     <?php echo $this->jQuery(); ?>
     <?php echo $this->headLink();?>
@@ -139,8 +154,9 @@
                                             </div>
 
                                             <img src="/img/article/' . $this->articles['id'] . '/' . $files[$i] . '"/>
-                                            <span>' . $dir . '</span><br/>
-                                            <span>' . $files[$i] . '</span><br/>
+                                            <span>' . $dir . $files[$i] . '</span><br/>
+                                            <span><input type="text" readonly="readonly" value="http://coruscant.local/img/article/' . $this->articles['id'] . '/' . $files[$i] . '"/></span><br/>
+                                            <span><a href="http://coruscant.local/img/article/' . $this->articles['id'] . '/' . $files[$i] . '">http://coruscant.local/img/article/' . $this->articles['id'] . '/' . $files[$i] . '</a></span><br/>
 
                                         </div>'
                                     ;
@@ -151,37 +167,6 @@
                             }
 
                             else echo $dir.' - not exist;<br>';
-
-                        }
-
-                        if (@$this->movie['id']){
-
-                            $movieTextImg   = new Application_Model_DbTable_MovieImgText();
-                            $array = $movieTextImg->getItemsWhere($this->movie['id']);
-
-                            $dir = '../www/img/movie/' . $this->movie['id'] . '/';
-
-                            echo '<h5>Available Images For This Article</h5>';
-                            echo '<div class="well">';
-
-                            foreach ($array as $value){
-
-                                echo '<div class="delImg">
-                                        <div class="delete_cross">
-                                            <input value="' . $value['id'] . '" class="movieImgDeleteInput" type="image" src="/img/style/remove_close_button_x_delete.png">
-                                            <input class="articleId" type="hidden" value="' . $value['id'] . '">
-                                        </div>
-
-                                        <img src="/img/movie/' . $value['movie_id'] . '/' . $value['textImg'] . '"/>
-                                        <span>' . $dir . '</span><br/>
-                                        <span>' . $value['textImg'] . '</span><br/>
-
-                                    </div>'
-                                ;
-
-                            }
-
-                            echo '</div>';
 
                         }
 

@@ -19,7 +19,6 @@
                 <?php echo $this->form->getElement('submit'); ?> <!-- SUBMIT -->
 
             </div>
-            <?php #echo $this->wysiwyg; ?>
 
             <div class="rightPartArticle">
 
@@ -90,38 +89,75 @@
         </form>
 
         <div class="movieBlock admin">
+            <h4>SLIDER PICTURES</h4>
+            <?php foreach ($this->movieImg as $key => $value):
 
-            <?php foreach ($this->movieImg as $value): ?>
+                if ($key == '0'):
 
-                <div class="episodeWrapEdit">
+                    foreach($value as $subVal): ?>
 
-                    <div class="delete_cross">
-                        <input class='movieDeleteInput' type='image' src='/img/style/remove_close_button_x_delete.png' value='<?php echo $value['id'] ?>' title='<?php echo $value['id'] ?>'>
-                    </div>
+                        <div class="episodeWrapEdit deletePic">
 
-                    <div class="poster">
-                        <img src="/img/movie/<?=$value['movie_id']?>/<?=$value['addImg']?>" class="posterImg"/>
-                    </div>
-                </div>
+                            <div class="delete_cross">
+                                <input class='movieDeleteInput' type='image' src='/img/style/remove_close_button_x_delete.png' value='<?php echo $subVal['id'] ?>' title='<?php echo $subVal['id'] ?>'>
+                            </div>
 
-            <?php endforeach; ?>
+                            <div class="poster">
+                                <img src="/img/movie/<?=$subVal['movie_id']?>/<?=$subVal['addImg']?>" class="posterImg"/>
+                            </div>
+                        </div>
+
+                    <?php endforeach;
+                endif;
+            endforeach; ?>
         </div>
 
         <div class="movieBlock admin">
+            <h4>OST PICTURES</h4>
 
-            <?php foreach ($this->movieImgOst as $valueOst): ?>
+            <?php foreach ($this->movieImg as $key => $value):
 
-                <div class="movieOstPicAdmin">
+                if ($key == '1'):
 
-                    <div class="delete_cross">
-                        <input class='movieOstPicDeleteInput' type='image' src='/img/style/remove_close_button_x_delete.png' value='<?php echo $valueOst['id'] ?>' title='<?php echo $valueOst['id'] ?>'>
-                    </div>
+                    foreach($value as $subVal): ?>
 
-                    <img src="/img/movie/<?=$valueOst['movie_id'];?>/<?=$valueOst['ostImg'];?>" />
-                </div>
+                        <div class="movieOstPicAdmin deletePic">
 
-            <?php endforeach; ?>
+                            <div class="delete_cross">
+                                <input class='movieDeleteInput' type='image' src='/img/style/remove_close_button_x_delete.png' value='<?php echo $subVal['id'] ?>' title='<?php echo $subVal['id'] ?>'>
+                            </div>
 
+                            <img src="/img/movie/<?=$subVal['movie_id'];?>/<?=$subVal['addImg'];?>" />
+                        </div>
+
+                    <?php
+                    endforeach;
+                endif;
+            endforeach; ?>
+        </div>
+
+        <div class="movieBlock admin">
+            <h4>TEXT PICTURES</h4>
+
+            <?php foreach ($this->movieImg as $key => $value):
+
+                if ($key == '2'):
+
+                    foreach($value as $subVal): ?>
+
+                        <div class="movieOstPicAdmin deletePic">
+
+                            <div class="delete_cross">
+                                <input class='movieDeleteInput' type='image' src='/img/style/remove_close_button_x_delete.png' value='<?php echo $subVal['id'] ?>' title='<?php echo $subVal['id'] ?>'>
+                            </div>
+
+                            <img src="/img/movie/<?=$subVal['movie_id'];?>/<?=$subVal['addImg'];?>" />
+                        </div>
+
+                    <?php
+                    endforeach;
+                endif;
+            endforeach; ?>
         </div>
 
     </div>

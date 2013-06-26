@@ -14,30 +14,17 @@ class AdminController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        $article = new Application_Model_DbTable_Articles();
+        $articleDb  = new Application_Model_DbTable_Articles();
+        $dwarf      = new Application_Model_Dwarf();
 
         if ($this->getRequest()->isXmlHttpRequest()){
 
             if ($this->getRequest()->getParam('delId')) {
 
-                $article->deleteItem($this->getRequest()->getParam('delId'));
+                $articleDb->deleteItem($this->getRequest()->getParam('delId'));
 
-                function rrmdir($dir) {
-                    if (is_dir($dir)) {
-                        $objects = scandir($dir);
-                        foreach ($objects as $object) {
-                            if ($object != "." && $object != "..") {
-                                if (filetype($dir."/".$object) == "dir") rrmdir($dir."/".$object); else unlink($dir."/".$object);
-                            }
-                        }
-                        reset($objects);
-                        rmdir($dir);
-                    }
-                }
                 $dir = '../www/img/article/' . $this->getRequest()->getParam('delId') . '/';
-
-                rrmdir($dir);
-                $this->view->id = $this->getRequest()->getParam('delId');
+                $dwarf->rrmdir($dir);
 
             }
 
@@ -46,16 +33,32 @@ class AdminController extends Zend_Controller_Action
         $page = (Zend_Controller_Front::getInstance()->getRequest()->getParam('page')) ? Zend_Controller_Front::getInstance()->getRequest()->getParam('page') : '1';
         $from = ($page - 1) * 5;
 
-        $this->view->articles = $article->getArticles($from);
+        $this->view->articles = $articleDb->getArticles($from);
         $this->view->path = 'http://' . $_SERVER['SERVER_NAME'] . '/admin';
 
     }
 
     public function movieAction()
     {
-        $movieDb = new Application_Model_DbTable_Movies();
+        $movieDb    = new Application_Model_DbTable_Movies();
+        $dwarf      = new Application_Model_Dwarf();
 
-        $this->view->movie = $movieDb->getItemsList();
+        if ($this->getRequest()->isXmlHttpRequest()){
+
+            if ($this->getRequest()->getParam('movieId')) {
+
+                $movieDb->deleteItem($this->getRequest()->getParam('movieId'));
+
+                $dir = '../www/img/movie/' . $this->getRequest()->getParam('movieId') . '/';
+                $dwarf->rrmdir($dir);
+
+            }
+
+        } else {
+
+            $this->view->movie = $movieDb->getItemsList();
+
+        }
 
     }
 
@@ -82,9 +85,9 @@ class AdminController extends Zend_Controller_Action
         $articleDb      = new Application_Model_DbTable_Articles();
         $movieDb        = new Application_Model_DbTable_Movies();
         $movieImgDb     = new Application_Model_DbTable_MovieImg();
-        $movieImgOstDb  = new Application_Model_DbTable_MovieImgOst();
 
         $folderModel    = new Application_Model_Folder();
+        $editorArea = new My_Form_Element_WysibbEditor('content', 'Example Text Value' , array('label' => 'Feedback', 'class' => 'custom-texteditor' ));
 
         $response = $this->getRequest()->getParam('name');
 
@@ -128,13 +131,9 @@ class AdminController extends Zend_Controller_Action
 
                 }
 
-                #if(is_uploaded_file($_FILES["photo"]["tmp_name"])){
-
-                    #move_uploaded_file($_FILES["photo"]["tmp_name"], "img/miniImg/".$_FILES["photo"]["name"]);
-                #}
-
             }
 
+            $this->view->wysiwyg = $editorArea;
             $this->view->form = $articleForm;
 
         } else if ($response == 'movie'){
@@ -169,7 +168,7 @@ class AdminController extends Zend_Controller_Action
 
                         foreach ($fileInfo1 as $key => $value){
 
-                            $movieImgDb->addMoviePic($value['name'], $last_id);
+                            $movieImgDb->addMoviePic($value['name'], $last_id, 'slider');
 
                             $elem1->setDestination($imageDir);
                             $elem1->receive();
@@ -184,12 +183,30 @@ class AdminController extends Zend_Controller_Action
 
                         foreach ($fileInfo2  as $key => $value){
 
-                            $movieImgOstDb->addOstPic($value['name'], $last_id);
+                            $movieImgDb->addMoviePic($value['name'], $last_id, 'ost');
 
                             $elem2->setDestination($imageDir);
                             $elem2->receive();
 
                         }
+                    }
+
+                    if ($movieForm->getElement('textImg')){
+
+                        $elem1 = $movieForm->getElement('textImg');
+                        $fileInfo1 = $elem1->getFileInfo();
+
+                        foreach ($fileInfo1 as $key => $value){
+
+                            if ($value['name']){
+                                $movieImgDb->addMoviePic($value['name'], $last_id, 'text');
+                            }
+
+                            $elem1->setDestination($imageDir);
+                            $elem1->receive();
+
+                        }
+
                     }
 
                     $this->redirect('/admin/movie');
@@ -210,40 +227,19 @@ class AdminController extends Zend_Controller_Action
 
     public function editAction()
     {
-        $commentDel     = new Application_Model_DbTable_Comments();
+
         $articleDb      = new Application_Model_DbTable_Articles();
         $movieDb        = new Application_Model_DbTable_Movies();
         $movieImgDb     = new Application_Model_DbTable_MovieImg();
-        $movieImgOstDb  = new Application_Model_DbTable_MovieImgOst();
-        $movieTextImg   = new Application_Model_DbTable_MovieImgText();
 
         $movieForm      = new Application_Form_Movies();
         $articleForm    = new Application_Form_Articles();
 
         $folderModel    = new Application_Model_Folder();
-        #$editorArea = new My_Form_Element_WysibbEditor('content', 'Example Text Value' , array('label' => 'Feedback', 'class' => 'custom-texteditor' ));
+        $dwarf          = new Application_Model_Dwarf();
 
-        function deleteFile($directory,$filename){
 
-            // открываем директорию (получаем дескриптор директории)
-            $dir = opendir($directory);
 
-            // считываем содержание директории
-            while(($file = readdir($dir))){
-
-                // Если это файл и он равен удаляемому ...
-                if((is_file("$directory/$file")) && ("$directory/$file" == "$directory/$filename"))
-
-                    // ...удаляем его.
-                unlink("$directory/$file");
-
-                // Если файла нет по запрошенному пути, возвращаем TRUE - значит файл удалён.
-                if(!file_exists($directory."/".$filename)) return $s = TRUE;
-
-            }
-            // Закрываем дескриптор директории.
-            closedir($dir);
-        }
 
         if ($this->getRequest()->isXmlHttpRequest()){
 
@@ -251,9 +247,10 @@ class AdminController extends Zend_Controller_Action
 
                 $articlePicName = $this->getRequest()->getParam('articlePicName');
                 $articleId = $this->getRequest()->getParam('articleId');
+
                 $needDir = '../www/img/article/' . $articleId . '/';
 
-                deleteFile($needDir, $articlePicName);
+                $dwarf->deleteFile($needDir, $articlePicName);
 
             }
 
@@ -261,32 +258,11 @@ class AdminController extends Zend_Controller_Action
 
                 $moviePicValue = $this->getRequest()->getParam('moviePicValue');
                 $moviePicName = $movieImgDb->getItem($moviePicValue);
+
                 $needDir = '../www/img/movie/' . $moviePicName['movie_id'] . '/';
 
-                deleteFile($needDir, $moviePicName['addImg']);
+                $dwarf->deleteFile($needDir, $moviePicName['addImg']);
                 $movieImgDb->deleteItem($moviePicValue);
-
-            }
-
-            if ($this->getRequest()->getParam('movieOstPicDeleteInput')){
-
-                $movieOstPicValue = $this->getRequest()->getParam('movieOstPicDeleteInput');
-                $movieOstPicName = $movieImgOstDb->getItem($movieOstPicValue);
-                $needDir = '../www/img/movie/' . $movieOstPicName['movie_id'] . '/';
-
-                deleteFile($needDir, $movieOstPicName['ostImg']);
-                $movieImgOstDb->deleteItem($movieOstPicValue);
-
-            }
-
-            if ($this->getRequest()->getParam('movieImgDeleteInput')){
-
-                $movieTextPicValue = $this->getRequest()->getParam('movieImgDeleteInput');
-                $movieTextPicName = $movieTextImg->getItem($movieTextPicValue);
-                $needDir = '../www/img/movie/' . $movieTextPicName['movie_id'] . '/';
-
-                deleteFile($needDir, $movieTextPicName['textImg']);
-                $movieTextImg->deleteItem($movieTextPicName['id']);
 
             }
 
@@ -367,7 +343,7 @@ class AdminController extends Zend_Controller_Action
                         foreach ($fileInfo1 as $key => $value){
 
                             if ($value['name']) {
-                                $movieImgDb->addMoviePic($value['name'], $editData['id']);
+                                $movieImgDb->addMoviePic($value['name'], $editData['id'], 'slider');
                             }
 
                             $elem1->setDestination($imageDir);
@@ -385,7 +361,7 @@ class AdminController extends Zend_Controller_Action
                         foreach ($fileInfo2  as $key => $value){
 
                             if ($value['name']){
-                                $movieImgOstDb->addOstPic($value['name'], $editData['id']);
+                                $movieImgDb->addMoviePic($value['name'], $editData['id'], 'ost');
                             }
 
                             $elem2->setDestination($imageDir);
@@ -402,7 +378,7 @@ class AdminController extends Zend_Controller_Action
                         foreach ($fileInfo1 as $key => $value){
 
                             if ($value['name']){
-                                $movieTextImg->addMovieTextPic($value['name'], $editData['id']);
+                                $movieImgDb->addMoviePic($value['name'], $editData['id'], 'text');
                             }
 
                             $elem1->setDestination($imageDir);
@@ -422,12 +398,13 @@ class AdminController extends Zend_Controller_Action
                 $this->view->movie = $movie;
 
                 //view poster img
-                $movieImg = $movieImgDb->getItemsWhere($id);
-                $this->view->movieImg = $movieImg;
+                $type = array('slider', 'ost', 'text');
+                $movieImg = $movieImgDb->getItemsWhere($id, $type);
 
-                //view OST img
-                $movieImgOst = $movieImgOstDb->getItemsWhere($id);
-                $this->view->movieImgOst = $movieImgOst;
+                foreach ($movieImg as $value){
+                    $result[] = $value;
+                }
+                $this->view->movieImg = $result;
 
             }
 
@@ -439,11 +416,7 @@ class AdminController extends Zend_Controller_Action
 
         }
 
-
-        #$this->view->wysiwyg = $editorArea;
-
     }
-
 
     public function commentsAction()
     {

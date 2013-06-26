@@ -15,13 +15,13 @@ class Application_Form_Articles extends Zend_Form
                 ->setRequired(true)                                             // Поле обязательное
                 ->addFilter('StringTrim')                                       //Удаляет из аргумента ведущие и концевый пробелы
                 ->setAttrib('id', 'titleAdd')                                      //Устанавливает атребут
-                ->setAttrib('class', 'titleAdd')
+                ->setAttrib('class', 'titleAdd wysiwyg')
         ;
 
         $short  = new Zend_Form_Element_Textarea('shortDesc');
         $short  ->setRequired(true)
                 ->setLabel('Short Description')
-                ->setAttrib('class', 'shortDescAdd')
+                ->setAttrib('class', 'shortDescAdd wysiwyg')
                 ->setAttrib('id', 'shortDescAdd')
         ;
 
@@ -29,8 +29,7 @@ class Application_Form_Articles extends Zend_Form
         $full   ->setRequired(true)
                 ->setLabel('Text')
                 ->addFilter('StringTrim')
-                ->setAttrib('id','fullAdd')
-                ->setAttrib('class', 'fullAdd')
+                ->setAttrib('class', 'fullAdd wysiwyg')
         ;
 
         $author = new Zend_Form_Element_Text('author');

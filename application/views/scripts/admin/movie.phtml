@@ -2,12 +2,14 @@
 
 <?php
 $identity = Zend_Auth::getInstance()->getStorage()->read();
-/*
- * todo: delete all article and directory
- */
 foreach ($this->movie as $value): ?>
 
     <div class="episodeWrap">
+
+        <div class="delete_cross">
+            <input class='movDeleteInput' type='image' src='/img/style/remove_close_button_x_delete.png' value='<?php echo $value['id'] ?>' title='<?php echo $value['id'] ?>'>
+        </div>
+
         <div class="poster" title="<?php echo $value['title']; ?>">
             <a href="/admin/movie/edit/id/<?php echo $value['id']; ?>"></a>
             <img src="/img/movie/<?php echo $value['id']; ?>/<?php echo $value['miniImg']; ?>" alt="<?php echo $value['title']; ?>" />

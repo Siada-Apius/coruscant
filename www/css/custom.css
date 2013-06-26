@@ -9,12 +9,26 @@ body {
     font-size: 18px;
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+.wrapper {
+
+    margin-bottom: -50px;
+}
+* html .wrapper {
+    height: 100%;
+}
+
 /*/ ============== LAYOUT ============== /*/
 div.wrapper {
     clear: both;
-    margin: 0 auto;
+    margin: 0 auto -63px;
     max-width: 100%;
     min-width: 920px;
+    min-height: 100%;
 }
 
 

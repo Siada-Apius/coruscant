@@ -1,12 +1,3 @@
-<script type="text/javascript">
-    $(document).ready(function(){
-        $("#slider").easySlider({
-            auto: true,
-            continuous: true
-        });
-    });
-</script>
-
 <div class="movieWrap">
 
     <div class="movieBlock">
@@ -24,11 +15,17 @@
                 <div id="content">
                     <div id="slider">
                         <ul>
-                            <?php foreach ($this->movieImg as $value): ?>
+                            <?php foreach ($this->movieImg as $key => $value):
 
-                                <li><img src="/img/movie/<?=$value['movie_id']?>/<?=$value['addImg']?>" /></li>
+                                if ($key == 'slider'):
 
-                            <?php endforeach; ?>
+                                    foreach($value as $subVal): ?>
+
+                                        <li><img src="/img/movie/<?=$subVal['movie_id']?>/<?=$subVal['addImg']?>" /></li>
+
+                                    <?php endforeach;
+                                endif;
+                            endforeach; ?>
                         </ul>
                     </div>
                 </div>
@@ -51,9 +48,17 @@
         </div>
         <div class="part5">
             <div class="movieOstPic">
-                <?php foreach($this->movieImgOst as $valueOst): ?>
-                <img src="/img/movie/<?=$valueOst['movie_id']?>/<?=$valueOst['ostImg']?>" />
-                <?php endforeach; ?>
+                <?php foreach ($this->movieImg as $key => $value):
+
+                    if ($key == 'ost'):
+
+                        foreach($value as $subVal): ?>
+
+                            <img src="/img/movie/<?=$subVal['movie_id']?>/<?=$subVal['addImg']?>" />
+
+                        <?php endforeach;
+                    endif;
+                endforeach; ?>
             </div>
         </div>
     </div>

@@ -25,9 +25,8 @@ class Application_Model_DbTable_MovieImg extends Application_Model_DbTable_Abstr
 
             $fatArray[$val] = $data->query()->fetchAll();
 
-
         }
-        #Zend_Debug::dump($fatArray);die;
+
         return $fatArray;
     }
 

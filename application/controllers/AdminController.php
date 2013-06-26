@@ -400,11 +400,7 @@ class AdminController extends Zend_Controller_Action
                 //view poster img
                 $type = array('slider', 'ost', 'text');
                 $movieImg = $movieImgDb->getItemsWhere($id, $type);
-
-                foreach ($movieImg as $value){
-                    $result[] = $value;
-                }
-                $this->view->movieImg = $result;
+                $this->view->movieImg = $movieImg;
 
             }
 

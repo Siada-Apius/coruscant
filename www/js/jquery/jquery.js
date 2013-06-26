@@ -281,6 +281,7 @@ $(document).ready(function () {
     });
 
     $(function() {
+
         /**
          * wysiwyg
          */
@@ -288,6 +289,16 @@ $(document).ready(function () {
         // Add markItUp! to your textarea in one line
         // $('textarea').markItUp( { Settings }, { OptionalExtraSettings } );
         $('.wysiwyg').markItUp(mySettings);
+    });
+
+    $("#slider").easySlider({
+
+        /**
+         * slider
+         */
+
+        auto: true,
+        continuous: true
     });
 
 });

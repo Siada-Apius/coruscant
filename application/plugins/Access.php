@@ -33,7 +33,6 @@ class Application_Plugin_Access extends Zend_Controller_Plugin_Abstract
         $acl->addResource('account');
         $acl->addResource('user');
         $acl->addResource('movie');
-        $acl->addResource('news');
         $acl->addResource('games');
         $acl->addResource('archive');
         $acl->addResource('about');
@@ -48,12 +47,11 @@ class Application_Plugin_Access extends Zend_Controller_Plugin_Abstract
         $acl->allow('admin', 'movie', array('index', 'article'));
         $acl->allow('admin', 'admin', array('index', 'article', 'movie', 'user', 'add', 'edit', 'comments', 'games'));
         $acl->allow('admin', 'account', array('index'));
-        $acl->allow('admin', 'news', array('index'));
-        $acl->allow('admin', 'games', array('index'));
+        $acl->allow('admin', 'games', array('index', 'article'));
         $acl->allow('admin', 'archive', array('index'));
         $acl->allow('admin', 'about', array('index'));
 
-        $acl->allow('admin', 'error', array('error404','error'));
+        #$acl->allow('admin', 'error', array('error404','error'));
 
 
         #user allow
@@ -67,14 +65,13 @@ class Application_Plugin_Access extends Zend_Controller_Plugin_Abstract
         $acl->allow('guest', 'index', array('index', 'article', 'mail'));
         $acl->allow('guest', 'user', array('index', 'login', 'registration'));
         $acl->allow('guest', 'movie', array('index', 'article', 'page'));
-        $acl->allow('guest', 'news', array('index'));
-        $acl->allow('guest', 'games', array('index'));
+        $acl->allow('guest', 'games', array('index', 'article'));
         $acl->allow('guest', 'archive', array('index'));
         $acl->allow('guest', 'about', array('index'));
         $acl->allow('guest', 'search', array('index', 'reindex'));
 
         $acl->deny('guest', 'user', array('logout'));
-        $acl->allow('guest', 'error', array('error404','error'));
+        $acl->deny('guest', 'error', array('error404','error'));
 
 
         Zend_Registry::set('Zend_Acl',$acl);

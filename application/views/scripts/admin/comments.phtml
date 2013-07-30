@@ -1,13 +1,29 @@
+<table class="table table-bordered table-hover table-condensed">
+    <caption>Total sum of articles</caption>
+    <thead>
+    <tr>
+        <th>#</th>
+        <th>Total</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>Article</td>
+        <td><?php echo count($this->articles); ?></td>
+    </tr>
+    <tr>
+        <td>Movie</td>
+        <td><?php echo count($this->movies); ?></td>
+    </tr>
+    <tr>
+        <td>Game</td>
+        <td><?php echo count($this->games); ?></td>
+    </tr>
+    </tbody>
+</table>
 
-<?php foreach ($this->articles as $value): ?>
-
-    <p class="workWithComments"><?php echo $value['title']; ?></p>
-
-<?php endforeach; ?>
-
-
-<table style="border: 2px solid red;">COMMENTS
-
+<table class="table table-bordered table-hover table-condensed">
+    <caption>COMMENTS</caption>
 <?php foreach ($this->comments as $value): ?>
     <tr>
         <td><?php echo $value['user_name']; ?></td>

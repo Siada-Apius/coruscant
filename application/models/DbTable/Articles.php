@@ -10,6 +10,7 @@ class Application_Model_DbTable_Articles extends Application_Model_DbTable_Abstr
          * method getArticles
          *
          * return all fields but limited by 5
+         * @var $data
          */
 
         $data = $this   ->select()
@@ -17,7 +18,7 @@ class Application_Model_DbTable_Articles extends Application_Model_DbTable_Abstr
                         ->order('id DESC')
         ;
 
-        if(isset($from))$data->limit(5,$from);
+        if(isset($from))$data->limit(5, $from);
 
         return $data->query()->fetchAll();
 
@@ -30,6 +31,7 @@ class Application_Model_DbTable_Articles extends Application_Model_DbTable_Abstr
          * method addArticles
          *
          * method add new article and return last ID
+         * @return $array[lastInsertId()]
          */
 
         $array = array(
@@ -86,18 +88,6 @@ class Application_Model_DbTable_Articles extends Application_Model_DbTable_Abstr
         }
 
     }
-
-
-    public function workWithComments (){
-
-        $wwc = $this   ->select()
-                        ->from('articles', array('title'))
-        ;
-
-        return $wwc->query()->fetchAll();
-
-    }
-
 
     public function getArticlesIn($in){
 

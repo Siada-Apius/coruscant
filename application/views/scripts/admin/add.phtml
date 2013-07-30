@@ -1,16 +1,20 @@
-
 <div class="addForm">
     <?php
 
-    //echo $this->wysiwyg;
-
     if ($this->form) {
+
         echo '<p>Add New Article Form</p>';
         echo $this->form;
-    }
-    else if ($this->movie) {
+
+    } else if ($this->movie) {
+
         echo '<p>Add New Movie Form</p>';
         echo $this->movie;
+
+    } else if ($this->gameForm) {
+
+        echo '<p>Add New Game Form</p>';
+        echo $this->gameForm;
     }
 
     ?>

@@ -154,6 +154,7 @@ $(document).ready(function () {
 
     });
 
+
     $('.artDeleteInput').click(function(e){
 
         /**
@@ -182,10 +183,32 @@ $(document).ready(function () {
 
     });
 
+
     $('.deleteGame').click(function() {
 
-        var va = $(this).children().val();
-        alert(va);
+        /**
+         * delete game ADMIN/GAMES
+         */
+        $(this).addClass('clicked');
+
+        //var question = confirm("Sure?");
+
+        //if (question == true) {
+//alert($(this).children().val());
+            $.post(
+
+                '/admin/games/0/controller%3D%3Eadmin/1/action%3D%3Egames',{
+
+                    'gameId' :  $(this).children().val()
+
+                },function(response){
+
+                    $('.clicked').parent('.descBlock').parent('.gameBlock').parent('.oneWrap').fadeOut(50);
+                }
+
+            );
+//        }
+
 
     });
 

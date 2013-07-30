@@ -78,16 +78,6 @@ return array(
                 'resource' => 'about',
                 'privilege' => 'index',
             ),
-            array (
-                'label' => 'Suicide',
-                'tag' => 'topMenu',
-                'route' => 'default',
-                'module' => 'default',
-                'controller' => 'user',
-                'action' => 'logout',
-                'resource' => 'user',
-                'privilege' => 'logout',
-            ),
             // for admin only
             array (
 

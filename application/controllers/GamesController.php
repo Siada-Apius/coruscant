@@ -3,8 +3,6 @@
 class GamesController extends Zend_Controller_Action
 {
 
-    const SIADA = 'apius';
-
     public function init()
     {
         /* Initialize action controller here */
@@ -17,9 +15,16 @@ class GamesController extends Zend_Controller_Action
         $games = $gamesDb->getItemsList();
         $this->view->games = $games;
 
-        self::SIADA;
+        #self::SIADA;
+    }
+
+    public function articleAction()
+    {
+        echo 'sdad';
     }
 
 
 }
+
+
 

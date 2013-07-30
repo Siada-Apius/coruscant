@@ -53,7 +53,7 @@ class UserController extends Zend_Controller_Action
                     if ($identity->role == 'admin'){
                         $this->_helper->redirector('index', 'admin');
                     } else{
-                        $this->_helper->redirector('index', 'media');
+                        $this->_helper->redirector('index', 'index');
                     }
 
                 } else{

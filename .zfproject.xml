@@ -51,6 +51,7 @@
         </controllerFile>
         <controllerFile controllerName="Games">
           <actionMethod actionName="index"/>
+          <actionMethod actionName="article"/>
         </controllerFile>
         <controllerFile controllerName="Archive">
           <actionMethod actionName="index"/>
@@ -87,6 +88,8 @@
           <dbTableFile dbTableName="MovieImg"/>
           <dbTableFile dbTableName="MovieImgOst"/>
           <dbTableFile dbTableName="MovieImgText"/>
+          <dbTableFile dbTableName="GameImg"/>
+          <dbTableFile dbTableName="GamesImg"/>
         </dbTableDirectory>
         <modelFile modelName="Draf"/>
       </modelsDirectory>
@@ -198,6 +201,9 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Admin">
             <viewScriptFile forActionName="games"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Games">
+            <viewScriptFile forActionName="article"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>

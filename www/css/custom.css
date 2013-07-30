@@ -688,6 +688,10 @@ div.descBlock {
     width: 100%;
 }
 
+a.deleteGame {
+    cursor: pointer;
+}
+
 /*/ =============== SAVE BUTTON ========== /*/
 div.save_button {
     width: 80px;

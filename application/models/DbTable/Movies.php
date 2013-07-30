@@ -72,9 +72,9 @@ class Application_Model_DbTable_Movies extends Application_Model_DbTable_Abstrac
     public function getMoviesIn($in){
 
         /**
-         * method getMoviesIn
+         * @method getMoviesIn
          *
-         * return all fields where id == $in
+         * @return all fields where id == $in
          */
 
         $data = $this   ->select()

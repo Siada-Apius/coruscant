@@ -62,15 +62,29 @@ class AdminController extends Zend_Controller_Action
 
     }
 
-
     public function gamesAction()
     {
-        $gamesDb = new Application_Model_DbTable_Games();
+        $gamesDb    = new Application_Model_DbTable_Games();
+        $dwarf      = new Application_Model_Dwarf();
 
-        $this->view->games = $gamesDb->getItemsList();
+        if ($this->getRequest()->isXmlHttpRequest()){
+
+            if ($this->getRequest()->getParam('gameId')) {
+
+                $gamesDb->deleteItem($this->getRequest()->getParam('gameId'));
+
+                $dir = '../www/img/games/' . $this->getRequest()->getParam('gameId') . '/';
+                $dwarf->rrmdir($dir);
+
+            }
+
+        } else {
+
+            $this->view->games = $gamesDb->getItemsList();
+
+       }
 
     }
-
 
     public function userAction()
     {
@@ -81,13 +95,15 @@ class AdminController extends Zend_Controller_Action
     {
         $articleForm    = new Application_Form_Articles();
         $movieForm      = new Application_Form_Movies();
+        $gameForm       = new Application_Form_Games();
 
         $articleDb      = new Application_Model_DbTable_Articles();
         $movieDb        = new Application_Model_DbTable_Movies();
         $movieImgDb     = new Application_Model_DbTable_MovieImg();
+        $gameDb         = new Application_Model_DbTable_Games();
+        $gameImgDb      = new Application_Model_DbTable_GamesImg();
 
         $folderModel    = new Application_Model_Folder();
-        $editorArea = new My_Form_Element_WysibbEditor('content', 'Example Text Value' , array('label' => 'Feedback', 'class' => 'custom-texteditor' ));
 
         $response = $this->getRequest()->getParam('name');
 
@@ -133,8 +149,7 @@ class AdminController extends Zend_Controller_Action
 
             }
 
-            $this->view->wysiwyg = $editorArea;
-            $this->view->form = $articleForm;
+             $this->view->form = $articleForm;
 
         } else if ($response == 'movie'){
 
@@ -219,7 +234,51 @@ class AdminController extends Zend_Controller_Action
 
         } else if ($response == 'games'){
 
-            echo 'games add';
+            if ($this->getRequest()->isPost()){
+
+                $gameData = $this->getRequest()->getPost();
+
+                if ($gameForm->isValid($gameData)){
+
+                    unset($gameData['MAX_FILE_SIZE']);
+                    unset($gameData['submit']);
+
+                    $elem = $gameForm->getElement('poster');
+                    $fileInfo = $elem->getFileInfo();
+
+                    $gameData['poster'] = $fileInfo['poster']['name'];
+
+                    $last_id = $gameDb->createItem($gameData);
+
+                    $basePath = '/img/games/' . $last_id . '/';
+                    $folderModel->createFolderChain($basePath, '/');
+                    $imageDir = realpath(APPLICATION_PATH . '/../www/') . DIRECTORY_SEPARATOR . 'img' . DIRECTORY_SEPARATOR . 'games' . DIRECTORY_SEPARATOR . $last_id . DIRECTORY_SEPARATOR;
+
+                    $elem->setDestination($imageDir);
+                    $elem->receive();
+
+                    if ($elem1 = $gameForm->getElement('text_img')){
+
+                        $fileInfo1 = $elem1->getFileInfo();
+
+                        foreach ($fileInfo1 as $value){
+
+                            $gameImgDb->addGamePic($value['name'], $last_id, 'text');
+
+                            $elem1->setDestination($imageDir);
+                            $elem1->receive();
+
+                        }
+
+                    }
+
+                    $this->redirect('/admin/games');
+
+                }
+
+            }
+
+            $this->view->gameForm = $gameForm;
 
         }
 
@@ -228,18 +287,18 @@ class AdminController extends Zend_Controller_Action
     public function editAction()
     {
 
-        $articleDb      = new Application_Model_DbTable_Articles();
-        $movieDb        = new Application_Model_DbTable_Movies();
-        $movieImgDb     = new Application_Model_DbTable_MovieImg();
+        $articleDb   = new Application_Model_DbTable_Articles();
+        $movieDb     = new Application_Model_DbTable_Movies();
+        $movieImgDb  = new Application_Model_DbTable_MovieImg();
+        $gameDb      = new Application_Model_DbTable_Games();
+        $gameImgDb   = new Application_Model_DbTable_GamesImg();
 
-        $movieForm      = new Application_Form_Movies();
-        $articleForm    = new Application_Form_Articles();
+        $movieForm   = new Application_Form_Movies();
+        $articleForm = new Application_Form_Articles();
+        $gameForm    = new Application_Form_Games();
 
-        $folderModel    = new Application_Model_Folder();
-        $dwarf          = new Application_Model_Dwarf();
-
-
-
+        $folderModel = new Application_Model_Folder();
+        $dwarf       = new Application_Model_Dwarf(); //delete folder
 
         if ($this->getRequest()->isXmlHttpRequest()){
 
@@ -310,9 +369,7 @@ class AdminController extends Zend_Controller_Action
                 $this->view->articles = $res;
                 $this->view->form = $articleForm->populate($res);
 
-            }
-
-            else if ($response == 'movie'){
+            } else if ($response == 'movie'){
 
                 if ($this->getRequest()->isPost()){
 
@@ -402,12 +459,54 @@ class AdminController extends Zend_Controller_Action
                 $movieImg = $movieImgDb->getItemsWhere($id, $type);
                 $this->view->movieImg = $movieImg;
 
-            }
+            } else if ($response = 'games'){
 
-            else if ($response = 'games'){
+                if ($this->getRequest()->isPost()){
 
-                echo 'games edit';
+                    $gameData = $this->getRequest()->getPost();
 
+                    if ($gameForm->isValid($gameData)){
+
+                        unset($gameData['MAX_FILE_SIZE']);
+                        unset($gameData['submit']);
+
+                        $elem = $gameForm->getElement('poster');
+                        $fileInfo = $elem->getFileInfo();
+
+                        $gameData['poster'] = $fileInfo['poster']['name'];
+
+                        $gameDb->editGame($gameData);
+
+                        $basePath = '/img/games/' . $gameData['id'] . '/';
+                        $folderModel->createFolderChain($basePath, '/');
+                        $imageDir = realpath(APPLICATION_PATH . '/../www/') . DIRECTORY_SEPARATOR . 'img' . DIRECTORY_SEPARATOR . 'games' . DIRECTORY_SEPARATOR . $gameData['id'] . DIRECTORY_SEPARATOR;
+
+                        $elem->setDestination($imageDir);
+                        $elem->receive();
+
+                        if ($elem1 = $gameForm->getElement('text_img')){
+
+                            $fileInfo1 = $elem1->getFileInfo();
+
+                            foreach ($fileInfo1 as $value){
+
+                                $gameImgDb->addGamePic($value['name'], $gameData['id'], 'text');
+
+                                $elem1->setDestination($imageDir);
+                                $elem1->receive();
+
+                            }
+
+                        }
+
+                        $this->redirect('/admin/games');
+
+                    }
+
+                }
+
+                $data = $gameDb->getItem($this->getRequest()->getParam('id'));
+                $this->view->gameForm = $gameForm->populate($data);
             }
 
         }
@@ -416,10 +515,14 @@ class AdminController extends Zend_Controller_Action
 
     public function commentsAction()
     {
-        $wwc = new Application_Model_DbTable_Articles();
-        $com = new Application_Model_DbTable_Comments();
+        $articleDb  = new Application_Model_DbTable_Articles();
+        $movieDb    = new Application_Model_DbTable_Movies();
+        $gameDb     = new Application_Model_DbTable_Games();
+        $com        = new Application_Model_DbTable_Comments();
 
-        $this->view->articles = $wwc->workWithComments();
+        $this->view->articles = $articleDb->getItemsList();
+        $this->view->movies = $movieDb->getItemsList();
+        $this->view->games = $gameDb->getItemsList();
         $this->view->comments = $com->getItemsList();
 
     }

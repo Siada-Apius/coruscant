@@ -88,11 +88,11 @@ class SearchController extends Zend_Controller_Action
             </tr>
             <tr>
                 <td>Movies</td>
-                <td>' . count($total['article']) . '</td>
+                <td>' . count($total['movie']) . '</td>
             </tr>
             <tr>
                 <td>Articles</td>
-                <td>' . count($total['movie']) . '</td>
+                <td>' . count($total['article']) . '</td>
             </tr>
             <tr>
                 <td>Games</td>

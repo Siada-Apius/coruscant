@@ -56,7 +56,7 @@ return array(
                 'resource' => 'games',
                 'privilege' => 'index',
             ),
-            array (
+            /*array (
 
                 'label' => 'Archive',
                 'tag' => 'topMenu',
@@ -77,7 +77,7 @@ return array(
                 'action' => 'index',
                 'resource' => 'about',
                 'privilege' => 'index',
-            ),
+            ),*/
             // for admin only
             array (
 

@@ -50,9 +50,9 @@ class Application_Plugin_Access extends Zend_Controller_Plugin_Abstract
         $acl->allow('admin', 'games', array('index', 'article'));
         $acl->allow('admin', 'archive', array('index'));
         $acl->allow('admin', 'about', array('index'));
+        $acl->allow('admin', 'search', array('index', 'reindex'));
 
         #$acl->allow('admin', 'error', array('error404','error'));
-
 
         #user allow
         $acl->allow('user', 'index', array('index'));
@@ -68,7 +68,7 @@ class Application_Plugin_Access extends Zend_Controller_Plugin_Abstract
         $acl->allow('guest', 'games', array('index', 'article'));
         $acl->allow('guest', 'archive', array('index'));
         $acl->allow('guest', 'about', array('index'));
-        $acl->allow('guest', 'search', array('index', 'reindex'));
+        $acl->allow('guest', 'search', array('index'));
 
         $acl->deny('guest', 'user', array('logout'));
         $acl->deny('guest', 'error', array('error404','error'));

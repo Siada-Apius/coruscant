@@ -14,7 +14,7 @@ class Application_Model_DbTable_Articles extends Application_Model_DbTable_Abstr
          */
 
         $data = $this   ->select()
-                        ->from($this->_name, array('id', 'miniImg', 'title', 'shortDesc', 'full', 'author', 'updateDate', 'ratingGood', 'ratingBad'))
+                        ->from($this->_name, array('id', 'miniImg', 'title', 'shortDesc', 'full', 'author', 'addDate', 'updateDate', 'ratingGood', 'ratingBad'))
                         ->order('id DESC')
         ;
 
@@ -100,6 +100,7 @@ class Application_Model_DbTable_Articles extends Application_Model_DbTable_Abstr
         $data = $this   ->select()
                         ->from($this->_name)
                         ->where('id IN (?)', $in)
+                        ->order('id DESC')
         ;
 
         return $data->query()->fetchAll();

@@ -80,6 +80,7 @@ class Application_Model_DbTable_Movies extends Application_Model_DbTable_Abstrac
         $data = $this   ->select()
                         ->from($this->_name)
                         ->where('id IN (?)', $in)
+                        ->order('id DESC')
         ;
 
         return  $data->query()->fetchAll();

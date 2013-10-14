@@ -133,34 +133,11 @@ $(document).ready(function () {
     });
 
 
-    $('.comDeleteInput').click(function(e){
-
-        //ти обробляєш клік по класу в якого міліон елементів тому шоб дістати той по якому клікнули передавай e  в фунцію і діставай через this
-
-        $.post(
-
-            '/admin/edit/0/controller%3D%3Eadmin/1/action%3D%3Eedit',{
-
-                'delId' :  $(this).val()
-
-            },function(response){
-
-                var id = response.id;
-                $('#comment' + id).fadeOut(1000);
-
-            }
-
-        );
-
-    });
-
-
-    $('.artDeleteInput').click(function(e){
+    $('.artDeleteInput').click(function(){
 
         /**
          * delete article ADMIN/INDEX
          */
-
         var question = confirm("Sure?");
 
         if (question == true) {
@@ -171,9 +148,10 @@ $(document).ready(function () {
 
                     'delId' :  $(this).val()
 
-                },function(response){
+                },function(){
 
-                    var id = response.id;
+                    var id = $('.artDeleteInput').val();
+
                     $('#contentWrapper'+id).fadeOut(50);
 
                 }
@@ -191,10 +169,10 @@ $(document).ready(function () {
          */
         $(this).addClass('clicked');
 
-        //var question = confirm("Sure?");
+        var question = confirm("Sure?");
 
-        //if (question == true) {
-//alert($(this).children().val());
+        if (question == true) {
+
             $.post(
 
                 '/admin/games/0/controller%3D%3Eadmin/1/action%3D%3Egames',{
@@ -205,12 +183,12 @@ $(document).ready(function () {
 
                     $('.clicked').parent('.descBlock').parent('.gameBlock').parent('.oneWrap').fadeOut(50);
                 }
-
             );
-//        }
+        }
 
 
     });
+
 
     $('.artImgDeleteInput').click(function(e){
 
@@ -243,6 +221,7 @@ $(document).ready(function () {
 
     });
 
+
     $('.movieDeleteInput').click(function(e){
 
         /**
@@ -272,6 +251,7 @@ $(document).ready(function () {
         }
 
     });
+
 
     $('.movDeleteInput').click(function(e){
 
@@ -303,6 +283,7 @@ $(document).ready(function () {
 
     });
 
+
     $(function() {
 
         /**
@@ -313,6 +294,7 @@ $(document).ready(function () {
         // $('textarea').markItUp( { Settings }, { OptionalExtraSettings } );
         $('.wysiwyg').markItUp(mySettings);
     });
+
 
     $("#slider").easySlider({
 

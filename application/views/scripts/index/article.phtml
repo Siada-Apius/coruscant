@@ -1,36 +1,11 @@
-
 <div class="contentWrapperArticle">
 
     <div class="contentLeftPart">
-
         <img src="/img/article/<?php echo $this->articles['id']; ?>/<?php echo $this->articles['miniImg']; ?>" class="miniImg"  alt="miniImg" />
 
         <div class="author">
-            <p><?php echo $this->articles['updateDate']; ?></p>
+            <p><?php echo $this->articles['addDate']; ?></p>
         </div>
-
-        <?php
-
-        $identity = Zend_Auth::getInstance()->getStorage()->read();
-        $role = (isset($identity->role)) ? $identity->role : '';
-
-        if ($role  && $role == 'admin' || $role == 'user'): ?>
-
-            <div class="likeButtons">
-                <div class="likeBut" title="like"></div>
-                <div class="dislikeBut" title="dislike"></div>
-            </div>
-
-        <?php endif; ?>
-
-        <!--<div class="showRating">
-
-            Like: <span id = "like"><?php /*echo $this->articles['ratingGood']; */?></span>
-            <br>
-            Dislike:  <span id = "dislike"><?php /*echo $this->articles['ratingBad']; */?></span>
-
-        </div>-->
-
     </div>
 
     <div class="contentRightPart">
@@ -42,7 +17,3 @@
 
 </div>
 
-<!--<div class="contentComments">
-    <?php /*echo $this->form; */?>
-    <input type = "hidden" value = <?php /*echo $this->articles['id']; */?> id = "artId">
-</div>-->

@@ -22,7 +22,7 @@ class SearchController extends Zend_Controller_Action
 
         $searchString = $this->getRequest()->getParam('query');
 
-        $hits = $index->find($searchString);
+        $hits = $index->find(mb_strtolower($searchString, 'utf-8'));
 
         $art = array();
         $mov = array();

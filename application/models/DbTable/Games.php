@@ -16,6 +16,7 @@ class Application_Model_DbTable_Games extends Application_Model_DbTable_Abstract
         $data = $this   ->select()
                         ->from($this->_name)
                         ->where('id IN (?)', $in)
+                        ->order('id DESC')
         ;
 
         return $data->query()->fetchAll();

@@ -30,8 +30,8 @@ class My_View_Helper_Pagination extends Zend_View_Helper_Abstract{
         $rangeFirst = $perRange * $range + 1;
         $rangeLast =  ($perRange * $range) + $perRange;
 
-        $begin = 'Початок';
-        $end = 'Остання';
+        $begin = 'First';
+        $end = 'Last';
 
         ?>
 

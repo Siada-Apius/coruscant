@@ -2,8 +2,10 @@ body {
     color: #000;
     background: url("../img/style/Star-Wars-star-wars-24718031-1920-1200.jpg") scroll center top transparent;
     background-size: 100%;
-    /*background-color: #000;*/
+    background-color: #000;
     background-attachment: fixed;
+    background-position: top;
+    background-repeat: no-repeat;
     /*font-family:  "New York", serif;*/
     font-family: 'Comfortaa', 'New York', serif;
     font-size: 18px;
@@ -24,7 +26,7 @@ div.wrapper {
     clear: both;
     margin: 0 auto -63px;
     max-width: 100%;
-    min-width: 920px;
+    min-width: 900px;
     min-height: 100%;
 }
 
@@ -53,11 +55,12 @@ div.headerBig {
 
         div.headerInfo {
             background-image: url("../img/style/logo1.png");
+            background-position: 50% 50%;
             background-repeat: no-repeat;
-            ~background-size: 353px auto;
-            background-position: 50% 100%;
             clear: both;
+            height: 61px;
             padding: 0 20px;
+            ~width: inherit;
         }
 
         div.headerNav {
@@ -162,6 +165,7 @@ ul.list {
         background-color: #F2F2F2;
         position: relative;
         color: #6E6E6E;
+        width: 95.5%;
     }
 
     div.contentWrapper:hover {
@@ -258,6 +262,8 @@ ul.list {
 
                 div.cor_text img {
                     border: 1px groove #000;
+                    max-width: 510px;
+                    min-width: 100%;
                 }
 
         div.delete_cross {

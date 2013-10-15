@@ -66,9 +66,6 @@
         <controllerFile controllerName="Asd">
           <actionMethod actionName="index"/>
         </controllerFile>
-        <controllerFile controllerName="Cronjob">
-          <actionMethod actionName="index"/>
-        </controllerFile>
       </controllersDirectory>
       <formsDirectory>
         <formFile formName="Simple"/>
@@ -207,9 +204,6 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Games">
             <viewScriptFile forActionName="article"/>
-          </viewControllerScriptsDirectory>
-          <viewControllerScriptsDirectory forControllerName="Cronjob">
-            <viewScriptFile forActionName="index"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>

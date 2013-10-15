@@ -1,6 +1,6 @@
 <?php
 
-    class My_View_Helper_Comments extends Zend_View_Helper_Abstract{
+class My_View_Helper_Comments extends Zend_View_Helper_Abstract{
 
     public function comments($id){
 

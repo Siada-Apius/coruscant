@@ -89,7 +89,7 @@ abstract class Application_Model_DbTable_Abstract extends Zend_Db_Table_Abstract
     }
 
 
-    public function updateItem($data,$id){
+    public function updateItem($data, $id){
 
         /**
         * updateItem method
@@ -103,6 +103,23 @@ abstract class Application_Model_DbTable_Abstract extends Zend_Db_Table_Abstract
         $where = $this->getAdapter()->quoteInto('id = ?', (int)$id);
         return $this->update($data, $where);
 
+    }
+
+
+    public function getOnlyId () {
+
+        /**
+         * getOnlyId method
+         *
+         * Method what select all id from table
+         *
+         */
+
+        $data = $this   ->select()
+                        ->from($this->_name, 'id')
+        ;
+
+        return $data->query()->fetchAll();
     }
 
 }

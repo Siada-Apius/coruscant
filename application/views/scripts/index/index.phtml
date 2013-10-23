@@ -1,36 +1,29 @@
-<ul class="list">
+<div class="container content_center">
+    <ul class="list-unstyled">
 
-    <?php foreach ($this->articles as $value): ?>
+        <?php foreach ($this->articles as $value): ?>
 
-    <li id="contentWrapper<?php echo $value['id']; ?>">
-        <div class="contentWrapper">
-            <a class="superLink" href="/article/id/<?php echo $value['id']; ?>" name="<?php echo $value['id']; ?>"></a>
+        <li id="contentWrapper<?php echo $value['id']; ?>">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 block">
+                <a class="article_link" href="/article/id/<?php echo $value['id']; ?>" name="<?php echo $value['id']; ?>"></a>
 
-            <div class="contentLeftPart">
-                <img src="/img/article/<?php echo $value['id']; ?>/<?php echo $value['miniImg']; ?>" class="miniImg"  alt="miniImg" />
-
-                <div class="author">
-                    <p><?php echo $value['addDate']; ?></p>
+                <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 left_part">
+                    <div class="pic_wrap">
+                        <img class="img_pic" src="/img/article/<?php echo $value['id']; ?>/<?php echo $value['miniImg']; ?>" class="miniImg"  alt="miniImg" />
+                    </div>
+                    <div class="col-xs-12 time">
+                        <?php echo $value['addDate']; ?>
+                    </div>
                 </div>
-            </div>
 
-            <div class="contentRightPart">
-                <div class="contentText">
+                <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 right_part">
                     <h2><?php echo $value['title']; ?></h2>
-                    <p><?php echo $value['shortDesc']; ?></p>
+                    <?php echo $value['shortDesc']; ?>
                 </div>
             </div>
-        </div>
-    </li>
+        </li>
 
-    <?php endforeach ?>
-</ul>
-
-<?php echo $this->pagination(); ?>
-
-
-<!--
-echo $this->form;
-
-div#test>ul.some>li*5>lorem
--->
+        <?php endforeach ?>
+    </ul>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pagination"><?php echo $this->pagination(); ?></div>
+</div>

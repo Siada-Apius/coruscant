@@ -1,22 +1,14 @@
-<div class="movieWrap">
+<div class="movie_wrap">
 
-<?php
+    <?php foreach ($this->receive as $value): ?>
 
-$identity = Zend_Auth::getInstance()->getStorage()->read();
-
-foreach ($this->receive as $value):
-
-?>
-
-   <div class="episodeWrap">
-        <div class="poster" title="<?php echo $value['title']; ?>">
+    <div class="episode_wrap col-xs-12 col-sm-6 col-md-4 col-lg-4">
+        <div class="episode_poster" title="<?php echo $value['title']; ?>">
             <!--<a href="/movie/id/<?php /*echo $value['id']; */?>"></a>-->
             <img src="/img/movie/<?php echo $value['id']; ?>/<?php echo $value['miniImg']; ?>" alt="<?php echo $value['title']; ?>" />
         </div>
     </div>
 
-<?php endforeach; ?>
+    <?php endforeach; ?>
 
 </div>
-
-

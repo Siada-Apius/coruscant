@@ -1,238 +1,141 @@
 <html>
 <head>
-
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta content="Архив вселенной Звездных Войн, новости собраные в одном месте." name="description">
-    <title>Force-Leads</title>
-
-	<link rel="SHORTCUT ICON" href="http://www.force-leads.com/favicon.png"/>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Архив вселенной Звездных Войн, новости собраные в одном месте.">
+    <meta name="author" content="Siada-Apius">
+    <link rel="shortcut icon" href="http://www.force-leads.com/favicon.png">
     <link href='http://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'>
 
-    <?php $this->headLink()->appendStylesheet('/css/bootstrap.css'); ?>
-    <?php $this->headLink()->appendStylesheet('/css/bootstrap-responsive.css'); ?>
-    <?php $this->headLink()->appendStylesheet('/css/custom.css');?>
 
-    <?php $this->headScript()->appendFile('/js/bootstrap.js');?>
-    <?php $this->headScript()->appendFile('/js/jquery/jquery-1.8.1.js');?>
-    <?php $this->headScript()->appendFile('/js/jquery/jquery.js');?>
+    <?php /*$this->headLink()->appendStylesheet('/css/bootstrap.css'); */?><!--
+    --><?php /*$this->headLink()->appendStylesheet('/css/bootstrap-responsive.css'); */?>
+   <!-- <?php /*$this->headLink()->appendStylesheet('/css/custom.css');*/?>
+
+    --><?php /*$this->headScript()->appendFile('/js/bootstrap.js');*/?>
+    <?php /*$this->headScript()->appendFile('/js/jquery/jquery-1.8.1.js');*/?><!--
+    <?php /*$this->headScript()->appendFile('/js/jquery/jquery.js');*/?>
 
     <!--SLIDER - START-->
-    <?php $this->headLink()->appendStylesheet('/slider/css/screen.css');?>
-    <?php $this->headScript()->appendFile('/slider/js/easySlider1.7.js');?>
+    <?php /*$this->headLink()->appendStylesheet('/slider/css/screen.css');*/?>
+    <?php /*$this->headScript()->appendFile('/slider/js/easySlider1.7.js');*/?>
     <!--SLIDER - END --->
 
     <!-- WYSIWYG - START -->
-    <?php $this->headLink()->appendStylesheet('/wysiwyg/markitup/skins/simple/style.css');?>
-    <?php $this->headLink()->appendStylesheet('/wysiwyg/markitup/sets/default/style.css');?>
-    <?php $this->headScript()->appendFile('/wysiwyg/markitup/jquery.markitup.js');?>
-    <?php $this->headScript()->appendFile('/wysiwyg/markitup/sets/default/set.js');?>
+    <?php /*$this->headLink()->appendStylesheet('/wysiwyg/markitup/skins/simple/style.css');*/?>
+    <?php /*$this->headLink()->appendStylesheet('/wysiwyg/markitup/sets/default/style.css');*/?>
+    <?php /*$this->headScript()->appendFile('/wysiwyg/markitup/jquery.markitup.js');*/?>
+    <?php /*$this->headScript()->appendFile('/wysiwyg/markitup/sets/default/set.js');*/?>
     <!-- WYSIWYG - END ---->
+
+
+
+    <!-- Custom styles for this template -->
+    <link href="../../../www/bootstrap/3.0.0/examples/sticky-footer/sticky-footer.css" rel="stylesheet">
+
+    <!--NEW STYLE-->
+    <?php $this->headLink()->appendStylesheet('/bootstrap/3.0.0/dist/css/bootstrap.css');?>
+    <?php $this->headLink()->appendStylesheet('/css/manual.css');?>
+    <!--[if lt IE 9]>
+    <script src="/bootstrap/3.0.0/assets/js/html5shiv.js"></script>
+    <script src="/bootstrap/3.0.0/assets/js/respond.min.js"></script>
+    <![endif]-->
+
+
+
 
     <?php echo $this->jQuery(); ?>
     <?php echo $this->headLink();?>
     <?php echo $this->headScript();?>
-	
-	
+
+    <title>Force-Leads</title>
 
 </head>
 
-    <body>
-        <div class="wrapper">
+<body>
+<div id="wrap">
+    <div class="row">
+        <div class="modal-header"></div>
 
-            <div class="headerBig">
+        <div class="navbar navbar-default bar">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <?php
+                $identity = Zend_Auth::getInstance()->getStorage()->read();
 
-                <div class="headerRight">
+                if (isset($identity->role)  && $identity->role == 'admin'){
+                    echo $this  ->navigation()
+                        ->menu()
+                        ->setMaxDepth(2)
+                        ->setUlClass('nav navbar-nav')
+                        ->render(new My_Navigation($this->navigation()->findAllBy('tag','admin',true)))
+                    ;
 
-                     <div class="headerInfo">
-                         <!--<h3>The force is strong in you, Skywalker</h3>-->
-                     </div>
+                } else {
+                    echo $this  ->navigation()
+                        ->menu()
+                        ->setMaxDepth(2)
+                        ->setUlClass('nav navbar-nav')
+                        ->render(new My_Navigation($this->navigation()->findAllBy('tag','topMenu',true)))
+                    ;
+                }
 
-                    <div class="headerNav">
-                        <div class="navbar-inner">
-                            <div class="navbar navbarLink">
-                                <?php
-
-                                $identity = Zend_Auth::getInstance()->getStorage()->read();
-
-                                if (isset($identity->role)  && $identity->role == 'admin'){
-                                    echo $this  ->navigation()
-                                        ->menu()
-                                        ->setMaxDepth(2)
-                                        ->setUlClass('nav')
-                                        ->render(new My_Navigation($this->navigation()->findAllBy('tag','admin',true)))
-                                    ;
-
-                                } else {
-                                    echo $this  ->navigation()
-                                        ->menu()
-                                        ->setMaxDepth(2)
-                                        ->setUlClass('nav')
-                                        ->render(new My_Navigation($this->navigation()->findAllBy('tag','topMenu',true)))
-                                    ;
-                                }
-
-                                ?>
-                            </div>
-                            <div class="navbarSearch">
-                                <form id="searchForm" class="navbar-search pull-left" method="GET" action="/search">
-                                    <input class="search-query span2" type="text" placeholder="Search" name="query" />
-                                    <a><i class="icon-search"></i></a>
-                                </form>
-                            </div>
-                        </div>
+                ?>
+                <form class="navbar-form navbar-right" role="search" method="get" action="/search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
                     </div>
-                </div>
-            </div>
-
-            <div class="content">
-
-                <div class="contentLeft">
-                    <?php
-
-                    if ( $_SERVER['REQUEST_URI'] == '/admin' ) {
-
-                        echo $this  ->navigation()
-                                    ->menu()
-                                    ->setMaxDepth(2)
-                                    ->setUlClass('nav')
-                            ->render(new My_Navigation($this->navigation()->findAllBy('tag','subAdminMenuIndex',true)))
-                        ;
-
-                    } else if ( $_SERVER['REQUEST_URI'] == '/admin/movie' ) {
-
-                        echo $this  ->navigation()
-                                    ->menu()
-                                    ->setMaxDepth(2)
-                                    ->setUlClass('nav')
-                            ->render(new My_Navigation($this->navigation()->findAllBy('tag','subAdminMenuMovie',true)))
-                        ;
-
-                    } else if ( $_SERVER['REQUEST_URI'] == '/admin/games' ) {
-
-                        echo $this  ->navigation()
-                                    ->menu()
-                                    ->setMaxDepth(2)
-                                    ->setUlClass('nav')
-                            ->render(new My_Navigation($this->navigation()->findAllBy('tag','subAdminMenuGames',true)))
-                        ;
-
-                    }
-
-                    ?>
-
-                    <?php
-
-                    $identity = Zend_Auth::getInstance()->getStorage()->read();
-
-                    if (isset($identity->role)  && $identity->role == 'admin'){
-
-                        if (@$this->articles['id']){
-
-                            $dir = '../www/img/article/' . $this->articles['id'] . '/';
-
-                            if(is_dir($dir)) {
-                                $files = scandir($dir);
-                                array_shift($files); // delete from array '.'
-                                array_shift($files); // delete from array '..'
-
-                                echo '<div class="well">';
-                                echo '<h5>Available Images For This Article</h5>';
-
-                                for($i=0; $i<sizeof($files); $i++){
-
-                                    echo '<div class="delImg">
-                                            <div class="delete_cross">
-                                                <input value="' . $files[$i] . '" class="artImgDeleteInput" type="image" src="/img/style/remove_close_button_x_delete.png">
-                                                <input class="articleId" type="hidden" value="' . $this->articles['id'] . '">
-                                            </div>
-
-                                            <img src="/img/article/' . $this->articles['id'] . '/' . $files[$i] . '"/>
-                                            <span>' . $dir . $files[$i] . '</span><br/>
-                                            <span><input type="text" readonly="readonly" value="http://coruscant.local/img/article/' . $this->articles['id'] . '/' . $files[$i] . '"/></span><br/>
-                                            <span><a href="http://coruscant.local/img/article/' . $this->articles['id'] . '/' . $files[$i] . '">http://coruscant.local/img/article/' . $this->articles['id'] . '/' . $files[$i] . '</a></span><br/>
-
-                                          </div>'
-                                    ;
-
-                                }
-
-                                echo '</div>';
-
-                            }
-
-                            else echo $dir.' - not exist;<br>';
-
-                        }
-
-                    }
-
-                    ?>
-
-                </div>
-
-                <div class="contentMiddle">
-                    <?php echo $this->title; ?>
-                    <?php echo $this->layout()->content; ?>
-                </div>
-
-                <div class="contentRight">
-
-                    <?php
-
-                    $identity = Zend_Auth::getInstance()->getStorage()->read();
-
-                    if (isset($identity->role)  && $identity->role == 'admin'): ?>
-
-                        <div class="note well">
-
-                            <code>
-                                <h5>Note</h5>
-                                <p>	&lt;article>wrapper&lt;/article></p>
-                                <p>	&lt;p>paragraph&lt;/p></p>
-                                <p>	&lt;strong>only in 1 paragraph&lt;/strong></p>
-                                <p>	&lt;em>only in 1 paragraph&lt;/em></p>
-                                <p>	&lt;b>in text&lt;/b></p>
-                                <p>	&lt;i>in text&lt;/i></p>
-                                <p>	&lt;cite>citation&lt;/cite></p>
-                                <p>	&lt;div class="cor_text">&lt;img />&lt;/div></p>
-                                <p>	* image in article add after adding new</p>
-                            </code>
-                        </div>
-                    <?php endif; ?>
-
-                </div>
-            </div>
-
+                </form>
+            </div><!--/.navbar-collapse -->
         </div>
+    </div>
 
-        <div class="footer">
-            <p>Developed for distribution STAR WARS</p>
-            <!--<a href="/index/mail/">check mail</a>-->
+    <div class="row content">
+        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3"></div>
+        <div class="col-xs-12 col-sm-9 col-md-7 col-lg-6"><?php echo $this->layout()->content; ?></div>
+        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-3"></div>
+    </div>
+</div>
 
+<div id="footer">
+    <span>Developed for distribution STAR WARS</span>
 
-            <!--LiveInternet counter-->
-            <script type="text/javascript">
-                document.write("" +
-                    "<div class='right'><a href='http://www.liveinternet.ru/click' target=_blank>" +
-                    "<img src='//counter.yadro.ru/hit?t19.2;r" + escape(document.referrer) +
-                    ((typeof(screen)=="undefined")?"":";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?screen.colorDepth:screen.pixelDepth))
-                    + ";u" + escape(document.URL) + ";" + Math.random() + "' border=0 width=88 height=31 alt='' title='LiveInternet: показано число просмотров за 24 часа, посетителей за 24 часа и за сегодня'><\/a></div>")
-            </script>
-            <!--/LiveInternet-->
-        </div>
-
-        <!--Google analytics-->
-        <script>
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-            ga('create', 'UA-44093366-1', 'force-leads.com');
-            ga('send', 'pageview');
-
+    <!--LiveInternet counter-->
+    <div class="counter">
+        <script type="text/javascript">
+            document.write("" +
+                "<a href='http://www.liveinternet.ru/click' target=_blank>" +
+                "<img src='//counter.yadro.ru/hit?t19.2;r" + escape(document.referrer) +
+                ((typeof(screen)=="undefined")?"":";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?screen.colorDepth:screen.pixelDepth))
+                + ";u" + escape(document.URL) + ";" + Math.random() + "' border=0 width=88 height=31 alt='' title='LiveInternet: показано число просмотров за 24 часа, посетителей за 24 часа и за сегодня'><\/a>")
         </script>
+    </div>
+    <!--/LiveInternet-->
+</div>
 
-    </body>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="/bootstrap/3.0.0/assets/js/jquery.js"></script>
+<script src="/bootstrap/3.0.0/dist/js/bootstrap.min.js"></script>
+
+<!--Google analytics-->
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-44093366-1', 'force-leads.com');
+    ga('send', 'pageview');
+
+</script>
+
+</body>
 </html>

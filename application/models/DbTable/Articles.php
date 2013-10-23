@@ -14,7 +14,7 @@ class Application_Model_DbTable_Articles extends Application_Model_DbTable_Abstr
          */
 
         $data = $this   ->select()
-                        ->from($this->_name, array('id', 'miniImg', 'title', 'shortDesc', 'full', 'author', 'addDate', 'updateDate', 'ratingGood', 'ratingBad'))
+                        ->from($this->_name, array('id', 'miniImg', 'title', 'shortDesc', 'full', 'author', 'addDate', 'updateDate', 'status'))
                         ->order('id DESC')
         ;
 

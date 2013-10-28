@@ -1,15 +1,14 @@
-<div class="game_wrap">
+<div class="container game_wrap">
 
     <?php foreach($this->games as $value): ?>
 
     <div class="game_block col-xs-12 col-sm-6 col-md-4 col-lg-4">
-        <div class="game_poster" title="<?php echo $value['title']; ?>">
-            <div class="cover_wrap">
-                <img src="/img/games/<?php echo $value['id']; ?>/<?php echo $value['poster']; ?>" alt="pic" />
+        <div class="col-xs-12">
+            <div class="game_poster" title="<?php echo $value['title']; ?>">
+                <img class="img-responsive" src="/img/games/<?php echo $value['id']; ?>/<?php echo $value['poster']; ?>" alt="pic" />
             </div>
             <div class="game_title"><a href="#"><?php echo $value['title']; ?></a></div>
         </div>
-
     </div>
 
     <?php endforeach; ?>

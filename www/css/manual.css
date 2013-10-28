@@ -27,15 +27,21 @@ div.content { margin-bottom: 1%; }
 /* ===================== HEADER ========================= */
 div.modal-header {
     background-color: #fff;
-    background-image: url('../img/style/logo1.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    min-height: 50px;
+    min-height: 60px;
+    padding: 0;
 }
 
-div.bar {
-    border-radius: 0;
+div.logo { text-align: center; }
+
+
+@media (max-width: 768px) {
+    div.logo > a > img{
+        padding: 10px;
+        width: 100%;
+    }
 }
+
+div.bar { border-radius: 0; }
 
 /* ===================== INDEX/INDEX (Articles)========================= */
 div.content_center {
@@ -61,7 +67,7 @@ ul.list-unstyled li { margin: 5px 5px 0 5px; }
             color: #000;
         }
 
-    a.article_link {
+    a.block_link {
         display: block;
         height: 100%;
         left: 0;
@@ -112,7 +118,6 @@ ul.list-unstyled li { margin: 5px 5px 0 5px; }
                 background-color: #FFFFFF;
                 border: 1px solid #0088CC;
                 color: #000000;
-                float: left;
                 margin: -5px;
                 padding: 10px;
             }
@@ -148,17 +153,18 @@ div.pagination {
 div.movie_wrap {
     background-color: #222222;
     border: 2px solid #888888;
-    float: left;
+    max-width: 100%;
+    padding: 0;
 }
 
-    div.episode_wrap { padding: 0; }
+    div.episode_wrap > div{ padding: 5% 0; }
 
         div.episode_poster {
-            background-repeat: no-repeat;
             border: 1px solid #DCDCDC;
-            border-radius: 2px;
-            margin: 15px auto;
-            width: 85%;
+            border-radius: 2px 2px 2px 2px;
+            text-align: center;
+            width: 80%;
+            margin: 0 auto;
         }
 
             div.episode_poster:hover {
@@ -166,80 +172,69 @@ div.movie_wrap {
                 box-shadow: 0 0 15px #87CEEB;
             }
 
-            div.episode_poster img { width: 100%; }
+            div.episode_poster img {
+                width: 100%;
+            }
+
+            @media (min-width: 768px) {
+                div.episode_poster { width: 100% }
+                div.episode_poster img { width: 100%; }
+            }
 
 /* ====================== GAMES/INDEX (Games) =============== */
 div.game_wrap {
     background-color: #000000;
     border: 2px solid #87CEEB;
-    float: left;
+    max-width: 100%;
+    padding: 0;
 }
 
-    div.game_block { padding: 0; height: auto}
+    div.game_block > div {
+        margin: 5% auto;
+        border: 1px solid #888888;
+        padding: 0;
+        background-color: #D14836;
+        border-radius: 1px;
+    }
 
-        div.game_poster {
-            background-repeat: no-repeat;
-            border: 1px solid #888888;
+    div.game_block > div:hover {
+        border: 1px solid #FFFFFF;
+        box-shadow: 0 0 10px #FFFFFF;
+        background-color: #C00000;
+        color: #fff;
+    }
+
+    div.game_poster {
+        margin: 0 auto;
+        background-color: #000;
+        text-align: center;
+    }
+
+        div.game_poster img{
             border-radius: 1px;
-            margin: 15px auto;
-            width: 85%;
-            background-color: #D14836;
+            margin: 0 auto;
+            background-color: #000;
+            text-align: center;
+            width: 50%;
         }
 
-            div.game_poster:hover {
-                background-color: #C00000;
-                border: 1px solid #FFFFFF;
-                box-shadow: 0 0 10px #FFFFFF;
-            }
-
-            div.game_poster a {
-                color: #fff;
-            }
-
-                div.cover_wrap img {
-                    width: 100%;
-                }
-
-                @media (min-width: 500px) {
-                    div.cover_wrap { background-color: #000; }
-
-                    div.cover_wrap img {
-                        margin: 0 30%;
-                        width: 40%;
-
-                    }
-                }
-
-                @media (min-width: 768px) {
-                    div.cover_wrap img {
-                        height: 75%;
-                        width: 100%;
-                        margin: 0 auto;
-                    }
-                }
-
-                @media (min-width: 992px) {
-                    div.cover_wrap img {
-                        height: 45%;
-                        width: 100%;
-                        margin: 0 auto;
-                    }
-                }
-
-                @media (min-width: 1200px) {
-                    div.cover_wrap img {
-                        height: 40%;
-                        width: 100%;
-
-                    }
-                }
-
-            div.game_title {
-                font-size: 12px;
-                padding: 8px 0;
-                text-align: center;
+        @media (min-width: 768px) {
+            div.game_poster img{
                 width: 100%;
+
             }
+        }
+
+    div.game_title {
+        font-size: 13px;
+        text-align: center;
+        padding: 8px 0;
+
+    }
+
+        div.game_title > a {
+            color: #fff
+        }
 
 /* ====================== FOOTER =============== */
 div#footer {

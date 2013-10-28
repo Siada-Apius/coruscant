@@ -8,41 +8,36 @@
     <link href='http://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'>
 
 
-    <?php /*$this->headLink()->appendStylesheet('/css/bootstrap.css'); */?><!--
-    --><?php /*$this->headLink()->appendStylesheet('/css/bootstrap-responsive.css'); */?>
-   <!-- <?php /*$this->headLink()->appendStylesheet('/css/custom.css');*/?>
+<!--    --><?php //$this->headLink()->appendStylesheet('/css/bootstrap.css'); ?>
+<!--    --><?php //$this->headLink()->appendStylesheet('/css/bootstrap-responsive.css'); ?>
+<!--    --><?php //$this->headLink()->appendStylesheet('/css/custom.css');?>
 
-    --><?php /*$this->headScript()->appendFile('/js/bootstrap.js');*/?>
-    <?php /*$this->headScript()->appendFile('/js/jquery/jquery-1.8.1.js');*/?><!--
-    <?php /*$this->headScript()->appendFile('/js/jquery/jquery.js');*/?>
+<!--    --><?php //$this->headScript()->appendFile('/js/bootstrap.js');?>
+    <?php $this->headScript()->appendFile('/js/jquery/jquery-1.8.1.js');?>
+    <?php $this->headScript()->appendFile('/js/jquery/jquery.js');?>
 
     <!--SLIDER - START-->
-    <?php /*$this->headLink()->appendStylesheet('/slider/css/screen.css');*/?>
-    <?php /*$this->headScript()->appendFile('/slider/js/easySlider1.7.js');*/?>
+    <?php $this->headLink()->appendStylesheet('/slider/css/screen.css');?>
+    <?php $this->headScript()->appendFile('/slider/js/easySlider1.7.js');?>
     <!--SLIDER - END --->
 
     <!-- WYSIWYG - START -->
-    <?php /*$this->headLink()->appendStylesheet('/wysiwyg/markitup/skins/simple/style.css');*/?>
-    <?php /*$this->headLink()->appendStylesheet('/wysiwyg/markitup/sets/default/style.css');*/?>
-    <?php /*$this->headScript()->appendFile('/wysiwyg/markitup/jquery.markitup.js');*/?>
-    <?php /*$this->headScript()->appendFile('/wysiwyg/markitup/sets/default/set.js');*/?>
+    <?php $this->headLink()->appendStylesheet('/wysiwyg/markitup/skins/simple/style.css');?>
+    <?php $this->headLink()->appendStylesheet('/wysiwyg/markitup/sets/default/style.css');?>
+    <?php $this->headScript()->appendFile('/wysiwyg/markitup/jquery.markitup.js');?>
+    <?php $this->headScript()->appendFile('/wysiwyg/markitup/sets/default/set.js');?>
     <!-- WYSIWYG - END ---->
 
-
-
-    <!-- Custom styles for this template -->
-    <link href="../../../www/bootstrap/3.0.0/examples/sticky-footer/sticky-footer.css" rel="stylesheet">
-
+    <?php $this->headLink()->appendStylesheet('/bootstrap/3.0.0/examples/sticky-footer/sticky-footer.css');?>
     <!--NEW STYLE-->
     <?php $this->headLink()->appendStylesheet('/bootstrap/3.0.0/dist/css/bootstrap.css');?>
     <?php $this->headLink()->appendStylesheet('/css/manual.css');?>
     <!--[if lt IE 9]>
-    <script src="/bootstrap/3.0.0/assets/js/html5shiv.js"></script>
-    <script src="/bootstrap/3.0.0/assets/js/respond.min.js"></script>
+    <!--<script src="/bootstrap/3.0.0/assets/js/html5shiv.js"></script>-->
+    <!--<script src="/bootstrap/3.0.0/assets/js/respond.min.js"></script>->
+    <?php $this->headScript()->appendFile('/bootstrap/3.0.0/assets/js/html5shiv.js');?>
+    <?php $this->headScript()->appendFile('/bootstrap/3.0.0/assets/js/respond.min.js');?>
     <![endif]-->
-
-
-
 
     <?php echo $this->jQuery(); ?>
     <?php echo $this->headLink();?>
@@ -55,7 +50,15 @@
 <body>
 <div id="wrap">
     <div class="row">
-        <div class="modal-header"></div>
+        <div class="modal-header">
+            <div class="hidden-xs hidden-sm col-md-3 col-lg-3"></div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 logo">
+                <a class="block_link" href="http://force-leads.com">
+                    <img alt="logo picture" src="http://force-leads.com/img/style/logo1.png"/>
+                </a>
+            </div>
+            <div class="hidden-xs hidden-sm col-md-3 col-lg-3"></div>
+        </div>
 
         <div class="navbar navbar-default bar">
             <div class="navbar-header">
@@ -85,11 +88,11 @@
                         ->render(new My_Navigation($this->navigation()->findAllBy('tag','topMenu',true)))
                     ;
                 }
-
                 ?>
+
                 <form class="navbar-form navbar-right" role="search" method="get" action="/search">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
+                        <input type="text" class="form-control" placeholder="Search"name="query" />
                     </div>
                 </form>
             </div><!--/.navbar-collapse -->

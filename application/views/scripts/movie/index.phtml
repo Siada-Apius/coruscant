@@ -1,11 +1,13 @@
-<div class="movie_wrap">
+<div class="container movie_wrap">
 
     <?php foreach ($this->receive as $value): ?>
 
     <div class="episode_wrap col-xs-12 col-sm-6 col-md-4 col-lg-4">
-        <div class="episode_poster" title="<?php echo $value['title']; ?>">
-            <!--<a href="/movie/id/<?php /*echo $value['id']; */?>"></a>-->
-            <img src="/img/movie/<?php echo $value['id']; ?>/<?php echo $value['miniImg']; ?>" alt="<?php echo $value['title']; ?>" />
+        <div class="col-xs-12">
+            <div class="episode_poster" title="<?php echo $value['title']; ?>">
+                <!--<a class="block_link" href="/movie/id/<?php /*echo $value['id']; */?>"></a>-->
+                <img class="img-responsive" src="/img/movie/<?php echo $value['id']; ?>/<?php echo $value['miniImg']; ?>" alt="<?php echo $value['title']; ?>" />
+            </div>
         </div>
     </div>
 

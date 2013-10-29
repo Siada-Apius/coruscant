@@ -6,6 +6,7 @@ class Application_Form_Login extends Zend_Form
     {
 
         $this->setName('loginForm');
+        $this->setAttrib('class', 'form-signin');
         #$this->setAction('/media/index');
 
         $login = new Zend_Form_Element_Text('username');
@@ -15,6 +16,7 @@ class Application_Form_Login extends Zend_Form
                 ->addValidator('NotEmpty')
                 ->setAttrib('id', 'username')
                 ->setAttrib('placeholder', 'login')
+                ->setAttrib('class', 'form-control')
         ;
 
         $password = new Zend_Form_Element_Password('password');
@@ -24,11 +26,12 @@ class Application_Form_Login extends Zend_Form
                     ->addValidator('NotEmpty')
                     ->setAttrib('id', 'password')
                     ->setAttrib('placeholder', 'password')
+                    ->setAttrib('class', 'form-control')
         ;
 
         $submit = new Zend_Form_Element_Submit('submit');
         $submit     ->setAttrib('id', 'sign')
-                    ->setAttrib('class','btn btn-success')
+                    ->setAttrib('class','btn btn-lg btn-primary btn-block')
         ;
 
         $this->addElements(array($login, $password, $submit));

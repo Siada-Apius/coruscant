@@ -118,6 +118,7 @@ ul.list-unstyled li { margin: 5px 5px 0 5px; }
                 background-color: #FFFFFF;
                 border: 1px solid #0088CC;
                 color: #000000;
+                display: table;
                 margin: -5px;
                 padding: 10px;
             }
@@ -128,7 +129,6 @@ ul.list-unstyled li { margin: 5px 5px 0 5px; }
             }
 
             cite { font-style: italic; }
-
             a { color: #0088CC; }
 
 div.pagination {
@@ -141,13 +141,8 @@ div.pagination {
     text-align: center;
 }
 
-    div.pagination_foot a {
-        color: #C6C6C6;
-    }
-
-    div.pagination_foot a:hover {
-        color: #fff;
-    }
+    div.pagination_foot a { color: #C6C6C6; }
+    div.pagination_foot a:hover { color: #fff; }
 
 /* ====================== MOVIE/INDEX (Movies) =============== */
 div.movie_wrap {
@@ -172,9 +167,7 @@ div.movie_wrap {
                 box-shadow: 0 0 15px #87CEEB;
             }
 
-            div.episode_poster img {
-                width: 100%;
-            }
+            div.episode_poster img { width: 100%; }
 
             @media (min-width: 768px) {
                 div.episode_poster { width: 100% }
@@ -221,7 +214,6 @@ div.game_wrap {
         @media (min-width: 768px) {
             div.game_poster img{
                 width: 100%;
-
             }
         }
 
@@ -232,9 +224,7 @@ div.game_wrap {
 
     }
 
-        div.game_title > a {
-            color: #fff
-        }
+        div.game_title > a { color: #fff; }
 
 /* ====================== FOOTER =============== */
 div#footer {
@@ -247,3 +237,25 @@ div#footer {
         float: right;
         margin: 10px 10px 0 0;
     }
+
+/* ====================== ADMIN ========================= */
+/* ====================== ADMIN - INDEX ========================= */
+div.delete_cross { left: 20px; }
+
+    div.delete_cross input{
+        width: 25px;
+        height: 25px;
+        z-index: 2;
+        opacity: 0.3;
+        position: relative;
+    }
+
+        div.delete_cross input:hover { opacity: 1; }
+
+/* ====================== ADMIN - EDIT ========================= */
+div.markItUpHeader > ul > li { margin-bottom: 15px; }
+input.edit_but { width: 100% }
+textarea.titleAdd { width: 100%; height: 140px }
+textarea.shortDescAdd { width: 100%; height: 200px }
+textarea.fullAdd { width: 100%; height: 400px }
+.row > h4 { border-bottom: 1px dotted #000000 }

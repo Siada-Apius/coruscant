@@ -1,170 +1,150 @@
-<?php if ($this->form): ?>
+<?php if ($this->form): ?> <!--FORM FOR ARTICLE-->
 
-    <form enctype="multipart/form-data" method = "POST">
-        <div class="contEdit">
-
-            <div class="leftPartArticle">
-
-                <img class="articleMini" src="/img/article/<?php echo $this->articles['id']; ?>/<?php echo $this->articles['miniImg']; ?>" alt="miniImg" />
-
-                <?php echo $this->form->getElement('miniImg'); ?>
-                <?php echo $this->form->getElement('imgInText'); ?>
-
-                <div class="authorEdit">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 well">
+    <form enctype="multipart/form-data" method="post">
+        <div class="row">
+            <div class="help-block">
+                <?php echo $this->form->getElement('title'); ?>
+                <?php echo $this->form->getElement('shortDesc'); ?>
+                <?php echo $this->form->getElement('full'); ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+                <div class="pic_wrap">
+                    <img class="img_pic img-responsive" src="/img/article/<?php echo $this->articles['id']; ?>/<?php echo $this->articles['miniImg']; ?>" alt="miniImg" />
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
+                <div class="col-xs-12">
+                    <?php echo $this->form->getElement('miniImg'); ?>
+                    <?php echo $this->form->getElement('imgInText'); ?>
+                </div>
+                <div class="col-xs-12">
                     <?php echo $this->form->getElement('id'); ?>
                     <?php echo $this->form->getElement('author'); ?>
                     <?php echo $this->form->getElement('updateDate'); ?>
                 </div>
-
-                <?php echo $this->form->getElement('submit'); ?> <!-- SUBMIT -->
-
-            </div>
-
-            <div class="rightPartArticle">
-
-                <div class="textContentEdit">
-
-                    <?php echo $this->form->getElement('title'); ?>
-                    <?php echo $this->form->getElement('shortDesc'); ?>
-                    <?php echo $this->form->getElement('full'); ?>
-
-                </div>
-
             </div>
         </div>
+        <div class="row"><?php echo $this->form->getElement('submit'); ?><!-- SUBMIT --></div>
+    </form>
+</div>
+
+<?php elseif ($this->formMovie): ?><!--FORM FOR MOVIE-->
+
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 well">
+    <form enctype="multipart/form-data" method="POST">
+        <div class="row">
+            <div class="help-block"><h2><?php echo $this->formMovie->getElement('title'); ?></h2></div>
+            <div class="help-block"><?php echo $this->formMovie->getElement('short'); ?></div>
+            <div class="help-block"><?php echo $this->formMovie->getElement('actors'); ?></div>
+            <div class="help-block"><?php echo $this->formMovie->getElement('full'); ?></div>
+            <div class="help-block"><?php echo $this->formMovie->getElement('funny'); ?></div>
+            <div class="help-block"><?php echo $this->formMovie->getElement('ostList'); ?></div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-4">
+                <img class="img-thumbnail" src="/img/movie/<?php echo $this->movie['id']; ?>/<?php echo $this->movie['miniImg']; ?>" />
+            </div>
+            <?php echo $this->formMovie->getElement('miniImg'); ?>
+        </div>
+
+        <div class="row">
+            <div class="movieSlider">
+                <div class="col-xs-4"><?php echo $this->formMovie->getElement('addImg'); ?></div>
+                <div class="col-xs-4"><?php echo $this->formMovie->getElement('ostImg'); ?></div>
+                <div class="col-xs-4"><?php echo $this->formMovie->getElement('textImg'); ?></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <?php echo $this->formMovie->getElement('id'); ?>
+            <div class="save_button"><?php echo $this->formMovie->getElement('submit'); ?></div>
+        </div>
+
     </form>
 
-<?php elseif ($this->formMovie): ?>
+    <div class="row">
+        <h4>SLIDER PICTURES</h4>
+        <?php foreach ($this->movieImg as $key => $value):
 
-    <div class="movieWrap">
+            if ($key == 'slider'):
 
-        <form enctype="multipart/form-data" method="POST">
-
-            <div class="movieBlock admin">
-                <h2><?php echo $this->formMovie->getElement('title'); ?></h2>
-            </div>
-
-            <div class="movieBlock admin">
-
-                <div class="part1">
-                    <div class="movieShort"><?php echo $this->formMovie->getElement('short'); ?></div>
-                    <div class="movieActor"><?php echo $this->formMovie->getElement('actors'); ?></div>
-                </div>
-
-                <div class="part2">
-                    <div class="moviePic">
-
-                        <img src="/img/movie/<?php echo $this->movie['id']; ?>/<?php echo $this->movie['miniImg']; ?>" />
-
-                        <?php echo $this->formMovie->getElement('miniImg'); ?>
-                    </div>
-                    <div class="movieSlider">
-                        <?php echo $this->formMovie->getElement('addImg'); ?>
-                        <?php echo $this->formMovie->getElement('ostImg'); ?>
-                        <?php echo $this->formMovie->getElement('textImg'); ?>
-                    </div>
-                </div>
-            </div>
-
-            <div class="movieBlock admin">
-
-                <div class="part3">
-                    <div class="movieDesc"><?php echo $this->formMovie->getElement('full'); ?></div>
-                    <div class="movieFunny"><?php echo $this->formMovie->getElement('funny'); ?></div>
-                </div>
-            </div>
-
-            <div class="movieBlock admin">
-
-                <div class="part4">
-                    <div class="movieOst"><?php echo $this->formMovie->getElement('ostList'); ?></div>
-                </div>
-
-            </div>
-
-            <?php echo $this->formMovie->getElement('id'); ?>
-
-            <div class="save_button"><?php echo $this->formMovie->getElement('submit'); ?></div>
-        </form>
-
-        <div class="movieBlock admin">
-            <h4>SLIDER PICTURES</h4>
-            <?php foreach ($this->movieImg as $key => $value):
-
-                if ($key == 'slider'):
-
-                    foreach($value as $subVal): ?>
-
+                foreach($value as $subVal): ?>
+                    <div class="col-xs-4">
                         <div class="episodeWrapEdit deletePic">
 
                             <div class="delete_cross">
                                 <input class='movieDeleteInput' type='image' src='/img/style/remove_close_button_x_delete.png' value='<?php echo $subVal['id'] ?>' title='<?php echo $subVal['id'] ?>'>
                             </div>
 
-                            <div class="poster">
-                                <img src="/img/movie/<?=$subVal['movie_id']?>/<?=$subVal['addImg']?>" class="posterImg"/>
-                            </div>
+                            <img src="/img/movie/<?=$subVal['movie_id']?>/<?=$subVal['addImg']?>" class="img-thumbnail"/>
+
                         </div>
-
-                    <?php endforeach;
-                endif;
-            endforeach; ?>
-        </div>
-
-        <div class="movieBlock admin">
-            <h4>OST PICTURES</h4>
-
-            <?php foreach ($this->movieImg as $key => $value):
-
-                if ($key == 'ost'):
-
-                    foreach($value as $subVal): ?>
-
-                        <div class="movieOstPicAdmin deletePic">
-
-                            <div class="delete_cross">
-                                <input class='movieDeleteInput' type='image' src='/img/style/remove_close_button_x_delete.png' value='<?php echo $subVal['id'] ?>' title='<?php echo $subVal['id'] ?>'>
-                            </div>
-
-                            <img src="/img/movie/<?=$subVal['movie_id'];?>/<?=$subVal['addImg'];?>" />
-                        </div>
-
-                    <?php
-                    endforeach;
-                endif;
-            endforeach; ?>
-        </div>
-
-        <div class="movieBlock admin">
-            <h4>TEXT PICTURES</h4>
-
-            <?php foreach ($this->movieImg as $key => $value):
-
-                if ($key == 'text'):
-
-                    foreach($value as $subVal): ?>
-
-                        <div class="movieOstPicAdmin deletePic">
-
-                            <div class="delete_cross">
-                                <input class='movieDeleteInput' type='image' src='/img/style/remove_close_button_x_delete.png' value='<?php echo $subVal['id'] ?>' title='<?php echo $subVal['id'] ?>'>
-                            </div>
-
-                            <img src="/img/movie/<?=$subVal['movie_id'];?>/<?=$subVal['addImg'];?>" />
-                        </div>
-
-                    <?php
-                    endforeach;
-                endif;
-            endforeach; ?>
-        </div>
-
+                    </div>
+                <?php endforeach;
+            endif;
+        endforeach; ?>
     </div>
 
+    <div class="row">
+        <h4>OST PICTURES</h4>
+
+        <?php foreach ($this->movieImg as $key => $value):
+
+            if ($key == 'ost'):
+
+                foreach($value as $subVal): ?>
+                    <div class="col-xs-4">
+                        <div class="movieOstPicAdmin deletePic">
+
+                            <div class="delete_cross">
+                                <input class='movieDeleteInput' type='image' src='/img/style/remove_close_button_x_delete.png' value='<?php echo $subVal['id'] ?>' title='<?php echo $subVal['id'] ?>'>
+                            </div>
+
+                            <img class="img-thumbnail" src="/img/movie/<?=$subVal['movie_id'];?>/<?=$subVal['addImg'];?>" />
+
+                        </div>
+                    </div>
+                <?php
+                endforeach;
+            endif;
+        endforeach; ?>
+    </div>
+
+    <div class="row">
+        <h4>TEXT PICTURES</h4>
+
+        <?php foreach ($this->movieImg as $key => $value):
+
+            if ($key == 'text'):
+
+                foreach($value as $subVal): ?>
+                    <div class="col-xs-4">
+                    <div class="movieOstPicAdmin deletePic">
+
+                        <div class="delete_cross">
+                            <input class='movieDeleteInput' type='image' src='/img/style/remove_close_button_x_delete.png' value='<?php echo $subVal['id'] ?>' title='<?php echo $subVal['id'] ?>'>
+                        </div>
+
+                            <img class="img_pic" src="/img/movie/<?=$subVal['movie_id'];?>/<?=$subVal['addImg'];?>" />
+
+                    </div>
+                    </div>
+                <?php
+                endforeach;
+            endif;
+        endforeach; ?>
+    </div>
+
+</div>
+
 <?php elseif ($this->gameForm): ?>
-
-    <?=$this->gameForm;?>
-
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 well">
+    <?php echo $this->gameForm; ?>
+</div>
 <?php endif; ?>
 
 

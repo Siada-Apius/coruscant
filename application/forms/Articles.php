@@ -12,9 +12,9 @@ class Application_Form_Articles extends Zend_Form
 
         $title  = new Zend_Form_Element_Textarea('title');
         $title  ->setLabel('Title')
-                ->setRequired(true)                                             // Поле обязательное
-                ->addFilter('StringTrim')                                       //Удаляет из аргумента ведущие и концевый пробелы
-                ->setAttrib('id', 'titleAdd')                                      //Устанавливает атребут
+                ->setRequired(true)
+                ->addFilter('StringTrim')
+                ->setAttrib('id', 'titleAdd')
                 ->setAttrib('class', 'titleAdd wysiwyg')
         ;
 
@@ -63,7 +63,7 @@ class Application_Form_Articles extends Zend_Form
         $submit = new Zend_Form_Element_Submit('submit');
         $submit     ->setAttrib('id', 'edit')
                     ->setLabel('Save change')
-                    ->setAttrib('class','btn btn-success edit_but')
+                    ->setAttrib('class','btn btn-info edit_but')
         ;
 
         $this->addElements(array($id, $title, $short, $full, $author, $update, $miniImg, $imgInText, $submit));

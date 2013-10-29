@@ -1,12 +1,14 @@
+<div class="container game_wrap">
 
-<div class="gamesWrap">
-<?php foreach($this->games as $value): ?>
+    <?php foreach($this->games as $value): ?>
 
-    <div class="oneWrap">
-        <div class="gameBlock" title="<?php echo $value['title']; ?>">
+    <div class="game_block col-xs-12 col-sm-6 col-md-4 col-lg-4">
+        <div class="col-xs-12" title="<?php echo $value['title']; ?>">
+            <div class="game_poster" title="<?php echo $value['title']; ?>">
+                <img src="/img/games/<?php echo $value['id']; ?>/<?php echo $value['poster']; ?>" alt="<?php echo $value['title']; ?>" />
+            </div>
 
-            <img src="/img/games/<?php echo $value['id']; ?>/<?php echo $value['poster']; ?>" alt="pic" />
-            <div class="descBlock">
+            <div class="game_title">
                 <a href="/admin/games/edit/id/<?php echo $value['id']; ?>">Edit</a>
                 <span>&#124;</span>
                 <a class="deleteGame"><input type="hidden" value="<?php echo $value['id']; ?>">Delete</a>
@@ -14,5 +16,6 @@
         </div>
     </div>
 
-<?php endforeach; ?>
+    <?php endforeach; ?>
+
 </div>

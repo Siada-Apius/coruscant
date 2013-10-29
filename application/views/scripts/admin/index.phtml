@@ -1,81 +1,36 @@
+<div class="container content_center">
+    <ul class="list-unstyled">
 
-<ul class="list">
+        <?php foreach ($this->articles as $value): ?>
 
-    <?php foreach ($this->articles as $value): ?>
         <li id="contentWrapper<?php echo $value['id']; ?>">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 block contentWrapper<?php echo $value['id']; ?>">
+                <a class="block_link" href="/admin/article/edit/id/<?php echo $value['id']; ?>" name="<?php echo $value['id']; ?>"></a>
 
-            <div class="contentWrapper contentWrapper<?php echo $value['id']; ?>">
-
-                <a class="superLink" href="/admin/article/edit/id/<?php echo $value['id']; ?>" name="<?php echo $value['id']; ?>"></a>
-
-                <div class="contentLeftPart">
-
-                    <img  src="/img/article/<?php echo $value['id']; ?>/<?php echo $value['miniImg']; ?>" class="miniImg"  alt="miniImg" />
-
-                    <div class="author">
-                        <p><?php echo $value['updateDate']; ?></p>
+                <div class="col-xs-11 col-sm-3 col-md-3 col-lg-3 left_part">
+                    <div class="pic_wrap">
+                        <img class="img_pic img-responsive" src="/img/article/<?php echo $value['id']; ?>/<?php echo $value['miniImg']; ?>" title="<?php echo $value['title']; ?>" alt="<?php echo $value['miniImg']; ?>" />
+                    </div>
+                    <div class="col-xs-12 time">
+                        <?php echo $value['updateDate']; ?>
                     </div>
                 </div>
 
-                <div class="contentRightPart">
-
-                    <div class="contentText">
-                        <h2><?php echo $value['title']; ?></h2>
-                        <p><?php echo $value['shortDesc']; ?></p>
-                    </div>
-
-                    <!--<div class="rating">
-
-                        <?php
-
-                        $a = (int)$value['ratingGood'];
-                        $b = (int)$value['ratingBad'];
-                        $uniqueId = (int)$value['id'];
-
-                        $c = $a + $b;
-
-                        @$proc1 = ($a * 100) / $c;
-                        @$proc2 = ($b *100) / $c;
-
-                        $proc1R = round($proc1);
-                        $proc2R = round($proc2);
-                        $sumR = $proc1 + $proc2;
-
-                        require('css/style.php');
-
-                        ?>
-
-                        <div class="left">
-                            <div class="blade<?php echo $uniqueId; ?>">
-                                <div class="topBlue<?php echo $uniqueId; ?>"></div>
-                                <div class="middleBlue<?php echo $uniqueId; ?>"></div>
-                            </div>
-                            <div class="downBlue<?php echo $uniqueId; ?> "></div>
-                        </div>
-                        <div class="right">
-                            <div class="blade<?php echo $uniqueId; ?>">
-                                <div class="topRed<?php echo $uniqueId; ?>"></div>
-                                <div class="middleRed<?php echo $uniqueId; ?>"></div>
-                            </div>
-                            <div class="downRed<?php echo $uniqueId; ?>"></div>
-                        </div>
-                    </div>-->
-
+                <div class="col-xs-11 col-sm-8 col-md-8 col-lg-8 right_part">
+                    <h2><?php echo $value['title']; ?></h2>
+                    <?php echo $value['shortDesc']; ?>
                 </div>
 
-
-
-
-                <div class="delete_cross">
+                <div class="delete_cross col-xs-1 col-sm-1 col-md-1 col-lg-1">
                     <input class='artDeleteInput' type='image' src='/img/style/remove_close_button_x_delete.png' value='<?php echo $value['id'] ?>' title='<?php echo $value['id'] ?>'>
                 </div>
-
             </div>
-
         </li>
-    <?php endforeach ?>
-</ul>
 
+        <?php endforeach ?>
+
+    </ul>
+</div>
 <?php echo $this->pagination($this->path); ?>
 
 

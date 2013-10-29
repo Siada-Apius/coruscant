@@ -1,18 +1,19 @@
-<div class="movieWrap">
+<div class="container movie_wrap">
 
 <?php
 $identity = Zend_Auth::getInstance()->getStorage()->read();
 foreach ($this->movie as $value): ?>
 
-    <div class="episodeWrap">
+    <div class="episode_wrap col-xs-12 col-sm-6 col-md-4 col-lg-4">
+        <div class="col-xs-12 img-thumbnail">
+            <div class="delete_cross">
+                <input class='movDeleteInput' type='image' src='/img/style/remove_close_button_x_delete.png' value='<?php echo $value['id'] ?>' title='<?php echo $value['id'] ?>'>
+            </div>
 
-        <div class="delete_cross">
-            <input class='movDeleteInput' type='image' src='/img/style/remove_close_button_x_delete.png' value='<?php echo $value['id'] ?>' title='<?php echo $value['id'] ?>'>
-        </div>
-
-        <div class="poster" title="<?php echo $value['title']; ?>">
-            <a href="/admin/movie/edit/id/<?php echo $value['id']; ?>"></a>
-            <img src="/img/movie/<?php echo $value['id']; ?>/<?php echo $value['miniImg']; ?>" alt="<?php echo $value['title']; ?>" />
+            <div class="episode_poster" title="<?php echo $value['title']; ?>">
+                <a class="block_link" href="/admin/movie/edit/id/<?php echo $value['id']; ?>"></a>
+                <img class="img-responsive" src="/img/movie/<?php echo $value['id']; ?>/<?php echo $value['miniImg']; ?>" alt="<?php echo $value['title']; ?>" />
+            </div>
         </div>
     </div>
 

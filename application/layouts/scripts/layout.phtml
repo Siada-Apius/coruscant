@@ -1,32 +1,19 @@
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Архив вселенной Звездных Войн, новости собраные в одном месте.">
-    <meta name="author" content="Siada-Apius">
-    <link rel="shortcut icon" href="http://www.force-leads.com/favicon.png">
-    <link href='http://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Siada-Apius">
+<?php echo $this->headMeta();?>
+<link rel="shortcut icon" href="http://www.force-leads.com/favicon.png">
+<link href='http://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'>
 
-    <!-- WYSIWYG - START -->
-    <?php $this->headLink()->appendStylesheet('/wysiwyg/markitup/skins/simple/style.css');?>
-    <?php $this->headLink()->appendStylesheet('/wysiwyg/markitup/sets/default/style.css');?>
-    <?php $this->headScript()->appendFile('/wysiwyg/markitup/jquery.markitup.js');?>
-    <?php $this->headScript()->appendFile('/wysiwyg/markitup/sets/default/set.js');?>
-    <!-- WYSIWYG - END ---->
-    <?php $this->headLink()->appendStylesheet('/bootstrap/3.0.0/dist/css/bootstrap.css');?>
-    <?php $this->headLink()->appendStylesheet('/css/manual.css');?>
-    <?php $this->headScript()->appendFile('/js/manual.js');?>
-    <!--[if lt IE 9]>
-    <script src="/bootstrap/3.0.0/assets/js/html5shiv.js"></script>
-    <script src="/bootstrap/3.0.0/assets/js/respond.min.js"></script>->
-    <![endif]-->
+<?php $this->headLink()->appendStylesheet('/wysiwyg/markitup/skins/simple/style.css');?>
+<?php $this->headLink()->appendStylesheet('/wysiwyg/markitup/sets/default/style.css');?>
+<?php $this->headLink()->appendStylesheet('/bootstrap/3.0.0/dist/css/bootstrap.min.css');?>
+<?php $this->headLink()->appendStylesheet('/css/manual.css');?>
 
-    <?php echo $this->jQuery(); ?>
-    <?php echo $this->headLink();?>
-    <?php echo $this->headScript();?>
-
-    <title>Force-Leads</title>
-
+<?php echo $this->headLink();?>
+<?php echo $this->headTitle();?>
 </head>
 
 <body>
@@ -103,8 +90,16 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<!--<script src="/bootstrap/3.0.0/assets/js/jquery.js"></script>-->
+<!--[if lt IE 9]>
+<script src="/bootstrap/3.0.0/assets/js/html5shiv.js"></script>
+<script src="/bootstrap/3.0.0/assets/js/respond.min.js"></script>
+<![endif]-->
+<script src="/bootstrap/3.0.0/assets/js/jquery.js"></script>
 <script src="/bootstrap/3.0.0/dist/js/bootstrap.min.js"></script>
+<script src="/wysiwyg/markitup/jquery.markitup.js"></script>
+<script src="/wysiwyg/markitup/sets/default/set.js"></script>
+<script src="/js/manual.js"></script>
+
 <!--Google analytics-->
 <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

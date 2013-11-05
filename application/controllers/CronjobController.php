@@ -66,11 +66,9 @@ class CronjobController extends Zend_Controller_Action
 
         $text = fwrite($fp, '</urlset>');
 
-        if ($text) echo 'File sitemap.xml was successfully generated.';
-        else echo 'File sitemap.xml was not generated, <b>error</b>.';
+        if ($text) echo '<div class="help-block alert-success">File sitemap.xml was successfully generated.</div>';
+        else echo '<div class="help-block alert-danger">File sitemap.xml was not generated, <b>error</b>.</div>';
         fclose($fp);
-
-
 
     }
 

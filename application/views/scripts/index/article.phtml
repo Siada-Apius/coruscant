@@ -1,3 +1,5 @@
+<?php $this->headMeta()->appendName('description', $this->articles['shortDesc']); ?>
+
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 block">
     <div class="article_block">
         <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 left_part">
@@ -10,7 +12,7 @@
         </div>
 
         <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 right_part">
-            <h2><?php echo $this->articles['title']; ?></h2>
+            <h2><?php echo strip_tags($this->headTitle($this->articles['title'])); ?></h2>
             <?php echo $this->articles['full']; ?>
         </div>
     </div>

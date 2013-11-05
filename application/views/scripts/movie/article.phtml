@@ -1,7 +1,7 @@
 <div class="movieWrap">
 
     <div class="movieBlock">
-        <h2><?php echo $this->movie['title']; ?></h2>
+        <h2><?php echo strip_tags($this->headTitle($this->movie['title'])); ?></h2>
     </div>
 
     <div class="movieBlock">

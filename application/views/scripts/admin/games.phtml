@@ -2,7 +2,7 @@
 
     <?php foreach($this->games as $value): ?>
 
-    <div class="game_block col-xs-12 col-sm-6 col-md-4 col-lg-4">
+    <div class="game_block col-xs-12 col-sm-6 col-md-4 col-lg-4" id="contentWrapper<?php echo $value['id']; ?>">
         <div class="col-xs-12" title="<?php echo $value['title']; ?>">
             <div class="game_poster" title="<?php echo $value['title']; ?>">
                 <img src="/img/games/<?php echo $value['id']; ?>/<?php echo $value['poster']; ?>" alt="<?php echo $value['title']; ?>" />
@@ -11,7 +11,7 @@
             <div class="game_title">
                 <a href="/admin/games/edit/id/<?php echo $value['id']; ?>">Edit</a>
                 <span>&#124;</span>
-                <a class="deleteGame"><input type="hidden" value="<?php echo $value['id']; ?>">Delete</a>
+                <a data-param="games" class="delete_article" data-id="<?php echo $value['id']; ?>">Delete</a>
             </div>
         </div>
     </div>

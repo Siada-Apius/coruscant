@@ -7,6 +7,8 @@ class AdminController extends Zend_Controller_Action
     {
         $this   ->_helper->AjaxContext()
                 ->addActionContext('index','json')
+                ->addActionContext('movie','json')
+                ->addActionContext('games','json')
                 ->addActionContext('edit','json')
                 ->initContext('json')
         ;
@@ -19,11 +21,11 @@ class AdminController extends Zend_Controller_Action
 
         if ($this->getRequest()->isXmlHttpRequest()){
 
-            if ($this->getRequest()->getParam('delId')) {
+            if ($this->getRequest()->getParam('param') == 'article'){
 
-                $articleDb->deleteItem($this->getRequest()->getParam('delId'));
+                $articleDb->deleteItem($this->getRequest()->getParam('delete_id'));
 
-                $dir = '../www/img/article/' . $this->getRequest()->getParam('delId') . '/';
+                $dir = '../www/img/article/' . $this->getRequest()->getParam('delete_id') . '/';
                 $dwarf->rrmdir($dir);
 
             }
@@ -45,11 +47,11 @@ class AdminController extends Zend_Controller_Action
 
         if ($this->getRequest()->isXmlHttpRequest()){
 
-            if ($this->getRequest()->getParam('movieId')) {
+            if ($this->getRequest()->getParam('param') == 'movie'){
 
-                $movieDb->deleteItem($this->getRequest()->getParam('movieId'));
+                $movieDb->deleteItem($this->getRequest()->getParam('delete_id'));
 
-                $dir = '../www/img/movie/' . $this->getRequest()->getParam('movieId') . '/';
+                $dir = '../www/img/movie/' . $this->getRequest()->getParam('delete_id') . '/';
                 $dwarf->rrmdir($dir);
 
             }
@@ -69,11 +71,11 @@ class AdminController extends Zend_Controller_Action
 
         if ($this->getRequest()->isXmlHttpRequest()){
 
-            if ($this->getRequest()->getParam('gameId')) {
+            if ($this->getRequest()->getParam('param') == 'games'){
 
-                $gamesDb->deleteItem($this->getRequest()->getParam('gameId'));
+                $gamesDb->deleteItem($this->getRequest()->getParam('delete_id'));
 
-                $dir = '../www/img/games/' . $this->getRequest()->getParam('gameId') . '/';
+                $dir = '../www/img/games/' . $this->getRequest()->getParam('delete_id') . '/';
                 $dwarf->rrmdir($dir);
 
             }
@@ -104,6 +106,7 @@ class AdminController extends Zend_Controller_Action
         $gameImgDb      = new Application_Model_DbTable_GamesImg();
 
         $folderModel    = new Application_Model_Folder();
+
 
         $response = $this->getRequest()->getParam('name');
 
@@ -286,7 +289,6 @@ class AdminController extends Zend_Controller_Action
 
     public function editAction()
     {
-
         $articleDb   = new Application_Model_DbTable_Articles();
         $movieDb     = new Application_Model_DbTable_Movies();
         $movieImgDb  = new Application_Model_DbTable_MovieImg();
@@ -302,28 +304,24 @@ class AdminController extends Zend_Controller_Action
 
         if ($this->getRequest()->isXmlHttpRequest()){
 
-            if ($this->getRequest()->getParam('articlePicName')){
+            if ($this->getRequest()->getParam('param') == 'article'){
 
-                $articlePicName = $this->getRequest()->getParam('articlePicName');
-                $articleId = $this->getRequest()->getParam('articleId');
-
-                $needDir = '../www/img/article/' . $articleId . '/';
-
-                $dwarf->deleteFile($needDir, $articlePicName);
+                $needDir = '../www/img/article/' . $this->getRequest()->getParam('id') . '/';
+                $dwarf->deleteFile($needDir, $this->getRequest()->getParam('name'));
 
             }
-
-            if ($this->getRequest()->getParam('moviePicValue')){
-
-                $moviePicValue = $this->getRequest()->getParam('moviePicValue');
-                $moviePicName = $movieImgDb->getItem($moviePicValue);
-
-                $needDir = '../www/img/movie/' . $moviePicName['movie_id'] . '/';
-
-                $dwarf->deleteFile($needDir, $moviePicName['addImg']);
-                $movieImgDb->deleteItem($moviePicValue);
-
-            }
+//
+//            if ($this->getRequest()->getParam('moviePicValue')){
+//
+//                $moviePicValue = $this->getRequest()->getParam('moviePicValue');
+//                $moviePicName = $movieImgDb->getItem($moviePicValue);
+//
+//                $needDir = '../www/img/movie/' . $moviePicName['movie_id'] . '/';
+//
+//                $dwarf->deleteFile($needDir, $moviePicName['addImg']);
+//                $movieImgDb->deleteItem($moviePicValue);
+//
+//            }
 
         } else {
 
@@ -334,11 +332,12 @@ class AdminController extends Zend_Controller_Action
                 if ($this->getRequest()->isPost()) {
 
                     $editData = $this->getRequest()->getPost();
-
                     $elem = $articleForm->getElement('miniImg');
                     $fileInfo = $elem->getFileInfo();
 
-                    $data['miniImg'] = $fileInfo['miniImg']['name'];
+                    $editData['miniImg'] = $fileInfo['miniImg']['name'];
+                    unset($editData['submit']);
+                    unset($editData['MAX_FILE_SIZE']);
 
                     $articleDb->editArticles($editData);
 
@@ -349,12 +348,11 @@ class AdminController extends Zend_Controller_Action
                     $elem->setDestination($imageDir);
                     $elem->receive();
 
-
                     if ($elem1 = $articleForm->getElement('imgInText')){
 
                         $fileInfo1 = $elem1->getFileInfo();
 
-                        foreach ($fileInfo1 as $key => $value){
+                        foreach ($fileInfo1 as $value){
 
                             $elem1->setDestination($imageDir);
                             $elem1->receive();
@@ -368,6 +366,7 @@ class AdminController extends Zend_Controller_Action
                 $res = $articleDb->getItem($this->getRequest()->getParam('id'));
                 $this->view->articles = $res;
                 $this->view->form = $articleForm->populate($res);
+
 
             } else if ($response == 'movie'){
 
@@ -397,7 +396,7 @@ class AdminController extends Zend_Controller_Action
                         $elem1 = $movieForm->getElement('addImg');
                         $fileInfo1 = $elem1->getFileInfo();
 
-                        foreach ($fileInfo1 as $key => $value){
+                        foreach ($fileInfo1 as $value){
 
                             if ($value['name']) {
                                 $movieImgDb->addMoviePic($value['name'], $editData['id'], 'slider');
@@ -415,7 +414,7 @@ class AdminController extends Zend_Controller_Action
                         $elem2 = $movieForm->getElement('ostImg');
                         $fileInfo2 = $elem2->getFileInfo();
 
-                        foreach ($fileInfo2  as $key => $value){
+                        foreach ($fileInfo2  as $value){
 
                             if ($value['name']){
                                 $movieImgDb->addMoviePic($value['name'], $editData['id'], 'ost');
@@ -432,7 +431,7 @@ class AdminController extends Zend_Controller_Action
                         $elem1 = $movieForm->getElement('textImg');
                         $fileInfo1 = $elem1->getFileInfo();
 
-                        foreach ($fileInfo1 as $key => $value){
+                        foreach ($fileInfo1 as $value){
 
                             if ($value['name']){
                                 $movieImgDb->addMoviePic($value['name'], $editData['id'], 'text');

@@ -5,30 +5,31 @@
 <meta name="author" content="Siada-Apius">
 <?php echo $this->headMeta();?>
 <link rel="shortcut icon" href="http://www.force-leads.com/favicon.png">
-<link href='http://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'>
 
-<?php $this->headLink()->appendStylesheet('/wysiwyg/markitup/skins/simple/style.css');?>
-<?php $this->headLink()->appendStylesheet('/wysiwyg/markitup/sets/default/style.css');?>
 <?php $this->headLink()->appendStylesheet('/bootstrap/3.0.0/dist/css/bootstrap.min.css');?>
 <?php $this->headLink()->appendStylesheet('/css/manual.css');?>
 
 <?php echo $this->headLink();?>
 <?php echo $this->headTitle();?>
+
+
 </head>
 
 <body>
 <div id="wrap">
     <div class="row">
+        <header>
         <div class="modal-header">
             <div class="hidden-xs hidden-sm col-md-3 col-lg-3"></div>
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 logo">
-                <a class="block_link" href="http://force-leads.com">
-                    <img alt="logo picture" src="http://force-leads.com/img/style/logo1.png"/>
+                <a href="http://force-leads.com">
+                    <img alt="logo picture" src="http://force-leads.com/img/style/logo2.png"/>
                 </a>
             </div>
             <div class="hidden-xs hidden-sm col-md-3 col-lg-3"></div>
         </div>
 
+        <nav>
         <div class="navbar navbar-default bar">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -38,8 +39,7 @@
                 </button>
             </div>
             <div class="navbar-collapse collapse">
-                <?php
-                $identity = Zend_Auth::getInstance()->getStorage()->read();
+                <?php $identity = Zend_Auth::getInstance()->getStorage()->read();
 
                 if (isset($identity->role)  && $identity->role == 'admin'){
                     echo $this  ->navigation()
@@ -66,16 +66,20 @@
                 </form>
             </div><!--/.navbar-collapse -->
         </div>
+        </nav>
+        </header>
     </div>
 
     <div class="row content">
-        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3"></div>
-        <div class="col-xs-12 col-sm-9 col-md-7 col-lg-6"><?php echo $this->layout()->content; ?></div>
-        <div class="col-xs-12 col-sm-12 col-md-2 col-lg-3"></div>
+        <aside><div class="col-xs-12 col-sm-3 col-md-3 col-lg-3"></div></aside>
+        <section><div class="col-xs-12 col-sm-9 col-md-7 col-lg-6"><?php echo $this->layout()->content; ?></div></section>
+        <aside><div class="col-xs-12 col-sm-12 col-md-2 col-lg-3"></div></aside>
     </div>
 </div>
 
+<footer>
 <div id="footer">
+
     <span>Developed for distribution STAR WARS</span>
 
     <!--LiveInternet counter-->
@@ -85,11 +89,14 @@
         </script>
     </div>
     <!--/LiveInternet-->
-</div>
 
+</div>
+</footer>
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
+
+
 <!--[if lt IE 9]>
 <script src="/bootstrap/3.0.0/assets/js/html5shiv.js"></script>
 <script src="/bootstrap/3.0.0/assets/js/respond.min.js"></script>
@@ -110,6 +117,5 @@
     ga('create', 'UA-44093366-1', 'force-leads.com');
     ga('send', 'pageview');
 </script>
-
 </body>
 </html>

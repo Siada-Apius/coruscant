@@ -1,5 +1,14 @@
+@font-face {
+    font-family: 'Comfortaa';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Comfortaa'), local('Comfortaa-Regular'), url(http://themes.googleusercontent.com/static/fonts/comfortaa/v4/qLBu5CQmSMt1H43OiWJ77T8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}
+
 /* ===================== MAIN (All pages) ========================= */
 html, body { height: 100%; }
+
+
 
 body {
     font-family: 'Comfortaa', 'New York', serif;
@@ -31,7 +40,10 @@ div.modal-header {
     padding: 0;
 }
 
-div.logo { text-align: center; }
+div.logo {
+    padding: 10px;
+    text-align: center;
+}
 
 
 @media (max-width: 768px) {
@@ -128,7 +140,7 @@ ul.list-unstyled li { margin: 5px 5px 0 5px; }
                 width: 100%;
             }
 
-            cite { font-style: italic; }
+            cite, blockquote, q { font-style: italic; }
             a { color: #0088CC; }
 
 div.pagination {
@@ -240,14 +252,14 @@ div#footer {
 
 /* ====================== ADMIN ========================= */
 /* ====================== ADMIN - INDEX ========================= */
-div.delete_cross { left: 20px; }
+div.delete_cross { float: right }
 
     div.delete_cross input{
-        width: 25px;
         height: 25px;
-        z-index: 2;
         opacity: 0.3;
         position: relative;
+        width: 25px;
+        z-index: 2;
     }
 
         div.delete_cross input:hover { opacity: 1; }

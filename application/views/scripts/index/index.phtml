@@ -7,21 +7,21 @@
         <?php foreach ($this->articles as $value): ?>
 
         <li id="contentWrapper<?php echo $value['id']; ?>">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 block">
-                <a class="block_link" href="/article/id/<?php echo $value['id']; ?>" name="<?php echo $value['id']; ?>"></a>
+            <div itemscope itemtype="http://schema.org/Article" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 block">
+                <a itemprop="url" class="block_link" href="/article/id/<?php echo $value['id']; ?>" name="<?php echo $value['id']; ?>"></a>
 
                 <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 left_part">
                     <div class="pic_wrap">
-                        <img class="img_pic img-responsive" src="/img/article/<?php echo $value['id']; ?>/<?php echo $value['miniImg']; ?>" title="<?php echo $value['title']; ?>" alt="<?php echo $value['miniImg']; ?>" />
+                        <img itemprop="image" class="img_pic img-responsive" src="/img/article/<?php echo $value['id']; ?>/<?php echo $value['miniImg']; ?>" title="<?php echo $value['title']; ?>" alt="<?php echo $value['miniImg']; ?>" />
                     </div>
                     <div class="col-xs-12 time">
-                        <?php echo $value['addDate']; ?>
+                        <time datetime="<?php echo $value['addDate']; ?>"><?php echo $value['addDate']; ?></time>
                     </div>
                 </div>
 
                 <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 right_part">
-                    <h2><?php echo $value['title']; ?></h2>
-                    <?php echo $value['shortDesc']; ?>
+                    <h2 itemprop="name"><?php echo $value['title']; ?></h2>
+                    <span itemprop="description"><?php echo $value['shortDesc']; ?></span>
                 </div>
             </div>
         </li>

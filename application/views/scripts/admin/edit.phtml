@@ -1,3 +1,6 @@
+<?php $this->headLink()->appendStylesheet('/wysiwyg/markitup/skins/simple/style.css');?>
+<?php $this->headLink()->appendStylesheet('/wysiwyg/markitup/sets/default/style.css');?>
+
 <?php if ($this->form): ?> <!--FORM FOR ARTICLE-->
 
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 well">
@@ -27,8 +30,66 @@
                 </div>
             </div>
         </div>
+
         <div class="row"><?php echo $this->form->getElement('submit'); ?><!-- SUBMIT --></div>
+
     </form>
+
+    <div class="row">
+
+        <h5>Available Images For This Article</h5>
+
+        <?php if ($this->articles['id']):
+
+            $dir = '../www/img/article/' . $this->articles['id'];
+
+            if(is_dir($dir)):
+
+                $files = scandir($dir);
+                array_shift($files); // delete from array '.'
+                array_shift($files); // delete from array '..'
+                $dir = str_replace ('../www', '' , '../www/img/article/' );
+
+                foreach ($files as $name): ?>
+
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 well block">
+
+                    <div class="delete_cross">
+                        <input data-param="article" data-id="<?php echo $this->articles['id'] ?>" value="<?php echo $name ?>" class="delete_picture" type="image" src="/img/style/remove_close_button_x_delete.png" />
+                    </div>
+
+                    <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+                        <img class="img_pic img-responsive" src="<?php echo $dir . $this->articles['id'] . '/' . $name ?>" />
+                    </div>
+
+                    <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+                        <p><?php echo $name ?></p>
+                        <p><input type="text" readonly="readonly" value="<?php echo $dir . $this->articles['id'] . '/' . $name ?>" /></p>
+                        <p><a href="<?php echo $this->url() . $dir . $this->articles['id'] . '/' . $name ?>">view image</a></p>
+
+                        <?php $size = getimagesize ($this->url() . $dir . $this->articles['id'] . '/' . $name); ?>
+
+                        <table>
+                            <tr>
+                                <th>Width: </th>
+                                <td><?php echo $size[0]; ?></td>
+                            </tr>
+                            <tr>
+                                <th>Height: </th>
+                                <td><?php echo $size[1]; ?></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <?php endforeach ?>
+
+            <?php endif;
+
+        else: echo $dir.' - not exist;<br>'; endif; ?>
+
+    </div>
+
 </div>
 
 <?php elseif ($this->formMovie): ?><!--FORM FOR MOVIE-->

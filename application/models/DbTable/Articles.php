@@ -60,7 +60,7 @@ class Application_Model_DbTable_Articles extends Application_Model_DbTable_Abstr
          * else update all record
          */
 
-        if ($request['miniImg'] == '') {
+        if (empty($request['miniImg'])) {
 
             $array = array(
 
@@ -77,12 +77,7 @@ class Application_Model_DbTable_Articles extends Application_Model_DbTable_Abstr
 
         } else {
 
-            $where   = array(
-
-                $this->getAdapter()->quoteInto('id = ?', $request['id'])
-
-            );
-
+            $where   = array( $this->getAdapter()->quoteInto('id = ?', $request['id']) );
             $this->update($request, $where);
 
         }

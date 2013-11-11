@@ -1,13 +1,11 @@
 <div class="container movie_wrap">
 
-<?php
-$identity = Zend_Auth::getInstance()->getStorage()->read();
-foreach ($this->movie as $value): ?>
+    <?php foreach ($this->movie as $value): ?>
 
     <div class="episode_wrap col-xs-12 col-sm-6 col-md-4 col-lg-4">
         <div class="col-xs-12 img-thumbnail">
             <div class="delete_cross">
-                <input class='movDeleteInput' type='image' src='/img/style/remove_close_button_x_delete.png' value='<?php echo $value['id'] ?>' title='<?php echo $value['id'] ?>'>
+                <input data-param="movie" class='delete_article' type='image' src='/img/style/remove_close_button_x_delete.png' value='<?php echo $value['id'] ?>' title='<?php echo $value['id'] ?>'>
             </div>
 
             <div class="episode_poster" title="<?php echo $value['title']; ?>">
@@ -17,5 +15,6 @@ foreach ($this->movie as $value): ?>
         </div>
     </div>
 
-<?php endforeach; ?>
+    <?php endforeach; ?>
+
 </div>

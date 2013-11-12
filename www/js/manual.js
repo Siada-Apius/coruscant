@@ -19,7 +19,7 @@ $(document).ready(function () {
          * delete whole article in ADMIN/(INDEX, MOVIE, GAMES)
          *
          * @var id = article id
-         * @var url = url address
+         * @var url = router address
          */
 
         if ($(this).attr('data-param') == 'article') {
@@ -67,7 +67,7 @@ $(document).ready(function () {
          * delete picture from article or movie or games
          *
          * @var = img
-         * @var = name
+         * @var = image name
          * @var = param
          * @var = id
          */
@@ -99,5 +99,41 @@ $(document).ready(function () {
             });
         }
     });
+
+    $(function()
+    {
+        /**
+         * check length for short description textarea in article
+         */
+
+        var maxLength = $('#shortDescAdd').attr('maxlength');        //(1)
+        $('#shortDescAdd').keyup(function()
+        {
+            var curLength = $('#shortDescAdd').val().length;         //(2)
+            $(this).val($(this).val().substr(0, maxLength));     //(3)
+            var remaning = maxLength - curLength;
+            if (remaning < 0) remaning = 0;
+            $('#textareaFeedback').html(remaning + ' symbols left');//(4)
+            if (remaning < 10)          //(5)
+            {
+                $('#textareaFeedback').addClass('alert-danger');
+                $('#textareaFeedback').removeClass('alert-success');
+                $('#textareaFeedback').removeClass('alert-info');
+            }
+            else if (remaning < 30)
+            {
+                $('#textareaFeedback').addClass('alert-info');
+                $('#textareaFeedback').removeClass('alert-danger');
+                $('#textareaFeedback').removeClass('alert-success');
+            }
+            else
+            {
+                $('#textareaFeedback').addClass('alert-success');
+                $('#textareaFeedback').removeClass('alert-danger');
+                $('#textareaFeedback').removeClass('alert-info');
+            }
+        })
+    })
+
 
 });

@@ -6,8 +6,20 @@
 
     if ($this->form) {
 
+        //echo $this->form;
         echo '<p>Add New Article Form</p>';
-        echo $this->form;
+        echo '<form id="addForm" method="post" action="" enctype="multipart/form-data" name="addForm">';
+        echo $this->form->title;
+        echo $this->form->shortDesc;
+        echo '<div id="textareaFeedback"></div>';
+        echo $this->form->full;
+        echo $this->form->author;
+        echo $this->form->addDate;
+        echo $this->form->updateDate;
+        echo $this->form->miniImg;
+        echo $this->form->imgInText;
+        echo $this->form->submit;
+        echo '</form>';
 
     } else if ($this->movie) {
         echo '<p>Add New Movie Form</p>';

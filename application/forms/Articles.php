@@ -23,6 +23,8 @@ class Application_Form_Articles extends Zend_Form
                 ->setLabel('Short Description')
                 ->setAttrib('class', 'shortDescAdd wysiwyg')
                 ->setAttrib('id', 'shortDescAdd')
+                ->addValidator('stringLength', false, array(3, 160))
+                ->setAttrib('maxlength', 160)
         ;
 
         $full = new Zend_Form_Element_Textarea('full');

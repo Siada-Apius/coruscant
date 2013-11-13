@@ -35,7 +35,7 @@ class AdminController extends Zend_Controller_Action
         $page = (Zend_Controller_Front::getInstance()->getRequest()->getParam('page')) ? Zend_Controller_Front::getInstance()->getRequest()->getParam('page') : '1';
         $from = ($page - 1) * 5;
 
-        $this->view->articles = $articleDb->getArticles($from);
+        $this->view->articles = $articleDb->getArticlesAdmin($from);
         $this->view->path = 'http://' . $_SERVER['SERVER_NAME'] . '/admin';
 
     }

@@ -15,7 +15,28 @@ class Application_Model_DbTable_Articles extends Application_Model_DbTable_Abstr
 
         $data = $this   ->select()
                         ->from($this->_name, array('id', 'miniImg', 'title', 'shortDesc', 'full', 'author', 'addDate', 'updateDate', 'status'))
+                        ->where('status = ?', 1)
                         ->order('id DESC')
+        ;
+
+        if(isset($from))$data->limit(5, $from);
+
+        return $data->query()->fetchAll();
+
+    }
+
+    public function getArticlesAdmin($from = ''){
+
+        /**
+         * method getArticles
+         *
+         * return all fields but limited by 5
+         * @var $data
+         */
+
+        $data = $this   ->select()
+            ->from($this->_name, array('id', 'miniImg', 'title', 'shortDesc', 'full', 'author', 'addDate', 'updateDate', 'status'))
+            ->order('id DESC')
         ;
 
         if(isset($from))$data->limit(5, $from);
@@ -35,13 +56,14 @@ class Application_Model_DbTable_Articles extends Application_Model_DbTable_Abstr
          */
 
         $array = array(
-            "title" => $newData['title'],
-            "shortDesc" => $newData['shortDesc'],
-            "full" => $newData['full'],
-            "author" => $newData['author'],
-            "addDate" => date('Y-m-d H:i:s'),
-            "updateDate" => date('Y-m-d H:i:s'),
-            "miniImg" => $newData['miniImg']
+            'title' => $newData['title'],
+            'shortDesc' => $newData['shortDesc'],
+            'full' => $newData['full'],
+            'author' => $newData['author'],
+            'addDate' => date('Y-m-d H:i:s'),
+            'updateDate' => date('Y-m-d H:i:s'),
+            'miniImg' => $newData['miniImg'],
+            'status' => $newData['status']
 
         );
 
@@ -69,6 +91,7 @@ class Application_Model_DbTable_Articles extends Application_Model_DbTable_Abstr
                 'full' => $request['full'],
                 'author' => $request['author'],
                 'updateDate' => date('Y-m-d H:i:s'),
+                'status' => $request['status'],
 
             );
 

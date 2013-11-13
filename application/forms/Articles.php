@@ -10,6 +10,15 @@ class Application_Form_Articles extends Zend_Form
 
         $id  = new Zend_Form_Element_Hidden('id');
 
+        $status = new Zend_Form_Element_Select('status');
+        $status ->setLabel('Status')
+                ->setRequired(true)
+                ->addMultiOptions(array(
+                    0 => 'block',
+                    1 => 'open',
+                ))
+        ;
+
         $title  = new Zend_Form_Element_Textarea('title');
         $title  ->setLabel('Title')
                 ->setRequired(true)
@@ -68,7 +77,7 @@ class Application_Form_Articles extends Zend_Form
                     ->setAttrib('class','btn btn-info edit_but')
         ;
 
-        $this->addElements(array($id, $title, $short, $full, $author, $update, $miniImg, $imgInText, $submit));
+        $this->addElements(array($id, $status, $title, $short, $full, $author, $update, $miniImg, $imgInText, $submit));
 
     }
 

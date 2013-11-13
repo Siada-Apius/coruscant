@@ -105,22 +105,5 @@ abstract class Application_Model_DbTable_Abstract extends Zend_Db_Table_Abstract
 
     }
 
-
-    public function getOnlyId () {
-
-        /**
-         * getOnlyId method
-         *
-         * Method what select all id from table
-         *
-         */
-
-        $data = $this   ->select()
-                        ->from($this->_name, 'id')
-        ;
-
-        return $data->query()->fetchAll();
-    }
-
 }
 

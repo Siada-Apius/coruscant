@@ -14,11 +14,11 @@ class CronjobController extends Zend_Controller_Action
         $movieDb    = new Application_Model_DbTable_Movies();
         $gameDb     = new Application_Model_DbTable_Games();
 
-        $articleId  = $articleDb->getOnlyId();
-        $movieId    = $movieDb->getOnlyId();
-        $gameId     = $gameDb->getOnlyId();
+        $article    = $articleDb->getItemsList();
+        $movieId    = $movieDb->getItemsList();
+        $gameId     = $gameDb->getItemsList();
 
-        $fp = fopen("./sitemap.xml", "w+");
+        $fp = fopen("./Sitemap.xml", "w+");
 
         $xml_structure = '<?xml version="1.0" encoding="UTF-8"?>
 <urlset
@@ -39,8 +39,8 @@ class CronjobController extends Zend_Controller_Action
 
         $text = fwrite($fp, $xml_structure);
 
-        foreach ($articleId as $id) {
-            $array[] = $id;
+        foreach ($article as $value) {
+            $array[] = $value;
             $counter = count($array);
         }
 
@@ -57,9 +57,10 @@ class CronjobController extends Zend_Controller_Action
             $text = fwrite($fp, $xml_structure .chr(13).chr(10));
         }
 
-        foreach ($articleId as $id) {
+        foreach ($article as $value) {
             $xml_structure = '<url>
-  <loc>http://force-leads.com/article/id/' . $id['id'] .'</loc>
+  <loc>http://force-leads.com/article/id/' . $value['id'] .'</loc>
+  <lastmod>' . $value['updateDate'] . '</lastmod>
 </url>';
             $text = fwrite($fp, $xml_structure .chr(13).chr(10));
         }

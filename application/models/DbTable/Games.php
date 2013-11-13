@@ -62,24 +62,5 @@ class Application_Model_DbTable_Games extends Application_Model_DbTable_Abstract
         return $this->getAdapter()->lastInsertId();
     }
 
-    public function getOnlyId () {
-
-        /**
-         * getOnlyId method
-         *
-         * Method what select all id from table
-         * Where article status is open
-         *
-         * @use - CRON JOB
-         */
-
-        $data = $this   ->select()
-                        ->from($this->_name, 'id')
-                        ->where('status = ?', 1)
-        ;
-
-        return $data->query()->fetchAll();
-    }
-
 }
 

@@ -125,25 +125,6 @@ class Application_Model_DbTable_Articles extends Application_Model_DbTable_Abstr
 
     }
 
-    public function getOnlyId () {
-
-        /**
-         * getOnlyId method
-         *
-         * Method what select all id from table
-         * Where article status is open
-         *
-         */
-
-        $data = $this   ->select()
-                        ->from($this->_name, 'id')
-                        ->where('status = ?', 1)
-        ;
-
-        return $data->query()->fetchAll();
-    }
-
-
     /**
     public function createBusiness ($array = array(), $userId) {
 

@@ -86,23 +86,4 @@ class Application_Model_DbTable_Movies extends Application_Model_DbTable_Abstrac
         return  $data->query()->fetchAll();
     }
 
-    public function getOnlyId () {
-
-        /**
-         * getOnlyId method
-         *
-         * Method what select all id from table
-         * Where article status is open
-         *
-         * @use - CRON JOB
-         */
-
-        $data = $this   ->select()
-                        ->from($this->_name, 'id')
-                        ->where('status = ?', 1)
-        ;
-
-        return $data->query()->fetchAll();
-    }
-
 }

@@ -47,6 +47,7 @@ class Application_Model_DbTable_Movies extends Application_Model_DbTable_Abstrac
                 'full' => $request['full'],
                 'actors' => $request['actors'],
                 'funny' => $request['funny'],
+                'status' => $request['status'],
 
             );
 

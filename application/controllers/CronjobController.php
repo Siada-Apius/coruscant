@@ -58,9 +58,10 @@ class CronjobController extends Zend_Controller_Action
         }
 
         foreach ($article as $value) {
+            $date = str_replace (' ', 'T' , $value['updateDate'] . '+02:00');
             $xml_structure = '<url>
   <loc>http://force-leads.com/article/id/' . $value['id'] .'</loc>
-  <lastmod>' . $value['updateDate'] . '</lastmod>
+  <lastmod>' . $date . '</lastmod>
 </url>';
             $text = fwrite($fp, $xml_structure .chr(13).chr(10));
         }

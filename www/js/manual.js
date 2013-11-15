@@ -135,5 +135,8 @@ $(document).ready(function () {
         })
     })
 
+    /** Drop-down Menu */
+    $('#menu-dropdown').attr('data-toggle', 'dropdown').html('Add <b class="caret"></b>').parent().addClass('dropdown').children().addClass('dropdown-menu');
+
 
 });

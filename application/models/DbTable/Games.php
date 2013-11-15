@@ -40,6 +40,7 @@ class Application_Model_DbTable_Games extends Application_Model_DbTable_Abstract
                 'title' => $data['title'],
                 'system' => $data['system'],
                 'funny' => $data['funny'],
+                'status' => $data['status'],
 
             );
 
@@ -56,7 +57,6 @@ class Application_Model_DbTable_Games extends Application_Model_DbTable_Abstract
             );
 
             $this->update($data, $where);
-
         }
 
         return $this->getAdapter()->lastInsertId();

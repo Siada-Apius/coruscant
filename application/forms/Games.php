@@ -10,6 +10,15 @@ class Application_Form_Games extends Zend_Form
         $id  = new Zend_Form_Element_Hidden('id');
         $id     ->setAttrib('class', 'gameId');
 
+        $status = new Zend_Form_Element_Select('status');
+        $status ->setLabel('Status')
+            ->setRequired(true)
+            ->addMultiOptions(array(
+                0 => 'block',
+                1 => 'open',
+            ))
+        ;
+
         $title = new Zend_Form_Element_Textarea('title');
         $title  ->setRequired(true)
                 ->setLabel('Title')
@@ -55,7 +64,7 @@ class Application_Form_Games extends Zend_Form
                 ->setAttrib('class','btn btn-success edit_but')
         ;
 
-        $this->addElements(array($id, $title, $system, $desc, $funny, $poster, $textImg, $submit));
+        $this->addElements(array($id, $status, $title, $system, $desc, $funny, $poster, $textImg, $submit));
     }
 
 }

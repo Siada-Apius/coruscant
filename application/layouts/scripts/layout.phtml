@@ -43,18 +43,18 @@
 
                 if (isset($identity->role)  && $identity->role == 'admin'){
                     echo $this  ->navigation()
-                        ->menu()
-                        ->setMaxDepth(2)
-                        ->setUlClass('nav navbar-nav')
-                        ->render(new My_Navigation($this->navigation()->findAllBy('tag','admin',true)))
+                                ->menu()
+                                ->setMaxDepth(2)
+                                ->setUlClass('nav navbar-nav')
+                                ->render(new My_Navigation($this->navigation()->findAllBy('tag','admin',true)))
                     ;
 
                 } else {
                     echo $this  ->navigation()
-                        ->menu()
-                        ->setMaxDepth(2)
-                        ->setUlClass('nav navbar-nav')
-                        ->render(new My_Navigation($this->navigation()->findAllBy('tag','topMenu',true)))
+                                ->menu()
+                                ->setMaxDepth(2)
+                                ->setUlClass('nav navbar-nav')
+                                ->render(new My_Navigation($this->navigation()->findAllBy('tag','topMenu',true)))
                     ;
                 }
                 ?>
@@ -71,7 +71,8 @@
     </div>
 
     <div class="row content">
-        <aside><div class="col-xs-12 col-sm-3 col-md-3 col-lg-3"></div></aside>
+        <aside>
+        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3"></div></aside>
         <section><div class="col-xs-12 col-sm-9 col-md-7 col-lg-6"><?php echo $this->layout()->content; ?></div></section>
         <aside><div class="col-xs-12 col-sm-12 col-md-2 col-lg-3"></div></aside>
     </div>
@@ -80,7 +81,7 @@
 <footer>
 <div id="footer">
 
-    <span>Developed for distribution STAR WARS</span>
+    <div><span>Developed for distribution STAR WARS</span></div>
 
     <!--LiveInternet counter-->
     <div class="counter">
@@ -95,7 +96,6 @@
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-
 
 <!--[if lt IE 9]>
 <script src="/bootstrap/3.0.0/assets/js/html5shiv.js"></script>

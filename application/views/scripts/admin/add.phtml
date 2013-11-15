@@ -7,7 +7,7 @@
     if ($this->form) {
 
         echo '<p>Add New Article Form</p>';
-        echo '<form id="addForm" method="post" action="" enctype="multipart/form-data" name="addForm">';
+        echo '<form id="addForm" method="post" enctype="multipart/form-data" name="addForm">';
         echo $this->form->title;
         echo $this->form->shortDesc;
         echo '<div id="textareaFeedback"></div>';
@@ -26,7 +26,6 @@
         echo $this->movie;
 
     } else if ($this->gameForm) {
-
         echo '<p>Add New Game Form</p>';
         echo $this->gameForm;
     }

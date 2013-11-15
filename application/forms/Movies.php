@@ -10,6 +10,15 @@ class Application_Form_Movies extends Zend_Form
         $id  = new Zend_Form_Element_Hidden('id');
         $id     ->setAttrib('class', 'movieId');
 
+        $status = new Zend_Form_Element_Select('status');
+        $status ->setLabel('Status')
+                ->setRequired(true)
+                ->addMultiOptions(array(
+                    0 => 'block',
+                    1 => 'open',
+                ))
+        ;
+
         $title  = new Zend_Form_Element_Textarea('title');
         $title  ->setLabel('Title')
                 ->addFilter('StringTrim')
@@ -84,7 +93,7 @@ class Application_Form_Movies extends Zend_Form
                     ->setAttrib('class','btn btn-success edit_but')
         ;
 
-        $this->addElements(array($id, $title, $short, $actors, $full, $funny, $ost, $miniImg, $textImg, $addImg, $ostImg, $submit));
+        $this->addElements(array($id, $status, $title, $short, $actors, $full, $funny, $ost, $miniImg, $textImg, $addImg, $ostImg, $submit));
 
     }
 

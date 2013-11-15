@@ -114,6 +114,33 @@ return array(
             ),
             array (
 
+                'label' => 'Add',
+                'tag' => 'admin',
+                'route' => 'default',
+                'module' => 'default',
+                'resource' => 'admin',
+                'privilege' => 'add',
+                'id' => "dropdown",
+                'uri' => '#',
+                'pages' => array(
+
+                    array(
+                        'label' => 'Article',
+                        'uri' => '/admin/add/article'
+                    ),
+                    array(
+                        'label' => 'Movie',
+                        'uri' => '/admin/add/movie'
+                    ),
+                    array(
+                        'label' => 'Games',
+                        'uri' => '/admin/add/games'
+                    )
+                )
+
+            ),
+            array (
+
                 'label' => 'Kill Them All',
                 'tag' => 'admin',
                 'route' => 'default',

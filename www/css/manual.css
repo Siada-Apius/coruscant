@@ -241,8 +241,10 @@ div.game_wrap {
 /* ====================== FOOTER =============== */
 div#footer {
     background-color: #F5F5F5;
+    float: left;
     line-height: 60px;
     text-align: center;
+    width: 100%;
 }
 
     div.counter {
@@ -270,4 +272,20 @@ input.edit_but { width: 100% }
 textarea.titleAdd { width: 100%; height: 140px }
 textarea.shortDescAdd { width: 100%; height: 200px }
 textarea.fullAdd { width: 100%; height: 400px }
+textarea.actorsAdd { width: 100%;}
+textarea.funnyAdd  { width: 100%;}
+textarea.ostListAdd  { width: 100%;}
 .row > h4 { border-bottom: 1px dotted #000000 }
+
+/* ====================== MENU ========================= */
+a#menu-dropdown {
+    background-color: inherit;
+    border: medium none;
+    box-shadow: none;
+    font-size: inherit;
+    min-width: 0;
+}
+
+    li.open {
+        background-color: #E7E7E7;
+    }

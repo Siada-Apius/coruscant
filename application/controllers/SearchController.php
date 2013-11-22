@@ -80,31 +80,7 @@ class SearchController extends Zend_Controller_Action
 
         }
 
-        echo '
-        <table border=1px>
-            <tr>
-                <td></td>
-                <td>You have indexed</td>
-            </tr>
-            <tr>
-                <td>Movies</td>
-                <td>' . count($total['movie']) . '</td>
-            </tr>
-            <tr>
-                <td>Articles</td>
-                <td>' . count($total['article']) . '</td>
-            </tr>
-            <tr>
-                <td>Games</td>
-                <td>' . count($total['game']) . '</td>
-            </tr>
-            <tr>
-                <td>TOTAL </td>
-                <td>';
-                    echo count($total['movie']) + count($total['article']) + count($total['game']) . '
-                </td>
-            </tr>
-        </table>';
+        $this->view->total = $total;
 
     }
 }

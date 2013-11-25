@@ -289,3 +289,10 @@ a#menu-dropdown {
     li.open {
         background-color: #E7E7E7;
     }
+
+/* ====================== COMMENTS ========================= */
+div.comments_block {
+    border: 1px solid #000000;
+    display: table;
+    margin: 20px auto;
+}

@@ -1,4 +1,5 @@
 <?php $this->headMeta()->appendName('description', $this->articles['shortDesc']); ?>
+<?php $this->headScript()->appendFile('/js/vk.comments.js');?>
 
 <div itemscope itemtype="http://schema.org/Article" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 block">
     <div class="article_block">
@@ -15,6 +16,19 @@
             <h2 itemprop="name"><?php echo strip_tags($this->headTitle($this->articles['title'])); ?></h2>
             <article itemprop="articleBody"><?php echo $this->articles['full']; ?></article>
         </div>
+    </div>
+    <div class="comments_block">
+        <script type="text/javascript">
+            VK.init({apiId: 4018526, onlyWidgets: true});
+        </script>
+
+        <div id="vk_comments"></div>
+
+        <script type="text/javascript">
+            if (screen.width < 1024) var par = "260";
+            else if (screen.width > 1024) var par = "480";
+            VK.Widgets.Comments("vk_comments", {limit: 5, width: par, attach: "*"});
+        </script>
     </div>
 </div>
 

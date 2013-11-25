@@ -22,6 +22,7 @@ class Application_Model_DbTable_Comments extends Application_Model_DbTable_Abstr
         $addCom = array(
             'article_id' => $id,
             'user_name' => $addDate['user_name'],
+            'user_email' => $addDate['user_email'],
             'com_date' => date('Y-m-d H:i:s'),
             'com_text' => $addDate['com_text']
 

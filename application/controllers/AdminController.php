@@ -289,18 +289,19 @@ class AdminController extends Zend_Controller_Action
 
     public function editAction()
     {
-        $articleDb   = new Application_Model_DbTable_Articles();
-        $movieDb     = new Application_Model_DbTable_Movies();
-        $movieImgDb  = new Application_Model_DbTable_MovieImg();
-        $gameDb      = new Application_Model_DbTable_Games();
-        $gameImgDb   = new Application_Model_DbTable_GamesImg();
+        $articleDb      = new Application_Model_DbTable_Articles();
+        $movieDb        = new Application_Model_DbTable_Movies();
+        $movieImgDb     = new Application_Model_DbTable_MovieImg();
+        $gameDb         = new Application_Model_DbTable_Games();
+        $gameImgDb      = new Application_Model_DbTable_GamesImg();
 
-        $movieForm   = new Application_Form_Movies();
-        $articleForm = new Application_Form_Articles();
-        $gameForm    = new Application_Form_Games();
+        $movieForm      = new Application_Form_Movies();
+        $articleForm    = new Application_Form_Articles();
+        $gameForm       = new Application_Form_Games();
 
-        $folderModel = new Application_Model_Folder();
-        $dwarf       = new Application_Model_Dwarf(); //delete folder
+        $folderModel    = new Application_Model_Folder();
+        $dwarf          = new Application_Model_Dwarf(); //delete folder
+        $image          = new Application_Model_Images();
 
         if ($this->getRequest()->isXmlHttpRequest()){
 
@@ -332,30 +333,31 @@ class AdminController extends Zend_Controller_Action
                 if ($this->getRequest()->isPost()) {
 
                     $editData = $this->getRequest()->getPost();
-                    $elem = $articleForm->getElement('miniImg');
-                    $fileInfo = $elem->getFileInfo();
 
-                    $editData['miniImg'] = $fileInfo['miniImg']['name'];
+                    if (is_uploaded_file($_FILES['miniImg']['tmp_name']))
+
+                    $editData['miniImg'] = $_FILES['miniImg']['name'];
                     unset($editData['submit']);
                     unset($editData['MAX_FILE_SIZE']);
 
                     $articleDb->editArticles($editData);
 
-                    $basePath = '/img/article/' . $editData['id'] . '/';
-                    $folderModel->createFolderChain($basePath, '/');
+                    if ($_FILES['miniImg']['name']){
+                        move_uploaded_file($_FILES['miniImg']['tmp_name'], './img/article/' . $editData['id'] . '/' . $_FILES['miniImg']['name']);
+                        $image->resize('./img/article/' . $editData['id'] . '/' . $_FILES['miniImg']['name'], 223, 5000000, $_FILES['miniImg']['name'], './img/article/' . $editData['id'] . '/');
+                    }
+
+                    /*upload for img in text*/
                     $imageDir = realpath(APPLICATION_PATH . '/../www/') . DIRECTORY_SEPARATOR . 'img' . DIRECTORY_SEPARATOR . 'article' . DIRECTORY_SEPARATOR . $editData['id'] . DIRECTORY_SEPARATOR;
+                    if ($elem = $articleForm->getElement('imgInText')){
 
-                    $elem->setDestination($imageDir);
-                    $elem->receive();
+                        $fileInfo = $elem->getFileInfo();
 
-                    if ($elem1 = $articleForm->getElement('imgInText')){
+                        foreach ($fileInfo as $value){
 
-                        $fileInfo1 = $elem1->getFileInfo();
-
-                        foreach ($fileInfo1 as $value){
-
-                            $elem1->setDestination($imageDir);
-                            $elem1->receive();
+                            $elem->setDestination($imageDir);
+                            $elem->receive();
+                            $image->resize('./img/article/' . $editData['id'] . '/' . $value['name'], 644, 5000000, $value['name'], './img/article/' . $editData['id'] . '/');
 
                         }
 
@@ -366,6 +368,7 @@ class AdminController extends Zend_Controller_Action
                 $res = $articleDb->getItem($this->getRequest()->getParam('id'));
                 $this->view->articles = $res;
                 $this->view->form = $articleForm->populate($res);
+
 
 
             } else if ($response == 'movie'){

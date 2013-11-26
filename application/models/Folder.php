@@ -1,10 +1,9 @@
 <?php
 
-class Application_Model_Folder
-{
+class Application_Model_Folder {
+
     public function createFolderChain($path, $separator = '/')
     {
-
         $path = explode($separator, $path); //exploding path by separator(default = '/')
         $path = array_filter($path); //remove empty elements from array
         $currentDir = realpath(APPLICATION_PATH . '/../www/') . DIRECTORY_SEPARATOR; //first dir after public
@@ -16,5 +15,4 @@ class Application_Model_Folder
 
         }
     }
-
 }

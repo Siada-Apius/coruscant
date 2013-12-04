@@ -106,6 +106,7 @@ class AdminController extends Zend_Controller_Action
         $gameImgDb      = new Application_Model_DbTable_GamesImg();
 
         $folderModel    = new Application_Model_Folder();
+        $image          = new Application_Model_Images();
 
 
         $response = $this->getRequest()->getParam('name');
@@ -118,29 +119,28 @@ class AdminController extends Zend_Controller_Action
 
                 if ($articleForm->isValid($data)){
 
-                    $elem = $articleForm->getElement('miniImg');
-                    $fileInfo = $elem->getFileInfo();
-
-                    $data['miniImg'] = $fileInfo['miniImg']['name'];
+                    if (is_uploaded_file($_FILES['miniImg']['tmp_name'])) $data['miniImg'] = $_FILES['miniImg']['name'];
 
                     $last_id = $articleDb->addArticles($data);
 
                     $basePath = '/img/article/' . $last_id . '/';
                     $folderModel->createFolderChain($basePath, '/');
+
+                    if ($_FILES['miniImg']['name']){
+                        move_uploaded_file($_FILES['miniImg']['tmp_name'], './img/article/' . $last_id . '/' . $_FILES['miniImg']['name']);
+                        $image->resize('./img/article/' . $last_id . '/' . $_FILES['miniImg']['name'], 223, 5000000, $_FILES['miniImg']['name'], './img/article/' . $last_id . '/');
+                    }
                     $imageDir = realpath(APPLICATION_PATH . '/../www/') . DIRECTORY_SEPARATOR . 'img' . DIRECTORY_SEPARATOR . 'article' . DIRECTORY_SEPARATOR . $last_id . DIRECTORY_SEPARATOR;
 
-                    $elem->setDestination($imageDir);
-                    $elem->receive();
+                    if ($elem = $articleForm->getElement('imgInText')){
 
+                        $fileInfo = $elem->getFileInfo();
 
-                    if ($elem1 = $articleForm->getElement('imgInText')){
+                        foreach ($fileInfo as $value){
 
-                        $fileInfo1 = $elem1->getFileInfo();
-
-                        foreach ($fileInfo1 as $key => $value){
-
-                            $elem1->setDestination($imageDir);
-                            $elem1->receive();
+                            $elem->setDestination($imageDir);
+                            $elem->receive();
+                            $image->resize('./img/article/' . $last_id . '/' . $value['name'], 644, 5000000, $value['name'], './img/article/' . $last_id . '/');
 
                         }
 

@@ -1,3 +1,12 @@
+<?php echo $this->doctype('XHTML1_RDFA'); ?>
+
+<?php $this->headMeta()->setProperty('og:type', 'article'); ?>
+<?php $this->headMeta()->setProperty('og:site_name', 'force-leads.com'); ?>
+<?php $this->headMeta()->setProperty('og:title', $this->articles['title']); ?>
+<?php $this->headMeta()->setProperty('og:url', $this->url()); ?>
+<?php $this->headMeta()->setProperty('og:description', $this->articles['shortDesc']); ?>
+<?php $this->headMeta()->setProperty('og:image', 'http://force-leads.com/img/article/' . $this->articles['id'] . '/' . $this->articles['miniImg']); ?>
+
 <?php $this->headMeta()->appendName('description', $this->articles['shortDesc']); ?>
 <?php $this->headScript()->appendFile('/js/vk.comments.js');?>
 
@@ -9,6 +18,11 @@
             </div>
             <div class="col-xs-12 time">
                 <time itemprop="datePublished" content="<?php echo $this->articles['addDate']; ?>"  datetime="<?php echo $this->articles['addDate']; ?>"><?php echo $this->articles['addDate']; ?></time>
+            </div>
+            <div class="col-xs-12 social">
+
+                <div class="fb-share-button" data-type="button"></div>
+
             </div>
         </div>
 

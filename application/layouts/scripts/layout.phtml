@@ -3,7 +3,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="Siada-Apius">
+
 <?php echo $this->headMeta();?>
+
 <link rel="shortcut icon" href="http://www.force-leads.com/favicon.png" type="image/x-icon">
 
 <?php $this->headLink()->appendStylesheet('/bootstrap/3.0.0/dist/css/bootstrap.min.css');?>
@@ -117,5 +119,17 @@
     ga('create', 'UA-44093366-1', 'force-leads.com');
     ga('send', 'pageview');
 </script>
+
+<!--Facebook Share-->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/uk_UA/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+
 </body>
 </html>

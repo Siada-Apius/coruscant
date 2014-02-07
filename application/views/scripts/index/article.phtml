@@ -6,9 +6,11 @@
 <?php $this->headMeta()->setProperty('og:url', $this->url()); ?>
 <?php $this->headMeta()->setProperty('og:description', $this->articles['shortDesc']); ?>
 <?php $this->headMeta()->setProperty('og:image', 'http://force-leads.com/img/article/' . $this->articles['id'] . '/' . $this->articles['miniImg']); ?>
-
 <?php $this->headMeta()->appendName('description', $this->articles['shortDesc']); ?>
+<?php $this->headMeta()->appendName('title', $this->articles['title']); ?>
+<?php $this->headLink()->headLink(array('rel' => 'image_src', 'href' => 'http://force-leads.com/img/article/' . $this->articles['id'] . '/' . $this->articles['miniImg'])); ?>
 <?php $this->headScript()->appendFile('/js/vk.comments.js');?>
+<?php $this->headScript()->appendFile('/js/social.js');?>
 
 <div itemscope itemtype="http://schema.org/Article" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 block">
     <div class="article_block">
@@ -20,9 +22,10 @@
                 <time itemprop="datePublished" content="<?php echo $this->articles['addDate']; ?>"  datetime="<?php echo $this->articles['addDate']; ?>"><?php echo $this->articles['addDate']; ?></time>
             </div>
             <div class="col-xs-12 social">
-
-                <div class="fb-share-button" data-type="button"></div>
-
+                <a onclick="share.vkontakte(<?php echo "'" . $this->url() . "'"; ?>, <?php echo "'" . $this->articles['title'] . "'"; ?>, <?php echo "'http://force-leads.com/img/article/" . $this->articles['id'] . "/" . $this->articles['miniImg'] . "'"; ?>, <?php echo "'" . $this->articles['shortDesc'] . "'"; ?>)"><div class="social_vk" title="VKontakte"></div></a>
+                <a onclick="share.facebook(<?php echo "'" . $this->url() . "'"; ?>, <?php echo "'" . $this->articles['title'] . "'"; ?>, <?php echo "'http://force-leads.com/img/article/" . $this->articles['id'] . "/" . $this->articles['miniImg'] . "'"; ?>, <?php echo "'" . $this->articles['shortDesc'] . "'"; ?>)"><div class="social_fb" title="Facebook"></div></a>
+                <a onclick="share.twitter(<?php echo "'" . $this->url() . "'"; ?>, <?php echo "'" . $this->articles['title'] . "'"; ?>)"><div class="social_tweet" title="Twitter"></div></a>
+                <a onclick="share.googleplus(<?php echo "'" . $this->url() . "'"; ?>)"><div class="social_google_plus" title="Google+"></div></a>
             </div>
         </div>
 

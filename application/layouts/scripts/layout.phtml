@@ -7,7 +7,6 @@
 <?php echo $this->headMeta();?>
 
 <link rel="shortcut icon" href="http://www.force-leads.com/favicon.png" type="image/x-icon">
-
 <?php $this->headLink()->appendStylesheet('/bootstrap/3.0.0/dist/css/bootstrap.min.css');?>
 <?php $this->headLink()->appendStylesheet('/css/manual.css');?>
 
@@ -119,17 +118,5 @@
     ga('create', 'UA-44093366-1', 'force-leads.com');
     ga('send', 'pageview');
 </script>
-
-<!--Facebook Share-->
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=234483523342573";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
-
-
 </body>
 </html>

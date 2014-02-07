@@ -32,7 +32,7 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
 
         $navigation = new My_Navigation(new Zend_Config(require APPLICATION_PATH . DIRECTORY_SEPARATOR.'configs'.DIRECTORY_SEPARATOR.'navigation.php'));
 
-        Zend_Registry::set('Zend_Navigation',$navigation);
+        Zend_Registry::set('Zend_Navigation', $navigation);
 
         $acl = Zend_Registry::get('Zend_Acl');
 

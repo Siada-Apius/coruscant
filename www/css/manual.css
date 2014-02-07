@@ -119,6 +119,37 @@ ul.list-unstyled li { margin: 5px 5px 0 5px; }
                 margin: 5px 0 0;
             }
 
+            div.social {
+                padding: 0;
+                text-align: center;
+            }
+
+                div.social_vk { background-image: url("../img/style/social/vk.png"); }
+                div.social_fb { background-image: url("../img/style/social/fb.png"); }
+                div.social_tweet { background-image: url("../img/style/social/tweet.png"); }
+                div.social_google_plus { background-image: url("../img/style/social/google_plus.png"); }
+
+                div.social_vk,
+                div.social_fb,
+                div.social_tweet,
+                div.social_google_plus {
+                    background-position: 0 100%;
+                    background-size: 100% auto;
+                    display: inline-block;
+                    height: 30px;
+                    margin: 10px 0;
+                    width: 30px;
+                }
+
+                div.social_vk:hover,
+                div.social_fb:hover,
+                div.social_tweet:hover,
+                div.social_google_plus:hover {
+                    background-position: 0 0;
+                    cursor: pointer;
+
+                }
+
         div.right_part { padding-left: 10px; }
 
             div.right_part h2 {

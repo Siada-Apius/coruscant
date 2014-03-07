@@ -139,4 +139,12 @@ $(document).ready(function () {
     $('#menu-dropdown').attr('data-toggle', 'dropdown').html('Add <b class="caret"></b>').parent().addClass('dropdown').children().addClass('dropdown-menu');
 
 
+    /** slider */
+    $("#slider").easySlider({
+        auto: true,
+        continuous: true,
+        nextId: "slider1next",
+        prevId: "slider1prev"
+    });
+
 });

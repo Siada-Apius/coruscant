@@ -8,13 +8,20 @@ class Application_Model_DbTable_Articles extends Application_Model_DbTable_Abstr
 
         /**
          * method getArticles
+         * get all articles
          *
-         * return all fields but limited by 5
-         * @var $data
+         * limited by 5
+         *
+         * return fields:
+         * @param id
+         * @param miniImg
+         * @param title
+         * @param shortDescription
+         * @param addedDate
          */
 
         $data = $this   ->select()
-                        ->from($this->_name, array('id', 'miniImg', 'title', 'shortDesc', 'full', 'author', 'addDate', 'updateDate', 'status'))
+                        ->from($this->_name, array('id', 'miniImg', 'title', 'shortDesc', 'addDate'))
                         ->where('status = ?', 1)
                         ->order('id DESC')
         ;
@@ -25,17 +32,49 @@ class Application_Model_DbTable_Articles extends Application_Model_DbTable_Abstr
 
     }
 
+
+    public function getArticleWhereId($id){
+
+        /**
+         * method getArticlesAdmin
+         * get article where id == @var $id
+         *
+         * return fields:
+         * @param id
+         * @param miniImg
+         * @param title
+         * @param shortDescription
+         * @param fullDescription
+         * @param addedDate
+         */
+
+        $data = $this   ->select()
+                        ->from($this->_name, array('id', 'miniImg', 'title', 'shortDesc', 'full', 'addDate'))
+                        ->where('id = ?', (int)$id)
+        ;
+
+        return $data->query()->fetch();
+    }
+
+
     public function getArticlesAdmin($from = ''){
 
         /**
          * method getArticles
+         * get articles for admin
          *
-         * return all fields but limited by 5
-         * @var $data
+         * limited by 5
+         *
+         * return fields:
+         * @param id
+         * @param miniImg
+         * @param title
+         * @param shortDescription
+         * @param updatedDate
          */
 
         $data = $this   ->select()
-            ->from($this->_name, array('id', 'miniImg', 'title', 'shortDesc', 'full', 'author', 'addDate', 'updateDate', 'status'))
+            ->from($this->_name, array('id', 'miniImg', 'title', 'shortDesc', 'updateDate'))
             ->order('id DESC')
         ;
 
@@ -112,11 +151,15 @@ class Application_Model_DbTable_Articles extends Application_Model_DbTable_Abstr
         /**
          * method getArticlesIn
          *
-         * return all fields where id == $in
+         * using in search
+         *
+         * return fields:
+         * @param id
+         * @param title
          */
 
         $data = $this   ->select()
-                        ->from($this->_name)
+                        ->from($this->_name, array('id', 'title'))
                         ->where('id IN (?)', $in)
                         ->order('id DESC')
         ;

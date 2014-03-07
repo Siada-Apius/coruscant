@@ -25,6 +25,12 @@ class Application_Form_Movies extends Zend_Form
                 ->setAttrib('class','titleAdd wysiwyg')
         ;
 
+        $trailer  = new Zend_Form_Element_Textarea('trailer');
+        $trailer    ->setLabel('Trailer')
+                    ->addFilter('StringTrim')
+                    ->setAttrib('class','trailerAdd wysiwyg')
+        ;
+
         $short = new Zend_Form_Element_Textarea('short');
         $short  ->setLabel('Short Description')
                 ->addFilter('StringTrim')
@@ -87,13 +93,20 @@ class Application_Form_Movies extends Zend_Form
                     ->setIsArray(true)
         ;
 
+        $author = new Zend_Form_Element_Text('author');
+        $author     ->setLabel('Author')
+                    ->addFilter('StringTrim')
+                    ->setAttrib('id','authorAdd')
+                    ->setAttrib('class', 'authorAdd inputEdit')
+        ;
+
         $submit = new Zend_Form_Element_Submit('submit');
         $submit     ->setAttrib('id', 'edit')
                     ->setLabel('Save change')
                     ->setAttrib('class','btn btn-success edit_but')
         ;
 
-        $this->addElements(array($id, $status, $title, $short, $actors, $full, $funny, $ost, $miniImg, $textImg, $addImg, $ostImg, $submit));
+        $this->addElements(array($id, $status, $title, $short, $trailer, $actors, $full, $funny, $ost, $miniImg, $textImg, $addImg, $ostImg, $author, $submit));
 
     }
 

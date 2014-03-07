@@ -17,7 +17,7 @@ class MovieController extends Zend_Controller_Action
     {
         $movieDb = new Application_Model_DbTable_Movies();
 
-        $this->view->receive = $movieDb->getItemsList();
+        $this->view->receive = $movieDb->getMovies();
     }
 
     public function articleAction()
@@ -28,20 +28,15 @@ class MovieController extends Zend_Controller_Action
         $movieDb    = new Application_Model_DbTable_Movies();
         $movieImgDb = new Application_Model_DbTable_MovieImg();
 
-
-
-        $movie = $movieDb->getItem($id);
-        $movieImg  = $movieImgDb->getItemsWhere($id, $type);
+        $movie = $movieDb->getMovieWhereId($id);
+        $movieImg  = $movieImgDb->getMovieImageWhere($id, $type);
 
         if ($movie['status'] != 1) $this->redirect('/movie');
 
         $this->view->movie = $movie;
         $this->view->movieImg = $movieImg;
 
-
-
     }
-
 }
 
 

@@ -1,65 +1,65 @@
-<div class="movieWrap">
+<div class="movieBlock row">
+    <div class="col-md-12"><h2><?php echo strip_tags($this->headTitle($this->movie['title'])); ?></h2></div>
+</div>
 
-    <div class="movieBlock">
-        <h2><?php echo strip_tags($this->headTitle($this->movie['title'])); ?></h2>
+<div class="movieBlock row">
+    <div class="col-xs-12 col-md-8">
+        <div class="movieShort"><?php echo $this->movie['short']; ?></div>
+        <div class="movieTrailer"><?php echo $this->movie['trailer']; ?></div>
+        <div class="movieActor"><?php echo $this->movie['actors']; ?></div>
     </div>
 
-    <div class="movieBlock">
-        <div class="part1">
-            <div class="movieShort"><?php echo $this->movie['short']; ?></div>
-            <div class="movieActor"><?php echo $this->movie['actors']; ?></div>
-        </div>
+    <div class="col-xs-12 col-md-4">
+        <div id="content" class="moviePic">
+            <div id="slider">
+                <ul class="list-unstyled">
+                    <?php foreach ($this->movieImg as $key => $value):
 
-        <div class="part2">
-            <div class="moviePic">
-                <div id="content">
-                    <div id="slider">
-                        <ul>
-                            <?php foreach ($this->movieImg as $key => $value):
+                        if ($key == 'slider'):
 
-                                if ($key == 'slider'):
+                            foreach($value as $subVal): ?>
+                                <li><img src="/img/movie/<?php echo $subVal['movie_id']?>/<?php echo $subVal['addImg']?>" /></li>
+                            <?php endforeach;
 
-                                    foreach($value as $subVal): ?>
-
-                                        <li><img src="/img/movie/<?=$subVal['movie_id']?>/<?=$subVal['addImg']?>" /></li>
-
-                                    <?php endforeach;
-                                endif;
-                            endforeach; ?>
-                        </ul>
-                    </div>
-                </div>
+                        endif;
+                    endforeach; ?>
+                </ul>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="movieBlock">
-        <div class="part3">
-            <div class="movieDesc">
-                <?php echo $this->movie['full']; ?>
-            </div>
-            <div class="movieFunny"><?php echo $this->movie['funny']; ?></div>
+<div class="movieBlock row">
+    <div class="col-md-12">
+        <div class="movieDesc">
+            <?php echo $this->movie['full']; ?>
+        </div>
+        <div class="movieFunny"><?php echo $this->movie['funny']; ?></div>
+    </div>
+</div>
+
+<div class="movieBlock row">
+    <div class="col-xs-12 col-md-8">
+        <div class="movieOst"><?php echo $this->movie['ostList']; ?></div>
+    </div>
+    <div class="col-xs-12 col-sm-5 col-md-4 col-lg-4">
+        <div class="movieOstPic">
+            <?php foreach ($this->movieImg as $key => $value):
+
+                if ($key == 'ost'):
+
+                    foreach($value as $subVal): ?>
+                        <img src="/img/movie/<?=$subVal['movie_id']?>/<?=$subVal['addImg']?>" />
+                    <?php endforeach;
+
+                endif;
+            endforeach; ?>
         </div>
     </div>
+</div>
 
-    <div class="movieBlock">
-        <div class="part4">
-            <div class="movieOst"><?php echo $this->movie['ostList']; ?></div>
-        </div>
-        <div class="part5">
-            <div class="movieOstPic">
-                <?php foreach ($this->movieImg as $key => $value):
-
-                    if ($key == 'ost'):
-
-                        foreach($value as $subVal): ?>
-
-                            <img src="/img/movie/<?=$subVal['movie_id']?>/<?=$subVal['addImg']?>" />
-
-                        <?php endforeach;
-                    endif;
-                endforeach; ?>
-            </div>
-        </div>
+<div class="movieBlock row">
+    <div class="col-xs-12 col-md-8">
+        <div class="movieAuthor"><?php echo $this->movie['author']; ?></div>
     </div>
 </div>

@@ -6,10 +6,10 @@ class Application_Model_DbTable_MovieImg extends Application_Model_DbTable_Abstr
     protected $_name = 'movie_img';
 
 
-    public function getItemsWhere($id, $type) {
+    public function getMovieImageWhere($id, $type) {
 
         /**
-         * @method getItemsWhere
+         * @method getMovieImageWhere
          *
          * @return all fields where movie_id == $id
          * @return and type == $type

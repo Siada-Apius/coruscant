@@ -59,12 +59,19 @@ class Application_Form_Games extends Zend_Form
                     ->setIsArray(true)
         ;
 
+        $author = new Zend_Form_Element_Text('author');
+        $author     ->setLabel('Author')
+                    ->addFilter('StringTrim')
+                    ->setAttrib('id','authorAdd')
+                    ->setAttrib('class', 'authorAdd inputEdit')
+        ;
+
         $submit = new Zend_Form_Element_Submit('submit');
         $submit ->setLabel('Save change')
                 ->setAttrib('class','btn btn-success edit_but')
         ;
 
-        $this->addElements(array($id, $status, $title, $system, $desc, $funny, $poster, $textImg, $submit));
+        $this->addElements(array($id, $status, $title, $system, $desc, $funny, $poster, $textImg, $author, $submit));
     }
 
 }

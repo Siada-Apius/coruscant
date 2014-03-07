@@ -39,7 +39,7 @@ class IndexController extends Zend_Controller_Action
     {
         $article = new Application_Model_DbTable_Articles();
 
-        $this->view->articles = $article->getItem($this->getRequest()->getParam('id'));
+        $this->view->articles = $article->getArticleWhereId($this->getRequest()->getParam('id'));
 
     }
 

@@ -10,11 +10,15 @@ class Application_Model_DbTable_Games extends Application_Model_DbTable_Abstract
         /**
          * method getGamesIn
          *
-         * return all fields where id == $in
+         * using in search
+         *
+         * return fields:
+         * @param id
+         * @param title
          */
 
         $data = $this   ->select()
-                        ->from($this->_name)
+                        ->from($this->_name, array('id', 'title'))
                         ->where('id IN (?)', $in)
                         ->order('id DESC')
         ;
@@ -36,11 +40,12 @@ class Application_Model_DbTable_Games extends Application_Model_DbTable_Abstract
 
             $array = array(
 
-                'desc' => $data['desc'],
-                'title' => $data['title'],
-                'system' => $data['system'],
-                'funny' => $data['funny'],
-                'status' => $data['status'],
+                'desc'      => $data['desc'],
+                'title'     => $data['title'],
+                'system'    => $data['system'],
+                'funny'     => $data['funny'],
+                'status'    => $data['status'],
+                'author'    => $data['author']
 
             );
 
@@ -60,6 +65,37 @@ class Application_Model_DbTable_Games extends Application_Model_DbTable_Abstract
         }
 
         return $this->getAdapter()->lastInsertId();
+    }
+
+    public function getGames(){
+
+        /**
+         * method getMoviesAdmin
+         * get all movies article for admin
+         *
+         * @return:
+         * @param id
+         * @param title
+         * @param poster
+         * @param status
+         */
+
+        $data = $this   ->select()
+                        ->from($this->_name, array('id', 'title', 'poster', 'status'))
+        ;
+
+        return $data->query()->fetchAll();
+    }
+
+    public function getGameWhereId($id){
+
+
+        $data = $this   ->select()
+                        ->from($this->_name, array('id', 'poster', 'title', 'desc', 'system', 'funny', 'status', 'author'))
+                        ->where('id = ?', (int)$id)
+        ;
+
+        return $data->query()->fetch();
     }
 
 }

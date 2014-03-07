@@ -11,7 +11,8 @@ class GamesController extends Zend_Controller_Action
     public function indexAction()
     {
         $gamesDb = new Application_Model_DbTable_Games();
-        $games = $gamesDb->getItemsList();
+
+        $games = $gamesDb->getGames();
         $this->view->games = $games;
     }
 
@@ -19,9 +20,10 @@ class GamesController extends Zend_Controller_Action
     {
         $gamesDb = new Application_Model_DbTable_Games();
 
-        $id = $this->getRequest()->getParam('id');
-        $games = $gamesDb->getItem($id);
-        if ($games['status'] != 1) $this->redirect('/games');
+        $game = $gamesDb->getGameWhereId($this->getRequest()->getParam('id'));
+
+        if ($game['status'] != 1) $this->redirect('/games');
+        $this->view->game = $game;
     }
 
 

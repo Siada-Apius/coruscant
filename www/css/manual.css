@@ -205,7 +205,7 @@ div.movie_wrap {
 
         div.episode_poster {
             border: 1px solid #DCDCDC;
-            border-radius: 2px 2px 2px 2px;
+            border-radius: 2px;
             text-align: center;
             width: 80%;
             margin: 0 auto;
@@ -222,6 +222,47 @@ div.movie_wrap {
                 div.episode_poster { width: 100% }
                 div.episode_poster img { width: 100%; }
             }
+
+/* ================ MOVIE/ARTICLE (Movies) ================== */
+div.movieBlock { background-color: #F5F5F5; }
+
+    div.movieBlock h2 {
+         text-align: center;
+         margin: 20px;
+    }
+
+    div.movieShort,
+    div.movieTrailer,
+    div.movieActor,
+    div.movieDesc,
+    div.movieFunny,
+    div.movieOst,
+    div.movieAuthor {
+        background-color: #fff;
+        margin: 10px 0;
+        padding: 10px;
+        border: 1px solid #DCDCDC;
+        border-radius: 2px;
+    }
+
+        div.moviePic img {
+            border: 1px solid #000;
+            margin-bottom: 20px;
+            height: 300px;
+            width: 200px;
+        }
+
+        div.movieOstPic img {
+            border: 1px solid #444444;
+            border-radius: 1px;
+            float: left;
+            margin: 10px auto 0;
+            width: 200px;
+        }
+
+        @media (min-width: 768px) {
+            div.movieOstPic img { width: 100%; }
+        }
 
 /* ====================== GAMES/INDEX (Games) =============== */
 div.game_wrap {
@@ -308,6 +349,7 @@ div.markItUpHeader > ul > li { margin-bottom: 15px; }
 input.edit_but { width: 100% }
 textarea.titleAdd { width: 100%; height: 140px }
 textarea.shortDescAdd { width: 100%; height: 200px }
+textarea.trailerAdd { width: 100%; height: 100px }
 textarea.fullAdd { width: 100%; height: 400px }
 textarea.actorsAdd { width: 100%;}
 textarea.funnyAdd  { width: 100%;}

@@ -4,7 +4,7 @@
 <div class="container game_wrap">
 
     <?php foreach($this->games as $value): ?>
-    <?php if($value['status'] == 1 ) { $status = '/games/id/' . $value['id']; } else { $status = ''; } ?>
+    <?php $value['status'] == 1 ? $status = '/games/id/' . $value['id'] : $status = ''; ?>
 
     <div class="game_block col-xs-12 col-sm-6 col-md-4 col-lg-4">
         <div class="col-xs-12">

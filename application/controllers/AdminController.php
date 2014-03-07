@@ -58,7 +58,7 @@ class AdminController extends Zend_Controller_Action
 
         } else {
 
-            $this->view->movie = $movieDb->getItemsList();
+            $this->view->movie = $movieDb->getMovies();
 
         }
 
@@ -154,7 +154,9 @@ class AdminController extends Zend_Controller_Action
 
              $this->view->form = $articleForm;
 
-        } else if ($response == 'movie'){
+        }
+
+        else if ($response == 'movie'){
 
             if($this->getRequest()->isPost()){
 
@@ -235,7 +237,9 @@ class AdminController extends Zend_Controller_Action
 
             $this->view->movie = $movieForm;
 
-        } else if ($response == 'games'){
+        }
+
+        else if ($response == 'games'){
 
             if ($this->getRequest()->isPost()){
 
@@ -371,7 +375,9 @@ class AdminController extends Zend_Controller_Action
 
 
 
-            } else if ($response == 'movie'){
+            }
+
+            else if ($response == 'movie'){
 
                 if ($this->getRequest()->isPost()){
 
@@ -458,10 +464,12 @@ class AdminController extends Zend_Controller_Action
 
                 //view poster img
                 $type = array('slider', 'ost', 'text');
-                $movieImg = $movieImgDb->getItemsWhere($id, $type);
+                $movieImg = $movieImgDb->getMovieImageWhere($id, $type);
                 $this->view->movieImg = $movieImg;
 
-            } else if ($response = 'games'){
+            }
+
+            else if ($response = 'games'){
 
                 if ($this->getRequest()->isPost()){
 

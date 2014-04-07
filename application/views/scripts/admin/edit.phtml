@@ -6,7 +6,7 @@
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 well">
     <form enctype="multipart/form-data" method="post">
         <div class="row">
-            <div class="help-block">
+            <div class="center-block">
                 <?php echo $this->form->getElement('title'); ?>
                 <?php echo $this->form->getElement('shortDesc'); ?>
                 <div id="textareaFeedback"></div>
@@ -67,17 +67,17 @@
                     <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
                         <p><?php echo $name ?></p>
                         <p><input type="text" readonly="readonly" value="<?php echo $dir . $this->articles['id'] . '/' . $name ?>" /></p>
-                        <p><a href="<?php echo $this->url() . $dir . $this->articles['id'] . '/' . $name ?>">view image</a></p>
+                        <p><a href="<?php echo $dir . $this->articles['id'] . '/' . $name ?>">view image</a></p>
 
-                        <?php $size = getimagesize ($this->url() . $dir . $this->articles['id'] . '/' . $name); ?>
+                        <?php $size = getimagesize ('http://' . $_SERVER['HTTP_HOST'] . $dir . $this->articles['id'] . '/' . $name); ?>
 
                         <table>
                             <tr>
-                                <th>Width: </th>
+                                <th>Width:</th>
                                 <td><?php echo $size[0]; ?></td>
                             </tr>
                             <tr>
-                                <th>Height: </th>
+                                <th>Height:</th>
                                 <td><?php echo $size[1]; ?></td>
                             </tr>
                         </table>

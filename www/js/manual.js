@@ -29,19 +29,19 @@ $(document).ready(function () {
 
         } else if ($(this).attr('data-param') == 'movie') {
 
-            var id = $(this).val();
-            var url = '/admin/movie';
+            id = $(this).val();
+            url = '/admin/movie';
 
         } else if ($(this).attr('data-param') == 'games') {
 
-            var id = $(this).attr('data-id');
-            var url = '/admin/games'
+            id = $(this).attr('data-id');
+            url = '/admin/games'
         }
 
         var parent = $(this).parent().parent().parent();
         if (confirm("Sure?")) {
 
-            params = {
+            var params = {
                 delete_id : $(this).val(),
                 param: $(this).attr('data-param')
             };
@@ -73,8 +73,8 @@ $(document).ready(function () {
          */
 
         if ($(this).attr('data-param') == 'article') var param = 'article';
-        else if ($(this).attr('data-param') == 'movie') var param = 'movie';
-        else if ($(this).attr('data-param') == 'games') var param = 'games';
+        else if ($(this).attr('data-param') == 'movie')  param = 'movie';
+        else if ($(this).attr('data-param') == 'games')  param = 'games';
 
         var img = $(this);
         var name = $(this).val();
@@ -82,7 +82,7 @@ $(document).ready(function () {
 
         if (confirm('Sure?')) {
 
-            params = {
+            var params = {
                 name: name,
                 id: id,
                 param: param
@@ -133,7 +133,7 @@ $(document).ready(function () {
                 $('#textareaFeedback').removeClass('alert-info');
             }
         })
-    })
+    });
 
     /** Drop-down Menu */
     $('#menu-dropdown').attr('data-toggle', 'dropdown').html('Add <b class="caret"></b>').parent().addClass('dropdown').children().addClass('dropdown-menu');

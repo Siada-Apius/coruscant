@@ -1,6 +1,6 @@
 var mySettings={onShiftEnter:{keepDefault:false,replaceWith:'<br />\n'},onCtrlEnter:{keepDefault:false,openWith:'\n<p>',closeWith:'</p>'},onTab:{keepDefault:false,replaceWith:'    '},
 	markupSet:  [
-		{name:'Article', openWith:'<article itemprop="articleBody">', closeWith:'</article>' },
+//		{name:'Article', openWith:'<article itemprop="articleBody">', closeWith:'</article>' },
 		{name:'Paragraph', key:'R', openWith:'<p>', closeWith:'</p>' },
 		{name:'Strong', key:'T', openWith:'<strong>', closeWith:'</strong>' },
 		{name:'Em', key:'E', openWith:'<em>', closeWith:'</em>' },

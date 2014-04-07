@@ -7,7 +7,7 @@
 <?php echo $this->headMeta();?>
 
 <link rel="shortcut icon" href="http://www.force-leads.com/favicon.png" type="image/x-icon">
-<?php $this->headLink()->appendStylesheet('/bootstrap/3.0.3/dist/css/bootstrap.min.css');?>
+<?php $this->headLink()->appendStylesheet('/bootstrap/3.1.1/dist/css/bootstrap.min.css');?>
 <?php $this->headLink()->appendStylesheet('/css/manual.css');?>
 
 <!--[if lt IE 9]>
@@ -30,7 +30,7 @@
                 <div class="head_banner"><h4>Star Wars: Episode VII</h4></div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 logo">
-                <a href="<?php echo $this->url(); ?>">
+                <a href="<?php echo 'http://' . $_SERVER['HTTP_HOST']; ?>">
                     <img alt="logo picture" src="http://force-leads.com/img/style/logo2.png"/>
                 </a>
             </div>
@@ -71,7 +71,7 @@
 
                 <form class="navbar-form navbar-right" role="search" method="get" action="/search">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search"name="query" />
+                        <input type="text" class="form-control" placeholder="Search" name="query">
                     </div>
                 </form>
             </div><!--/.navbar-collapse -->
@@ -90,10 +90,11 @@
 <footer>
 <div id="footer">
 
-    <div><span>Developed for distribution STAR WARS</span></div>
+    <div class="hidden-xs hidden-sm col-md-3 col-lg-3"></div>
+    <div class="col-sm-12 col-md-6"><span>Developed for distribution STAR WARS</span></div>
 
     <!--LiveInternet counter-->
-    <div class="counter">
+    <div class="col-sm-12 col-md-3 col-lg-3 counter">
         <script type="text/javascript">
             document.write(""+"<a href='http://www.liveinternet.ru/click' target=_blank>"+"<img src='//counter.yadro.ru/hit?t19.2;r" + escape(document.referrer)+((typeof(screen)=="undefined")?"":";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?screen.colorDepth:screen.pixelDepth))+ ";u" + escape(document.URL) + ";" + Math.random() + "' border=0 width=88 height=31 alt='' title='LiveInternet: показано число просмотров за 24 часа, посетителей за 24 часа и за сегодня'><\/a>")
         </script>
@@ -103,8 +104,8 @@
 </div>
 </footer>
 
-<script src="/bootstrap/3.0.3/docs-assets/js/jquery.js"></script>
-<script src="/bootstrap/3.0.3/dist/js/bootstrap.min.js"></script>
+<script src="/bootstrap/3.1.1/dist/js/jquery.js"></script>
+<script src="/bootstrap/3.1.1/dist/js/bootstrap.min.js"></script>
 <script src="/wysiwyg/markitup/jquery.markitup.js"></script>
 <script src="/wysiwyg/markitup/sets/default/set.js"></script>
 <script src="/js/manual.js"></script>

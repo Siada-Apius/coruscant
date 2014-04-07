@@ -58,7 +58,7 @@ class UserController extends Zend_Controller_Action
 
                 } else{
 
-                    echo 'You are weak!';
+                    echo '<div class="help-block alert-warning">You are weak!</div>';
 
                 }
             }

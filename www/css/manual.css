@@ -327,10 +327,7 @@ div#footer {
     width: 100%;
 }
 
-    div.counter {
-        float: right;
-        margin: 10px 10px 0 0;
-    }
+    div.counter { margin: 10px 0; }
 
 /* ====================== ADMIN ========================= */
 /* ====================== ADMIN - INDEX ========================= */
@@ -367,9 +364,7 @@ a#menu-dropdown {
     min-width: 0;
 }
 
-    li.open {
-        background-color: #E7E7E7;
-    }
+    li.open { background-color: #E7E7E7; }
 
 /* ====================== COMMENTS ========================= */
 div.comments_block {

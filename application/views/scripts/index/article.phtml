@@ -9,14 +9,15 @@
 <?php $this->headMeta()->appendName('description', $this->articles['shortDesc']); ?>
 <?php $this->headMeta()->appendName('title', $this->articles['title']); ?>
 <?php $this->headLink()->headLink(array('rel' => 'image_src', 'href' => 'http://force-leads.com/img/article/' . $this->articles['id'] . '/' . $this->articles['miniImg'])); ?>
-<?php $this->headScript()->appendFile('/js/vk.comments.js');?>
-<?php $this->headScript()->appendFile('/js/social.js');?>
+<?php $this->headScript()->appendFile('/js/vk.comments.js', $type = 'text/javascript', $attrs = array('' => 'async'));?>
+<?php $this->headScript()->appendFile('/js/social.js', $type = 'text/javascript', $attrs = array('' => 'async'));?>
 
 <div itemscope itemtype="http://schema.org/Article" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 block">
     <div class="article_block">
         <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 left_part">
             <div class="pic_wrap">
-                <img itemprop="image" class="img_pic" src="/img/article/<?php echo $this->articles['id']; ?>/<?php echo $this->articles['miniImg']; ?>" alt="<?php echo $this->articles['miniImg']; ?>" />
+                <?php $size = getimagesize ('http://' . $_SERVER['HTTP_HOST'] . '/img/article/' . $this->articles['id'] . '/' . $this->articles['miniImg']); ?>
+                <img width="<?php echo $size[0] ?>" itemprop="image" class="img_pic" src="/img/article/<?php echo $this->articles['id']; ?>/<?php echo $this->articles['miniImg']; ?>" alt="<?php echo $this->articles['miniImg']; ?>" />
             </div>
             <div class="col-xs-12 time">
                 <time itemprop="datePublished" content="<?php echo $this->articles['addDate']; ?>"  datetime="<?php echo $this->articles['addDate']; ?>"><?php echo $this->articles['addDate']; ?></time>

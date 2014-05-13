@@ -10,7 +10,8 @@
         <div class="col-xs-12">
             <div class="episode_poster" title="<?php echo $value['title']; ?>">
                 <a class="block_link" href="<?php echo $status; ?>"></a>
-                <img class="img-responsive" src="/img/movie/<?php echo $value['id']; ?>/<?php echo $value['miniImg']; ?>" alt="<?php echo $value['title']; ?>" />
+                <?php $size = getimagesize ('http://' . $_SERVER['HTTP_HOST'] . '/img/movie/' . $value['id'] . '/' . $value['miniImg']); ?>
+                <img width="<?php echo $size[0] ?>" height="<?php echo $size[1] ?>" class="img-responsive" src="/img/movie/<?php echo $value['id']; ?>/<?php echo $value['miniImg']; ?>" alt="<?php echo $value['title']; ?>" />
             </div>
         </div>
     </div>

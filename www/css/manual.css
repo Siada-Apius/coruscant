@@ -274,49 +274,70 @@ div.game_wrap {
     padding: 0;
 }
 
-    div.game_block > div {
-        margin: 5% auto;
-        border: 1px solid #888888;
+    div.game_wrap ul {
+        list-style: none;
         padding: 0;
-        background-color: #D14836;
-        border-radius: 1px;
     }
 
-    div.game_block > div:hover {
-        border: 1px solid #FFFFFF;
-        box-shadow: 0 0 10px #FFFFFF;
-        background-color: #C00000;
-        color: #fff;
+    div.game_wrap li {
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+        vertical-align: top;
+        width: 32.9%;
     }
 
-    div.game_poster {
-        margin: 0 auto;
-        background-color: #000;
-        text-align: center;
+    @media (min-width: 768px) and (max-width: 992px) {
+        div.game_wrap li { width: 49.5%; }
     }
 
-        div.game_poster img{
+    @media (max-width: 765px)  {
+        div.game_wrap li { width: 100%; }
+    }
+
+        div.game_block > div {
+            margin: 5% auto;
+            border: 1px solid #888888;
+            padding: 0;
+            background-color: #D14836;
             border-radius: 1px;
+        }
+
+        div.game_block > div:hover {
+            border: 1px solid #FFFFFF;
+            box-shadow: 0 0 10px #FFFFFF;
+            background-color: #C00000;
+            color: #fff;
+        }
+
+        div.game_poster {
             margin: 0 auto;
             background-color: #000;
             text-align: center;
-            width: 50%;
         }
 
-        @media (min-width: 768px) {
             div.game_poster img{
-                width: 100%;
+                border-radius: 1px;
+                margin: 0 auto;
+                background-color: #000;
+                text-align: center;
+                width: 50%;
             }
+
+            @media (min-width: 768px) {
+                div.game_poster img{
+                    width: 100%;
+                }
+            }
+
+        div.game_title {
+            font-size: 13px;
+            text-align: center;
+            padding: 8px 0;
+
         }
 
-    div.game_title {
-        font-size: 13px;
-        text-align: center;
-        padding: 8px 0;
-
-    }
-
-        div.game_title > a { color: #fff; }
+            div.game_title > a { color: #fff; }
 
 /* ====================== FOOTER =============== */
 div#footer {

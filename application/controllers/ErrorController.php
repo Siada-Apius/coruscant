@@ -30,9 +30,20 @@ class ErrorController extends Zend_Controller_Action
         }
         
         // Log exception, if logger available
-        if ($log = $this->getLog()) {
-            $log->log($this->view->message, $priority, $errors->exception);
-            $log->log('Request Parameters', $priority, $errors->request->getParams());
+        $string = '';
+        foreach($errors->request->getParams() as $key => $value){$string.= "{$key}:{$value} ";}
+        $string.= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+
+        $active = 1;
+        if(preg_match("#Resource 'img' not found#", $errors->exception->getMessage()))$active = 0;
+        if(preg_match("#Resource 'css' not found#", $errors->exception->getMessage()))$active = 0;
+        if(preg_match("#bootstrap#", $errors->exception->getMessage()))$active = 0;
+
+        if($active == 1){
+            if ($log = $this->getLog()) {
+                $log->log($this->view->message .": ". $errors->exception->getMessage(), $priority);
+                $log->log("Request Parameters: {$string}", $priority);
+            }
         }
         
         // conditionally display exceptions

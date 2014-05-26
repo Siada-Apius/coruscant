@@ -74,7 +74,7 @@ class Application_Plugin_Access extends Zend_Controller_Plugin_Abstract
         $acl->allow('guest', 'cronjob', array('index'));
 
         $acl->deny('guest', 'user', array('logout'));
-        $acl->deny('guest', 'error', array('error404','error'));
+        $acl->allow('guest', 'error', array('error404','error'));
 
 
         Zend_Registry::set('Zend_Acl',$acl);
@@ -106,7 +106,7 @@ class Application_Plugin_Access extends Zend_Controller_Plugin_Abstract
         //Zend_View_Helper_Navigation::setRole($role);
         #echo 'Роль -> ' . $role .' | Ресурс -> '. $resource .' | Екшн-> '. $action . '<br>';
         if (!$this->_acl->isAllowed($role, $resource, $action)) {
-            $request->setControllerName('error')->setActionName('page404');
+            if($resource != 'error') $request->setControllerName('error')->setActionName('page404');
             #throw new Zend_Acl_Exception("This page is not accessible.", Application_Plugin_Access::ACCESS_DENIED);
         }
     }

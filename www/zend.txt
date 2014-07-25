@@ -1,0 +1,2 @@
+2014-05-26T14:00:37+03:00 CRIT (2): Application error: Resource 'zend.txt' not found
+2014-05-26T14:00:37+03:00 CRIT (2): Request Parameters: controller:zend.txt action:index module:default coruscant.local/zend.txt

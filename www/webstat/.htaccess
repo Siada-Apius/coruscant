@@ -1,0 +1,7 @@
+AuthType Basic
+AuthName "/www/force-leads.com/www/webstat"
+AuthUserFile /var/www/ivan/data/etc/1450028.passwd
+DirectoryIndex index.html
+<Limit GET POST>
+	require valid-user
+</Limit>

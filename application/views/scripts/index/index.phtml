@@ -3,7 +3,6 @@
 
 <div class="container content_center">
     <ul class="list-unstyled">
-
         <?php foreach ($this->articles as $value): ?>
 
         <li id="contentWrapper<?php echo $value['id']; ?>">
@@ -28,7 +27,6 @@
         </li>
 
         <?php endforeach ?>
-
     </ul>
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 pagination"><?php echo $this->pagination(); ?></div>
 </div>

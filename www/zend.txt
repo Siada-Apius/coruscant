@@ -122,3 +122,13 @@
 2014-10-16T13:59:29+03:00 CRIT (2): Request Parameters: controller:favicon.ico action:index module:default force-leads.com/favicon.ico
 2014-10-16T14:00:14+03:00 CRIT (2): Application error: Resource 'favicon.ico' not found
 2014-10-16T14:00:14+03:00 CRIT (2): Request Parameters: controller:favicon.ico action:index module:default force-leads.com/favicon.ico
+2014-10-16T14:45:53+03:00 CRIT (2): Application error: SQLSTATE[HY000] [1045] Access denied for user 'starwars'@'localhost' (using password: YES)
+2014-10-16T14:45:53+03:00 CRIT (2): Request Parameters: controller:index action:index module:default coruscant.local/
+2014-10-16T14:46:06+03:00 CRIT (2): Application error: SQLSTATE[HY000] [1045] Access denied for user 'starwars'@'localhost' (using password: YES)
+2014-10-16T14:46:06+03:00 CRIT (2): Request Parameters: controller:index action:index module:default coruscant.local/
+2014-10-16T14:46:12+03:00 CRIT (2): Application error: SQLSTATE[HY000] [1045] Access denied for user 'starwars'@'localhost' (using password: YES)
+2014-10-16T14:46:12+03:00 CRIT (2): Request Parameters: controller:index action:index module:default coruscant.local/
+2014-10-16T14:46:45+03:00 CRIT (2): Application error: Resource 'favicon.ico' not found
+2014-10-16T14:46:45+03:00 CRIT (2): Request Parameters: controller:favicon.ico action:index module:default coruscant.local/favicon.ico
+2014-10-16T14:46:45+03:00 CRIT (2): Application error: Resource 'favicon.ico' not found
+2014-10-16T14:46:45+03:00 CRIT (2): Request Parameters: controller:favicon.ico action:index module:default coruscant.local/favicon.ico

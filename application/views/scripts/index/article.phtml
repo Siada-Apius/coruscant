@@ -16,8 +16,8 @@
     <div class="article_block">
         <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 left_part">
             <div class="pic_wrap">
-                <?php $size = getimagesize ('http://' . $_SERVER['HTTP_HOST'] . '/img/article/' . $this->articles['id'] . '/' . $this->articles['miniImg']); ?>
-                <img width="<?php echo $size[0] ?>" itemprop="image" class="img_pic" src="/img/article/<?php echo $this->articles['id']; ?>/<?php echo $this->articles['miniImg']; ?>" alt="<?php echo $this->articles['miniImg']; ?>" />
+                <?php //$size = getimagesize ('http://' . $_SERVER['HTTP_HOST'] . '/img/article/' . $this->articles['id'] . '/' . $this->articles['miniImg']); ?>
+                <img width="<?php /*echo $size[0] */?>" itemprop="image" class="img_pic" src="/img/article/<?php echo $this->articles['id']; ?>/<?php echo $this->articles['miniImg']; ?>" alt="<?php echo $this->articles['miniImg']; ?>" />
             </div>
             <div class="col-xs-12 time">
                 <time itemprop="datePublished" content="<?php echo $this->articles['addDate']; ?>"  datetime="<?php echo $this->articles['addDate']; ?>"><?php echo $this->articles['addDate']; ?></time>

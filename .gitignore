@@ -1,5 +1,6 @@
 .idea
 library/Zend/
 library\Zend\
+index.php
 rights.md
 zend.txt

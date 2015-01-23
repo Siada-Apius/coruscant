@@ -15,7 +15,12 @@ class SearchController extends Zend_Controller_Action
         $movieDb    = new Application_Model_DbTable_Movies();
         $gameDb     = new Application_Model_DbTable_Games();
 
-        Zend_Search_Lucene_Analysis_Analyzer::setDefault(new Zend_Search_Lucene_Analysis_Analyzer_Common_TextNum_CaseInsensitive());
+//        Zend_Search_Lucene_Analysis_Analyzer::setDefault(new Zend_Search_Lucene_Analysis_Analyzer_Common_TextNum_CaseInsensitive());
+
+        Zend_Search_Lucene_Search_QueryParser::setDefaultEncoding('utf-8');
+        Zend_Search_Lucene_Analysis_Analyzer::setDefault(
+            new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8_CaseInsensitive ()
+        );
 
         $path = realpath(APPLICATION_PATH . '/../www/' . DIRECTORY_SEPARATOR . 'data');
         $index = Zend_Search_Lucene::open($path);
@@ -53,7 +58,10 @@ class SearchController extends Zend_Controller_Action
         $movieDb    = new Application_Model_DbTable_Movies();
         $gamesDb    = new Application_Model_DbTable_Games();
 
-        Zend_Search_Lucene_Analysis_Analyzer::setDefault(new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8Num_CaseInsensitive());
+        Zend_Search_Lucene_Search_QueryParser::setDefaultEncoding('utf-8');
+        Zend_Search_Lucene_Analysis_Analyzer::setDefault(
+            new Zend_Search_Lucene_Analysis_Analyzer_Common_Utf8_CaseInsensitive ()
+        );
 
         @mkdir(realpath(APPLICATION_PATH . '/../www/') . DIRECTORY_SEPARATOR . 'data');
 

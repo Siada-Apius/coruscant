@@ -81,4 +81,3 @@ class Application_Form_Articles extends Zend_Form
     }
 
 }
-

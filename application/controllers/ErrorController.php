@@ -35,9 +35,12 @@ class ErrorController extends Zend_Controller_Action
         $string.= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
 
         $active = 1;
-        if(preg_match("#Resource 'img' not found#", $errors->exception->getMessage()))$active = 0;
+        if(preg_match("#Resource 'images' not found#", $errors->exception->getMessage()))$active = 0;
         if(preg_match("#Resource 'css' not found#", $errors->exception->getMessage()))$active = 0;
         if(preg_match("#bootstrap#", $errors->exception->getMessage()))$active = 0;
+        if(preg_match("#fancybox#", $errors->exception->getMessage()))$active = 0;
+        if(preg_match("#Resource 'js' not found#", $errors->exception->getMessage()))$active = 0;
+        if(preg_match("#fancybox#", $string))$active = 0;
 
         if($active == 1){
             if ($log = $this->getLog()) {
@@ -69,8 +72,4 @@ class ErrorController extends Zend_Controller_Action
         // action body
     }
 
-
 }
-
-
-

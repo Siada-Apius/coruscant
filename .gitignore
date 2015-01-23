@@ -4,3 +4,4 @@ library\Zend\
 index.php
 rights.md
 zend.txt
+www/data/*

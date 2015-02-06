@@ -4,7 +4,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="Siada-Apius">
 
-<?php header("Set-Cookie: name=value; httpOnly"); ?>
+<?php
+// **PREVENTING SESSION HIJACKING**
+// Prevents javascript XSS attacks aimed to steal the session ID
+ini_set('session.cookie_httponly', 1);
+
+// **PREVENTING SESSION FIXATION**
+// Session ID cannot be passed through URLs
+ini_set('session.use_only_cookies', 1);
+
+// Uses a secure connection (HTTPS) if possible
+ini_set('session.cookie_secure', 1);
+?>
+
+<?php session_set_cookie_params(0, NULL, NULL, TRUE, NULL); ?>
+<?php header('Set-Cookie: name=value; httpOnly'); ?>
+<?php header('X-Frame-Options: SAMEORIGIN'); ?>
 <?php echo $this->headMeta();?>
 
 <link rel="shortcut icon" href="http://force-leads.com/favicon.png" type="image/x-icon">
@@ -31,7 +46,7 @@
                 <div class="head_banner"><h4>Star Wars: Episode VII <br> The Force Awakens</h4></div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 logo">
-                <a href="<?php echo 'http://' . $_SERVER['HTTP_HOST']; ?>">
+                <a href="http://force-leads.com">
                     <img alt="logo picture" src="http://force-leads.com/img/style/logo2.png"/>
                 </a>
             </div>

@@ -69,7 +69,7 @@ class SearchController extends Zend_Controller_Action
 
         $total['movie']     = $movieDb->getItemsList();
         $total['article']   = $articleDb->getItemsList();
-        $total['game']      = $gamesDb->getItemsList();
+//        $total['game']      = $gamesDb->getItemsList();
 
         foreach($total as $key => $value){
 
@@ -80,7 +80,7 @@ class SearchController extends Zend_Controller_Action
                 $doc->addField(Zend_Search_Lucene_Field::Text('type', $key, 'UTF-8'));
                 $doc->addField(Zend_Search_Lucene_Field::Text('ids', $subVal['id'], 'UTF-8'));
                 $doc->addField(Zend_Search_Lucene_Field::Text('titles', $subVal['title'], 'UTF-8'));
-                $doc->addField(Zend_Search_Lucene_Field::Text('fulls', $subVal['full'], 'UTF-8'));
+                $doc->addField(Zend_Search_Lucene_Field::Text('full', $subVal['full'], 'UTF-8'));
 
                 $index->addDocument($doc);
 

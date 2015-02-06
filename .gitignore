@@ -5,3 +5,6 @@ index.php
 rights.md
 zend.txt
 www/data/*
+www/webstat/
+www/Sitemap.xml
+www/.htaccess

@@ -9,7 +9,7 @@
 <?php $this->headMeta()->appendName('description', $this->articles['shortDesc']); ?>
 <?php $this->headMeta()->appendName('title', $this->articles['title']); ?>
 <?php $this->headLink()->headLink(array('rel' => 'image_src', 'href' => 'http://force-leads.com/img/article/' . $this->articles['id'] . '/' . $this->articles['miniImg'])); ?>
-<?php #$this->headScript()->appendFile('/js/vk.comments.js', $type = 'text/javascript', $attrs = array('' => 'async'));?>
+<?php $this->headScript()->appendFile('/js/vk.comments.js', $type = 'text/javascript', $attrs = array('' => 'async'));?>
 <?php $this->headScript()->appendFile('/js/social.js', $type = 'text/javascript', $attrs = array('' => 'async'));?>
 
 <div itemscope itemtype="http://schema.org/Article" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 block">
@@ -24,11 +24,7 @@
             </div>
             <div class="col-xs-12 social">
                 <a onclick="share.vkontakte(<?php echo "'" . $this->url() . "'"; ?>, <?php echo "'" . $this->articles['title'] . "'"; ?>, <?php echo "'http://force-leads.com/img/article/" . $this->articles['id'] . "/" . $this->articles['miniImg'] . "'"; ?>, <?php echo "'" . $this->articles['shortDesc'] . "'"; ?>)"><div class="social_vk" title="VKontakte"></div></a>
-
-                <?php if(1 != 1): ?>
-                    <a onclick="share.facebook(<?php echo "'" . $this->url() . "'"; ?>, <?php echo "'" . $this->articles['title'] . "'"; ?>, <?php echo "'http://force-leads.com/img/article/" . $this->articles['id'] . "/" . $this->articles['miniImg'] . "'"; ?>, <?php echo "'" . $this->articles['shortDesc'] . "'"; ?>)"><div class="social_fb" title="Facebook"></div></a>
-                <?php endif; ?>
-
+                <a onclick="share.facebook(<?php echo "'" . $this->url() . "'"; ?>, <?php echo "'" . $this->articles['title'] . "'"; ?>, <?php echo "'http://force-leads.com/img/article/" . $this->articles['id'] . "/" . $this->articles['miniImg'] . "'"; ?>, <?php echo "'" . $this->articles['shortDesc'] . "'"; ?>)"><div class="social_fb" title="Facebook"></div></a>
                 <a onclick="share.twitter(<?php echo "'" . $this->url() . "'"; ?>, <?php echo "'" . $this->articles['title'] . "'"; ?>)"><div class="social_tweet" title="Twitter"></div></a>
                 <a onclick="share.googleplus(<?php echo "'" . $this->url() . "'"; ?>)"><div class="social_google_plus" title="Google+"></div></a>
             </div>
@@ -38,5 +34,31 @@
             <h2 itemprop="name"><?php echo strip_tags($this->headTitle($this->articles['title'])); ?></h2>
             <article itemprop="articleBody"><?php echo $this->articles['full']; ?></article>
         </div>
+    </div>
+    <div class="comments_block">
+        <script type="text/javascript">
+            VK.init({apiId: 4018526, onlyWidgets: true});
+        </script>
+
+        <div id="vk_comments"></div>
+
+        <script type="text/javascript">
+            if (screen.width < 1024) var par = "260";
+            else if (screen.width > 1024) var par = "480";
+            VK.Widgets.Comments("vk_comments", {limit: 5, width: par, attach: "*"});
+        </script>
+    </div>
+
+    <div class="comments_block">
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/uk_UA/sdk.js#xfbml=1&appId=234483523342573&version=v2.0";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+
+        <div class="fb-comments" data-href="http://developers.facebook.com/docs/plugins/comments/" data-numposts="5" data-colorscheme="light"></div>
     </div>
 </div>

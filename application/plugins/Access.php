@@ -57,9 +57,9 @@ class Application_Plugin_Access extends Zend_Controller_Plugin_Abstract
         #$acl->allow('admin', 'error', array('error404','error'));
 
         #user allow
-        $acl->allow('user', 'index', array('index'));
+        #$acl->allow('user', 'index', array('index'));
         $acl->allow('user', 'movie', array('index', 'article', 'page'));
-        $acl->allow('user', 'user', array('index','logout'));
+        $acl->allow('user', 'user', array(/*'index',*/ 'logout'));
         $acl->allow('user', 'error', array('error404','error'));
 
 

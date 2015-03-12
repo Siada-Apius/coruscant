@@ -26,6 +26,12 @@ class UserController extends Zend_Controller_Action
 
             $data = $this->getRequest()->getPost();
 
+            function htmlspecialchars_for_array(&$item, $key) {
+                $item = htmlspecialchars($item);
+            }
+
+            array_walk_recursive($data, 'htmlspecialchars_for_array');
+
             if ($login->isValid($data)) {
 
                 $username = $this->getRequest()->getPost('username');

@@ -8,3 +8,4 @@ www/data/*
 www/webstat/
 www/Sitemap.xml
 www/.htaccess
+application/configs/application.ini
